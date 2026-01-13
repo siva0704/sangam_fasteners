@@ -56,7 +56,7 @@ const App = () => {
           {showLoading && !hasLoaded && (
             <LoadingScreen onComplete={handleLoadingComplete} />
           )}
-          <BrowserRouter basename="/sfl-fastners">
+          <BrowserRouter basename="/sangam_fasteners">
             <ScrollToTop />
             <Navbar />
             <BackToTop />

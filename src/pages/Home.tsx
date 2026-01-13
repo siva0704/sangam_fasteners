@@ -55,8 +55,8 @@ const Home = () => {
           "@type": "ManufacturingBusiness",
           "name": "Sangam Fasteners Pvt. Ltd.",
           "alternateName": "SFL Fasteners",
-          "url": "https://siva0704.github.io/sfl-fastners",
-          "logo": "https://siva0704.github.io/sfl-fastners/logo.png",
+          "url": "https://siva0704.github.io/sangam_fasteners",
+          "logo": "https://siva0704.github.io/sangam_fasteners/logo.png",
           "description": "Sangam Fasteners Pvt. Ltd. is an industrial fastener manufacturer in Hubballi, India, supplying standard and custom fasteners for OEM and engineering applications.",
           "foundingDate": "2000",
           "address": {

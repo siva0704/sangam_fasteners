@@ -14,8 +14,8 @@ const Header = () => {
 
   // Robust check for Home Page
   const isHomePage = location.pathname === "/" ||
-    location.pathname.endsWith("/sfl-fastners") ||
-    location.pathname.endsWith("/sfl-fastners/");
+    location.pathname.endsWith("/sangam_fasteners") ||
+    location.pathname.endsWith("/sangam_fasteners/");
 
   useEffect(() => {
     const handleScroll = () => {
