@@ -60,10 +60,12 @@ const Products = () => {
         {/* Filter Section */}
         <section className="py-6 bg-background border-b border-border/50 sticky top-0 z-20 backdrop-blur-md bg-white/95 shadow-sm">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-2">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
               <div>
-                <h2 className="text-xl font-bold font-heading text-slate-900">Product Catalog</h2>
-                <p className="text-sm text-slate-500">Filter by category, material type, or industry standard.</p>
+                <h2 className="text-3xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-600">
+                  Product Catalog
+                </h2>
+                <p className="text-sm text-slate-500 mt-1">Filter by category, material type, or industry standard.</p>
               </div>
 
               <p className="text-muted-foreground text-sm font-medium flex items-center gap-2">
@@ -72,39 +74,52 @@ const Products = () => {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-slate-100">
-              <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                <SelectTrigger className="w-[180px] h-9 bg-slate-50 border-slate-200">
-                  <SelectValue placeholder="All Categories" />
-                </SelectTrigger>
-                <SelectContent>
-                  {categories.map(cat => (
-                    <SelectItem key={cat} value={cat} className="capitalize">{cat}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+            <div className="flex flex-wrap items-end gap-4 pt-2 border-t border-slate-100">
+              {/* Category Filter */}
+              <div className="flex flex-col gap-1.5">
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Category</span>
+                <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+                  <SelectTrigger className="w-[180px] h-10 bg-slate-50 border-slate-200">
+                    <SelectValue placeholder="All Categories" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {categories.map(cat => (
+                      <SelectItem key={cat} value={cat} className="capitalize">{cat === 'all' ? 'All' : cat}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-              <Select value={materialFilter} onValueChange={setMaterialFilter}>
-                <SelectTrigger className="w-[180px] h-9 bg-slate-50 border-slate-200">
-                  <SelectValue placeholder="All Materials" />
-                </SelectTrigger>
-                <SelectContent>
-                  {materials.map(mat => (
-                    <SelectItem key={mat} value={mat} className="capitalize">{mat}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              {/* Material Filter */}
+              <div className="flex flex-col gap-1.5">
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Material</span>
+                <Select value={materialFilter} onValueChange={setMaterialFilter}>
+                  <SelectTrigger className="w-[180px] h-10 bg-slate-50 border-slate-200">
+                    <SelectValue placeholder="All Materials" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {materials.map(mat => (
+                      <SelectItem key={mat} value={mat} className="capitalize">{mat === 'all' ? 'All' : mat}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-              <Select value={standardFilter} onValueChange={setStandardFilter}>
-                <SelectTrigger className="w-[180px] h-9 bg-slate-50 border-slate-200">
-                  <SelectValue placeholder="All Standards" />
-                </SelectTrigger>
-                <SelectContent>
-                  {standards.map(std => (
-                    <SelectItem key={std} value={std} className="capitalize">{std}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              {/* Standard Filter */}
+              <div className="flex flex-col gap-1.5">
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Standard</span>
+                <Select value={standardFilter} onValueChange={setStandardFilter}>
+                  <SelectTrigger className="w-[180px] h-10 bg-slate-50 border-slate-200">
+                    <SelectValue placeholder="All Standards" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {standards.map(std => (
+                      <SelectItem key={std} value={std} className="capitalize">{std === 'all' ? 'All' : std}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
 
               {(categoryFilter !== 'all' || materialFilter !== 'all' || standardFilter !== 'all') && (
                 <button
@@ -128,41 +143,53 @@ const Products = () => {
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
               staggerDelay={0}
             >
-              {filteredProducts.map((product) => (
-                <div key={product.id} className="relative group flex flex-col bg-white rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 overflow-hidden">
-                  {/* Main Click Area */}
-                  <Link to={`/products/${product.id}`} className="absolute inset-0 z-0" aria-label={`View ${product.name}`} />
+              {filteredProducts.map((product, idx) => (
+                <div key={product.id} className="relative group flex flex-col bg-white rounded-xl border border-slate-200 hover:border-blue-500/30 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 overflow-hidden">
+                  {/* Main Click Area - Removed global link to allow text selection, implemented specific links instead */}
 
-                  <div className="relative h-60 overflow-hidden bg-slate-100 p-8 flex items-center justify-center">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3 z-10">
-                      <span className="text-[10px] font-bold text-slate-600 bg-white/90 px-2 py-1 rounded shadow-sm uppercase tracking-wider border border-slate-100">
+                  {/* Image Section - Clickable via Link */}
+                  <Link to={`/products/${product.id}`} className="block relative h-72 overflow-hidden bg-slate-50/50 p-8 flex items-center justify-center border-b border-slate-100 group-hover:bg-white transition-colors duration-500 cursor-pointer">
+                    {/* Technical Badge */}
+                    <div className="absolute top-4 left-4 z-10 flex flex-col gap-1">
+                      <span className="text-[9px] font-mono text-slate-400 uppercase tracking-widest">
+                        CAT-{String(idx + 1).padStart(3, '0')}
+                      </span>
+                      <span className="text-[10px] font-bold text-slate-700 bg-white border border-slate-200 px-2 py-1 rounded-sm shadow-sm uppercase tracking-wider backdrop-blur-sm">
                         {product.category}
                       </span>
                     </div>
-                  </div>
 
-                  <div className="p-5 flex-1 flex flex-col relative z-10 bg-white">
-                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-tight">
-                      {product.name}
-                    </h3>
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-contain drop-shadow-sm group-hover:scale-110 group-hover:drop-shadow-lg transition-all duration-700 ease-out"
+                    />
+                  </Link>
 
-                    <p className="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2">
+                  {/* Content Section */}
+                  <div className="p-6 flex-1 flex flex-col relative z-10 bg-white">
+                    <div className="mb-4">
+                      <h3 className="text-xl font-bold font-heading text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-tight">
+                        {product.name}
+                      </h3>
+                      <div className="w-10 h-0.5 bg-slate-100 group-hover:bg-blue-500 transition-colors duration-500" />
+                    </div>
+
+                    <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2">
                       {product.description}
                     </p>
 
-                    <div className="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between gap-4">
-                      <Link to={`/products/${product.id}`} className="text-sm font-bold text-blue-600 hover:underline">
+                    <div className="mt-auto flex items-center justify-between gap-3 pt-5 border-t border-slate-50">
+                      <Link to={`/products/${product.id}`} className="group/link flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
                         View Specs
+                        <span className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300">→</span>
                       </Link>
 
-                      {/* Enquiry Button - Prevent Navigation */}
+                      {/* Premium Enquiry Button */}
                       <div onClick={(e) => e.preventDefault()} className="relative z-20">
-                        <ProductEnquiryForm productName={product.name} />
+                        <div className="[&>button]:bg-slate-900 [&>button]:text-white [&>button]:hover:bg-blue-600 [&>button]:transition-all [&>button]:duration-300 [&>button]:h-9 [&>button]:text-xs [&>button]:uppercase [&>button]:tracking-wide [&>button]:font-bold [&>button]:px-5 [&>button]:shadow-md [&>button]:hover:shadow-blue-500/25">
+                          <ProductEnquiryForm productName={product.name} />
+                        </div>
                       </div>
                     </div>
                   </div>

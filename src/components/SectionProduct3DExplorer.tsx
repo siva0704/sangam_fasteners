@@ -1,381 +1,319 @@
-import { useState, useRef, useEffect } from "react";
-import { products } from "@/constants/data";
+import { useState, useMemo, useRef } from "react";
 import AnimatedSection from "./AnimatedSection";
+import { RotateCcw, Play, Pause, ZoomIn, ZoomOut } from "lucide-react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, Stage, useGLTF, Instance, Instances } from "@react-three/drei";
 import * as THREE from "three";
-// @ts-ignore
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { RotateCcw, Home, Eye, EyeOff, Layers, Play, Pause, ZoomIn, ZoomOut } from "lucide-react";
 
 // Texture/Material Options
 const MATERIALS = {
-    steel: { name: "Stainless Steel", color: 0xe2e8f0, roughness: 0.2, metalness: 0.8 },
-    black: { name: "Black Oxide", color: 0x1e293b, roughness: 0.5, metalness: 0.5 },
-    brass: { name: "Brass / Gold", color: 0xfacc15, roughness: 0.3, metalness: 0.9 },
-    zinc: { name: "Zinc Plated", color: 0x94a3b8, roughness: 0.4, metalness: 0.6 }
+    steel: { name: "Stainless Steel", color: "#e2e8f0", roughness: 0.2, metalness: 0.8 },
+    black: { name: "Black Oxide", color: "#1e293b", roughness: 0.7, metalness: 0.2 },
+    metal: { name: "Metal Steel", color: "#64748b", roughness: 0.5, metalness: 0.7 }
 };
 
+// View Options for the Gallery
+const VIEW_OPTIONS = [
+    { id: 'bolts', name: 'Industrial Bolts', image: '/sangam_fasteners/images/ui/bolt-nut.png' },
+    { id: 'screws', name: 'Precision Screws', image: '/sangam_fasteners/images/ui/screws.png' },
+    { id: 'spanners', name: 'Tools & Spanners', image: '/sangam_fasteners/images/ui/spanner.png' },
+    { id: 'washers', name: 'Nuts & Washers', image: '/sangam_fasteners/images/ui/washers.png' }
+];
+
+// --- 3D MODELS ---
+
+const NutsAndBoltsModel = ({ color, roughness, metalness }: { color: string, roughness: number, metalness: number }) => {
+    // Load local GLB - absolute path must include base URL if defined in vite.config
+    const { scene } = useGLTF('/sangam_fasteners/models/nuts_and_bolts.glb');
+
+    // Clone scene to avoid shared state issues and apply materials
+    const clonedScene = useMemo(() => {
+        const clone = scene.clone();
+        clone.traverse((node) => {
+            if ((node as THREE.Mesh).isMesh) {
+                const mesh = node as THREE.Mesh;
+                // Apply the selected material to all meshes in the scene
+                mesh.material = new THREE.MeshStandardMaterial({
+                    color: color,
+                    roughness: roughness,
+                    metalness: metalness
+                });
+                mesh.castShadow = true;
+                mesh.receiveShadow = true;
+            }
+        });
+        return clone;
+    }, [scene, color, roughness, metalness]);
+
+    return <primitive object={clonedScene} />;
+};
+
+const ScrewsModel = ({ color, roughness, metalness }: { color: string, roughness: number, metalness: number }) => {
+    // Procedural Screws: Group of Pan Head Screws
+    const material = useMemo(() => new THREE.MeshStandardMaterial({ color, roughness, metalness }), [color, roughness, metalness]);
+
+    return (
+        <group>
+            {/* Screw 1 - Center */}
+            <group position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
+                <mesh material={material} position={[0, 2, 0]} castShadow receiveShadow>
+                    <cylinderGeometry args={[0.6, 0.6, 0.5, 32]} />{/* Head */}
+                </mesh>
+                <mesh material={material} position={[0, -1, 0]} castShadow receiveShadow>
+                    <cylinderGeometry args={[0.25, 0.25, 6, 16]} />{/* Shaft */}
+                </mesh>
+            </group>
+
+            {/* Screw 2 - Tilted */}
+            <group position={[1.5, -0.5, 1]} rotation={[Math.PI / 2.2, 0, Math.PI / 4]}>
+                <mesh material={material} position={[0, 2, 0]} castShadow receiveShadow>
+                    <cylinderGeometry args={[0.5, 0.5, 0.4, 32]} />
+                </mesh>
+                <mesh material={material} position={[0, -1, 0]} castShadow receiveShadow>
+                    <cylinderGeometry args={[0.2, 0.2, 5.5, 16]} />
+                </mesh>
+            </group>
+
+            {/* Screw 3 - Flat */}
+            <group position={[-1.5, -2, 0]} rotation={[0, 0, Math.PI / 1.5]}>
+                <mesh material={material} position={[0, 2, 0]} castShadow receiveShadow>
+                    <cylinderGeometry args={[0.55, 0.55, 0.45, 32]} />
+                </mesh>
+                <mesh material={material} position={[0, -1, 0]} castShadow receiveShadow>
+                    <cylinderGeometry args={[0.22, 0.22, 5.8, 16]} />
+                </mesh>
+            </group>
+        </group>
+    );
+};
+
+const SpannerModel = ({ color, roughness, metalness }: { color: string, roughness: number, metalness: number }) => {
+    // Procedural Key/Spanner
+    const material = useMemo(() => new THREE.MeshStandardMaterial({ color, roughness, metalness }), [color, roughness, metalness]);
+
+    return (
+        <group rotation={[0, Math.PI / 4, Math.PI / 6]}>
+            {/* Handle */}
+            <mesh material={material} position={[0, 0, 0]} castShadow receiveShadow>
+                <boxGeometry args={[1, 8, 0.5]} />
+            </mesh>
+
+            {/* Top Head (Open End) */}
+            <group position={[0, 4.2, 0]}>
+                <mesh material={material} rotation={[Math.PI / 2, 0, 0]} castShadow receiveShadow>
+                    <torusGeometry args={[1, 0.4, 16, 32, Math.PI * 1.2]} />
+                </mesh>
+            </group>
+
+            {/* Bottom Head (Ring End) */}
+            <group position={[0, -4.2, 0]}>
+                <mesh material={material} rotation={[Math.PI / 2, 0, 0]} castShadow receiveShadow>
+                    <torusGeometry args={[0.9, 0.4, 16, 32]} />
+                </mesh>
+            </group>
+        </group>
+    );
+};
+
+const WashersModel = ({ color, roughness, metalness }: { color: string, roughness: number, metalness: number }) => {
+    // Stack of Washers
+    const material = useMemo(() => new THREE.MeshStandardMaterial({ color, roughness, metalness }), [color, roughness, metalness]);
+
+    return (
+        <group>
+            <mesh material={material} position={[0, -2, 0]} rotation={[Math.PI / 2, 0, 0]} castShadow receiveShadow>
+                <torusGeometry args={[1.5, 0.5, 16, 64]} /> {/* Big Washer */}
+            </mesh>
+            <mesh material={material} position={[0.5, -1.9, 0.5]} rotation={[Math.PI / 2, 0, 0]} castShadow receiveShadow>
+                <cylinderGeometry args={[1.5, 1.5, 0.1, 64]} /> {/* Flat Washer fill */}
+            </mesh>
+
+            <mesh material={material} position={[1, 0, 1]} rotation={[Math.PI / 2.2, Math.PI / 6, 0]} castShadow receiveShadow>
+                <torusGeometry args={[0.8, 0.3, 16, 48]} />
+            </mesh>
+
+            <mesh material={material} position={[-1, 1, -0.5]} rotation={[Math.PI / 1.8, -Math.PI / 6, 0]} castShadow receiveShadow>
+                <torusGeometry args={[1.0, 0.35, 16, 48]} />
+            </mesh>
+        </group>
+    );
+};
+
+
 const SectionProduct3DExplorer = () => {
-    const [selectedProductId, setSelectedProductId] = useState(products[0]?.id || "");
-    const [isWireframe, setIsWireframe] = useState(false);
     const [autoRotate, setAutoRotate] = useState(true);
     const [selectedTexture, setSelectedTexture] = useState<keyof typeof MATERIALS>('steel');
+    const [selectedView, setSelectedView] = useState(VIEW_OPTIONS[0].id);
 
-    const mountRef = useRef<HTMLDivElement>(null);
-    const sceneRef = useRef<THREE.Scene | null>(null);
-    const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
-    const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
-    const controlsRef = useRef<any>(null);
-    const modelRef = useRef<THREE.Group | null>(null);
-    const animationFrameRef = useRef<number | null>(null);
+    // Zoom state for orbit controls
+    const [zoom, setZoom] = useState(0.35);
 
-    const selectedProduct = products.find(p => p.id === selectedProductId) || products[0];
+    // Used to force re-center on home
+    const [resetKey, setResetKey] = useState(0);
 
-    // Initialize Three.js Scene
-    useEffect(() => {
-        if (!mountRef.current) return;
-
-        // Cleanup previous scene if exists
-        if (rendererRef.current) {
-            mountRef.current.innerHTML = "";
-        }
-
-        // Scene
-        const scene = new THREE.Scene();
-        sceneRef.current = scene;
-        scene.background = new THREE.Color(0xf8fafc); // Slate-50
-
-        // Camera
-        const width = mountRef.current.clientWidth;
-        const height = mountRef.current.clientHeight;
-        const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-        camera.position.set(4, 3, 5);
-        cameraRef.current = camera;
-
-        // Renderer
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(width, height);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.shadowMap.enabled = true;
-        mountRef.current.appendChild(renderer.domElement);
-        rendererRef.current = renderer;
-
-        // Controls
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        controls.enablePan = false;
-        controls.minDistance = 2;
-        controls.maxDistance = 10;
-        controlsRef.current = controls;
-
-        // Lights
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-        scene.add(ambientLight);
-
-        const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
-        dirLight.position.set(5, 5, 5);
-        dirLight.castShadow = true;
-        scene.add(dirLight);
-
-        const backLight = new THREE.DirectionalLight(0xffffff, 0.5);
-        backLight.position.set(-5, 0, -5);
-        scene.add(backLight);
-
-        // Create 3D Object based on product type
-        const createProductMesh = () => {
-            const group = new THREE.Group();
-
-            const matProps = MATERIALS[selectedTexture];
-            const material = new THREE.MeshStandardMaterial({
-                color: matProps.color,
-                roughness: matProps.roughness,
-                metalness: matProps.metalness,
-                wireframe: isWireframe
-            });
-
-            const categoryName = selectedProduct.category.toLowerCase();
-            const productName = selectedProduct.name.toLowerCase();
-
-            if (categoryName.includes('bolt') || productName.includes('bolt') || productName.includes('screw')) {
-                // --- BOLT GEOMETRY ---
-                // Hex Head
-                const headGeo = new THREE.CylinderGeometry(0.8, 0.8, 0.6, 6);
-                const head = new THREE.Mesh(headGeo, material);
-                head.position.y = 1.0;
-                head.castShadow = true;
-                group.add(head);
-
-                // Threaded Shaft (Approximated with segments)
-                const shaftGeo = new THREE.CylinderGeometry(0.4, 0.4, 2.0, 32, 10);
-                const shaft = new THREE.Mesh(shaftGeo, material);
-                shaft.castShadow = true;
-                group.add(shaft);
-
-                // Thread Detail (bump map simulation or just wireframe helps)
-            }
-            else if (categoryName.includes('nut') || productName.includes('nut')) {
-                // --- NUT GEOMETRY ---
-                // Hexagon with hole
-                const shape = new THREE.Shape();
-                const radius = 0.8;
-                for (let i = 0; i < 6; i++) {
-                    const angle = (i * Math.PI) / 3;
-                    const x = Math.cos(angle) * radius;
-                    const y = Math.sin(angle) * radius;
-                    if (i === 0) shape.moveTo(x, y);
-                    else shape.lineTo(x, y);
-                }
-                shape.closePath();
-
-                const hole = new THREE.Path();
-                hole.absarc(0, 0, 0.4, 0, Math.PI * 2, false);
-                shape.holes.push(hole);
-
-                const extrudeSettings = { depth: 0.6, bevelEnabled: true, bevelSegments: 2, steps: 2, bevelSize: 0.05, bevelThickness: 0.05 };
-                const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
-                // Center geometry
-                geometry.center();
-
-                const mesh = new THREE.Mesh(geometry, material);
-                mesh.castShadow = true;
-                group.add(mesh);
-
-                // Rotate to sit flat
-                group.rotation.x = Math.PI / 2;
-            }
-            else if (categoryName.includes('stud') || categoryName.includes('rod')) {
-                // --- STUD GEOMETRY ---
-                const geo = new THREE.CylinderGeometry(0.4, 0.4, 3.0, 32, 20);
-                const mesh = new THREE.Mesh(geo, material);
-                mesh.castShadow = true;
-                group.add(mesh);
-            }
-            else {
-                // --- DEFAULT GENERIC ---
-                const geometry = new THREE.CylinderGeometry(0.5, 0.5, 1.5, 32);
-                const mesh = new THREE.Mesh(geometry, material);
-                mesh.castShadow = true;
-                group.add(mesh);
-            }
-
-            return group;
-        };
-
-        const newModel = createProductMesh();
-        scene.add(newModel);
-        modelRef.current = newModel;
-
-        // Animation Loop
-        const animate = () => {
-            animationFrameRef.current = requestAnimationFrame(animate);
-            if (controlsRef.current) {
-                controlsRef.current.update();
-                // Auto Rotate Logic
-                if (autoRotate) {
-                    controlsRef.current.autoRotate = true;
-                    controlsRef.current.autoRotateSpeed = 2.0;
-                } else {
-                    controlsRef.current.autoRotate = false;
-                }
-            }
-
-            if (rendererRef.current && cameraRef.current && sceneRef.current) {
-                rendererRef.current.render(sceneRef.current, cameraRef.current);
-            }
-        };
-        animate();
-
-        // Resize Handler
-        const handleResize = () => {
-            if (!mountRef.current || !cameraRef.current || !rendererRef.current) return;
-            const w = mountRef.current.clientWidth;
-            const h = mountRef.current.clientHeight;
-            cameraRef.current.aspect = w / h;
-            cameraRef.current.updateProjectionMatrix();
-            rendererRef.current.setSize(w, h);
-        };
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-            if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-            if (mountRef.current && rendererRef.current) {
-                mountRef.current.removeChild(rendererRef.current.domElement);
-            }
-            rendererRef.current?.dispose();
-        };
-    }, [selectedProduct, isWireframe, selectedTexture]); // Re-render on these changes
-
-    // Update Auto Rotate without full re-render logic if possible, but here inside effect is fine or ref
-    useEffect(() => {
-        if (controlsRef.current) {
-            controlsRef.current.autoRotate = autoRotate;
-        }
-    }, [autoRotate]);
-
-    // Control Handlers
     const handleHome = () => {
-        if (cameraRef.current && controlsRef.current) {
-            cameraRef.current.position.set(4, 3, 5);
-            cameraRef.current.lookAt(0, 0, 0);
-            controlsRef.current.target.set(0, 0, 0);
-            controlsRef.current.update();
-        }
-    };
-
-    const handleReset = () => {
-        if (controlsRef.current) {
-            controlsRef.current.reset();
-        }
-    };
-
-    const handleView = (axis: 'front' | 'side' | 'top') => {
-        if (!cameraRef.current || !controlsRef.current) return;
-        const dist = 6;
-        if (axis === 'front') cameraRef.current.position.set(0, 0, dist);
-        if (axis === 'side') cameraRef.current.position.set(dist, 0, 0);
-        if (axis === 'top') cameraRef.current.position.set(0, dist, 0);
-        cameraRef.current.lookAt(0, 0, 0);
-        controlsRef.current.update();
+        setResetKey(prev => prev + 1);
+        setZoom(0.35);
     };
 
     const handleZoom = (direction: 'in' | 'out') => {
-        if (!cameraRef.current) return;
-        const zoomFactor = direction === 'in' ? 0.9 : 1.1;
-        cameraRef.current.position.multiplyScalar(zoomFactor);
-        controlsRef.current.update(); // Update controls after manual camera position change
+        setZoom(prev => direction === 'in' ? Math.min(prev + 0.2, 2) : Math.max(prev - 0.2, 0.2));
     };
 
+    const renderModel = () => {
+        const props = {
+            color: MATERIALS[selectedTexture].color,
+            roughness: MATERIALS[selectedTexture].roughness,
+            metalness: MATERIALS[selectedTexture].metalness
+        };
+
+        switch (selectedView) {
+            case 'bolts': return <NutsAndBoltsModel {...props} />;
+            case 'screws': return <ScrewsModel {...props} />;
+            case 'spanners': return <SpannerModel {...props} />;
+            case 'washers': return <WashersModel {...props} />;
+            default: return <NutsAndBoltsModel {...props} />;
+        }
+    };
 
     return (
         <section className="py-20 bg-slate-50 relative overflow-hidden">
             <div className="container px-4 mx-auto">
                 <AnimatedSection>
-                    <div className="text-center max-w-2xl mx-auto mb-16">
-                        <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">Interactive Tech</span>
-                        <h2 className="text-3xl md:text-4xl font-bold mt-2 text-slate-900">Explore Our Craftsmanship</h2>
+                    <div className="text-center max-w-2xl mx-auto mb-12">
+                        <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">Interactive Product Showcase</span>
+                        <h2 className="text-3xl md:text-4xl font-bold mt-2 text-slate-900">Precision Engineered Fasteners</h2>
+                        <p className="text-slate-600 mt-4">Select a category to explore our premium components in 3D.</p>
                     </div>
                 </AnimatedSection>
             </div>
 
             <div className="container px-4 mx-auto">
-                <div className="flex flex-col lg:flex-row gap-8 h-[500px] lg:h-[650px] bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden">
+                <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
 
-                    {/* Left Panel: Product List - Pushed Down */}
-                    <div className="w-full lg:w-1/3 bg-slate-50 border-r border-slate-100 flex flex-col p-6 overflow-y-auto mt-12 lg:mt-24">
-                        <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 px-2">Select Model</h3>
-                        <div className="space-y-3 pr-2 pb-6">
-                            {products.map((product) => (
+                    {/* LEFT: 3D Viewport (Square Box) */}
+                    <div className="w-full max-w-[500px] aspect-square bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden relative flex-shrink-0">
+                        {/* Viewport Container */}
+                        <div className="w-full h-full relative bg-gradient-to-br from-gray-50 to-gray-200">
+
+                            {/* Controls Toolbar (Bottom Center) */}
+                            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-4 bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-white/50 shadow-xl">
+                                <button onClick={() => setAutoRotate(!autoRotate)} title={autoRotate ? "Pause Rotation" : "Auto Rotate"} className={`p-2 rounded-xl transition-colors ${autoRotate ? "text-blue-600 bg-blue-50" : "text-slate-500 hover:text-blue-600 hover:bg-blue-50"}`}>
+                                    {autoRotate ? <Pause size={24} /> : <Play size={24} />}
+                                </button>
+                                <div className="w-px bg-slate-200" />
+                                <button onClick={handleHome} title="Reset View" className="p-2 hover:bg-blue-50 rounded-xl text-slate-500 hover:text-blue-600 transition-colors">
+                                    <RotateCcw size={24} />
+                                </button>
+                                <div className="w-px bg-slate-200" />
+                                <button onClick={() => handleZoom('in')} title="Zoom In" className="p-2 hover:bg-blue-50 rounded-xl text-slate-500 hover:text-blue-600 transition-colors">
+                                    <ZoomIn size={24} />
+                                </button>
+                                <button onClick={() => handleZoom('out')} title="Zoom Out" className="p-2 hover:bg-blue-50 rounded-xl text-slate-500 hover:text-blue-600 transition-colors">
+                                    <ZoomOut size={24} />
+                                </button>
+                            </div>
+
+                            {/* Material Selector (Top Right) */}
+                            <div className="absolute top-6 right-6 z-20 flex flex-col items-end gap-3 pointer-events-auto">
+                                <div className="bg-white/80 backdrop-blur-md p-4 rounded-xl border border-white/50 shadow-lg">
+                                    <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 text-right">Material Finish</h4>
+                                    <div className="flex gap-2">
+                                        {(Object.keys(MATERIALS) as Array<keyof typeof MATERIALS>).map((key) => (
+                                            <button
+                                                key={key}
+                                                onClick={() => setSelectedTexture(key)}
+                                                title={MATERIALS[key].name}
+                                                className={`w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 shadow-sm ${selectedTexture === key ? 'border-blue-500 ring-2 ring-blue-200' : 'border-white'}`}
+                                                style={{ backgroundColor: MATERIALS[key].color }}
+                                            />
+                                        ))}
+                                    </div>
+                                    <p className="text-xs text-slate-600 font-bold text-right mt-2">{MATERIALS[selectedTexture].name}</p>
+                                </div>
+                            </div>
+
+                            {/* R3F Canvas */}
+                            <div className="w-full h-full cursor-move" style={{ touchAction: 'pan-y' }}>
+                                <Canvas shadows camera={{ position: [12, 12, 18], fov: 50 }}>
+                                    <Stage environment="city" intensity={0.5} shadows="contact">
+                                        <mesh scale={[zoom, zoom, zoom]}>
+                                            {renderModel()}
+                                        </mesh>
+                                    </Stage>
+                                    <OrbitControls
+                                        key={resetKey}
+                                        autoRotate={autoRotate}
+                                        autoRotateSpeed={1}
+                                        enableZoom={true}
+                                        maxDistance={20}
+                                        minDistance={2}
+                                    />
+                                </Canvas>
+                            </div>
+
+                            <div className="absolute top-6 left-6 z-10 pointer-events-none">
+                                <h3 className="text-xl font-bold text-slate-900 mb-1">
+                                    {VIEW_OPTIONS.find(v => v.id === selectedView)?.name || "Fastener Collection"}
+                                </h3>
+                                <p className="text-slate-500 text-xs">Interactive 3D View</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    {/* RIGHT: Selection Container */}
+                    <div className="flex-1 w-full max-w-[600px] bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 md:p-8 relative overflow-hidden flex flex-col justify-center">
+                        {/* Top Decoration */}
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-slate-900 to-blue-600" />
+
+                        <div className="mb-8 text-left">
+                            <h3 className="text-3xl font-bold font-heading mb-2 text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-600">
+                                Model Selection
+                            </h3>
+                            <p className="text-slate-500 font-medium">
+                                Choose a component to inspect in high-fidelity 3D.
+                            </p>
+                        </div>
+
+                        <div className="w-full grid grid-cols-2 gap-4">
+                            {VIEW_OPTIONS.map((item) => (
                                 <button
-                                    key={product.id}
-                                    onClick={() => setSelectedProductId(product.id)}
-                                    className={`w-full group flex items-center gap-4 p-3 rounded-xl transition-all duration-300 border text-left ${selectedProductId === product.id
-                                        ? "bg-white border-blue-500 shadow-md transform scale-[1.02]"
-                                        : "bg-white/50 border-transparent hover:bg-white hover:border-slate-200"
+                                    key={item.id}
+                                    onClick={() => setSelectedView(item.id)}
+                                    className={`group relative flex flex-col items-start text-left bg-slate-50/50 rounded-xl overflow-hidden border transition-all duration-300 ${selectedView === item.id
+                                        ? 'border-blue-500 shadow-md ring-2 ring-blue-50 scale-[1.02] bg-white'
+                                        : 'border-slate-200 hover:border-blue-300 hover:bg-white hover:shadow-md'
                                         }`}
                                 >
-                                    <div className={`w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center shrink-0 transition-colors ${selectedProductId === product.id ? "bg-blue-50 text-blue-600" : "text-slate-400 group-hover:text-slate-600"
-                                        }`}>
-                                        <Layers size={20} />
+                                    {/* card image container */}
+                                    <div className="w-full h-24 sm:h-28 bg-white relative overflow-hidden border-b border-slate-100">
+                                        <div className="absolute inset-0 bg-slate-100/50" />
+                                        <img
+                                            src={item.image}
+                                            alt={item.name}
+                                            className="w-full h-full object-cover mix-blend-multiply opacity-90 group-hover:scale-110 transition-transform duration-500 relative z-10"
+                                        />
+                                        {/* Active Indicator Dot */}
+                                        {selectedView === item.id && (
+                                            <div className="absolute top-2 right-2 w-2 h-2 bg-blue-600 rounded-full shadow-sm ring-2 ring-white z-20" />
+                                        )}
                                     </div>
-                                    <div className="flex-1">
-                                        <h4 className={`font-bold text-sm ${selectedProductId === product.id ? "text-slate-900" : "text-slate-600 group-hover:text-slate-900"}`}>
-                                            {product.name}
-                                        </h4>
-                                        <p className="text-[10px] text-slate-400 line-clamp-1 uppercase">{product.category}</p>
+
+                                    {/* card content container */}
+                                    <div className="p-3 w-full relative">
+                                        <h3 className={`font-bold text-sm sm:text-base leading-tight mb-1 transition-colors ${selectedView === item.id ? 'text-blue-600' : 'text-slate-700 group-hover:text-blue-600'}`}>
+                                            {item.name}
+                                        </h3>
+                                        <p className="text-[10px] sm:text-xs font-medium text-slate-400 group-hover:text-blue-400 transition-colors line-clamp-1">
+                                            {item.description}
+                                        </p>
                                     </div>
-                                    {selectedProductId === product.id && (
-                                        <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                                    )}
                                 </button>
                             ))}
                         </div>
                     </div>
 
-                    {/* Right Panel: 3D Canvas */}
-                    <div className="flex-1 relative bg-gradient-to-br from-gray-50 to-gray-200">
-                        {/* Material Selector - Floating Top Right */}
-                        <div className="absolute top-6 right-6 z-20 flex flex-col items-end gap-3 pointer-events-auto">
-                            <div className="bg-white/80 backdrop-blur-md p-3 rounded-xl border border-white/50 shadow-lg">
-                                <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 text-right">Material Finish</h4>
-                                <div className="flex gap-2">
-                                    {(Object.keys(MATERIALS) as Array<keyof typeof MATERIALS>).map((key) => (
-                                        <button
-                                            key={key}
-                                            onClick={() => setSelectedTexture(key)}
-                                            title={MATERIALS[key].name}
-                                            className={`w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 shadow-sm ${selectedTexture === key ? 'border-blue-500 ring-2 ring-blue-200' : 'border-white'}`}
-                                            style={{ backgroundColor: '#' + MATERIALS[key].color.toString(16) }}
-                                        />
-                                    ))}
-                                </div>
-                                <p className="text-xs text-slate-600 font-bold text-right mt-1">{MATERIALS[selectedTexture].name}</p>
-                            </div>
-                        </div>
-
-                        {/* Product Title Overlay */}
-                        <div className="absolute top-6 left-6 z-10 pointer-events-none max-w-md">
-                            <span className="inline-block px-2 py-1 rounded bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-wider mb-2 border border-blue-200">
-                                {selectedProduct.category}
-                            </span>
-                            <h3 className="text-3xl font-bold text-slate-900 mb-2">{selectedProduct.name}</h3>
-                            <p className="text-slate-600 text-xs leading-relaxed bg-white/60 backdrop-blur-sm p-3 rounded-lg border border-white/40 shadow-sm">
-                                {selectedProduct.longDescription || selectedProduct.description}
-                            </p>
-                        </div>
-
-                        {/* Expanded Sidebar Controls */}
-                        <div className="absolute top-1/2 -translate-y-1/2 left-6 z-20 flex flex-col gap-2 bg-white/90 backdrop-blur-md p-2 rounded-2xl border border-white/50 shadow-xl">
-                            {/* Rotation Control */}
-                            <button onClick={() => setAutoRotate(!autoRotate)} title={autoRotate ? "Pause Rotation" : "Auto Rotate"} className={`p-2 rounded-xl transition-colors ${autoRotate ? "text-blue-600 bg-blue-50" : "text-slate-500 hover:text-blue-600 hover:bg-blue-50"}`}>
-                                {autoRotate ? <Pause size={20} /> : <Play size={20} />}
-                            </button>
-
-                            <div className="h-px bg-slate-200 mx-2" />
-
-                            <button onClick={handleReset} title="Reset View" className="p-2 hover:bg-blue-50 rounded-xl text-slate-500 hover:text-blue-600 transition-colors">
-                                <RotateCcw size={20} />
-                            </button>
-                            <button onClick={handleHome} title="Home View" className="p-2 hover:bg-blue-50 rounded-xl text-slate-500 hover:text-blue-600 transition-colors">
-                                <Home size={20} />
-                            </button>
-
-                            <div className="h-px bg-slate-200 mx-2" />
-
-                            <button onClick={() => handleZoom('in')} title="Zoom In" className="p-2 hover:bg-blue-50 rounded-xl text-slate-500 hover:text-blue-600 transition-colors">
-                                <ZoomIn size={20} />
-                            </button>
-                            <button onClick={() => handleZoom('out')} title="Zoom Out" className="p-2 hover:bg-blue-50 rounded-xl text-slate-500 hover:text-blue-600 transition-colors">
-                                <ZoomOut size={20} />
-                            </button>
-
-                            <div className="h-px bg-slate-200 mx-2" />
-
-                            <button onClick={() => setIsWireframe(!isWireframe)} title="Toggle Wireframe" className={`p-2 hover:bg-blue-50 rounded-xl transition-colors ${isWireframe ? "text-blue-600 bg-blue-50" : "text-slate-500"}`}>
-                                {isWireframe ? <EyeOff size={20} /> : <Eye size={20} />}
-                            </button>
-                        </div>
-
-                        <div className="absolute bottom-6 right-6 z-10 flex flex-col items-end gap-2 pointer-events-none">
-                            {/* Branding Logo */}
-                            {/* <img
-                                src="/sangam_fasteners/logo.png"
-                                alt="SFL Logo"
-                                className="h-12 w-auto object-contain opacity-80 mix-blend-multiply mb-2"
-                                onError={(e) => {
-                                    const target = e.target as HTMLImageElement;
-                                    target.style.display = 'none';
-                                }}
-                            /> */}
-
-                            <span className="bg-slate-900 text-white px-3 py-1.5 rounded-lg text-[10px] font-bold border border-slate-700 shadow-xl tracking-widest flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /> LIVE PREVIEW
-                            </span>
-                        </div>
-
-                        {/* Three.js Container */}
-                        <div ref={mountRef} className="w-full h-full cursor-move active:cursor-grabbing" />
-                    </div>
                 </div>
             </div>
         </section>
@@ -383,3 +321,5 @@ const SectionProduct3DExplorer = () => {
 };
 
 export default SectionProduct3DExplorer;
+
+useGLTF.preload('/sangam_fasteners/models/nuts_and_bolts.glb');

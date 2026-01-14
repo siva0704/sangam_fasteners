@@ -30,3 +30,5 @@ export default defineConfig(({ mode }) => ({
     include: ['three', 'three/examples/jsm/controls/OrbitControls'],
   },
 }));
+
+// Force restart 1

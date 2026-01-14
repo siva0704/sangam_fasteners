@@ -45,7 +45,7 @@ export const Navbar = () => {
             <div className="container mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
                 <Link to="/" className="flex items-center gap-3 group">
-                    <img src="/sangam_fasteners/logo.svg" alt="Sangam Fasteners Private Limited Logo" className="h-10 w-10 object-contain group-hover:scale-105 transition-transform duration-300" />
+                    <img src="/sangam_fasteners/logo.svg" alt="Sangam Fasteners Private Limited Logo" className="h-14 w-14 object-contain group-hover:scale-105 transition-transform duration-300" />
                     <div className="flex flex-col items-start leading-none">
                         <span className={cn(
                             "text-sm sm:text-lg font-heading font-bold tracking-widest uppercase transition-colors duration-300",

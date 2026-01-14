@@ -21,7 +21,7 @@ export const products = [
         standards: "DIN 931/933, ISO 4014/4017, ASTM A307",
         description: "Standard industrial fastening solution.",
         longDescription: "Precision engineered Hex and Heavy Hex bolts designed for high-stress industrial applications. Available in various grades (8.8, 10.9) and materials including Stainless Steel (304/316) and Carbon Steel.",
-        image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/hex-bolt.png"
     },
     {
         id: "structural-bolts",
@@ -31,7 +31,7 @@ export const products = [
         standards: "ASTM A325, A490, EN 14399",
         description: "High-strength friction grip bolts.",
         longDescription: "Critical load-bearing structural bolts (HSFG) for steel construction, bridges, and infrastructure projects. Certified for high tensile strength and shear resistance.",
-        image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/structural-bolt.png"
     },
     {
         id: "anchor-bolts",
@@ -41,7 +41,7 @@ export const products = [
         standards: "ASTM F1554 (Gr 36, 55, 105)",
         description: "L-Bolts, J-Bolts, Expansion Anchors.",
         longDescription: "Robust foundation fasteners including L-type, J-type, and Chemical Anchors for securing heavy machinery and structural columns to concrete bases.",
-        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/anchor-bolt.png"
     },
     {
         id: "u-bolts",
@@ -51,7 +51,7 @@ export const products = [
         standards: "DIN 3570, ASME B18.31.5",
         description: "Piping and support clamping.",
         longDescription: "Corrosion-resistant U-Bolts with round and square bends, essential for piping support in Oil & Gas and Power generation sectors.",
-        image: "https://images.unsplash.com/photo-1536617063469-6f34582f3ef4?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/u-bolt.png"
     },
     {
         id: "eye-bolts",
@@ -61,7 +61,7 @@ export const products = [
         standards: "DIN 580, ASME B18.15",
         description: "Heavy lifting and rigging hardware.",
         longDescription: "Forged Eye Bolts designed for lifting heavy equipment. Tested for tensile strength and available in metric and imperial thread profiles.",
-        image: "https://plus.unsplash.com/premium_photo-1664303847960-586318f59035?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/eye-bolt.png"
     },
 
     // --- NUTS ---
@@ -73,7 +73,7 @@ export const products = [
         standards: "DIN 934, ASTM A194 2H",
         description: "Standard and heavy-duty mating nuts.",
         longDescription: "High-grade Hex Nuts including ASTM A194 2H for high-pressure and high-temperature service environments.",
-        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/hex-nut.png"
     },
     {
         id: "lock-nuts",
@@ -83,7 +83,7 @@ export const products = [
         standards: "DIN 985, DIN 980",
         description: "Vibration-proof locking nuts.",
         longDescription: "Nylon insert and prevailing torque metal lock nuts to prevent loosening due to vibration in automotive and machining applications.",
-        image: "https://images.unsplash.com/photo-1616422285623-13ff0162193c?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/lock-nut.png"
     },
     {
         id: "flange-nuts",
@@ -93,7 +93,7 @@ export const products = [
         standards: "DIN 6923, IFI 100/107",
         description: "Integrated washer face nuts.",
         longDescription: "Serrated and non-serrated flange nuts providing a larger bearing surface to distribute load and prevent loosening.",
-        image: "https://images.unsplash.com/photo-1581092160607-ee67865f7e78?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/flange-nut.png"
     },
 
     // --- WASHERS ---
@@ -105,7 +105,7 @@ export const products = [
         standards: "DIN 125, DIN 127",
         description: "Load distribution and locking.",
         longDescription: "Plain flat washers for load distribution and helical spring lock washers for vibration resistance.",
-        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/washers.png"
     },
     {
         id: "structural-washers",
@@ -115,7 +115,7 @@ export const products = [
         standards: "ASTM F436, DIN 6916",
         description: "For HSFG structural bolts.",
         longDescription: "Through-hardened structural washers compatible with A325/A490 bolts for steel construction joints.",
-        image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/structural-washer.png"
     },
 
     // --- SCREWS & SOCKET ---
@@ -127,7 +127,7 @@ export const products = [
         standards: "DIN 912, ISO 4762",
         description: "High-strength Allen key screws.",
         longDescription: "Grade 12.9 Socket Head Cap Screws (Allen Bolts) for precision machinery and high-tensile applications.",
-        image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/socket-screw.png"
     },
     {
         id: "machine-screws",
@@ -137,7 +137,7 @@ export const products = [
         standards: "DIN 7981, DIN 7982",
         description: "Assembly and sheet metal screws.",
         longDescription: "Diverse range of Pan, Countersunk, and Truss head machine screws and self-tapping screws for sheet metal and plastic assembly.",
-        image: "https://images.unsplash.com/photo-1581092160607-ee67865f7e78?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/machine-screw.png"
     },
 
     // --- STUDS & RODS ---
@@ -149,7 +149,7 @@ export const products = [
         standards: "ASME B16.5",
         description: "For high-pressure flanges.",
         longDescription: "Fully threaded stud bolts available in B7 (High Temp), B16, L7 (Low Temp) grades, commonly used in pipeline flanges.",
-        image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/threaded-rod.png"
     },
     {
         id: "threaded-rods",
@@ -159,7 +159,7 @@ export const products = [
         standards: "DIN 975, DIN 976",
         description: "1M to 3M lengths.",
         longDescription: "Continuously threaded rods typically used in plumbing, construction, and maintenance applications. Available in various lengths.",
-        image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/threaded-rod.png"
     },
 
     // --- SPECIALTY ---
@@ -171,7 +171,59 @@ export const products = [
         standards: "Per Drawing",
         description: "Bespoke manufacturing.",
         longDescription: "SFL specializes in manufacturing custom fasteners according to client-specific drawings using exotic alloys like Inconel, Monel, and Titanium.",
-        image: "https://images.unsplash.com/photo-1616422285623-13ff0162193c?q=80&w=800&auto=format&fit=crop"
+        image: "/sangam_fasteners/images/products/hex-bolt.png"
+    },
+    {
+        id: "ball-valve-stems",
+        name: "Precision Ball Valve Stems",
+        category: "Custom",
+        material: "SS316, Inconel, Monel, 17-4PH",
+        standards: "API 6D, ISO 17292",
+        description: "Custom Ball Valve Stem Supplier Made to Fit Your Requirements.",
+        longDescription: "Precision engineered 1Pc, 2Pc, and 3Pc Ball Valve Stems. Manufactured from high-grade alloys (Duplex, Super Duplex, Hastelloy) with anti-static and blowout-proof designs for critical industrial valves.",
+        image: "/sangam_fasteners/images/products/valve-stem.png"
+    },
+
+    // --- HOME APPLIANCES ---
+    {
+        id: "wm-drum-shaft",
+        name: "Washing Machine Spider Shafts",
+        category: "Appliances",
+        material: "SS 304, Aluminium Die Cast",
+        standards: "OEM Standard",
+        description: "Drum support spider arms.",
+        longDescription: "High-precision drum spider shafts and support arms for front-load and top-load washing machines, engineered for balance and durability.",
+        image: "/sangam_fasteners/images/products/washing-machine-shaft.png"
+    },
+    {
+        id: "wm-motor-mount",
+        name: "Motor Mounts & Isolators",
+        category: "Appliances",
+        material: "Rubber / Metal Bonded",
+        standards: "Vibration Control ISO",
+        description: "Vibration dampening mounts.",
+        longDescription: "Composite rubber-metal motor mounts and vibration isolators for washing machine motors, ensuring smooth and quiet operation.",
+        image: "/sangam_fasteners/images/products/washing-machine-mount.png"
+    },
+    {
+        id: "ref-compressor-rod",
+        name: "Refrigerator Compressor Rods",
+        category: "Appliances",
+        material: "Free Cutting Steel (En1A)",
+        standards: "RoHS Compliant",
+        description: "Mounting studs for compressors.",
+        longDescription: "Precision machined threaded rods and studs for refrigerator compressor mounting units, zinc-plated for corrosion resistance.",
+        image: "/sangam_fasteners/images/products/refrigerator-rod.png"
+    },
+    {
+        id: "ref-door-bush",
+        name: "Refrigerator Door Bushes",
+        category: "Appliances",
+        material: "Nylon 66, POM, Brass",
+        standards: "Food Grade Safe",
+        description: "Hinge and pivot bushes.",
+        longDescription: "Self-lubricating nylon and brass bushes for refrigerator door hinges, ensuring smooth opening and closing cycles over long service life.",
+        image: "/sangam_fasteners/images/products/refrigerator-bush.png"
     }
 ];
 

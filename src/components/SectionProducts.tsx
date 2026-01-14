@@ -1,15 +1,21 @@
+import { Link } from "react-router-dom"; // Added import
 import { ArrowRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import MagneticButton from "./MagneticButton";
 import { Card } from "./ui/card";
+import ProductEnquiryForm from "./ProductEnquiryForm";
 
 import { products } from "@/constants/data";
 
 const SectionProducts = () => {
+    // Select specific products for diverse showcase
+    const showcaseIds = ['hex-bolts', 'hex-nuts', 'flat-washers', 'socket-screws', 'stud-bolts', 'wm-drum-shaft'];
+    const showcaseProducts = products.filter(p => showcaseIds.includes(p.id));
+
     return (
         <section className="py-24 bg-secondary/30" id="products">
             <div className="container px-4 mx-auto">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 px-2 gap-8">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-12 px-2 gap-8">
                     <AnimatedSection animation="fade-right" className="max-w-2xl">
                         <span className="inline-block py-1 px-3 rounded-full bg-accent/10 border border-accent/20 text-accent font-bold text-sm tracking-widest uppercase mb-4 backdrop-blur-sm">
                             Our Products
@@ -19,42 +25,66 @@ const SectionProducts = () => {
                         </h2>
                         <p className="text-lg text-muted-foreground leading-relaxed">
                             Our comprehensive range of fasteners meets the rigorous standards of global industries.
-                            Available in various grades, materials, and finishes.
                         </p>
                     </AnimatedSection>
                     <AnimatedSection animation="fade-left" delay={0.2} className="shrink-0">
                         <MagneticButton size="lg" variant="outline" className="hidden md:flex items-center gap-2 group text-primary border-primary/20 hover:bg-primary hover:text-white transition-all duration-300">
-                            View Products <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                            <Link to="/products">View All Products</Link> <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </MagneticButton>
                     </AnimatedSection>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {products.map((product, idx) => (
+                    {showcaseProducts.map((product, idx) => (
                         <AnimatedSection key={product.id} animation="fade-up" delay={idx * 0.1}>
-                            <Card className="group relative overflow-hidden h-[360px] cursor-pointer border-0 shadow-sm hover:shadow-elegant transition-all duration-500 bg-white">
-                                <div className="absolute inset-0 z-0">
+                            <div className="relative group flex flex-col bg-white rounded-xl border border-slate-200 hover:border-blue-500/30 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 overflow-hidden h-full min-h-[450px]">
+                                {/* Image Section - Clickable via Link */}
+                                <Link to={`/products/${product.id}`} className="block relative h-64 overflow-hidden bg-slate-50/50 p-6 flex items-center justify-center border-b border-slate-100 group-hover:bg-white transition-colors duration-500 cursor-pointer">
+                                    {/* Technical Badge */}
+                                    <div className="absolute top-4 left-4 z-10 flex flex-col gap-1">
+                                        <span className="text-[9px] font-mono text-slate-400 uppercase tracking-widest">
+                                            CAT-{String(idx + 1).padStart(3, '0')}
+                                        </span>
+                                        <span className="text-[10px] font-bold text-slate-700 bg-white border border-slate-200 px-2 py-1 rounded-sm shadow-sm uppercase tracking-wider backdrop-blur-sm">
+                                            {product.category}
+                                        </span>
+                                    </div>
+
                                     <img
                                         src={product.image}
                                         alt={product.name}
-                                        className="w-full h-full object-cover transition-transform duration-700 md:grayscale md:group-hover:grayscale-0 group-hover:scale-110"
+                                        className="w-full h-full object-contain drop-shadow-sm group-hover:scale-110 group-hover:drop-shadow-lg transition-all duration-700 ease-out"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-70" />
-                                </div>
+                                </Link>
 
-                                <div className="relative z-10 h-full flex flex-col justify-end p-6 translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 transition-transform duration-500">
-                                    <div className="w-12 h-[2px] bg-accent mb-4 origin-left transition-all duration-500 w-full md:w-12 md:group-hover:w-full" />
-                                    <h3 className="text-2xl font-bold text-white mb-2">{product.name}</h3>
-                                    <p className="text-accent-foreground/80 font-mono text-sm tracking-wide mb-4">
+                                {/* Content Section */}
+                                <div className="p-6 flex-1 flex flex-col relative z-10 bg-white">
+                                    <div className="mb-4">
+                                        <h3 className="text-xl font-bold font-heading text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-tight">
+                                            {product.name}
+                                        </h3>
+                                        <div className="w-10 h-0.5 bg-slate-100 group-hover:bg-blue-500 transition-colors duration-500" />
+                                    </div>
+
+                                    <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2">
                                         {product.description}
                                     </p>
-                                    <div className="overflow-hidden h-auto md:h-0 md:group-hover:h-auto transition-all duration-500">
-                                        <span className="text-sm text-white/90 inline-flex items-center gap-2">
-                                            View Specs <ArrowRight className="w-4 h-4" />
-                                        </span>
+
+                                    <div className="mt-auto flex items-center justify-between gap-3 pt-5 border-t border-slate-50">
+                                        <Link to={`/products/${product.id}`} className="group/link flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
+                                            View Specs
+                                            <span className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300">→</span>
+                                        </Link>
+
+                                        {/* Premium Enquiry Button */}
+                                        <div onClick={(e) => e.preventDefault()} className="relative z-20">
+                                            <div className="[&>button]:bg-slate-900 [&>button]:text-white [&>button]:hover:bg-blue-600 [&>button]:transition-all [&>button]:duration-300 [&>button]:h-9 [&>button]:text-xs [&>button]:uppercase [&>button]:tracking-wide [&>button]:font-bold [&>button]:px-5 [&>button]:shadow-md [&>button]:hover:shadow-blue-500/25">
+                                                <ProductEnquiryForm productName={product.name} />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </Card>
+                            </div>
                         </AnimatedSection>
                     ))}
                 </div>
