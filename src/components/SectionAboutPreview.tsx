@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const SectionAboutPreview = () => {
     return (
-        <section className="py-24 bg-secondary/20">
+        <section className="py-12 bg-secondary/20">
             <div className="container px-4 mx-auto">
                 <div className="max-w-4xl mx-auto text-center">
                     <AnimatedSection animation="fade-up">

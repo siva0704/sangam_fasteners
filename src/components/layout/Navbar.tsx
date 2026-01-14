@@ -45,16 +45,16 @@ export const Navbar = () => {
             <div className="container mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
                 <Link to="/" className="flex items-center gap-3 group">
-                    <img src="/sangam_fasteners/logo.svg" alt="Sangam Fasteners Private Limited Logo" className="h-14 w-14 object-contain group-hover:scale-105 transition-transform duration-300" />
-                    <div className="flex flex-col items-start leading-none">
+                    <img src="/sangam_fasteners/logo.svg" alt="Sangam Fasteners Private Limited Logo" className="h-[45px] w-[45px] object-contain group-hover:scale-105 transition-transform duration-300" />
+                    <div className="flex flex-col items-start leading-none gap-1">
                         <span className={cn(
-                            "text-sm sm:text-lg font-heading font-bold tracking-widest uppercase transition-colors duration-300",
+                            "text-[12px] sm:text-[16px] font-heading font-bold tracking-widest uppercase transition-colors duration-300",
                             useScrolledStyle ? "text-foreground" : "text-white"
                         )}>
                             Sangam Fasteners
                         </span>
                         <span className={cn(
-                            "text-xs sm:text-sm font-medium tracking-wide transition-colors duration-300",
+                            "text-[10px] sm:text-[12px] font-medium tracking-wide transition-colors duration-300",
                             useScrolledStyle ? "text-primary" : "text-white/80"
                         )}>
                             Private Limited
@@ -115,7 +115,7 @@ export const Navbar = () => {
                                 <span className="sr-only">Toggle menu</span>
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-slate-900/95 backdrop-blur-xl border-l border-white/10 p-0 text-white">
+                        <SheetContent side="right" className="w-[250px] sm:w-[320px] bg-white/10 backdrop-blur-xl p-0 text-white shadow-2xl border-none">
                             <div className="sr-only">
                                 <SheetTitle>Navigation Menu</SheetTitle>
                                 <SheetDescription>Main site navigation links</SheetDescription>
@@ -128,10 +128,10 @@ export const Navbar = () => {
                                             to={link.href}
                                             onClick={() => setIsOpen(false)}
                                             className={cn(
-                                                "group flex items-center justify-end text-right text-3xl font-heading font-bold transition-colors duration-200",
+                                                "group flex items-center justify-end text-right text-xl font-heading font-bold transition-colors duration-200",
                                                 location.pathname === link.href
                                                     ? "text-accent"
-                                                    : "text-white/60 hover:text-white"
+                                                    : "text-white/80 hover:text-white"
                                             )}
                                             style={{
                                                 animationDelay: `${index * 100}ms`

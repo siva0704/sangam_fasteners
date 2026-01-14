@@ -67,17 +67,22 @@ const SectionCompanySnapshot = () => {
     };
 
     return (
-        <section className="relative py-20 bg-gradient-to-b from-white to-gray-50/50 border-b border-slate-100 overflow-hidden">
+        <section className="relative py-10 bg-gradient-to-b from-white to-gray-50/50 border-b border-slate-100">
             {/* Ambient Background Pattern */}
             <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
                 <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#0f172a_1px,transparent_1px)] [background-size:20px_20px]" />
             </div>
 
             <div className="container px-4 mx-auto relative z-10">
-                <AnimatedSection animation="fade-up">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-                        {snapshotItems.map((item, idx) => (
-                            <div key={idx} className="group relative bg-white p-6 rounded-2xl border border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 overflow-hidden h-[280px] flex flex-col justify-between items-center text-center isolate">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                    {snapshotItems.map((item, idx) => (
+                        <AnimatedSection
+                            key={idx}
+                            animation="fade-up"
+                            delay={idx + 1}
+                            className={`sticky md:relative top-[calc(15vh+${idx * 15}px)] md:top-auto z-${idx * 10}`}
+                        >
+                            <div className="group relative bg-white p-6 rounded-2xl border border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 overflow-hidden h-[280px] flex flex-col justify-between items-center text-center isolate">
 
                                 {/* Dynamically Blooming Decorations */}
                                 {item.decorations.map((DecoIcon, i) => {
@@ -117,9 +122,9 @@ const SectionCompanySnapshot = () => {
                                     </span>
                                 </div>
                             </div>
-                        ))}
-                    </div>
-                </AnimatedSection>
+                        </AnimatedSection>
+                    ))}
+                </div>
             </div>
         </section>
     );
