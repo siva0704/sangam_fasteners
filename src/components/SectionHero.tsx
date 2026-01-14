@@ -17,36 +17,41 @@ const heroSlides = [
     id: 1,
     title: "Precision Engineering.",
     subtitle: "Global Standards.",
+    badge: "Industrial Fastener Manufacturing",
     description: "Manufacturing excellence with milimeter-perfect precision for mission-critical applications.",
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop",
-    accentColor: "from-orange-500 to-amber-600",
+    accentColor: "from-blue-400 to-cyan-300",
   },
   {
     id: 2,
     title: "Reliable Supply.",
     subtitle: "Controlled Execution.",
+    badge: "Global Supply Chain Mastery",
     description: "End-to-end supply chain mastery ensuring your production lines never stop.",
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop",
-    accentColor: "from-orange-500 to-amber-600",
+    accentColor: "from-blue-400 to-cyan-300",
   },
   {
     id: 3,
     title: "Partner in Progress.",
     subtitle: "Industrial Excellence.",
+    badge: "Trusted Manufacturing Partner",
     description: "More than just a vendor—we are the backbone of your manufacturing success.",
     image: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=2070&auto=format&fit=crop",
-    accentColor: "from-orange-500 to-amber-600",
+    accentColor: "from-blue-400 to-cyan-300",
   },
 ];
 
 const FastenerPattern = () => (
-  <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden opacity-[0.03]">
-    <Settings className="absolute top-[10%] left-[5%] w-24 h-24 text-white animate-spin-slow" />
-    <Hexagon className="absolute top-[20%] right-[10%] w-32 h-32 text-white animate-pulse" />
-    <Wrench className="absolute bottom-[15%] left-[15%] w-20 h-20 text-white rotate-45" />
-    <CircleDashed className="absolute bottom-[20%] right-[20%] w-40 h-40 text-white animate-spin-slow" />
-    <Hammer className="absolute top-[40%] left-[45%] w-16 h-16 text-white -rotate-12" />
-    <Hexagon className="absolute -top-[10%] left-[30%] w-64 h-64 text-white opacity-50" />
+  <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+    <svg width="100%" height="100%">
+      <defs>
+        <pattern id="hex-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+          <path d="M50 0L93.3013 25V75L50 100L6.69873 75V25L50 0Z" fill="none" stroke="currentColor" strokeWidth="1" className="text-white/20" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#hex-pattern)" />
+    </svg>
   </div>
 );
 
@@ -64,17 +69,6 @@ const SectionHero = () => {
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap());
     });
-
-    // Custom Autoplay Implementation
-    const autoplayInterval = setInterval(() => {
-      if (api.canScrollNext()) {
-        api.scrollNext();
-      } else {
-        api.scrollTo(0);
-      }
-    }, 5000);
-
-    return () => clearInterval(autoplayInterval);
   }, [api]);
 
   return (
@@ -116,8 +110,8 @@ const SectionHero = () => {
                 <div className="max-w-4xl pt-20">
                   {/* Badge */}
                   <div className={`transition-all duration-700 ${current === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-                    <span className="inline-block py-1 px-3 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 font-medium text-[10px] md:text-sm mb-6 backdrop-blur-md tracking-tight">
-                      Industrial Fastener Manufacturing
+                    <span className="inline-block py-1 px-3 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium text-[10px] md:text-sm mb-6 backdrop-blur-md tracking-tight">
+                      {slide.badge}
                     </span>
                   </div>
 
@@ -140,7 +134,7 @@ const SectionHero = () => {
 
                   {/* Buttons */}
                   <div className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-300 ${current === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-                    <MagneticButton size="lg" className="bg-orange-600 hover:bg-orange-700 text-white border-0">
+                    <MagneticButton size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border-0">
                       Explore Our Products
                     </MagneticButton>
                     <MagneticButton
@@ -159,8 +153,8 @@ const SectionHero = () => {
 
         {/* Custom Navigation */}
         <div className="absolute bottom-12 right-12 z-30 hidden md:flex gap-2">
-          <CarouselPrevious className="static translate-y-0 h-12 w-12 border-white/10 bg-black/40 hover:bg-orange-500/20 hover:border-orange-500/50 text-white transition-colors" />
-          <CarouselNext className="static translate-y-0 h-12 w-12 border-white/10 bg-black/40 hover:bg-orange-500/20 hover:border-orange-500/50 text-white transition-colors" />
+          <CarouselPrevious className="static translate-y-0 h-12 w-12 border-white/10 bg-black/40 hover:bg-blue-500/20 hover:border-blue-500/50 text-white transition-colors" />
+          <CarouselNext className="static translate-y-0 h-12 w-12 border-white/10 bg-black/40 hover:bg-blue-500/20 hover:border-blue-500/50 text-white transition-colors" />
         </div>
 
         {/* Slide Indicators */}
@@ -169,7 +163,7 @@ const SectionHero = () => {
             <button
               key={index}
               onClick={() => api?.scrollTo(index)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${current === index ? "w-8 bg-orange-500" : "w-1.5 bg-white/20 hover:bg-white/40"
+              className={`h-1.5 rounded-full transition-all duration-300 ${current === index ? "w-8 bg-blue-500" : "w-1.5 bg-white/20 hover:bg-white/40"
                 }`}
               aria-label={`Go to slide ${index + 1}`}
             />

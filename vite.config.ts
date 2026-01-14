@@ -7,7 +7,7 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => ({
   base: '/sangam_fasteners/',
   server: {
-    host: "::",
+    host: true,
     port: 8080,
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
@@ -25,5 +25,8 @@ export default defineConfig(({ mode }) => ({
         },
       },
     },
+  },
+  optimizeDeps: {
+    include: ['three', 'three/examples/jsm/controls/OrbitControls'],
   },
 }));

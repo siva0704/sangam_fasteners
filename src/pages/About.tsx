@@ -1,31 +1,32 @@
-import Footer from "@/components/Footer";
+import { Link } from "react-router-dom";
+import { ArrowRight, Target, Eye, Cog, ShieldCheck, Users, Activity, Layers, Truck, Anchor, Building2 as BuildingIcon, Factory as FactoryIcon } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
+import Seo from "@/components/Seo";
 import AnimatedSection from "@/components/AnimatedSection";
+import SectionFactsheet from "@/components/SectionFactsheet";
 import StaggerGrid from "@/components/StaggerGrid";
 import { Card, CardContent } from "@/components/ui/card";
-import { Target, Eye, Cog, ShieldCheck, Truck, Users, Activity, Layers, Phone, MapPin, Mail, Globe, ArrowRight } from "lucide-react";
-import Seo from "@/components/Seo";
-import MagneticButton from "@/components/MagneticButton";
-import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button"; // Using Button if MagneticButton not found, or assuming MagneticButton exists
+import Footer from "@/components/Footer";
+import MagneticButton from "@/components/MagneticButton"; // Assuming it exists based on usage
 
-// Reusable Premium Icon Component
-// Consistent with Contact/CompanySnapshot
-const PremiumIcon = ({ icon: Icon, className }: { icon: any, className?: string }) => (
-  <div className={`relative mb-6 ${className}`}>
-    <div className="w-16 h-16 rounded-2xl rotate-45 bg-slate-50 group-hover:bg-accent transition-colors duration-300 flex items-center justify-center shadow-inner mx-auto">
-      <div className="-rotate-45 text-accent group-hover:text-white transition-colors duration-300">
-        <Icon size={32} strokeWidth={1.5} />
-      </div>
-    </div>
+// Inline Components to replace lost ones
+const SectionHeading = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+  <div className={`text-center mb-12 ${className}`}>
+    <span className="text-accent font-bold tracking-widest text-xs uppercase mb-2 block">
+      Sangam Fasteners
+    </span>
+    <h2 className="text-3xl lg:text-4xl font-heading font-bold text-slate-900">
+      {children}
+    </h2>
+    <div className="w-24 h-1 bg-accent mx-auto mt-4 rounded-full" />
   </div>
 );
 
-const SectionHeading = ({ children, align = "center" }: { children: React.ReactNode, align?: "left" | "center" | "right" }) => (
-  <div className={`mb-12 ${align === "center" ? "text-center" : align === "left" ? "text-left" : "text-right"}`}>
-    <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-4 text-slate-900 uppercase tracking-tight">
-      {children}
-    </h2>
-    <div className={`h-1.5 w-24 bg-gradient-to-r from-blue-600 to-slate-800 rounded-full ${align === "center" ? "mx-auto" : ""}`} />
+const PremiumIcon = ({ icon: Icon }: { icon: any }) => (
+  <div className="mb-6 relative inline-block group-hover:scale-110 transition-transform duration-300">
+    <div className="absolute inset-0 bg-blue-100 rounded-full scale-0 group-hover:scale-125 transition-transform duration-500" />
+    <Icon className="w-12 h-12 text-slate-700 relative z-10 group-hover:text-accent transition-colors duration-300" />
   </div>
 );
 
@@ -44,7 +45,7 @@ const About = () => {
           badge="Since 2000"
         />
 
-        {/* Company Overview - Clean White Section */}
+        {/* Company Overview - Detailed Text */}
         <section className="relative py-20 bg-white overflow-hidden">
           {/* Ambient Bg */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
@@ -58,21 +59,24 @@ const About = () => {
               </AnimatedSection>
 
               <AnimatedSection animation="blur-fade" delay={1}>
-                <div className="prose prose-lg prose-slate mx-auto text-slate-600">
+                <div className="prose prose-lg prose-slate mx-auto text-slate-600 text-justify">
                   <p className="mb-6 leading-relaxed">
-                    <span className="font-semibold text-slate-900">Sangam Fasteners Private Limited</span> is an industrial fastener manufacturer incorporated in 2000 and operating from Hubballi, Karnataka.
+                    Fasteners, nuts, bolts, etc. have become a basic necessity in nearly every industrial activity. These hardware devices have alone commanded a huge demand, owing to their precision, durability and ability to efficiently affix two objects together. A technology driven entity, <span className="font-semibold text-slate-900">Sangam Fasteners Pvt. Ltd.</span> has evolved as a one stop point to avail the most superlative range of fasteners, machined components, forged components and other allied products. We are a reputed <span className="font-semibold text-accent">manufacturer, exporter and supplier</span> of <span className="italic text-slate-800">fasteners, nuts, collar bolts, D-bolts, Threaded rods, forged components, special fasteners, etc.</span>
                   </p>
                   <p className="mb-6 leading-relaxed">
-                    We operate as a <span className="font-semibold text-accent">manufacturing organization</span>, not a trading entity. Our relevance in customer supply chains comes from predictable manufacturing behavior, not claims.
+                    Our products are the outcome of precise engineering, dedicated efforts, and detailed research into the emerging requirements of our technology conscious clients. Being an <span className="font-semibold text-accent">ISO 9001:2000 certified company</span>, quality takes precedence in everything we do - be it in manufacturing, packaging, or delivering the products on time, etc.
                   </p>
-                  <p className="leading-relaxed border-l-4 border-accent pl-6 italic bg-slate-50 py-4 rounded-r-lg">
-                    "Once a fastener is approved, our responsibility is to ensure it performs the same way across every subsequent supply."
+                  <p className="leading-relaxed">
+                    With our performance oriented products, we have created a benchmark in the global platform, and have always endeavored to meet or even exceed clients' expectations. Today, we are counted as one of the foremost manufacturers of fasteners, machined components, forged components, etc. both in India and overseas. Our eminent clients include BHEL, BEML, Ashok Leyland, Mining Companies, Railways, Power plants, Valve industries and many more.
                   </p>
                 </div>
               </AnimatedSection>
             </div>
           </div>
         </section>
+
+        {/* Factsheet Section */}
+        <SectionFactsheet />
 
         {/* Mission & Vision - Split Section */}
         <section className="py-0">
@@ -281,8 +285,5 @@ const About = () => {
     </div>
   );
 };
-
-// Icon helpers for specific section
-import { Building2 as BuildingIcon, Anchor, Factory as FactoryIcon } from "lucide-react";
 
 export default About;

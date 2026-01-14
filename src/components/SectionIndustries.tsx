@@ -1,39 +1,5 @@
-import { Building2, Settings, Hammer, Car, Factory } from "lucide-react";
+import { industries } from "@/constants/data";
 import AnimatedSection from "./AnimatedSection";
-import { Card } from "./ui/card";
-
-const industries = [
-    {
-        icon: Settings,
-        name: "General Engineering",
-        description: "Reliable fasteners for diverse engineering applications.",
-        detail: "Standard bolts, nuts, washers"
-    },
-    {
-        icon: Building2,
-        name: "Infrastructure & Construction",
-        description: "High-strength structural fasteners for core infrastructure.",
-        detail: "Foundation bolts, structural assemblies"
-    },
-    {
-        icon: Car,
-        name: "Automotive & Auto Components",
-        description: "Precision-engineered parts for automotive assembly.",
-        detail: "Axel studs, chassis fasteners"
-    },
-    {
-        icon: Hammer,
-        name: "Heavy Engineering",
-        description: "Robust components for heavy machinery and equipment.",
-        detail: "Large diameter bolts, double-ended studs"
-    },
-    {
-        icon: Factory,
-        name: "OEM Manufacturing",
-        description: "Custom solutions for original equipment manufacturers.",
-        detail: "Drawing-based parts, special alloys"
-    },
-];
 
 const SectionIndustries = () => {
     return (
@@ -49,40 +15,70 @@ const SectionIndustries = () => {
                 </AnimatedSection>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 justify-center">
-                    {industries.map((industry, idx) => (
-                        <AnimatedSection key={idx} animation="scale-in" delay={idx * 0.1}>
-                            <div className="group relative flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 h-full">
-                                {/* Top Accent Line */}
-                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-slate-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-xl" />
+                    {industries.map((industry, idx) => {
+                        // Helper locally or outside, reused logic
+                        const getDecorationStyle = (i: number) => {
+                            const translations = [
+                                "group-hover:translate-x-[80px] group-hover:-translate-y-[60px]",
+                                "group-hover:-translate-x-[80px] group-hover:translate-y-[60px]",
+                                "group-hover:-translate-x-[100px] group-hover:translate-y-0",
+                                "group-hover:translate-x-[60px] group-hover:translate-y-[50px]",
+                                "group-hover:-translate-x-[60px] group-hover:-translate-y-[50px]"
+                            ];
+                            const delays = ["delay-75", "delay-150", "delay-100", "delay-200", "delay-300"];
+                            const sizes = ["text-blue-400 w-5 h-5", "text-sky-400 w-3 h-3", "text-blue-300 w-2.5 h-2.5", "text-sky-300 w-4 h-4", "text-blue-200 w-2.5 h-2.5"];
+                            return { translate: translations[i % 5], delay: delays[i % 5], size: sizes[i % 5] };
+                        };
 
-                                {/* Icon Container - Diamond Shape */}
-                                <div className="mb-5 relative">
-                                    <div className="w-16 h-16 rounded-2xl rotate-45 bg-slate-50 group-hover:bg-accent transition-colors duration-300 flex items-center justify-center shadow-inner">
-                                        <div className="-rotate-45 text-accent group-hover:text-white transition-colors duration-300">
-                                            <industry.icon size={28} strokeWidth={1.5} />
+                        return (
+                            <AnimatedSection key={idx} animation="scale-in" delay={idx * 0.1}>
+                                <div className="group relative isolate overflow-hidden flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 border border-gray-100 hover:border-blue-100 h-full">
+
+                                    {/* Spreading Background Animation */}
+                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-blue-50/80 rounded-full scale-0 group-hover:scale-[20] transition-transform duration-1000 ease-out -z-10 originating-from-icon" />
+
+                                    {/* Decorations using the industry's own icon */}
+                                    {[1, 2, 3, 4, 5].map((_, i) => {
+                                        const style = getDecorationStyle(i);
+                                        return (
+                                            <div
+                                                key={i}
+                                                className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-1000 ease-out ${style.translate} ${style.delay} z-0`}
+                                            >
+                                                <industry.icon className={`animate-pulse ${style.size}`} />
+                                            </div>
+                                        );
+                                    })}
+
+                                    {/* Icon Container - Circular Button Shape */}
+                                    <div className="mb-5 relative z-10">
+                                        <div className="w-16 h-16 rounded-full bg-slate-50 group-hover:bg-white group-hover:scale-110 transition-all duration-300 flex items-center justify-center shadow-inner group-hover:shadow-md border border-slate-100 group-hover:border-blue-100">
+                                            <div className="text-slate-600 group-hover:text-blue-600 transition-colors duration-300">
+                                                <industry.icon size={28} strokeWidth={1.5} className="group-hover:rotate-12 transition-transform duration-300" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="space-y-2 flex flex-col items-center flex-1 w-full relative z-10">
+                                        <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest group-hover:text-blue-200 transition-colors duration-300">
+                                            INDUSTRY
+                                        </h3>
+                                        <p className="font-heading font-bold text-gray-900 text-lg leading-tight group-hover:text-white transition-colors duration-300 min-h-[3.5rem] flex items-center justify-center">
+                                            {industry.name}
+                                        </p>
+
+                                        {/* Description as Subtext/Pill */}
+                                        <div className="mt-auto pt-2">
+                                            <p className="text-xs text-slate-500 font-medium bg-slate-50 inline-block px-3 py-1.5 rounded-full group-hover:bg-white/20 group-hover:text-white group-hover:backdrop-blur-sm transition-colors line-clamp-1 max-w-full">
+                                                {industry.detail}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-
-                                {/* Content */}
-                                <div className="space-y-2 flex flex-col items-center flex-1 w-full">
-                                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">
-                                        INDUSTRY
-                                    </h3>
-                                    <p className="font-heading font-bold text-gray-900 text-lg leading-tight group-hover:text-accent transition-colors duration-300 min-h-[3.5rem] flex items-center justify-center">
-                                        {industry.name}
-                                    </p>
-
-                                    {/* Description as Subtext/Pill */}
-                                    <div className="mt-auto pt-2">
-                                        <p className="text-xs text-gray-500 font-medium bg-gray-50 inline-block px-3 py-1.5 rounded-full group-hover:bg-slate-100 group-hover:text-accent transition-colors line-clamp-1 max-w-full">
-                                            {industry.detail}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </AnimatedSection>
-                    ))}
+                            </AnimatedSection>
+                        );
+                    })}
                 </div>
             </div>
         </section>

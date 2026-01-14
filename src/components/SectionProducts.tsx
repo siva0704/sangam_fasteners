@@ -3,44 +3,7 @@ import AnimatedSection from "./AnimatedSection";
 import MagneticButton from "./MagneticButton";
 import { Card } from "./ui/card";
 
-const products = [
-    {
-        category: "Bolts & Hex Bolts",
-        spec: "Structural & mechanical assemblies",
-        image: "https://images.unsplash.com/photo-1616422285623-13ff0162193c?q=80&w=800&auto=format&fit=crop",
-        id: "bolts"
-    },
-    {
-        category: "Nuts",
-        spec: "Controlled thread engagement",
-        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop",
-        id: "nuts"
-    },
-    {
-        category: "Studs & Double-Ended Studs",
-        spec: "Alignment-critical applications",
-        image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800&auto=format&fit=crop",
-        id: "studs"
-    },
-    {
-        category: "U-Bolts",
-        spec: "Clamping & mounting requirements",
-        image: "https://images.unsplash.com/photo-1536617063469-6f34582f3ef4?q=80&w=800&auto=format&fit=crop",
-        id: "u-bolts"
-    },
-    {
-        category: "Threaded Components",
-        spec: "Drawing-based OEM parts",
-        image: "https://images.unsplash.com/photo-1581092160607-ee67865f7e78?q=80&w=800&auto=format&fit=crop",
-        id: "threaded-components"
-    },
-    {
-        category: "Custom Fasteners",
-        spec: "As per specifications",
-        image: "https://images.unsplash.com/photo-1616422285623-13ff0162193c?q=80&w=800&auto=format&fit=crop",
-        id: "custom-fasteners"
-    }
-];
+import { products } from "@/constants/data";
 
 const SectionProducts = () => {
     return (
@@ -73,7 +36,7 @@ const SectionProducts = () => {
                                 <div className="absolute inset-0 z-0">
                                     <img
                                         src={product.image}
-                                        alt={product.category}
+                                        alt={product.name}
                                         className="w-full h-full object-cover transition-transform duration-700 md:grayscale md:group-hover:grayscale-0 group-hover:scale-110"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-70" />
@@ -81,9 +44,9 @@ const SectionProducts = () => {
 
                                 <div className="relative z-10 h-full flex flex-col justify-end p-6 translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 transition-transform duration-500">
                                     <div className="w-12 h-[2px] bg-accent mb-4 origin-left transition-all duration-500 w-full md:w-12 md:group-hover:w-full" />
-                                    <h3 className="text-2xl font-bold text-white mb-2">{product.category}</h3>
+                                    <h3 className="text-2xl font-bold text-white mb-2">{product.name}</h3>
                                     <p className="text-accent-foreground/80 font-mono text-sm tracking-wide mb-4">
-                                        {product.spec}
+                                        {product.description}
                                     </p>
                                     <div className="overflow-hidden h-auto md:h-0 md:group-hover:h-auto transition-all duration-500">
                                         <span className="text-sm text-white/90 inline-flex items-center gap-2">

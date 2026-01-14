@@ -48,13 +48,13 @@ export const Navbar = () => {
                     <img src="/sangam_fasteners/logo.svg" alt="Sangam Fasteners Private Limited Logo" className="h-10 w-10 object-contain group-hover:scale-105 transition-transform duration-300" />
                     <div className="flex flex-col items-start leading-none">
                         <span className={cn(
-                            "text-base sm:text-2xl font-heading font-bold tracking-widest uppercase transition-colors duration-300",
+                            "text-sm sm:text-lg font-heading font-bold tracking-widest uppercase transition-colors duration-300",
                             useScrolledStyle ? "text-foreground" : "text-white"
                         )}>
                             Sangam Fasteners
                         </span>
                         <span className={cn(
-                            "text-[10px] sm:text-xs font-medium tracking-wide transition-colors duration-300",
+                            "text-xs sm:text-sm font-medium tracking-wide transition-colors duration-300",
                             useScrolledStyle ? "text-primary" : "text-white/80"
                         )}>
                             Private Limited
@@ -115,7 +115,7 @@ export const Navbar = () => {
                                 <span className="sr-only">Toggle menu</span>
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background/95 backdrop-blur-xl border-l border-white/10 p-0">
+                        <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-slate-900/95 backdrop-blur-xl border-l border-white/10 p-0 text-white">
                             <div className="sr-only">
                                 <SheetTitle>Navigation Menu</SheetTitle>
                                 <SheetDescription>Main site navigation links</SheetDescription>
@@ -130,8 +130,8 @@ export const Navbar = () => {
                                             className={cn(
                                                 "group flex items-center justify-end text-right text-3xl font-heading font-bold transition-colors duration-200",
                                                 location.pathname === link.href
-                                                    ? "text-primary"
-                                                    : "text-muted-foreground hover:text-primary"
+                                                    ? "text-accent"
+                                                    : "text-white/60 hover:text-white"
                                             )}
                                             style={{
                                                 animationDelay: `${index * 100}ms`
@@ -140,25 +140,25 @@ export const Navbar = () => {
                                             <span className="relative">
                                                 {link.name}
                                                 <span className={cn(
-                                                    "absolute -bottom-1 right-0 h-1 bg-primary transition-all duration-300",
+                                                    "absolute -bottom-1 right-0 h-1 bg-accent transition-all duration-300",
                                                     location.pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
                                                 )}></span>
                                             </span>
                                             <ChevronRight className={cn(
                                                 "ml-4 h-6 w-6 transition-all duration-300",
                                                 location.pathname === link.href
-                                                    ? "opacity-100 translate-x-0 text-primary"
-                                                    : "opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0"
+                                                    ? "opacity-100 translate-x-0 text-accent"
+                                                    : "opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 text-white"
                                             )} />
                                         </Link>
                                     ))}
                                 </nav>
 
                                 <div className="mt-auto text-right">
-                                    <p className="text-sm text-muted-foreground">
+                                    <p className="text-sm text-white/50">
                                         Need a quote?
                                     </p>
-                                    <a href="mailto:info@sflfasteners.com" className="text-lg font-bold text-foreground hover:text-primary transition-colors">
+                                    <a href="mailto:info@sflfasteners.com" className="text-lg font-bold text-white hover:text-accent transition-colors">
                                         info@sflfasteners.com
                                     </a>
                                 </div>

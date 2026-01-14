@@ -39,7 +39,7 @@ const Home = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans">
       <Seo
-        title="Industrial Fastener Manufacturer in India | Sangam Fasteners Pvt. Ltd."
+        title="Sangam Fasteners Pvt. Ltd. | Industrial Fastener Manufacturer in India"
         description="Sangam Fasteners Pvt. Ltd. is an industrial fastener manufacturer in Hubballi, India, supplying standard and custom fasteners for OEM and engineering applications."
         keywords={[
           "Industrial Fastener Manufacturer India",

@@ -32,16 +32,16 @@ export const PageHero = ({
                     {/* No Card Container */}
                     <div>
                         {badge && (
-                            <div className="inline-flex items-center rounded-full border border-orange-200 bg-orange-50 px-4 py-1.5 text-sm font-bold text-orange-600 shadow-sm mb-6 uppercase tracking-wider">
+                            <div className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-sm font-bold text-blue-600 shadow-sm mb-6 uppercase tracking-wider">
                                 {badge}
                             </div>
                         )}
 
-                        <h1 className="text-4xl md:text-6xl font-heading font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-orange-600 leading-[1.1] mb-6 pb-2">
+                        <h1 className="text-4xl md:text-6xl font-heading font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-600 leading-[1.1] mb-6 pb-2">
                             {title}
                         </h1>
 
-                        <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full mb-8" />
+                        <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-sky-500 rounded-full mb-8" />
 
                         <p className="text-xl text-slate-600 max-w-2xl leading-relaxed font-medium">
                             {subtitle}

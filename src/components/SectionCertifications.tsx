@@ -44,27 +44,49 @@ const SectionCertifications = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {certifications.map((cert, idx) => (
-                        <AnimatedSection key={idx} animation="fade-up" delay={idx * 0.1}>
-                            <div className="bg-white p-8 rounded-2xl shadow-sm border border-border/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col items-center text-center group">
-                                <div className={`w-20 h-20 rounded-full bg-secondary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 ${cert.color}`}>
-                                    <cert.icon className="w-10 h-10" />
-                                </div>
-                                <h3 className="text-2xl font-bold font-heading text-primary mb-3">
-                                    {cert.title}
-                                </h3>
-                                <p className="text-muted-foreground leading-relaxed">
-                                    {cert.desc}
-                                </p>
-                                <div className="mt-6 pt-6 border-t border-border w-full flex justify-centerMain">
-                                    <div className="flex items-center gap-2 text-sm font-medium text-primary/80">
-                                        <CheckCircle2 className="w-4 h-4 text-green-500" />
-                                        <span>Verified Status</span>
+                    {certifications.map((cert, idx) => {
+                        const getDecorationStyle = (i: number) => {
+                            const translations = ["group-hover:translate-x-[80px] group-hover:-translate-y-[60px]", "group-hover:-translate-x-[80px] group-hover:translate-y-[60px]", "group-hover:-translate-x-[100px]", "group-hover:translate-x-[100px]"];
+                            const delays = ["delay-75", "delay-150", "delay-100", "delay-200"];
+                            const sizes = ["text-blue-400 w-5 h-5", "text-sky-400 w-3 h-3", "text-blue-300 w-2 h-2", "text-sky-300 w-4 h-4"];
+                            return { translate: translations[i % 4], delay: delays[i % 4], size: sizes[i % 4] };
+                        };
+                        return (
+                            <AnimatedSection key={idx} animation="fade-up" delay={idx * 0.1}>
+                                <div className="relative isolate overflow-hidden bg-white p-8 rounded-2xl shadow-sm border border-border/50 hover:shadow-xl transition-all duration-500 hover:-translate-y-1 h-full flex flex-col items-center text-center group hover:border-blue-100">
+
+                                    {/* Spreading Background Animation */}
+                                    <div className="absolute top-[88px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-blue-50/80 rounded-full scale-0 group-hover:scale-[25] transition-transform duration-1000 ease-out -z-10 originating-from-icon" />
+
+                                    {/* Decorations */}
+                                    {[1, 2, 3, 4].map((_, i) => {
+                                        const style = getDecorationStyle(i);
+                                        return (
+                                            <div key={i} className={`absolute top-[88px] left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-1000 ease-out ${style.translate} ${style.delay} z-0`}>
+                                                <cert.icon className={`animate-pulse ${style.size}`} />
+                                            </div>
+                                        );
+                                    })}
+
+                                    <div className={`relative z-10 w-20 h-20 rounded-full bg-slate-50 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-white group-hover:shadow-md transition-all duration-300 text-slate-500 group-hover:text-blue-600`}>
+                                        <cert.icon className="w-10 h-10 group-hover:rotate-12 transition-transform duration-300" />
+                                    </div>
+                                    <h3 className="relative z-10 text-2xl font-bold font-heading text-slate-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">
+                                        {cert.title}
+                                    </h3>
+                                    <p className="relative z-10 text-slate-500 leading-relaxed mb-auto group-hover:text-slate-600 transition-colors duration-300">
+                                        {cert.desc}
+                                    </p>
+                                    <div className="relative z-10 mt-6 pt-6 border-t border-slate-100 w-full flex justify-center group-hover:border-blue-200/50 transition-colors">
+                                        <div className="flex items-center gap-2 text-sm font-medium text-slate-500 group-hover:text-blue-600 transition-colors">
+                                            <CheckCircle2 className="w-4 h-4 text-blue-500" />
+                                            <span>Verified Status</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </AnimatedSection>
-                    ))}
+                            </AnimatedSection>
+                        );
+                    })}
                 </div>
             </div>
         </section>

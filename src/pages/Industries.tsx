@@ -5,48 +5,13 @@ import AnimatedSection from "@/components/AnimatedSection";
 import StaggerGrid from "@/components/StaggerGrid";
 import ParallaxSection from "@/components/ParallaxSection";
 import { Card, CardContent } from "@/components/ui/card";
-import { Car, Building2, Cog, Anchor, Factory } from "lucide-react";
 import Seo from "@/components/Seo";
 import SectionClients from "@/components/SectionClients";
 
+import { industries } from "@/constants/data";
+
 const Industries = () => {
-  const industries = [
-    {
-      icon: Cog,
-      name: "General Engineering",
-      description: "Reliable fasteners for diverse engineering applications.",
-      products: "Standard bolts, nuts, washers, screws",
-      caseStudy: "Consistent supply for machinery manufacturers.",
-    },
-    {
-      icon: Building2,
-      name: "Infrastructure & Construction",
-      description: "High-strength structural fasteners for core infrastructure.",
-      products: "Foundation bolts, structural assemblies, threaded rods",
-      caseStudy: "Key partner for major infrastructure projects.",
-    },
-    {
-      icon: Car,
-      name: "Automotive & Auto Components",
-      description: "Precision-engineered parts for automotive assembly.",
-      products: "Axel studs, chassis fasteners, precision nuts",
-      caseStudy: "Strategic supplier for Tier-1 automotive OEMs.",
-    },
-    {
-      icon: Anchor,
-      name: "Heavy Engineering",
-      description: "Robust components for heavy machinery and equipment.",
-      products: "Large diameter bolts, double-ended studs, custom parts",
-      caseStudy: "Reliable partner for earthmoving equipment.",
-    },
-    {
-      icon: Factory, // Need to import Factory if not present, otherwise use Building2 or similar. Copilot: Use Factory.
-      name: "OEM Manufacturing",
-      description: "Custom solutions for original equipment manufacturers.",
-      products: "Drawing-based parts, special alloys, critical assemblies",
-      caseStudy: "Tailored manufacturing for specific OEM needs.",
-    },
-  ];
+
 
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans">

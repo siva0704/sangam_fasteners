@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import AnimatedSection from "./AnimatedSection";
-import { CheckCircle2, Trophy, Users, Globe2, Pickaxe, Zap, Anchor, TrainFront } from "lucide-react";
+import { CheckCircle2, Trophy, Users, Globe2, Pickaxe, Zap, Anchor, TrainFront, Heart, ThumbsUp, Shield, Award, Star, MapPin, Plane, UserCheck } from "lucide-react";
 
 type Client = {
     name: string;
@@ -13,17 +13,17 @@ const clients: Client[] = [
     {
         name: "BHEL",
         type: "Energy & Infrastructure",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/e/e6/BHEL_logo.svg"
+        logo: "/sangam_fasteners/assets/clients/bhel.png"
     },
     {
         name: "BEML",
         type: "Heavy Industry",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/f/f6/Bharat_Earth_Movers_Logo.svg"
+        logo: "/sangam_fasteners/assets/clients/beml.png"
     },
     {
         name: "Ashok Leyland",
         type: "Automotive OEM",
-        logo: "https://static.cdnlogo.com/logos/a/69/ashok-leyland.svg"
+        logo: "/sangam_fasteners/assets/clients/ashok_leyland.png"
     },
     {
         name: "Indian Railways",
@@ -53,10 +53,30 @@ const clients: Client[] = [
 ];
 
 const stats = [
-    { label: "Client Satisfaction", value: "100%", icon: Users },
-    { label: "Quality Certified", value: "ISO 9001", icon: CheckCircle2 },
-    { label: "Market Presence", value: "Global", icon: Globe2 },
-    { label: "Industry Experience", value: "25+ Years", icon: Trophy },
+    {
+        label: "Client Satisfaction",
+        value: "100%",
+        icon: Users,
+        description: "Delivering excellence that builds lasting partnerships.",
+        decorations: [Heart, ThumbsUp, UserCheck, Users, Heart],
+        animationClass: "group-hover:animate-[pulse_2s_ease-in-out_1]"
+    },
+    {
+        label: "Quality Certified",
+        value: "ISO 9001",
+        icon: CheckCircle2,
+        description: "Adhering to strict international manufacturing standards.",
+        decorations: [Shield, Award, Star, CheckCircle2, Shield],
+        animationClass: "group-hover:scale-110 duration-500 ease-out"
+    },
+    {
+        label: "Market Presence",
+        value: "Global",
+        icon: Globe2,
+        description: "Serving diverse industries across multiple continents.",
+        decorations: [MapPin, Plane, Globe2, MapPin, Plane],
+        animationClass: "group-hover:rotate-[360deg] duration-700"
+    },
 ];
 
 const SectionClients = () => {
@@ -75,23 +95,85 @@ const SectionClients = () => {
         }
     }, []);
 
+    // Helper to get varied positions and sizes based on index
+    const getDecorationStyle = (i: number) => {
+        // Directed towards the open space (Right) - increased range to fill the card
+        const translations = [
+            "group-hover:translate-x-[140px] group-hover:-translate-y-[80px] group-hover:rotate-12", // Top Right
+            "group-hover:translate-x-[140px] group-hover:translate-y-[80px] group-hover:-rotate-12",  // Bottom Right
+            "group-hover:-translate-x-[140px] group-hover:translate-y-[80px]",      // Bottom Left
+            "group-hover:-translate-x-[140px] group-hover:-translate-y-[80px] group-hover:rotate-45",  // Top Left
+            "group-hover:translate-y-[100px]"    // Bottom Center (far down)
+        ];
+
+        const delays = ["delay-75", "delay-150", "delay-100", "delay-200", "delay-300"];
+        const sizes = [
+            "text-blue-400/60 w-8 h-8",   // 0 (Large)
+            "text-sky-400/80 w-4 h-4",      // 1 (Medium)
+            "text-blue-300/80 w-3 h-3",   // 2 (Small)
+            "text-sky-300/60 w-6 h-6",      // 3 (Large)
+            "text-blue-200/80 w-3 h-3"    // 4 (Small)
+        ];
+
+        return {
+            translate: translations[i % translations.length],
+            delay: delays[i % delays.length],
+            size: sizes[i % sizes.length]
+        };
+    };
+
     return (
-        <section className="py-20 bg-white border-b border-border/40 overflow-hidden">
+        <section className="pt-10 pb-20 bg-white border-b border-border/40 overflow-hidden">
             <div className="container px-4 mx-auto">
                 <AnimatedSection animation="fade-up">
                     {/* Horizontal Stats Layout */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 border-b border-gray-100 pb-12">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10 border-b border-gray-100 pb-8">
                         {stats.map((stat, idx) => (
-                            <div key={idx} className="flex flex-col items-center text-center group cursor-default">
-                                <div className="mb-3 p-3 bg-slate-50 rounded-full text-accent group-hover:scale-110 transition-transform duration-300">
-                                    <stat.icon size={24} />
+                            <div key={idx} className="relative flex flex-col items-center text-center p-5 rounded-xl transition-all duration-500 hover:shadow-sm border border-transparent hover:border-blue-50 group cursor-default overflow-hidden isolate justify-center h-[220px]">
+
+                                {/* Spreading Background Animation */}
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-blue-50/50 rounded-full scale-0 group-hover:scale-[15] transition-transform duration-1000 ease-out -z-10" />
+
+                                {/* Bold Glowing Graphic */}
+                                <div className="absolute -right-2 -bottom-2 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out delay-100 z-0 pointer-events-none">
+                                    <div className="relative">
+                                        <stat.icon
+                                            size={90}
+                                            strokeWidth={0.5}
+                                            className="text-blue-500/10 -rotate-12"
+                                        />
+                                    </div>
                                 </div>
-                                <h4 className="text-3xl font-bold font-heading text-gray-900 mb-1 group-hover:text-accent transition-colors">
+
+                                {/* Dynamically Blooming Decorations */}
+                                {stat.decorations.map((DecoIcon, i) => {
+                                    const style = getDecorationStyle(i);
+                                    return (
+                                        <div
+                                            key={i}
+                                            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-1000 ease-out ${style.translate} ${style.delay} z-0 pointer-events-none`}
+                                        >
+                                            <DecoIcon className={`${style.size}`} />
+                                        </div>
+                                    );
+                                })}
+
+                                {/* Icon - Clean and Centered */}
+                                <div className="mb-3 text-slate-400 group-hover:text-blue-600 transition-colors duration-300 relative z-10">
+                                    <stat.icon size={36} strokeWidth={1.5} className={`transition-transform duration-300 ${stat.animationClass}`} />
+                                </div>
+
+                                <h4 className="text-4xl font-bold font-heading text-slate-900 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-sky-600 transition-all duration-300 relative z-10">
                                     {stat.value}
                                 </h4>
-                                <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">
+                                <p className="text-sm text-slate-500 font-bold uppercase tracking-widest mb-0 group-hover:mb-1 transition-all duration-300 relative z-10">
                                     {stat.label}
                                 </p>
+                                <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-out relative z-10 w-full">
+                                    <p className="overflow-hidden text-xs text-slate-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mx-auto max-w-[220px] leading-tight pt-1">
+                                        {stat.description}
+                                    </p>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -111,29 +193,20 @@ const SectionClients = () => {
                         ref={scrollerRef}
                         className="relative max-w-7xl mx-auto overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]"
                     >
-                        <div className="scroller-inner flex items-center gap-12 py-4 w-max animate-scroll">
+                        <div className="scroller-inner flex items-center gap-16 py-8 w-max animate-scroll">
                             {clients.map((client, idx) => (
-                                <div
-                                    key={idx}
-                                    className="flex flex-col items-center justify-center min-w-[200px] h-[120px] bg-white rounded-lg border border-gray-100 hover:border-slate-200 hover:shadow-lg transition-all duration-300 group cursor-pointer px-8 relative"
-                                >
-                                    {client.logo ? (
+                                client.logo ? (
+                                    <div
+                                        key={idx}
+                                        className="flex flex-col items-center justify-center min-w-[160px] h-[100px] transition-all duration-300 group cursor-pointer relative grayscale hover:grayscale-0 opacity-70 hover:opacity-100"
+                                    >
                                         <img
                                             src={client.logo}
                                             alt={client.name}
-                                            className="w-full h-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                                            className="w-full h-full object-contain group-hover:scale-110 transition-all duration-500"
                                         />
-                                    ) : (
-                                        <div className="flex flex-col items-center gap-2 text-gray-400 group-hover:text-accent transition-colors duration-300">
-                                            {client.icon && <client.icon size={32} strokeWidth={1.5} />}
-                                            <span className="text-sm font-bold text-center">{client.name}</span>
-                                        </div>
-                                    )}
-
-                                    <span className="absolute bottom-2 text-[10px] text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        {client.type}
-                                    </span>
-                                </div>
+                                    </div>
+                                ) : null
                             ))}
                         </div>
                     </div>
@@ -142,7 +215,7 @@ const SectionClients = () => {
 
             <style>{`
                 .animate-scroll {
-                    animation: scroll 40s linear infinite;
+                    animation: scroll 80s linear infinite;
                 }
                 @keyframes scroll {
                     to {

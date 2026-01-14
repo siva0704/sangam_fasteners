@@ -23,6 +23,16 @@ const teamMembers = [
             instagram: "#",
             linkedin: "#"
         }
+    },
+    {
+        name: "Sarah Jenning",
+        role: "Product Manager",
+        image: "/sangam_fasteners/team/sarah.png",
+        socials: {
+            facebook: "#",
+            instagram: "#",
+            linkedin: "#"
+        }
     }
 ];
 
@@ -36,7 +46,7 @@ const SectionTeam = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
                     {/* Left Column: Content */}
-                    <div className="lg:col-span-5 space-y-8">
+                    <div className="lg:col-span-4 space-y-8">
                         <AnimatedSection animation="fade-right">
                             <div className="space-y-4">
                                 <h2 className="text-4xl md:text-5xl font-bold font-heading text-primary leading-tight">
@@ -63,15 +73,15 @@ const SectionTeam = () => {
                     </div>
 
                     {/* Right Column: Team Grid */}
-                    <div className="lg:col-span-7">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="lg:col-span-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {teamMembers.map((member, idx) => (
                                 <AnimatedSection key={idx} animation="fade-up" delay={idx * 0.1}>
                                     <div className="group relative flex flex-col items-center bg-secondary/10 p-8 rounded-xl hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100">
 
                                         {/* Image Container with Circle Shape */}
                                         <div className="relative mb-6">
-                                            <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                                            <div className="w-40 h-40 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
                                                 <img
                                                     src={member.image}
                                                     alt={member.name}
@@ -79,7 +89,7 @@ const SectionTeam = () => {
                                                 />
                                             </div>
                                             {/* Decorative Ring */}
-                                            <div className="absolute inset-0 rounded-full border-2 border-accent/20 scale-110 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500" />
+                                            <div className="absolute inset-0 border-2 border-accent/20 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
                                         </div>
 
                                         <h3 className="text-xl font-bold text-primary mb-1 uppercase tracking-wide">
