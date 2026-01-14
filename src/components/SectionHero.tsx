@@ -108,9 +108,9 @@ const SectionHero = () => {
               {/* Content Container - Optimized for LCP (No JS Animation for First Slide) */}
               <div className="relative z-20 container h-full flex items-center px-4 mx-auto">
                 <div className="max-w-4xl pt-20">
-                  {/* Badge */}
+                  {/* Badge Text Only */}
                   <div className={`transition-all duration-700 ${current === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-                    <span className="inline-block py-1 px-3 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium text-[10px] md:text-sm mb-6 backdrop-blur-md tracking-tight">
+                    <span className="inline-block text-blue-400 font-medium text-[10px] md:text-sm mb-4">
                       {slide.badge}
                     </span>
                   </div>

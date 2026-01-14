@@ -32,7 +32,7 @@ export const PageHero = ({
                     {/* No Card Container */}
                     <div>
                         {badge && (
-                            <div className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-sm font-bold text-blue-600 shadow-sm mb-6 uppercase tracking-wider">
+                            <div className="inline-flex items-center text-sm font-bold text-blue-600 mb-4">
                                 {badge}
                             </div>
                         )}
