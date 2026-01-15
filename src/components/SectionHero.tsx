@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ArrowRight, ChevronLeft, ChevronRight, Settings, Hexagon, Wrench, Hammer, CircleDashed } from "lucide-react";
-
+import { Link } from "react-router-dom";
 
 import AnimatedSection from "./AnimatedSection";
 import MagneticButton from "./MagneticButton";
@@ -108,59 +108,50 @@ const SectionHero = () => {
 
               {/* Content Container - Advanced Text Reveals */}
               <div className="relative z-20 container h-full flex items-start px-4 mx-auto">
-                <div className="max-w-4xl pt-32 md:pt-40">
-                  <AnimatePresence mode="wait">
-                    {current === index && (
-                      <motion.div
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
-                        variants={{
-                          hidden: { opacity: 0 },
-                          visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
-                          exit: { opacity: 0 }
-                        }}
-                      >
-                        {/* Badge */}
-                        <motion.div variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}>
-                          <span className="inline-block text-blue-400 font-medium text-sm md:text-lg mb-2 tracking-wide">
-                            {slide.badge}
-                          </span>
-                        </motion.div>
+                <div className="max-w-4xl pt-40 md:pt-56">
+                  <div className={`transition-all duration-700 ease-out ${current === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+                    {/* Badge */}
+                    <div className="mb-2">
+                      <span className="inline-block text-blue-400 font-medium text-sm md:text-lg mb-2 tracking-wide">
+                        {slide.badge}
+                      </span>
+                    </div>
 
-                        {/* Title */}
-                        <motion.div variants={{ hidden: { x: -30, opacity: 0 }, visible: { x: 0, opacity: 1 } }} className="mb-6">
-                          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight tracking-tight">
-                            {slide.title} <br />
-                            <span className={`text-transparent bg-clip-text bg-gradient-to-r ${slide.accentColor}`}>
-                              {slide.subtitle}
-                            </span>
-                          </h1>
-                        </motion.div>
+                    {/* Title */}
+                    <div className="mb-6">
+                      <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight tracking-tight">
+                        {slide.title} <br />
+                        <span className={`text-transparent bg-clip-text bg-gradient-to-r ${slide.accentColor}`}>
+                          {slide.subtitle}
+                        </span>
+                      </h1>
+                    </div>
 
-                        {/* Description */}
-                        <motion.div variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}>
-                          <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
-                            {slide.description}
-                          </p>
-                        </motion.div>
+                    {/* Description */}
+                    <div className="mb-10 max-w-2xl">
+                      <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
+                        {slide.description}
+                      </p>
+                    </div>
 
-                        {/* Buttons */}
-                        <motion.div variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }} className="flex flex-col sm:flex-row gap-4">
-                          <MagneticButton size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border-0 px-8 py-6 text-lg">
-                            Explore Our Products
-                          </MagneticButton>
-                          <MagneticButton
-                            size="lg"
-                            variant="outline"
-                            className="border-white/20 bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white px-8 py-6 text-lg"
-                          >
-                            Discuss Your Requirement <ArrowRight className="ml-2 h-5 w-5" />
-                          </MagneticButton>
-                        </motion.div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                    {/* Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <Link to="/products">
+                        <MagneticButton size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border-0 px-8 py-6 text-lg w-full sm:w-auto">
+                          Explore Our Products
+                        </MagneticButton>
+                      </Link>
+                      <Link to="/contact">
+                        <MagneticButton
+                          size="lg"
+                          variant="outline"
+                          className="border-white/20 bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white px-8 py-6 text-lg w-full sm:w-auto"
+                        >
+                          Discuss Your Requirement <ArrowRight className="ml-2 h-5 w-5" />
+                        </MagneticButton>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </CarouselItem>
@@ -173,8 +164,8 @@ const SectionHero = () => {
           <CarouselNext className="static translate-y-0 h-14 w-14 border-white/10 bg-black/40 hover:bg-white/10 text-white transition-all hover:scale-110" />
         </div>
 
-        {/* Slide Indicators */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+        {/* Slide Indicators - Moved up to make room for mouse */}
+        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 flex gap-3">
           {heroSlides.map((_, index) => (
             <button
               key={index}
@@ -184,6 +175,32 @@ const SectionHero = () => {
             />
           ))}
         </div>
+
+        {/* Scroll Mouse Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-2 animate-fade-in opacity-100 transition-opacity duration-300 pointer-events-none">
+          <div className="w-[26px] h-[42px] border-[1.5px] border-white/60 rounded-full flex justify-center pt-2 box-border shadow-[0_0_10px_rgba(0,0,0,0.2)] bg-black/20 backdrop-blur-md">
+            <div className="w-1 h-1.5 bg-white rounded-full animate-scroll-wheel"></div>
+          </div>
+          <span className="text-[10px] uppercase tracking-widest text-white/60 font-medium">Scroll</span>
+        </div>
+
+        <style>{`
+           @keyframes scroll-wheel {
+               0% { transform: translateY(0); opacity: 1; }
+               70% { transform: translateY(12px); opacity: 0; }
+               100% { transform: translateY(12px); opacity: 0; }
+           }
+           .animate-scroll-wheel {
+               animation: scroll-wheel 2s ease-out infinite;
+           }
+           @keyframes fade-in {
+                from { opacity: 0; transform: translate(-50%, 20px); }
+                to { opacity: 0.8; transform: translate(-50%, 0); }
+           }
+           .animate-fade-in {
+               animation: fade-in 1s ease-out forwards;
+           }
+        `}</style>
       </Carousel>
     </section>
   );

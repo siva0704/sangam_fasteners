@@ -85,17 +85,17 @@ export const Navbar = () => {
                         </Link>
                     ))}
                     <div className="ml-4">
-                        <a
-                            href="mailto:info@sflfasteners.com"
+                        <Link
+                            to="/contact"
                             className={cn(
-                                "px-5 py-2.5 rounded-sm font-bold text-sm transition-all duration-300 uppercase tracking-wider",
+                                "px-5 py-2.5 rounded-sm font-bold text-sm transition-all duration-300 uppercase tracking-wider inline-block",
                                 useScrolledStyle
                                     ? "bg-primary text-primary-foreground hover:bg-primary/90"
                                     : "bg-white text-primary hover:bg-white/90"
                             )}
                         >
                             Get Quote
-                        </a>
+                        </Link>
                     </div>
                 </div>
 

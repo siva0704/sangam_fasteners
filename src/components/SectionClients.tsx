@@ -1,6 +1,5 @@
-import { useRef, useEffect } from "react";
-import AnimatedSection from "./AnimatedSection";
 import { CheckCircle2, Trophy, Users, Globe2, Pickaxe, Zap, Anchor, TrainFront, Heart, ThumbsUp, Shield, Award, Star, MapPin, Plane, UserCheck } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
 
 type Client = {
     name: string;
@@ -15,25 +14,25 @@ const clients: Client[] = [
         name: "Ashok Leyland",
         type: "Automotive OEM",
         logo: "https://www.ashokleyland.com/pwa/img/FE/Ashok-Leyland-Brand-Logo.svg",
-        className: "h-16 md:h-24 w-auto"
+        className: "h-5 md:h-24 w-auto"
     },
     {
         name: "Indian Railways",
         type: "Transportation",
         logo: "/sangam_fasteners/assets/clients/indian_railways_new.png",
-        className: "h-20 md:h-28 w-auto scale-110"
+        className: "h-9 md:h-28 w-auto scale-110"
     },
     {
         name: "BHEL",
         type: "Energy & Infrastructure",
         logo: "/sangam_fasteners/assets/clients/bhel_new.png",
-        className: "h-16 md:h-24 w-auto"
+        className: "h-7 md:h-24 w-auto"
     },
     {
         name: "BEML",
         type: "Heavy Industry",
         logo: "/sangam_fasteners/assets/clients/beml.png",
-        className: "h-14 md:h-20 w-auto"
+        className: "h-5 md:h-20 w-auto"
     }
 ];
 
@@ -65,21 +64,6 @@ const stats = [
 ];
 
 const SectionClients = () => {
-    const scrollerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (!scrollerRef.current) return;
-        const scrollerContent = scrollerRef.current.querySelector(".scroller-inner");
-        if (scrollerContent) {
-            const scrollerContentArray = Array.from(scrollerContent.children);
-            scrollerContentArray.forEach((item) => {
-                const duplicatedItem = item.cloneNode(true) as HTMLElement;
-                duplicatedItem.setAttribute("aria-hidden", "true");
-                scrollerContent.appendChild(duplicatedItem);
-            });
-        }
-    }, []);
-
     // Helper to get varied positions and sizes based on index
     const getDecorationStyle = (i: number) => {
         // Directed towards the open space (Right) - increased range to fill the card
@@ -177,60 +161,23 @@ const SectionClients = () => {
                         </h2>
                     </div>
 
-                    {/* Mobile/Tablet Marquee (Hidden on Desktop) */}
-                    <div ref={scrollerRef} className="relative w-full overflow-hidden lg:hidden mb-8 [mask-image:linear-gradient(to_right,transparent,white_5%,white_95%,transparent)]">
-                        <div className="scroller-inner flex w-max min-w-full gap-12 py-4 animate-scroll hover:[animation-play-state:paused]">
-                            {clients.map((client, idx) => (
-                                <div
-                                    key={idx}
-                                    className="flex items-center justify-center p-2 animate-mobile-highlight"
-                                    style={{ animationDelay: `${idx * 3}s` }}
-                                >
-                                    <img
-                                        src={client.logo}
-                                        alt={client.name}
-                                        className={`${client.className} object-contain`}
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Desktop Static Grid (Hidden on Mobile/Tablet) - Clean & Minimal */}
-                    <div className="hidden lg:grid grid-cols-4 gap-4 md:gap-12 items-center justify-items-center max-w-6xl mx-auto">
+                    {/* Unified Static 4-Column Logo Grid for All Screens */}
+                    <div className="grid grid-cols-4 gap-2 md:gap-12 items-center justify-items-center max-w-6xl mx-auto px-1">
                         {clients.map((client, idx) => (
                             <div
                                 key={idx}
-                                className="w-full flex items-center justify-center p-4 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-105"
+                                className="w-full flex items-center justify-center p-1 md:p-4 grayscale hover:grayscale-0 opacity-80 md:opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-105"
                             >
                                 <img
                                     src={client.logo}
                                     alt={client.name}
-                                    className={`${client.className || 'h-10 w-auto'} object-contain transition-all duration-500`}
+                                    className={`${client.className || 'h-6 md:h-10 w-auto'} object-contain transition-all duration-500`}
                                 />
                             </div>
                         ))}
                     </div>
                 </AnimatedSection>
             </div>
-
-            <style>{`
-                .animate-scroll {
-                    animation: scroll 30s linear infinite;
-                }
-                .animate-mobile-highlight {
-                    animation: mobile-highlight 12s ease-in-out infinite;
-                }
-                @keyframes scroll {
-                    to {
-                        transform: translate(calc(-50% - 1.5rem));
-                    }
-                }
-                @keyframes mobile-highlight {
-                    0%, 100% { opacity: 0.5; transform: scale(0.9); filter: grayscale(1); }
-                    50% { opacity: 1; transform: scale(1.1); filter: grayscale(0); }
-                }
-            `}</style>
         </section>
     );
 };

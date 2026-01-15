@@ -1,4 +1,5 @@
 import { Factory, Cog, Wrench, Settings, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import MagneticButton from "./MagneticButton";
 import AnimatedSection from "./AnimatedSection";
 import ParallaxSection from "./ParallaxSection";
@@ -56,9 +57,11 @@ const SectionInfrastructure = () => {
                                 Located in Hubli, Karnataka, our 50,000+ sq. ft. facility is equipped with modern machinery to handle large-scale production while maintaining micron-level precision.
                             </p>
 
-                            <MagneticButton size="lg" className="bg-accent text-white hover:bg-accent/90 border-0 mb-10">
-                                Start Supplier Evaluation <ArrowRight className="ml-2 h-4 w-4" />
-                            </MagneticButton>
+                            <Link to="/contact">
+                                <MagneticButton size="lg" className="bg-accent text-white hover:bg-accent/90 border-0 mb-10">
+                                    Start Supplier Evaluation <ArrowRight className="ml-2 h-4 w-4" />
+                                </MagneticButton>
+                            </Link>
 
                             <div className="grid grid-cols-2 gap-6 mb-12">
                                 {capabilities.map((item, idx) => (
