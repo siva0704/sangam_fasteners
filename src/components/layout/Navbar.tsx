@@ -107,11 +107,11 @@ export const Navbar = () => {
                                 variant="ghost"
                                 size="icon"
                                 className={cn(
-                                    "relative h-12 w-12 rounded-full hover:bg-white/10 transition-colors duration-300",
-                                    useScrolledStyle ? "text-foreground" : "text-white"
+                                    "relative h-12 w-12 rounded-full border border-transparent hover:border-white/20 hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 hover:text-white transition-all duration-500 hover:shadow-lg hover:shadow-blue-400/10 group overflow-hidden",
+                                    useScrolledStyle ? "text-foreground hover:text-white" : "text-white"
                                 )}
                             >
-                                <Menu className="h-8 w-8" />
+                                <Menu className="h-8 w-8 transition-transform duration-500 group-hover:rotate-180 group-hover:scale-110" />
                                 <span className="sr-only">Toggle menu</span>
                             </Button>
                         </SheetTrigger>

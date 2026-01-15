@@ -74,12 +74,12 @@ const Products = () => {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-end gap-4 pt-2 border-t border-slate-100">
+            <div className="grid grid-cols-2 md:flex md:flex-wrap items-end gap-3 md:gap-4 pt-2 border-t border-slate-100">
               {/* Category Filter */}
               <div className="flex flex-col gap-1.5">
                 <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Category</span>
                 <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                  <SelectTrigger className="w-[180px] h-10 bg-slate-50 border-slate-200">
+                  <SelectTrigger className="w-full md:w-[180px] h-10 bg-slate-50 border-slate-200">
                     <SelectValue placeholder="All Categories" />
                   </SelectTrigger>
                   <SelectContent>
@@ -94,7 +94,7 @@ const Products = () => {
               <div className="flex flex-col gap-1.5">
                 <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Material</span>
                 <Select value={materialFilter} onValueChange={setMaterialFilter}>
-                  <SelectTrigger className="w-[180px] h-10 bg-slate-50 border-slate-200">
+                  <SelectTrigger className="w-full md:w-[180px] h-10 bg-slate-50 border-slate-200">
                     <SelectValue placeholder="All Materials" />
                   </SelectTrigger>
                   <SelectContent>
@@ -109,7 +109,7 @@ const Products = () => {
               <div className="flex flex-col gap-1.5">
                 <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Standard</span>
                 <Select value={standardFilter} onValueChange={setStandardFilter}>
-                  <SelectTrigger className="w-[180px] h-10 bg-slate-50 border-slate-200">
+                  <SelectTrigger className="w-full md:w-[180px] h-10 bg-slate-50 border-slate-200">
                     <SelectValue placeholder="All Standards" />
                   </SelectTrigger>
                   <SelectContent>
@@ -124,7 +124,7 @@ const Products = () => {
               {(categoryFilter !== 'all' || materialFilter !== 'all' || standardFilter !== 'all') && (
                 <button
                   onClick={() => { setCategoryFilter('all'); setMaterialFilter('all'); setStandardFilter('all'); }}
-                  className="text-xs text-red-500 font-bold hover:underline ml-auto"
+                  className="text-xs text-red-500 font-bold hover:underline ml-auto col-span-2 md:col-span-auto text-right md:text-left pt-2 md:pt-0"
                 >
                   Reset Filters
                 </button>
@@ -140,7 +140,7 @@ const Products = () => {
               key={`${categoryFilter}-${materialFilter}-${standardFilter}`}
               pattern="wave"
               animation="perspective-left"
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+              className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6"
               staggerDelay={0}
             >
               {filteredProducts.map((product, idx) => (
@@ -148,12 +148,14 @@ const Products = () => {
                   {/* Main Click Area - Removed global link to allow text selection, implemented specific links instead */}
 
                   {/* Image Section - Clickable via Link */}
-                  <Link to={`/products/${product.id}`} className="block relative h-72 overflow-hidden bg-slate-50/50 p-8 flex items-center justify-center border-b border-slate-100 group-hover:bg-white transition-colors duration-500 cursor-pointer">
+                  <Link to={`/products/${product.id}`} className="block relative h-32 md:h-72 overflow-hidden bg-slate-50/50 flex items-center justify-center border-b border-slate-100 group-hover:bg-white transition-colors duration-500 cursor-pointer">
                     {/* Technical Badge */}
-                    <div className="absolute top-4 left-4 z-10 flex flex-col gap-1">
+                    <div className="absolute top-4 left-4 z-10">
                       <span className="text-[9px] font-mono text-slate-400 uppercase tracking-widest">
                         CAT-{String(idx + 1).padStart(3, '0')}
                       </span>
+                    </div>
+                    <div className="absolute top-4 right-4 z-10">
                       <span className="text-[10px] font-bold text-slate-700 bg-white border border-slate-200 px-2 py-1 rounded-sm shadow-sm uppercase tracking-wider backdrop-blur-sm">
                         {product.category}
                       </span>
@@ -167,27 +169,28 @@ const Products = () => {
                   </Link>
 
                   {/* Content Section */}
-                  <div className="p-6 flex-1 flex flex-col relative z-10 bg-white">
+                  <div className="p-3 md:p-6 flex-1 flex flex-col relative z-10 bg-white">
                     <div className="mb-4">
-                      <h3 className="text-xl font-bold font-heading text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-tight">
+                      <h3 className="text-sm md:text-xl font-bold font-heading text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-tight">
                         {product.name}
                       </h3>
                       <div className="w-10 h-0.5 bg-slate-100 group-hover:bg-blue-500 transition-colors duration-500" />
                     </div>
 
-                    <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2">
+                    <p className="text-slate-500 text-xs md:text-sm leading-relaxed mb-4 md:mb-6 line-clamp-2">
                       {product.description}
                     </p>
 
-                    <div className="mt-auto flex items-center justify-between gap-3 pt-5 border-t border-slate-50">
-                      <Link to={`/products/${product.id}`} className="group/link flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
-                        View Specs
-                        <span className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300">→</span>
+                    <div className="mt-auto flex flex-row items-center justify-between gap-3 pt-3 md:pt-5 border-t border-slate-50">
+                      <Link to={`/products/${product.id}`} className="group/link flex items-center gap-1 text-slate-400 hover:text-blue-600 transition-colors">
+                        <span className="hidden md:inline text-sm font-semibold text-slate-600">View Specs</span>
+                        <span className="md:hidden text-[10px] font-bold uppercase tracking-wider">Specs</span>
+                        <span className="text-xs md:text-base opacity-100 md:opacity-0 md:-translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300">→</span>
                       </Link>
 
                       {/* Premium Enquiry Button */}
                       <div onClick={(e) => e.preventDefault()} className="relative z-20">
-                        <div className="[&>button]:bg-slate-900 [&>button]:text-white [&>button]:hover:bg-blue-600 [&>button]:transition-all [&>button]:duration-300 [&>button]:h-9 [&>button]:text-xs [&>button]:uppercase [&>button]:tracking-wide [&>button]:font-bold [&>button]:px-5 [&>button]:shadow-md [&>button]:hover:shadow-blue-500/25">
+                        <div className="[&>button]:bg-slate-900 [&>button]:text-white [&>button]:hover:bg-blue-600 [&>button]:transition-all [&>button]:duration-300 [&>button]:h-8 md:[&>button]:h-9 [&>button]:text-[10px] md:[&>button]:text-xs [&>button]:uppercase [&>button]:tracking-wide [&>button]:font-bold [&>button]:px-4 md:[&>button]:px-5 [&>button]:shadow-md [&>button]:hover:shadow-blue-500/25 [&>button]:w-auto">
                           <ProductEnquiryForm productName={product.name} />
                         </div>
                       </div>

@@ -34,7 +34,7 @@ const capabilities = [
 
 const SectionInfrastructure = () => {
     return (
-        <section className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
+        <section className="py-16 bg-primary text-primary-foreground relative overflow-hidden">
             {/* Industrial Background Texture */}
             <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none" />
 
@@ -43,7 +43,7 @@ const SectionInfrastructure = () => {
                     {/* Left Content */}
                     <div className="lg:w-1/2">
                         <AnimatedSection animation="fade-right">
-                            <span className="inline-block py-1 px-3 rounded-full bg-accent/20 border border-accent/20 text-accent font-bold text-sm tracking-widest uppercase mb-4 backdrop-blur-sm">
+                            <span className="inline-block py-1 px-3 text-accent font-bold text-sm uppercase mb-4">
                                 Our Infrastructure
                             </span>
                             <h2 className="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">

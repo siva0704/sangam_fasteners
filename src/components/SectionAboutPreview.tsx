@@ -9,7 +9,7 @@ const SectionAboutPreview = () => {
             <div className="container px-4 mx-auto">
                 <div className="max-w-4xl mx-auto text-center">
                     <AnimatedSection animation="fade-up">
-                        <span className="inline-block py-1 px-3 rounded-full bg-accent/10 border border-accent/20 text-accent font-bold text-sm tracking-widest uppercase mb-6 backdrop-blur-sm">
+                        <span className="inline-block py-1 px-3 text-accent font-bold text-sm uppercase mb-6">
                             What We Do
                         </span>
                         <h2 className="text-2xl md:text-3xl font-bold font-heading text-primary mb-8 leading-relaxed max-w-5xl mx-auto tracking-wide">

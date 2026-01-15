@@ -1,5 +1,9 @@
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Award, ThumbsUp, Truck, Globe2, Clock, Settings, Users, Star, History } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import { useMobileInView } from "@/hooks/use-mobile-in-view";
+import { SnapshotCard } from "@/components/ui/SnapshotCard";
+import { CardStackItem } from "@/components/ui/CardStackItem";
+import { useEffect, useRef, useState } from "react";
 
 const pillars = [
     {
@@ -21,11 +25,44 @@ const pillars = [
 ];
 
 const SectionWhyUs = () => {
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const [isHovering, setIsHovering] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (isHovering) return;
+            const viewportCenter = window.innerHeight / 2;
+            let minDistance = Infinity;
+            let closestIndex: number | null = null;
+
+            cardRefs.current.forEach((card, index) => {
+                if (card) {
+                    const rect = card.getBoundingClientRect();
+                    const cardCenter = rect.top + rect.height / 2;
+                    const distance = Math.abs(viewportCenter - cardCenter);
+
+                    if (distance < minDistance && distance < window.innerHeight * 0.4) {
+                        minDistance = distance;
+                        closestIndex = index;
+                    }
+                }
+            });
+
+            setActiveIndex(closestIndex);
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [isHovering]);
+
     return (
-        <section className="py-24 bg-primary text-white">
+        <section className="py-10 bg-primary text-white">
             <div className="container px-4 mx-auto">
                 <AnimatedSection animation="fade-up" className="text-center max-w-3xl mx-auto mb-16">
-                    <span className="inline-block py-1 px-3 rounded-full bg-accent/20 border border-accent/20 text-accent font-bold text-sm tracking-widest uppercase mb-4 backdrop-blur-sm">
+                    <span className="inline-block py-1 px-3 text-accent font-bold text-sm uppercase mb-4">
                         Why Choose Us
                     </span>
                     <h2 className="text-4xl md:text-5xl font-bold font-heading text-white mb-6 leading-tight">
@@ -33,18 +70,38 @@ const SectionWhyUs = () => {
                     </h2>
                 </AnimatedSection>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {pillars.map((pillar, idx) => (
-                        <AnimatedSection key={idx} animation="fade-up" delay={idx * 0.1}>
-                            <div className="p-6 border border-white/10 rounded-lg hover:bg-white/5 transition-colors duration-300 h-full">
-                                <CheckCircle2 className="w-10 h-10 text-accent mb-6" />
-                                <h3 className="text-xl font-bold mb-3">{pillar.title}</h3>
-                                <p className="text-white/70 leading-relaxed text-sm">
-                                    {pillar.desc}
-                                </p>
-                            </div>
-                        </AnimatedSection>
-                    ))}
+                <div className="flex flex-col md:grid md:grid-cols-1 lg:grid-cols-2 gap-8 pb-8 md:pb-0 max-w-5xl mx-auto">
+                    {pillars.map((pillar, idx) => {
+                        // Define related icons
+                        const relatedIconsMap: any = {
+                            0: [ShieldCheck, Award, Star, Settings, ShieldCheck], // Quality
+                            1: [Clock, ThumbsUp, History, Users, Clock], // Reliability
+                            2: [Settings, Award, Star, ShieldCheck, Settings], // Customization
+                            3: [Truck, Globe2, Clock, Truck, Globe2] // Global
+                        };
+                        const currentIcons = relatedIconsMap[idx] || [CheckCircle2, CheckCircle2, CheckCircle2];
+
+                        return (
+                            <CardStackItem key={idx} index={idx} total={pillars.length}>
+                                <AnimatedSection animation="fade-up" delay={idx * 0.1}>
+                                    <SnapshotCard
+                                        icon={currentIcons[0]}
+                                        label="Key Strength"
+                                        title={pillar.title}
+                                        description={pillar.desc}
+                                        decorations={currentIcons}
+                                        isActive={idx === activeIndex}
+                                        domRef={(el: HTMLDivElement | null) => cardRefs.current[idx] = el}
+                                        onMouseEnter={() => {
+                                            setActiveIndex(idx);
+                                            setIsHovering(true);
+                                        }}
+                                        onMouseLeave={() => setIsHovering(false)}
+                                    />
+                                </AnimatedSection>
+                            </CardStackItem>
+                        );
+                    })}
                 </div>
             </div>
         </section>

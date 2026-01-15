@@ -4,7 +4,7 @@ import MagneticButton from "./MagneticButton";
 
 const SectionGlobal = () => {
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section className="py-16 bg-white relative overflow-hidden">
             {/* Abstract Map Background Suggestion */}
             <div className="absolute inset-0 z-0 opacity-5 pointer-events-none">
                 <Globe2 className="w-[800px] h-[800px] absolute -right-40 -top-40 text-primary" />
@@ -14,7 +14,7 @@ const SectionGlobal = () => {
                 <div className="flex flex-col lg:flex-row items-center gap-16">
                     <div className="lg:w-1/2">
                         <AnimatedSection animation="fade-right">
-                            <span className="text-accent font-bold tracking-widest text-sm uppercase mb-2 block">
+                            <span className="text-accent font-bold text-sm uppercase mb-2 block">
                                 Export Capability
                             </span>
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-primary mb-6">

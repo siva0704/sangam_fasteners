@@ -24,7 +24,7 @@ const certifications = [
 
 const SectionCertifications = () => {
     return (
-        <section className="py-24 bg-secondary/30 relative overflow-hidden">
+        <section className="py-16 bg-secondary/30 relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:20px_20px]" />
 

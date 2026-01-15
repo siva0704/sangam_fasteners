@@ -1,5 +1,6 @@
 import * as React from "react";
 import { ArrowRight, ChevronLeft, ChevronRight, Settings, Hexagon, Wrench, Hammer, CircleDashed } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import AnimatedSection from "./AnimatedSection";
 import MagneticButton from "./MagneticButton";
@@ -83,12 +84,15 @@ const SectionHero = () => {
         <CarouselContent className="h-full -ml-0">
           {heroSlides.map((slide, index) => (
             <CarouselItem key={slide.id} className="relative pl-0 h-full w-full">
-              {/* Background Image with Zoom Effect and Responsive SrcSet */}
+              {/* Parallax Background Layer */}
               <div className="absolute inset-0 z-0">
                 <FastenerPattern />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/40 z-10" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
-                <img
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10" />
+                <motion.img
+                  initial={{ scale: 1 }}
+                  animate={{ scale: current === index ? 1.1 : 1 }}
+                  transition={{ duration: 10, ease: "linear" }}
                   src={slide.image.replace("w=2070", "w=1280")}
                   srcSet={`
                     ${slide.image.replace("w=2070", "w=480&q=60")} 480w,
@@ -96,55 +100,70 @@ const SectionHero = () => {
                     ${slide.image.replace("w=2070", "w=1280&q=80")} 1280w,
                     ${slide.image} 2070w
                   `}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
+                  sizes="100vw"
                   alt={slide.title}
-                  className="w-full h-full object-cover transition-transform duration-10000 ease-linear scale-100 hover:scale-105"
+                  className="w-full h-full object-cover"
                   loading={index === 0 ? "eager" : "lazy"}
                   // @ts-ignore
                   fetchpriority={index === 0 ? "high" : "auto"}
                 />
               </div>
 
-              {/* Content Container - Optimized for LCP (No JS Animation for First Slide) */}
-              <div className="relative z-20 container h-full flex items-center px-4 mx-auto">
-                <div className="max-w-4xl pt-20">
-                  {/* Badge Text Only */}
-                  <div className={`transition-all duration-700 ${current === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-                    <span className="inline-block text-blue-400 font-medium text-[10px] md:text-sm mb-4">
-                      {slide.badge}
-                    </span>
-                  </div>
+              {/* Content Container - Advanced Text Reveals */}
+              <div className="relative z-20 container h-full flex items-start px-4 mx-auto">
+                <div className="max-w-4xl pt-32 md:pt-40">
+                  <AnimatePresence mode="wait">
+                    {current === index && (
+                      <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        variants={{
+                          hidden: { opacity: 0 },
+                          visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+                          exit: { opacity: 0 }
+                        }}
+                      >
+                        {/* Badge */}
+                        <motion.div variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}>
+                          <span className="inline-block text-blue-400 font-medium text-sm md:text-lg mb-2 tracking-wide">
+                            {slide.badge}
+                          </span>
+                        </motion.div>
 
-                  {/* Title - Critical LCP Element - visible by default for first slide */}
-                  <div className={`transition-all duration-700 delay-100 ${current === index ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}`}>
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading mb-6 leading-tight">
-                      {slide.title} <br />
-                      <span className={`text-transparent bg-clip-text bg-gradient-to-r ${slide.accentColor}`}>
-                        {slide.subtitle}
-                      </span>
-                    </h1>
-                  </div>
+                        {/* Title */}
+                        <motion.div variants={{ hidden: { x: -30, opacity: 0 }, visible: { x: 0, opacity: 1 } }} className="mb-6">
+                          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight tracking-tight">
+                            {slide.title} <br />
+                            <span className={`text-transparent bg-clip-text bg-gradient-to-r ${slide.accentColor}`}>
+                              {slide.subtitle}
+                            </span>
+                          </h1>
+                        </motion.div>
 
-                  {/* Description */}
-                  <div className={`transition-all duration-700 delay-200 ${current === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-                    <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl leading-relaxed drop-shadow-md">
-                      {slide.description}
-                    </p>
-                  </div>
+                        {/* Description */}
+                        <motion.div variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}>
+                          <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
+                            {slide.description}
+                          </p>
+                        </motion.div>
 
-                  {/* Buttons */}
-                  <div className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-300 ${current === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-                    <MagneticButton size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border-0">
-                      Explore Our Products
-                    </MagneticButton>
-                    <MagneticButton
-                      size="lg"
-                      variant="outline"
-                      className="border-white/20 bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white"
-                    >
-                      Discuss Your Requirement <ArrowRight className="ml-2 h-4 w-4" />
-                    </MagneticButton>
-                  </div>
+                        {/* Buttons */}
+                        <motion.div variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }} className="flex flex-col sm:flex-row gap-4">
+                          <MagneticButton size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border-0 px-8 py-6 text-lg">
+                            Explore Our Products
+                          </MagneticButton>
+                          <MagneticButton
+                            size="lg"
+                            variant="outline"
+                            className="border-white/20 bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white px-8 py-6 text-lg"
+                          >
+                            Discuss Your Requirement <ArrowRight className="ml-2 h-5 w-5" />
+                          </MagneticButton>
+                        </motion.div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </div>
             </CarouselItem>
@@ -153,18 +172,17 @@ const SectionHero = () => {
 
         {/* Custom Navigation */}
         <div className="absolute bottom-12 right-12 z-30 hidden md:flex gap-2">
-          <CarouselPrevious className="static translate-y-0 h-12 w-12 border-white/10 bg-black/40 hover:bg-blue-500/20 hover:border-blue-500/50 text-white transition-colors" />
-          <CarouselNext className="static translate-y-0 h-12 w-12 border-white/10 bg-black/40 hover:bg-blue-500/20 hover:border-blue-500/50 text-white transition-colors" />
+          <CarouselPrevious className="static translate-y-0 h-14 w-14 border-white/10 bg-black/40 hover:bg-white/10 text-white transition-all hover:scale-110" />
+          <CarouselNext className="static translate-y-0 h-14 w-14 border-white/10 bg-black/40 hover:bg-white/10 text-white transition-all hover:scale-110" />
         </div>
 
         {/* Slide Indicators */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex gap-2">
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex gap-3">
           {heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => api?.scrollTo(index)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${current === index ? "w-8 bg-blue-500" : "w-1.5 bg-white/20 hover:bg-white/40"
-                }`}
+              className={`h-1 transition-all duration-500 rounded-full ${current === index ? "w-12 bg-blue-500" : "w-2 bg-white/20 hover:bg-white/40"}`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

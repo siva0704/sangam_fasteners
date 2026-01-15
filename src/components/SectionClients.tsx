@@ -7,49 +7,34 @@ type Client = {
     type: string;
     logo?: string;
     icon?: any;
+    className?: string;
 };
 
 const clients: Client[] = [
     {
-        name: "BHEL",
-        type: "Energy & Infrastructure",
-        logo: "/sangam_fasteners/assets/clients/bhel.png"
-    },
-    {
-        name: "BEML",
-        type: "Heavy Industry",
-        logo: "/sangam_fasteners/assets/clients/beml.png"
-    },
-    {
         name: "Ashok Leyland",
         type: "Automotive OEM",
-        logo: "/sangam_fasteners/assets/clients/ashok_leyland.png"
+        logo: "https://www.ashokleyland.com/pwa/img/FE/Ashok-Leyland-Brand-Logo.svg",
+        className: "h-16 md:h-24 w-auto"
     },
     {
         name: "Indian Railways",
         type: "Transportation",
-        logo: "https://upload.wikimedia.org/wikipedia/en/4/45/Indian_Railways_logo.svg"
+        logo: "/sangam_fasteners/assets/clients/indian_railways_new.png",
+        className: "h-20 md:h-28 w-auto scale-110"
     },
     {
-        name: "Mining Companies",
-        type: "Extractives",
-        icon: Pickaxe
+        name: "BHEL",
+        type: "Energy & Infrastructure",
+        logo: "/sangam_fasteners/assets/clients/bhel_new.png",
+        className: "h-16 md:h-24 w-auto"
     },
     {
-        name: "Power Plants",
-        type: "Energy Sector",
-        icon: Zap
-    },
-    {
-        name: "Valve Industries",
-        type: "Fluid Control",
-        icon: Anchor
-    },
-    {
-        name: "Metro Rails",
-        type: "Urban Transit",
-        icon: TrainFront
-    },
+        name: "BEML",
+        type: "Heavy Industry",
+        logo: "/sangam_fasteners/assets/clients/beml.png",
+        className: "h-14 md:h-20 w-auto"
+    }
 ];
 
 const stats = [
@@ -58,7 +43,7 @@ const stats = [
         value: "100%",
         icon: Users,
         description: "Delivering excellence that builds lasting partnerships.",
-        decorations: [Heart, ThumbsUp, UserCheck, Users, Heart],
+        decorations: [Heart, ThumbsUp, UserCheck, Users, Heart, Star, ThumbsUp],
         animationClass: "group-hover:animate-[pulse_2s_ease-in-out_1]"
     },
     {
@@ -66,7 +51,7 @@ const stats = [
         value: "ISO 9001",
         icon: CheckCircle2,
         description: "Adhering to strict international manufacturing standards.",
-        decorations: [Shield, Award, Star, CheckCircle2, Shield],
+        decorations: [Shield, Award, Star, CheckCircle2, Shield, Trophy, Award],
         animationClass: "group-hover:scale-110 duration-500 ease-out"
     },
     {
@@ -74,7 +59,7 @@ const stats = [
         value: "Global",
         icon: Globe2,
         description: "Serving diverse industries across multiple continents.",
-        decorations: [MapPin, Plane, Globe2, MapPin, Plane],
+        decorations: [MapPin, Plane, Globe2, MapPin, Plane, Globe2, MapPin],
         animationClass: "group-hover:rotate-[360deg] duration-700"
     },
 ];
@@ -103,16 +88,20 @@ const SectionClients = () => {
             "group-hover:translate-x-[140px] group-hover:translate-y-[80px] group-hover:-rotate-12",  // Bottom Right
             "group-hover:-translate-x-[140px] group-hover:translate-y-[80px]",      // Bottom Left
             "group-hover:-translate-x-[140px] group-hover:-translate-y-[80px] group-hover:rotate-45",  // Top Left
-            "group-hover:translate-y-[100px]"    // Bottom Center (far down)
+            "group-hover:translate-y-[100px]",    // Bottom Center (far down)
+            "group-hover:translate-x-[80px] group-hover:translate-y-[0px] group-hover:rotate-90", // Right Center
+            "group-hover:-translate-x-[80px] group-hover:-translate-y-[0px] group-hover:-rotate-45" // Left Center
         ];
 
-        const delays = ["delay-75", "delay-150", "delay-100", "delay-200", "delay-300"];
+        const delays = ["delay-75", "delay-150", "delay-100", "delay-200", "delay-300", "delay-75", "delay-150"];
         const sizes = [
-            "text-blue-400/60 w-8 h-8",   // 0 (Large)
-            "text-sky-400/80 w-4 h-4",      // 1 (Medium)
-            "text-blue-300/80 w-3 h-3",   // 2 (Small)
-            "text-sky-300/60 w-6 h-6",      // 3 (Large)
-            "text-blue-200/80 w-3 h-3"    // 4 (Small)
+            "text-blue-400/30 w-8 h-8",   // 0 (Large) - Reduced opacity
+            "text-sky-400/40 w-4 h-4",      // 1 (Medium) - Reduced opacity
+            "text-blue-300/40 w-3 h-3",   // 2 (Small) - Reduced opacity
+            "text-sky-300/30 w-6 h-6",      // 3 (Large) - Reduced opacity
+            "text-blue-200/40 w-3 h-3",    // 4 (Small) - Reduced opacity
+            "text-indigo-300/30 w-5 h-5",  // 5 (Medium) - New
+            "text-slate-300/40 w-2 h-2"     // 6 (Tiny) - New
         ];
 
         return {
@@ -123,13 +112,13 @@ const SectionClients = () => {
     };
 
     return (
-        <section className="pt-10 pb-20 bg-white border-b border-border/40 overflow-hidden">
+        <section className="pt-10 pb-16 bg-white border-b border-border/40 overflow-hidden">
             <div className="container px-4 mx-auto">
                 <AnimatedSection animation="fade-up">
-                    {/* Horizontal Stats Layout */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10 border-b border-gray-100 pb-8">
+                    {/* Horizontal Stats Layout - 3 items in a row always */}
+                    <div className="grid grid-cols-3 gap-3 md:gap-6 mb-16 border-b border-gray-100 pb-8">
                         {stats.map((stat, idx) => (
-                            <div key={idx} className="relative flex flex-col items-center text-center p-5 rounded-xl transition-all duration-500 hover:shadow-sm border border-transparent hover:border-blue-50 group cursor-default overflow-hidden isolate justify-center h-[220px]">
+                            <div key={idx} className="relative flex flex-col items-center text-center p-2 md:p-5 rounded-xl transition-all duration-500 hover:shadow-2xl hover:shadow-blue-900/10 border border-transparent hover:border-blue-300 group cursor-default overflow-hidden isolate justify-center h-[160px] md:h-[220px]">
 
                                 {/* Spreading Background Animation */}
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-blue-50/50 rounded-full scale-0 group-hover:scale-[15] transition-transform duration-1000 ease-out -z-10" />
@@ -138,9 +127,9 @@ const SectionClients = () => {
                                 <div className="absolute -right-2 -bottom-2 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out delay-100 z-0 pointer-events-none">
                                     <div className="relative">
                                         <stat.icon
-                                            size={90}
+                                            size={60}
                                             strokeWidth={0.5}
-                                            className="text-blue-500/10 -rotate-12"
+                                            className="text-blue-500/10 -rotate-12 md:w-[90px] md:h-[90px]"
                                         />
                                     </div>
                                 </div>
@@ -159,17 +148,17 @@ const SectionClients = () => {
                                 })}
 
                                 {/* Icon - Clean and Centered */}
-                                <div className="mb-3 text-slate-400 group-hover:text-blue-600 transition-colors duration-300 relative z-10">
-                                    <stat.icon size={36} strokeWidth={1.5} className={`transition-transform duration-300 ${stat.animationClass}`} />
+                                <div className="mb-2 md:mb-3 text-slate-400 group-hover:text-blue-600 transition-colors duration-300 relative z-10">
+                                    <stat.icon size={24} strokeWidth={1.5} className={`transition-transform duration-300 ${stat.animationClass} md:w-9 md:h-9`} />
                                 </div>
 
-                                <h4 className="text-4xl font-bold font-heading text-slate-900 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-sky-600 transition-all duration-300 relative z-10">
+                                <h4 className="text-xl md:text-4xl font-bold font-heading text-slate-900 mb-1 md:mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-sky-600 transition-all duration-300 relative z-10">
                                     {stat.value}
                                 </h4>
-                                <p className="text-sm text-slate-500 font-bold uppercase tracking-widest mb-0 group-hover:mb-1 transition-all duration-300 relative z-10">
+                                <p className="text-[10px] md:text-sm text-slate-500 font-bold uppercase tracking-wide md:tracking-widest mb-0 group-hover:mb-1 transition-all duration-300 relative z-10 leading-tight">
                                     {stat.label}
                                 </p>
-                                <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-out relative z-10 w-full">
+                                <div className="hidden md:grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-out relative z-10 w-full">
                                     <p className="overflow-hidden text-xs text-slate-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mx-auto max-w-[220px] leading-tight pt-1">
                                         {stat.description}
                                     </p>
@@ -188,39 +177,58 @@ const SectionClients = () => {
                         </h2>
                     </div>
 
-                    {/* Infinite Scroll Logos */}
-                    <div
-                        ref={scrollerRef}
-                        className="relative max-w-7xl mx-auto overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]"
-                    >
-                        <div className="scroller-inner flex items-center gap-16 py-8 w-max animate-scroll">
+                    {/* Mobile/Tablet Marquee (Hidden on Desktop) */}
+                    <div ref={scrollerRef} className="relative w-full overflow-hidden lg:hidden mb-8 [mask-image:linear-gradient(to_right,transparent,white_5%,white_95%,transparent)]">
+                        <div className="scroller-inner flex w-max min-w-full gap-12 py-4 animate-scroll hover:[animation-play-state:paused]">
                             {clients.map((client, idx) => (
-                                client.logo ? (
-                                    <div
-                                        key={idx}
-                                        className="flex flex-col items-center justify-center min-w-[160px] h-[100px] transition-all duration-300 group cursor-pointer relative grayscale hover:grayscale-0 opacity-70 hover:opacity-100"
-                                    >
-                                        <img
-                                            src={client.logo}
-                                            alt={client.name}
-                                            className="w-full h-full object-contain group-hover:scale-110 transition-all duration-500"
-                                        />
-                                    </div>
-                                ) : null
+                                <div
+                                    key={idx}
+                                    className="flex items-center justify-center p-2 animate-mobile-highlight"
+                                    style={{ animationDelay: `${idx * 3}s` }}
+                                >
+                                    <img
+                                        src={client.logo}
+                                        alt={client.name}
+                                        className={`${client.className} object-contain`}
+                                    />
+                                </div>
                             ))}
                         </div>
+                    </div>
+
+                    {/* Desktop Static Grid (Hidden on Mobile/Tablet) - Clean & Minimal */}
+                    <div className="hidden lg:grid grid-cols-4 gap-4 md:gap-12 items-center justify-items-center max-w-6xl mx-auto">
+                        {clients.map((client, idx) => (
+                            <div
+                                key={idx}
+                                className="w-full flex items-center justify-center p-4 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-105"
+                            >
+                                <img
+                                    src={client.logo}
+                                    alt={client.name}
+                                    className={`${client.className || 'h-10 w-auto'} object-contain transition-all duration-500`}
+                                />
+                            </div>
+                        ))}
                     </div>
                 </AnimatedSection>
             </div>
 
             <style>{`
                 .animate-scroll {
-                    animation: scroll 80s linear infinite;
+                    animation: scroll 30s linear infinite;
+                }
+                .animate-mobile-highlight {
+                    animation: mobile-highlight 12s ease-in-out infinite;
                 }
                 @keyframes scroll {
                     to {
                         transform: translate(calc(-50% - 1.5rem));
                     }
+                }
+                @keyframes mobile-highlight {
+                    0%, 100% { opacity: 0.5; transform: scale(0.9); filter: grayscale(1); }
+                    50% { opacity: 1; transform: scale(1.1); filter: grayscale(0); }
                 }
             `}</style>
         </section>

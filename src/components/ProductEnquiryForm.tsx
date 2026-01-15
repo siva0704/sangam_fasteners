@@ -34,7 +34,8 @@ const ProductEnquiryForm = ({ productName }: { productName?: string }) => {
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
                 <Button variant="default" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold">
-                    Request Quote
+                    <span className="hidden md:inline">Request Quote</span>
+                    <span className="md:hidden">Quote</span>
                 </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[500px] bg-white text-slate-900 border-slate-200">

@@ -289,6 +289,7 @@ export default {
         "particleFloat": "particleFloat 2s ease-out infinite",
         "letterBurst": "letterBurst 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "spin-slow": "spin 1s linear infinite",
       },
     },
   },

@@ -38,7 +38,7 @@ const teamMembers = [
 
 const SectionTeam = () => {
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section className="py-10 bg-white relative overflow-hidden">
             {/* Background Decoration */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-secondary/30 -skew-x-12 translate-x-1/4 pointer-events-none" />
 

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const SectionCTAFooter = () => {
     return (
-        <section className="py-20 bg-primary text-primary-foreground relative overflow-hidden">
+        <section className="py-10 bg-primary text-primary-foreground relative overflow-hidden">
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/90 z-10" />
                 <img

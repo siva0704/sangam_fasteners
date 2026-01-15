@@ -46,7 +46,7 @@ const About = () => {
         />
 
         {/* Company Overview - Detailed Text */}
-        <section className="relative py-20 bg-white overflow-hidden">
+        <section className="relative py-16 bg-white overflow-hidden">
           {/* Ambient Bg */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#0f172a_1px,transparent_1px)] [background-size:20px_20px]" />
@@ -116,7 +116,7 @@ const About = () => {
         </section>
 
         {/* Operating Principles - Premium Cards */}
-        <section className="py-24 bg-slate-50">
+        <section className="py-16 bg-slate-50">
           <div className="container mx-auto px-4">
             <AnimatedSection animation="fade-up">
               <SectionHeading>Operating Discipline</SectionHeading>
@@ -147,7 +147,7 @@ const About = () => {
         </section>
 
         {/* Product Portfolio - Feature List Style */}
-        <section className="py-24 bg-white relative">
+        <section className="py-16 bg-white relative">
           <div className="absolute inset-0 bg-slate-50/50 skew-y-3 transform origin-bottom-left -z-10" />
           <div className="container mx-auto px-4">
             <AnimatedSection animation="fade-up">
@@ -185,7 +185,7 @@ const About = () => {
         </section>
 
         {/* Engineering & Quality - Featured Block */}
-        <section className="py-24 bg-gradient-to-b from-slate-900 to-slate-950 text-white relative overflow-hidden">
+        <section className="py-16 bg-gradient-to-b from-slate-900 to-slate-950 text-white relative overflow-hidden">
           {/* Background decorative elements */}
           <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-white/5 to-transparent skew-x-12 pointer-events-none" />
 
@@ -210,7 +210,7 @@ const About = () => {
         </section>
 
         {/* Industries Served */}
-        <section className="py-24 bg-slate-50">
+        <section className="py-16 bg-slate-50">
           <div className="container mx-auto px-4">
             <AnimatedSection animation="fade-up">
               <SectionHeading>Industries Served</SectionHeading>
@@ -239,7 +239,7 @@ const About = () => {
         </section>
 
         {/* Why Sangam Fasteners - Text Feature */}
-        <section className="py-24 bg-white">
+        <section className="py-16 bg-white">
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-100 shadow-sm flex flex-col md:flex-row items-center gap-8 lg:gap-12">
               <div className="md:w-1/3 flex justify-center">
@@ -264,7 +264,7 @@ const About = () => {
         </section>
 
         {/* Contact CTA */}
-        <section className="py-20 bg-slate-900 text-white text-center">
+        <section className="py-16 bg-slate-900 text-white text-center">
           <div className="container mx-auto px-4">
             <AnimatedSection animation="fade-up">
               <h2 className="text-3xl font-heading font-bold mb-6">Ready to Discuss Your Requirements?</h2>

@@ -28,7 +28,7 @@ const Engineering = () => {
                     badge="Quality Systems"
                 />
 
-                <section className="py-20">
+                <section className="py-16">
                     <div className="container mx-auto px-4">
                         <AnimatedSection animation="fade-up" className="max-w-4xl mx-auto mb-16 text-center">
                             <h2 className="text-3xl font-heading font-bold mb-6">Manufacturing & Quality Focus</h2>
@@ -60,11 +60,11 @@ const Engineering = () => {
                     </div>
                 </section>
 
-                <section className="py-20 bg-muted/30">
+                <section className="py-16 bg-muted/30">
                     <div className="container mx-auto px-4">
                         <AnimatedSection animation="scale-in">
                             <div className="max-w-4xl mx-auto text-center bg-card border shadow-sm rounded-2xl p-12">
-                                <span className="inline-block py-1 px-3 rounded-full bg-accent/10 border border-accent/20 text-accent font-bold text-sm tracking-widest uppercase mb-6">
+                                <span className="inline-block py-1 px-3 text-accent font-bold text-sm uppercase mb-6">
                                     Our Objective
                                 </span>
                                 <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary leading-tight">

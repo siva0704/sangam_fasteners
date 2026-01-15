@@ -106,7 +106,7 @@ const Contact = () => {
         />
 
         {/* Why Customers Retain Us Section - Premium Design */}
-        <section className="relative py-20 bg-gradient-to-b from-white to-gray-50/50 overflow-hidden border-b border-slate-100">
+        <section className="relative py-16 bg-gradient-to-b from-white to-gray-50/50 overflow-hidden border-b border-slate-100">
           {/* Ambient Background Pattern */}
           <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#0f172a_1px,transparent_1px)] [background-size:20px_20px]" />
@@ -141,7 +141,7 @@ const Contact = () => {
           </div>
         </section>
 
-        <section className="py-20 bg-white">
+        <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
