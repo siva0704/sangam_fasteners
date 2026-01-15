@@ -1,10 +1,9 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import Preloader from "./components/Preloader";
 import BackToTop from "./components/BackToTop";
 import { Navbar } from "./components/layout/Navbar";
 import { SmoothScroll } from "./components/layout/SmoothScroll";
@@ -30,29 +29,12 @@ const ScrollToTop = () => {
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [showLoading, setShowLoading] = useState(false);
-  const [hasLoaded, setHasLoaded] = useState(true);
-
-  // Preloader always runs on refresh
-  useEffect(() => {
-    // Optional: You can add logic here if you want to clear specific states on refresh
-  }, []);
-
-  const handleLoadingComplete = () => {
-    // sessionStorage.setItem("hasLoadedBefore", "true"); // Removed to allow preloader every time
-    setShowLoading(false);
-    setHasLoaded(true);
-  };
-
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <SmoothScroll>
           <Toaster />
           <Sonner />
-          {/* {showLoading && !hasLoaded && (
-            <Preloader onComplete={handleLoadingComplete} />
-          )} */}
           <BrowserRouter basename="/sangam_fasteners" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <ScrollToTop />
             <Navbar />

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ArrowRight, ChevronLeft, ChevronRight, Settings, Hexagon, Wrench, Hammer, CircleDashed } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+
 
 import AnimatedSection from "./AnimatedSection";
 import MagneticButton from "./MagneticButton";
@@ -89,10 +89,7 @@ const SectionHero = () => {
                 <FastenerPattern />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60 z-10" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10" />
-                <motion.img
-                  initial={{ scale: 1 }}
-                  animate={{ scale: current === index ? 1.1 : 1 }}
-                  transition={{ duration: 10, ease: "linear" }}
+                <img
                   src={slide.image.replace("w=2070", "w=1280")}
                   srcSet={`
                     ${slide.image.replace("w=2070", "w=480&q=60")} 480w,
@@ -102,7 +99,7 @@ const SectionHero = () => {
                   `}
                   sizes="100vw"
                   alt={slide.title}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover transition-transform duration-[10000ms] ease-linear ${current === index ? "scale-110" : "scale-100"}`}
                   loading={index === 0 ? "eager" : "lazy"}
                   // @ts-ignore
                   fetchpriority={index === 0 ? "high" : "auto"}

@@ -3,16 +3,17 @@ import { useScrollProgress } from "@/hooks/use-scroll-progress";
 import Seo from "@/components/Seo";
 import Footer from "@/components/Footer";
 import SectionHero from "@/components/SectionHero";
-import SectionProducts from "@/components/SectionProducts";
-import SectionEngineering from "@/components/SectionEngineering";
-import SectionIndustries from "@/components/SectionIndustries";
 import SectionCompanySnapshot from "@/components/SectionCompanySnapshot";
-import SectionAboutPreview from "@/components/SectionAboutPreview";
-import SectionClients from "@/components/SectionClients";
-import SectionTeam from "@/components/SectionTeam";
-import SectionCTAFooter from "@/components/SectionCTAFooter";
+import { lazy, Suspense } from "react";
 
-import SectionFAQ from "@/components/SectionFAQ";
+const SectionProducts = lazy(() => import("@/components/SectionProducts"));
+const SectionEngineering = lazy(() => import("@/components/SectionEngineering"));
+const SectionIndustries = lazy(() => import("@/components/SectionIndustries"));
+const SectionAboutPreview = lazy(() => import("@/components/SectionAboutPreview"));
+const SectionClients = lazy(() => import("@/components/SectionClients"));
+const SectionTeam = lazy(() => import("@/components/SectionTeam"));
+const SectionCTAFooter = lazy(() => import("@/components/SectionCTAFooter"));
+const SectionFAQ = lazy(() => import("@/components/SectionFAQ"));
 
 const Home = () => {
   const scrollProgress = useScrollProgress();
@@ -88,14 +89,16 @@ const Home = () => {
       <main className="flex-1">
         <SectionHero />
         <SectionCompanySnapshot />
-        <SectionAboutPreview />
-        <SectionClients />
-        <SectionProducts />
-        <SectionEngineering />
-        <SectionIndustries />
-        <SectionTeam />
-        <SectionFAQ />
-        <SectionCTAFooter />
+        <Suspense fallback={<div className="h-20 bg-transparent" />}>
+          <SectionAboutPreview />
+          <SectionClients />
+          <SectionProducts />
+          <SectionEngineering />
+          <SectionIndustries />
+          <SectionTeam />
+          <SectionFAQ />
+          <SectionCTAFooter />
+        </Suspense>
       </main>
 
       <Footer />
