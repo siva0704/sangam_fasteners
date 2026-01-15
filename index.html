@@ -12,15 +12,6 @@
   <link rel="canonical" href="https://sangamfasteners.com" />
   <link rel="icon" type="image/svg+xml" href="/sangam_fasteners/logo.svg" />
 
-  <!-- Model Viewer -->
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-  <style>
-    model-viewer {
-      width: 100%;
-      height: 100%;
-    }
-  </style>
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,6 +22,13 @@
   <link rel="preload" as="image"
     href="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=60&w=480&auto=format&fit=crop"
     media="(max-width: 600px)" fetchpriority="high" />
+  <!-- Preload the desktop version of the hero image for faster LCP on desktop -->
+  <link rel="preload" as="image" imagesrcset="
+      https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=60&w=480&auto=format&fit=crop 480w,
+      https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=70&w=800&auto=format&fit=crop 800w,
+      https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1280&auto=format&fit=crop 1280w,
+      https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop 2070w"
+    imagesizes="100vw" media="(min-width: 601px)" fetchpriority="high" />
 
   <title>Sangam Fasteners - Industrial Fasteners & Forged Components Manufacturer | Hubli, India</title>
 
@@ -43,9 +41,9 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@sangamfasteners" />
   <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  <script type="module" crossorigin src="/sangam_fasteners/assets/index-B4jAw8OJ.js"></script>
+  <script type="module" crossorigin src="/sangam_fasteners/assets/index-cEPWbbRN.js"></script>
   <link rel="modulepreload" crossorigin href="/sangam_fasteners/assets/vendor-DwsWDUHm.js">
-  <link rel="modulepreload" crossorigin href="/sangam_fasteners/assets/utils-BeKmTvxs.js">
+  <link rel="modulepreload" crossorigin href="/sangam_fasteners/assets/utils-1MsvQrin.js">
   <link rel="stylesheet" crossorigin href="/sangam_fasteners/assets/index-BCYlCf6P.css">
 </head>
 
