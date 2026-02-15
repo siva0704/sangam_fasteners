@@ -10,10 +10,12 @@ const SectionAboutPreview = () => {
                 <div className="max-w-4xl mx-auto text-center">
                     <AnimatedSection animation="fade-up">
                         <span className="inline-block py-1 px-3 text-accent font-bold text-sm uppercase mb-6">
-                            What We Do
+                            About Us
                         </span>
-                        <h2 className="text-2xl md:text-3xl font-bold font-heading text-primary mb-8 leading-relaxed max-w-5xl mx-auto tracking-wide">
-                            We manufacture fasteners used in <span className="text-accent">load-bearing</span> and <span className="text-accent">function-critical assemblies</span>. Our work is evaluated by how reliably parts assemble and perform over <span className="italic font-serif text-primary/80">repeated supplies</span>.
+                        <h2 className="text-xl md:text-2xl font-bold font-heading text-primary mb-8 leading-relaxed max-w-5xl mx-auto tracking-wide text-justify">
+                            We are a <span className="text-accent">specialised manufacturer</span> dedicated to producing high-quality washing machine shafts and <span className="text-accent">machined components</span> for the global appliance industry. With state-of-the-art manufacturing facilities and a commitment to precision engineering, we supply major appliance manufacturers across continents.
+                            <br /><br />
+                            Our expertise in <span className="italic font-serif text-primary/80">metallurgy, CNC machining, and quality control</span> ensures that every shaft meets the rigorous demands of modern washing machine applications. We combine traditional craftsmanship with advanced manufacturing technology to deliver components that exceed industry standards.
                         </h2>
 
                         <Link to="/about">

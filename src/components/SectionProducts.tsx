@@ -8,8 +8,8 @@ import ProductEnquiryForm from "./ProductEnquiryForm";
 import { products } from "@/constants/data";
 
 const SectionProducts = () => {
-    // Select specific products for diverse showcase
-    const showcaseIds = ['hex-bolts', 'hex-nuts', 'flat-washers', 'socket-screws', 'stud-bolts', 'wm-drum-shaft'];
+    // Select all washing machine shaft products for showcase
+    const showcaseIds = ['main-drive-shafts', 'agitator-shafts', 'custom-shaft-specs', 'material-options'];
     const showcaseProducts = products.filter(p => showcaseIds.includes(p.id));
 
     return (
@@ -21,10 +21,10 @@ const SectionProducts = () => {
                             Our Products
                         </span>
                         <h2 className="text-4xl md:text-5xl font-bold font-heading text-primary mb-4 leading-tight">
-                            Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Precision</span>
+                            Precision-Engineered <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Shaft Solutions</span>
                         </h2>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            Our comprehensive range of fasteners meets the rigorous standards of global industries.
+                            Comprehensive range of washing machine shafts designed for durability, performance, and compatibility with all major appliance platforms.
                         </p>
                     </AnimatedSection>
                     <AnimatedSection animation="fade-left" delay={0.2} className="shrink-0">
@@ -53,9 +53,15 @@ const SectionProducts = () => {
                                     </div>
 
                                     <img
-                                        src={product.image}
+                                        src={
+                                            product.id === 'main-drive-shafts' ? '/sangam_fasteners/assets/main_drive_shaft.png' :
+                                                product.id === 'agitator-shafts' ? '/sangam_fasteners/assets/agitator_shaft.png' :
+                                                    product.id === 'custom-shaft-specs' ? '/sangam_fasteners/assets/custom_components.png' :
+                                                        product.id === 'material-options' ? '/sangam_fasteners/assets/custom_components.png' :
+                                                            product.image
+                                        }
                                         alt={product.name}
-                                        className="w-full h-full object-contain drop-shadow-sm group-hover:scale-110 group-hover:drop-shadow-lg transition-all duration-700 ease-out p-2"
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                                     />
                                 </Link>
 

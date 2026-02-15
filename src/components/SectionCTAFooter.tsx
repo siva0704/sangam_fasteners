@@ -18,7 +18,7 @@ const SectionCTAFooter = () => {
             <div className="container px-4 mx-auto relative z-20 text-center">
                 <AnimatedSection animation="fade-up">
                     <h2 className="text-3xl md:text-4xl font-bold font-heading mb-8">
-                        Looking for a stable fastener manufacturing partner?
+                        Looking for a stable washing machine shaft manufacturing partner?
                     </h2>
                     <Link to="/contact">
                         <MagneticButton size="lg" className="bg-accent text-white hover:bg-accent/90 border-none min-w-[200px]">

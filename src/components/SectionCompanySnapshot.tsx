@@ -62,44 +62,44 @@ const SnapshotCard = ({ item, idx, getDecorationStyle, isActive, domRef, onMouse
 
 const snapshotItems = [
     {
-        icon: History,
-        label: "Established",
-        value: "Since 2000",
-        subtext: "Since 2000",
-        decorations: [Clock, Award, History, Star, Award],
-        animationClass: "group-hover:animate-[pulse_1s_ease-in-out_1] group-[.is-active]:animate-[pulse_1s_ease-in-out_1]"
-    },
-    {
-        icon: MapPin,
-        label: "Location",
-        value: "Hubballi, India",
-        subtext: "Karnataka State",
-        decorations: [MapPin, Globe2, Plane, Ship, MapPin],
-        animationClass: "group-hover:animate-[bounce_1s_ease-in-out_1] group-[.is-active]:animate-[bounce_1s_ease-in-out_1]"
-    },
-    {
         icon: Factory,
-        label: "Business Type",
-        value: "Mfg. Unit",
-        subtext: "Not a Trader",
+        label: "Production Capacity",
+        value: "200K+ Units",
+        subtext: "Per Month",
         decorations: [Factory, Settings2, Box, Truck, Factory],
         animationClass: "group-hover:animate-[pulse_1s_ease-in-out_1] group-[.is-active]:animate-[pulse_1s_ease-in-out_1]"
     },
     {
-        icon: Settings2,
-        label: "Product Scope",
-        value: "Fasteners",
-        subtext: "Standard & Custom",
-        decorations: [Settings2, Zap, ShieldCheck, Settings2, Zap],
+        icon: ShieldCheck,
+        label: "Quality Rate",
+        value: "99.88%",
+        subtext: "Pass Rate",
+        decorations: [ShieldCheck, Award, Star, ShieldCheck, Award],
         animationClass: "group-hover:animate-[pulse_1s_ease-in-out_1] group-[.is-active]:animate-[pulse_1s_ease-in-out_1]"
     },
     {
-        icon: Users2,
-        label: "Market Focus",
-        value: "OEM & Engg.",
-        subtext: "B2B Partnerships",
-        decorations: [Users2, Handshake, Heart, UserCheck, Users2],
+        icon: Clock,
+        label: "Lead Time",
+        value: "48 Hours",
+        subtext: "Available",
+        decorations: [Clock, Zap, Clock, Zap, Clock],
         animationClass: "group-hover:animate-[pulse_1s_ease-in-out_1] group-[.is-active]:animate-[pulse_1s_ease-in-out_1]"
+    },
+    {
+        icon: Award,
+        label: "Certification",
+        value: "ISO 9001:2015",
+        subtext: "Certified",
+        decorations: [Award, ShieldCheck, Star, Award, ShieldCheck],
+        animationClass: "group-hover:animate-[pulse_1s_ease-in-out_1] group-[.is-active]:animate-[pulse_1s_ease-in-out_1]"
+    },
+    {
+        icon: Globe2,
+        label: "Market Focus",
+        value: "Global Appliances",
+        subtext: "Worldwide Supply",
+        decorations: [Globe2, Plane, Ship, MapPin, Globe2],
+        animationClass: "group-hover:animate-[bounce_1s_ease-in-out_1] group-[.is-active]:animate-[bounce_1s_ease-in-out_1]"
     }
 ];
 

@@ -61,7 +61,7 @@ const SectionTeam = () => {
 
                             <p className="text-lg text-muted-foreground leading-relaxed">
                                 Our team of dedicated professionals brings years of expertise in industrial manufacturing.
-                                We are committed to delivering precision, quality, and reliability in every fastener we produce.
+                                We are committed to delivering precision, quality, and reliability in every component we produce.
                             </p>
 
                             <Link to="/about">

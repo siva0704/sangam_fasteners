@@ -4,23 +4,19 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const faqs = [
     {
         question: "Where is Sangam Fasteners Pvt. Ltd. located?",
-        answer: "Sangam Fasteners Pvt. Ltd. is located in Hubballi (Hubli), Karnataka, India, operating from the KSSIDC Industrial Estate on Gokul Road."
+        answer: "Sangam Fasteners Pvt. Ltd. is located at B-23, KSSIDC Gamanagatti Industrial Estate, HUBLI-580021 (KARNATAKA) INDIA."
     },
     {
-        question: "What types of industrial fasteners do you manufacture?",
-        answer: "We manufacture a wide range of industrial fasteners including High Tensile Hex Bolts, Nuts, Studs, U-Bolts, Foundation Bolts, and custom fasteners as per drawings."
+        question: "What types of washing machine shafts do you manufacture?",
+        answer: "We manufacture Main Drive Shafts for top-load and front-load washing machines, Agitator Shafts with precision-machined surface finish, Custom Specifications tailored to your requirements, and offer comprehensive Material Options including Stainless Steel (304/316), Carbon Steel, and Specialty Alloys."
     },
     {
-        question: "Do you supply custom fasteners for OEM applications?",
-        answer: "Yes, we specialize in manufacturing custom fasteners tailored to specific OEM drawings and engineering requirements, ensuring precise dimensional accuracy."
+        question: "Do you supply to global markets?",
+        answer: "Yes, we supply worldwide with reliable logistics partners. We serve North America (USA, Canada, Mexico), Europe (EU markets with CE standards), and Asia-Pacific regions with direct shipping, expedited delivery options, and regional distribution centers."
     },
     {
-        question: "Are your fasteners certified?",
-        answer: "Yes, we are an ISO 9001:2015 certified manufacturer. Our fasteners meet international standards such as ASTM, DIN, ISO, and BS."
-    },
-    {
-        question: "Which industries do you serve?",
-        answer: "We serve diverse industries including Automotive, Infrastructure, Heavy Engineering, Power Generation, Oil & Gas, and General Engineering."
+        question: "Are your products certified?",
+        answer: "Yes, we are ISO 9001:2015 certified. Our quality management system ensures consistent processes and continuous improvement. We maintain complete material traceability and perform 100% inspection with advanced metrology equipment."
     },
     {
         question: "Can I get a quote for a bulk order?",
@@ -56,7 +52,7 @@ const SectionFAQ = () => {
                                     Frequently Asked <br /> <span className="text-blue-600">Questions</span>
                                 </h2>
                                 <p className="text-lg text-muted-foreground">
-                                    Technical insights into our manufacturing standards and fastener solutions.
+                                    Technical insights into our manufacturing standards and shaft solutions.
                                 </p>
                             </div>
 
@@ -106,8 +102,8 @@ const SectionFAQ = () => {
                         </div>
                     </div>
                 </AnimatedSection>
-            </div>
-        </section>
+            </div >
+        </section >
     );
 };
 

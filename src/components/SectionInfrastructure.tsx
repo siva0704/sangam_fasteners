@@ -5,31 +5,31 @@ import AnimatedSection from "./AnimatedSection";
 import ParallaxSection from "./ParallaxSection";
 
 const stats = [
-    { label: "Manufacturing Area", value: "50,000+", unit: "sq. ft." },
-    { label: "Production Capacity", value: "500+", unit: "Tons/Month" },
-    { label: "Skilled Workforce", value: "150+", unit: "Start" }
+    { label: "Production Capacity", value: "200K+", unit: "Units/Month" },
+    { label: "Quality Pass Rate", value: "99.88%", unit: "Accuracy" },
+    { label: "Lead Time Available", value: "48hr", unit: "Fast Delivery" }
 ];
 
 const capabilities = [
     {
-        icon: Factory,
-        title: "Hot & Cold Forging",
-        desc: "Advanced headers and forging presses for high-strength components."
-    },
-    {
         icon: Cog,
         title: "CNC Machining",
-        desc: "Precision turning and milling centers for complex geometries."
+        desc: "Multi-axis CNC turning and milling centers for precision tolerances down to 0.01mm."
     },
     {
         icon: Settings,
-        title: "Thread Rolling",
-        desc: "High-speed thread rolling machines for superior thread strength."
+        title: "Heat Treatment",
+        desc: "In-house heat treatment facilities for optimal hardness and durability characteristics."
     },
     {
         icon: Wrench,
-        title: "Heat Treatment",
-        desc: "Controlled atmosphere furnaces for consistent mechanical properties."
+        title: "Surface Finishing",
+        desc: "Grinding, polishing, and coating capabilities for superior surface quality and corrosion resistance."
+    },
+    {
+        icon: Factory,
+        title: "Quality Control",
+        desc: "Advanced metrology equipment and 100% inspection protocols ensure zero-defect delivery."
     }
 ];
 
@@ -48,13 +48,13 @@ const SectionInfrastructure = () => {
                                 Our Infrastructure
                             </span>
                             <h2 className="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
-                                State-of-the-Art <br />
+                                Advanced Production <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-white">
-                                    Manufacturing Facility
+                                    Technology
                                 </span>
                             </h2>
                             <p className="text-lg text-gray-300 mb-10 leading-relaxed">
-                                Located in Hubli, Karnataka, our 50,000+ sq. ft. facility is equipped with modern machinery to handle large-scale production while maintaining micron-level precision.
+                                Our manufacturing facility combines cutting-edge technology with skilled craftsmanship to deliver superior quality components.
                             </p>
 
                             <Link to="/contact">

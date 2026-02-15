@@ -7,7 +7,8 @@ import SectionCompanySnapshot from "@/components/SectionCompanySnapshot";
 import { lazy, Suspense } from "react";
 
 const SectionProducts = lazy(() => import("@/components/SectionProducts"));
-const SectionEngineering = lazy(() => import("@/components/SectionEngineering"));
+const SectionInfrastructure = lazy(() => import("@/components/SectionInfrastructure"));
+const SectionCertifications = lazy(() => import("@/components/SectionCertifications"));
 const SectionIndustries = lazy(() => import("@/components/SectionIndustries"));
 const SectionAboutPreview = lazy(() => import("@/components/SectionAboutPreview"));
 const SectionClients = lazy(() => import("@/components/SectionClients"));
@@ -19,36 +20,38 @@ const Home = () => {
   const scrollProgress = useScrollProgress();
 
   const faqData = [
+    // ... (keep existing faqData logic if needed for SEO, but keeping it concise here)
     {
       question: "Where is Sangam Fasteners Pvt. Ltd. located?",
-      answer: "Sangam Fasteners Pvt. Ltd. is located in Hubballi (Hubli), Karnataka, India, operating from the KSSIDC Industrial Estate on Gokul Road."
+      answer: "Sangam Fasteners Pvt. Ltd. is located at B-23, KSSIDC Gamanagatti Industrial Estate, HUBLI-580021 (KARNATAKA) INDIA."
     },
     {
-      question: "What types of industrial fasteners do you manufacture?",
-      answer: "We manufacture a wide range of industrial fasteners including High Tensile Hex Bolts, Nuts, Studs, U-Bolts, Foundation Bolts, and custom fasteners as per drawings."
+      question: "What types of washing machine shafts do you manufacture?",
+      answer: "We manufacture Main Drive Shafts for top-load and front-load washing machines, Agitator Shafts with precision-machined surface finish, Custom Specifications tailored to your requirements, and offer comprehensive Material Options including Stainless Steel (304/316), Carbon Steel, and Specialty Alloys."
     },
     {
-      question: "Do you supply custom fasteners for OEM applications?",
-      answer: "Yes, we specialize in manufacturing custom fasteners tailored to specific OEM drawings and engineering requirements, ensuring precise dimensional accuracy."
+      question: "Do you supply to global markets?",
+      answer: "Yes, we supply worldwide with reliable logistics partners. We serve North America (USA, Canada, Mexico), Europe (EU markets with CE standards), and Asia-Pacific regions with direct shipping, expedited delivery options, and regional distribution centers."
     },
     {
-      question: "Are your fasteners certified?",
-      answer: "Yes, we are an ISO 9001:2015 certified manufacturer. Our fasteners meet international standards such as ASTM, DIN, ISO, and BS."
+      question: "Are your products certified?",
+      answer: "Yes, we are ISO 9001:2015 certified. Our quality management system ensures consistent processes and continuous improvement. We maintain complete material traceability and perform 100% inspection with advanced metrology equipment."
     }
   ];
 
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans">
       <Seo
-        title="Sangam Fasteners Pvt. Ltd. | Industrial Fastener Manufacturer in India"
-        description="Sangam Fasteners Pvt. Ltd. is an industrial fastener manufacturer in Hubballi, India, supplying standard and custom fasteners for OEM and engineering applications."
+        title="Sangam Fasteners Pvt. Ltd. | Washing Machine Shaft Manufacturer | Precision Machined Components"
+        description="Leading manufacturer of high-precision washing machine shafts and machined components for the global appliance industry. CNC machining, heat treatment, quality assurance. ISO 9001:2015 certified."
         keywords={[
-          "Industrial Fastener Manufacturer India",
-          "Custom Fasteners India",
-          "OEM Fasteners",
-          "Bolts and Nuts Manufacturer",
-          "Hubballi Fasteners",
-          "High Tensile Fasteners"
+          "Washing Machine Shaft Manufacturer",
+          "Precision Machined Components",
+          "Main Drive Shafts",
+          "Agitator Shafts",
+          "CNC Machining India",
+          "Appliance Components Supplier",
+          "ISO 9001:2015 Certified"
         ]}
         faqs={faqData}
         schema={JSON.stringify({
@@ -58,21 +61,21 @@ const Home = () => {
           "alternateName": "SFL Fasteners",
           "url": "https://siva0704.github.io/sangam_fasteners",
           "logo": "https://siva0704.github.io/sangam_fasteners/logo.png",
-          "description": "Sangam Fasteners Pvt. Ltd. is an industrial fastener manufacturer in Hubballi, India, supplying standard and custom fasteners for OEM and engineering applications.",
+          "description": "Leading manufacturer of high-precision washing machine shafts and machined components for the global appliance industry. Specializing in CNC machining, heat treatment, and quality-controlled production.",
           "foundingDate": "2000",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "B-344/1, KSSIDC Industrial Estate, Gokul Road",
-            "addressLocality": "Hubballi",
+            "streetAddress": "B-23, KSSIDC Gamanagatti Industrial Estate",
+            "addressLocality": "Hubli",
             "addressRegion": "Karnataka",
-            "postalCode": "580030",
+            "postalCode": "580021",
             "addressCountry": "IN"
           },
           "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+91-836-2333333",
+            "telephone": "+91-9343106083",
             "contactType": "customer service",
-            "email": "sf_pl@yahoo.co.in",
+            "email": "info@sfpl.com",
             "areaServed": "World"
           },
           "sameAs": [
@@ -93,7 +96,8 @@ const Home = () => {
           <SectionAboutPreview />
           <SectionClients />
           <SectionProducts />
-          <SectionEngineering />
+          <SectionInfrastructure />
+          <SectionCertifications />
           <SectionIndustries />
           <SectionTeam />
           <SectionFAQ />

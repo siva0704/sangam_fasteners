@@ -10,9 +10,7 @@ const Footer = () => {
           <div>
             <h3 className="font-heading font-bold text-lg mb-4 text-foreground">Sangam Fasteners Pvt Ltd</h3>
             <p className="text-sm text-muted-foreground mb-4">
-              Reliable Fastener Manufacturing. <br />
-              Process-Driven. Specification-Focused. <br />
-              Long-Term Supply Partner.
+              Leading manufacturer of high-precision washing machine shafts for the global appliance industry.
             </p>
             <div className="flex space-x-3">
               <a
@@ -64,16 +62,16 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <MapPin size={16} className="mt-1 flex-shrink-0 text-accent" />
-                <span>B-344/1, KSSIDC Industrial Estate, Gokul Road, Hubli - 580030, Karnataka, India</span>
+                <span>B-23, KSSIDC Gamanagatti Industrial Estate, Hubli - 580021, Karnataka, India</span>
               </li>
               <li className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Phone size={16} className="text-accent" />
-                <span>+91-836-XXXXXXX</span>
+                <span>+91-9343106083</span>
               </li>
               <li className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Mail size={16} className="text-accent" />
-                <a href="mailto:sf_pl@yahoo.co.in" className="hover:text-accent transition-colors">
-                  sf_pl@yahoo.co.in
+                <a href="mailto:info@sfpl.com" className="hover:text-accent transition-colors">
+                  info@sfpl.com
                 </a>
               </li>
             </ul>
@@ -82,8 +80,8 @@ const Footer = () => {
           {/* Business Hours */}
           <div>
             <h3 className="font-heading font-bold text-lg mb-4 text-foreground">Business Hours</h3>
-            <p className="text-sm text-muted-foreground mb-2">Monday - Friday</p>
-            <p className="text-sm font-medium text-foreground">9:00 AM - 6:00 PM IST</p>
+            <p className="text-sm text-muted-foreground mb-2">Monday - Friday: 8:00 AM - 6:00 PM</p>
+            <p className="text-sm text-muted-foreground">Saturday: 9:00 AM - 2:00 PM</p>
           </div>
         </div>
 
