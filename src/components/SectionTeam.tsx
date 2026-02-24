@@ -6,9 +6,9 @@ import SFLPlaceholder from "./SFLPlaceholder";
 
 const teamMembers = [
     {
-        name: "Jeffrey Brown",
-        role: "Creative Leader",
-        image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400",
+        name: "Ishwarappa S Handigol",
+        role: "Chairman",
+        image: "/assets/corporate-profile/leadership/chairman.jpeg",
         socials: {
             facebook: "#",
             instagram: "#",
@@ -16,19 +16,9 @@ const teamMembers = [
         }
     },
     {
-        name: "Ann Richmond",
-        role: "Web Developer",
-        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400",
-        socials: {
-            facebook: "#",
-            instagram: "#",
-            linkedin: "#"
-        }
-    },
-    {
-        name: "Sarah Jenning",
-        role: "Product Manager",
-        image: `${import.meta.env.BASE_URL}team/sarah.png`,
+        name: "Sangamesh I Handigol",
+        role: "CEO",
+        image: "/assets/corporate-profile/leadership/ceo.jpeg",
         socials: {
             facebook: "#",
             instagram: "#",
@@ -54,14 +44,14 @@ const SectionTeam = () => {
                                     Meet The Team
                                     <br />
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300">
-                                        Our Professionals
+                                        Our Leadership
                                     </span>
                                 </h2>
                                 <div className="w-20 h-1 bg-blue-500/30 rounded-full" />
                             </div>
 
                             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                                Our team of dedicated professionals brings years of expertise in industrial manufacturing.
+                                Our leadership team brings years of expertise in industrial manufacturing.
                                 We are committed to delivering precision, quality, and reliability in every component we produce.
                             </p>
 
@@ -75,7 +65,7 @@ const SectionTeam = () => {
 
                     {/* Right Column: Team Grid */}
                     <div className="lg:col-span-8">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
                             {teamMembers.map((member, idx) => (
                                 <AnimatedSection key={idx} animation="fade-up" delay={idx * 0.1}>
                                     <div className="group relative flex flex-col items-center bg-slate-50 dark:bg-slate-800/50 p-8 rounded-xl hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl dark:hover:shadow-blue-900/20 transition-all duration-300 border border-transparent hover:border-slate-200 dark:hover:border-white/10 mt-10"> {/* mt-10 so cards aren't on dark gradient edge */}

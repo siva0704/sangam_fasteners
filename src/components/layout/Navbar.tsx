@@ -4,7 +4,6 @@ import { Menu, X, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { ModeToggle } from "../ModeToggle";
 
 export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -86,8 +85,7 @@ export const Navbar = () => {
                             )} />
                         </Link>
                     ))}
-                    <div className="ml-4 flex items-center gap-4">
-                        <ModeToggle />
+                    <div className="ml-4">
                         <Link
                             to="/contact"
                             className={cn(
@@ -103,8 +101,7 @@ export const Navbar = () => {
                 </div>
 
                 {/* Mobile/Tablet Menu Button (Hidden on LG+) */}
-                <div className="lg:hidden flex items-center gap-4">
-                    <ModeToggle />
+                <div className="lg:hidden">
                     <Sheet open={isOpen} onOpenChange={setIsOpen}>
                         <SheetTrigger asChild>
                             <Button

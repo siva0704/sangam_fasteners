@@ -8,64 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    /* Pure White */
-    --foreground: 215 25% 27%;
-    /* Slate 700 - Readable Text */
-
-    --card: 0 0% 100%;
-    --card-foreground: 215 25% 27%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 27%;
-
-    --primary: 222 47% 11%;
-    /* Slate 900 - Deep Industrial Blue/Grey - Dominant Brand Color */
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    /* Slate 100 - Subtle Backgrounds */
-    --secondary-foreground: 222 47% 11%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215 16% 47%;
-    /* Slate 500 */
-
-    --accent: 217 91% 60%;
-    /* Bright Technical Blue - Highlights/CTAs */
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214 32% 91%;
-    /* Slate 200 */
-    --input: 214 32% 91%;
-    --ring: 222 47% 11%;
-
-    --radius: 0rem;
-    /* Industrial feel = sharp corners or very slight radius */
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217 91% 60%;
-
-    --gradient-hero: linear-gradient(135deg, hsl(222 47% 11%), hsl(217 33% 17%));
-    /* Dark Steel Gradient */
-    --shadow-elegant: 0 4px 20px -2px rgba(0, 0, 0, 0.1);
-    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  }
-
-  .dark {
-    /* Keeping a dark mode option, but "Corporate Industrial" usually defaults to light/clean for websites, 
-       but let's make the dark mode look like "High Tech Factory Night Mode" */
     --background: 222 47% 11%;
-    /* Slate 900 */
     --foreground: 210 40% 98%;
 
     --card: 217 33% 17%;
@@ -89,9 +32,11 @@ All colors MUST be HSL.
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
+    --border: 217 33% 24%;
+    --input: 217 33% 24%;
     --ring: 212.7 26.8% 83.9%;
+
+    --radius: 0rem;
 
     --sidebar-background: 222 47% 11%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -99,8 +44,12 @@ All colors MUST be HSL.
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-border: 217 33% 24%;
     --sidebar-ring: 217 91% 60%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(222 47% 11%), hsl(217 33% 17%));
+    --shadow-elegant: 0 4px 20px -2px rgba(0, 0, 0, 0.1);
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
 }
 

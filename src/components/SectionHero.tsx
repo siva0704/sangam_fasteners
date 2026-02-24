@@ -73,7 +73,7 @@ const SectionHero = () => {
   }, [api]);
 
   return (
-    <section className="relative h-screen min-h-[100dvh] overflow-hidden bg-slate-100 dark:bg-black text-slate-900 dark:text-white transition-colors duration-500">
+    <section className="relative h-screen min-h-[100dvh] overflow-hidden bg-white dark:bg-black text-slate-900 dark:text-white transition-colors duration-500">
       <Carousel
         setApi={setApi}
         className="w-full h-full"
@@ -85,11 +85,11 @@ const SectionHero = () => {
           {heroSlides.map((slide, index) => (
             <CarouselItem key={slide.id} className="relative pl-0 h-full w-full">
               {/* Parallax Background Layer */}
-              <div className="absolute inset-0 z-0 bg-slate-100 dark:bg-black">
+              <div className="absolute inset-0 z-0 bg-white dark:bg-black">
                 <FastenerPattern />
                 {/* Light Mode Gradients */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-100 via-slate-100/40 to-slate-100/80 z-10 block dark:hidden" />
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-100/95 via-slate-100/50 to-transparent z-10 block dark:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/60 to-white/80 z-10 block dark:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/50 to-transparent z-10 block dark:hidden" />
 
                 {/* Dark Mode Gradients */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60 z-10 hidden dark:block" />

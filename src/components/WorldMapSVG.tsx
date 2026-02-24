@@ -13,18 +13,25 @@ const WorldMapSVG: React.FC<React.SVGProps<SVGSVGElement>> = ({ className, ...pr
         >
             <style type="text/css">{` 
                 .country {
-                    stroke: var(--map-border, #ffffff);
+                    stroke: currentColor;
                     stroke-width: .1;
-                    fill: var(--map-land, #c0c0c0);
+                    fill: #cbd5e1;
                     transition: fill 0.8s ease, stroke 0.8s ease;
+                }
+                .dark .country {
+                    fill: #c0c0c0;
+                    stroke: #ffffff;
                 }
                 circle {
                     display: none;
                 }
                 .water {
-                    fill: var(--map-water, #ffffff);
+                    fill: transparent;
                     stroke: none;
                     transition: fill 0.8s ease;
+                }
+                .dark .water {
+                    fill: #ffffff;
                 }
             `}</style>
 
