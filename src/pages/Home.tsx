@@ -4,9 +4,11 @@ import Seo from "@/components/Seo";
 import Footer from "@/components/Footer";
 import SectionHero from "@/components/SectionHero";
 import SectionCompanySnapshot from "@/components/SectionCompanySnapshot";
+import SectionBenchmarkMarquee from "@/components/SectionBenchmarkMarquee";
 import { lazy, Suspense } from "react";
 
 const SectionProducts = lazy(() => import("@/components/SectionProducts"));
+const OperationDiscipline = lazy(() => import("@/components/sections/OperationDiscipline"));
 const SectionInfrastructure = lazy(() => import("@/components/SectionInfrastructure"));
 const SectionCertifications = lazy(() => import("@/components/SectionCertifications"));
 const SectionIndustries = lazy(() => import("@/components/SectionIndustries"));
@@ -22,8 +24,8 @@ const Home = () => {
   const faqData = [
     // ... (keep existing faqData logic if needed for SEO, but keeping it concise here)
     {
-      question: "Where is Sangam Fasteners Pvt. Ltd. located?",
-      answer: "Sangam Fasteners Pvt. Ltd. is located at B-23, KSSIDC Gamanagatti Industrial Estate, HUBLI-580021 (KARNATAKA) INDIA."
+      question: "Where is Sangam Shaft & Machine Components Pvt. Ltd. located?",
+      answer: "Sangam Shaft & Machine Components Pvt. Ltd. is located at B-23, KSSIDC Gamanagatti Industrial Estate, HUBLI-580021 (KARNATAKA) INDIA."
     },
     {
       question: "What types of washing machine shafts do you manufacture?",
@@ -42,7 +44,7 @@ const Home = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans">
       <Seo
-        title="Sangam Fasteners Pvt. Ltd. | Washing Machine Shaft Manufacturer | Precision Machined Components"
+        title="Sangam Shaft & Machine Components Pvt. Ltd. | Washing Machine Shaft Manufacturer | Precision Machined Components"
         description="Leading manufacturer of high-precision washing machine shafts and machined components for the global appliance industry. CNC machining, heat treatment, quality assurance. ISO 9001:2015 certified."
         keywords={[
           "Washing Machine Shaft Manufacturer",
@@ -57,8 +59,8 @@ const Home = () => {
         schema={JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ManufacturingBusiness",
-          "name": "Sangam Fasteners Pvt. Ltd.",
-          "alternateName": "SFL Fasteners",
+          "name": "Sangam Shaft & Machine Components Pvt. Ltd.",
+          "alternateName": "SFL Shaft & Machine Components",
           "url": "https://siva0704.github.io/sangam_fasteners",
           "logo": "https://siva0704.github.io/sangam_fasteners/logo.png",
           "description": "Leading manufacturer of high-precision washing machine shafts and machined components for the global appliance industry. Specializing in CNC machining, heat treatment, and quality-controlled production.",
@@ -79,7 +81,7 @@ const Home = () => {
             "areaServed": "World"
           },
           "sameAs": [
-            "https://www.linkedin.com/company/sangam-fasteners-pvt-ltd"
+            "https://www.linkedin.com/company/sangam-shaft & machine components-pvt-ltd"
           ]
         })}
       />
@@ -91,11 +93,13 @@ const Home = () => {
 
       <main className="flex-1">
         <SectionHero />
+        <SectionBenchmarkMarquee />
         <SectionCompanySnapshot />
         <Suspense fallback={<div className="h-20 bg-transparent" />}>
           <SectionAboutPreview />
           <SectionClients />
           <SectionProducts />
+          <OperationDiscipline />
           <SectionInfrastructure />
           <SectionCertifications />
           <SectionIndustries />

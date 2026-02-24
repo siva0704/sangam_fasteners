@@ -78,7 +78,7 @@ const FactCard = ({ fact, idx, getDecorationStyle, isActive, domRef }: any) => {
     return (
         <div
             ref={domRef}
-            className={`group ${isActive ? "is-active" : ""} relative bg-white p-6 rounded-2xl border border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 overflow-hidden h-full flex flex-col justify-between items-center text-center isolate`}
+            className={`group ${isActive ? "is-active" : ""} relative bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-900/10 dark:hover:shadow-blue-900/20 transition-all duration-500 overflow-hidden h-full flex flex-col justify-between items-center text-center isolate`}
         >
 
             {/* Enhanced Decorations (Bloom from center) */}
@@ -89,7 +89,7 @@ const FactCard = ({ fact, idx, getDecorationStyle, isActive, domRef }: any) => {
                         key={i}
                         className={`absolute top-[80px] left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-0 group-hover:opacity-90 group-hover:scale-100 group-[.is-active]:opacity-90 group-[.is-active]:scale-100 transition-all duration-700 ease-out ${style.translate} ${style.delay} z-0 pointer-events-none`}
                     >
-                        <Deco className={`text-blue-300 ${style.size}`} />
+                        <Deco className={`text-blue-300 dark:text-blue-500/50 ${style.size}`} />
                     </div>
                 );
             })}
@@ -98,16 +98,16 @@ const FactCard = ({ fact, idx, getDecorationStyle, isActive, domRef }: any) => {
             <div className="w-full flex flex-col items-center relative">
                 <div className="relative mb-6">
                     {/* Main Icon Container - Glowing Effect */}
-                    <div className={`p-5 rounded-2xl bg-slate-50 text-slate-400 group-hover:bg-white group-hover:text-blue-600 group-[.is-active]:bg-white group-[.is-active]:text-blue-600 transition-all duration-300 shadow-sm group-hover:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] group-[.is-active]:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] ring-1 ring-slate-100 group-hover:ring-blue-100 group-[.is-active]:ring-blue-100 relative z-20`}>
-                        <fact.icon size={36} strokeWidth={1.5} className="group-hover:scale-110 group-[.is-active]:scale-110 group-hover:-translate-y-1 group-[.is-active]:-translate-y-1 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] fill-blue-50/0 group-hover:fill-blue-50 group-[.is-active]:fill-blue-50" />
+                    <div className={`p-5 rounded-2xl bg-slate-50 dark:bg-slate-800 text-slate-400 dark:text-slate-500 group-hover:bg-white dark:group-hover:bg-slate-900 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-[.is-active]:bg-white dark:group-[.is-active]:bg-slate-900 group-[.is-active]:text-blue-600 dark:group-[.is-active]:text-blue-400 transition-all duration-300 shadow-sm group-hover:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] group-[.is-active]:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] ring-1 ring-slate-100 dark:ring-slate-800 group-hover:ring-blue-100 dark:group-hover:ring-blue-900 group-[.is-active]:ring-blue-100 dark:group-[.is-active]:ring-blue-900 relative z-20`}>
+                        <fact.icon size={36} strokeWidth={1.5} className="group-hover:scale-110 group-[.is-active]:scale-110 group-hover:-translate-y-1 group-[.is-active]:-translate-y-1 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] fill-blue-50/0 group-hover:fill-blue-50 dark:group-hover:fill-blue-500/10 group-[.is-active]:fill-blue-50 dark:group-[.is-active]:fill-blue-500/10" />
                     </div>
                 </div>
 
                 <div className="space-y-3 relative z-20">
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.25em] group-hover:text-blue-600 group-[.is-active]:text-blue-600 transition-colors duration-300">
+                    <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.25em] group-hover:text-blue-600 dark:group-hover:text-blue-400 group-[.is-active]:text-blue-600 dark:group-[.is-active]:text-blue-400 transition-colors duration-300">
                         {fact.label}
                     </p>
-                    <h3 className="text-2xl font-bold text-slate-900 leading-none transition-colors duration-300 break-words w-full">
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white leading-none transition-colors duration-300 break-words w-full">
                         {fact.value}
                     </h3>
                 </div>
@@ -115,8 +115,8 @@ const FactCard = ({ fact, idx, getDecorationStyle, isActive, domRef }: any) => {
 
             {/* Bottom Pill - Animated */}
             <div className="relative z-20 mt-2 w-full flex justify-center">
-                <span className="inline-flex items-center gap-2 px-5 py-2.5 text-[10px] font-bold text-slate-500 uppercase transition-all duration-500 group-hover:text-blue-600 group-[.is-active]:text-blue-600">
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-blue-500 group-[.is-active]:bg-blue-500 transition-all duration-500 shrink-0" />
+                <span className="inline-flex items-center gap-2 px-5 py-2.5 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase transition-all duration-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-[.is-active]:text-blue-600 dark:group-[.is-active]:text-blue-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 group-hover:bg-blue-500 dark:group-hover:bg-blue-400 group-[.is-active]:bg-blue-500 dark:group-[.is-active]:bg-blue-400 transition-all duration-500 shrink-0" />
                     <span className="whitespace-nowrap">{fact.subtext}</span>
                 </span>
             </div>
@@ -157,15 +157,15 @@ const SectionFactsheet = () => {
     }, []);
 
     return (
-        <section className="py-10 bg-slate-50 border-y border-slate-200 relative">
-            <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:20px_20px] opacity-20 pointer-events-none" />
+        <section className="py-10 bg-slate-50 dark:bg-[#0a0f1c] border-y border-slate-200 dark:border-slate-800 relative">
+            <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:20px_20px] opacity-20 pointer-events-none" />
 
             <div className="container px-4 mx-auto relative z-10">
                 <AnimatedSection animation="fade-up" className="mb-12 text-center">
-                    <span className="text-accent font-bold tracking-widest text-xs uppercase mb-2 block">
+                    <span className="text-accent dark:text-blue-400 font-bold tracking-widest text-xs uppercase mb-2 block">
                         Corporate Profile
                     </span>
-                    <h2 className="text-3xl font-heading font-bold text-slate-900">
+                    <h2 className="text-3xl font-heading font-bold text-slate-900 dark:text-white">
                         Key Facts & Figures
                     </h2>
                 </AnimatedSection>
@@ -182,11 +182,11 @@ const SectionFactsheet = () => {
                             ];
                             const delays = ["delay-75", "delay-150", "delay-100", "delay-200", "delay-300"];
                             const sizes = [
-                                "text-blue-400 w-4 h-4 md:w-10 md:h-10",
-                                "text-sky-400 w-2.5 h-2.5 md:w-7 md:h-7",
-                                "text-blue-300 w-2 h-2 md:w-5 md:h-5",
-                                "text-sky-300 w-3 h-3 md:w-8 md:h-8",
-                                "text-blue-200 w-2 h-2 md:w-5 md:h-5"
+                                "text-blue-400 dark:text-blue-500 w-4 h-4 md:w-10 md:h-10",
+                                "text-sky-400 dark:text-sky-500 w-2.5 h-2.5 md:w-7 md:h-7",
+                                "text-blue-300 dark:text-blue-600 w-2 h-2 md:w-5 md:h-5",
+                                "text-sky-300 dark:text-sky-600 w-3 h-3 md:w-8 md:h-8",
+                                "text-blue-200 dark:text-blue-700 w-2 h-2 md:w-5 md:h-5"
                             ];
                             return { translate: translations[i % 5], delay: delays[i % 5], size: sizes[i % 5] };
                         };

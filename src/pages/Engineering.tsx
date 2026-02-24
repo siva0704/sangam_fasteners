@@ -8,15 +8,15 @@ const Engineering = () => {
     return (
         <div className="min-h-screen flex flex-col bg-background font-sans">
             <Seo
-                title="Engineering & Quality | Industrial Fastener Manufacturing"
-                description="Engineering and quality systems focused on process control, dimensional accuracy, and repeatable supply for industrial fasteners."
+                title="Engineering & Quality | Industrial Shaft & Machine Component Manufacturing"
+                description="Engineering and quality systems focused on process control, dimensional accuracy, and repeatable supply for industrial shaft & machine components."
                 keywords={[
-                    "fastener quality control",
-                    "industrial engineering fasteners",
+                    "shaft & machine component quality control",
+                    "industrial engineering shaft & machine components",
                     "dimensional accuracy",
                     "process control manufacturing",
-                    "ISO certified fasteners India",
-                    "fastener inspection",
+                    "ISO certified shaft & machine components India",
+                    "shaft & machine component inspection",
                     "repeatable supply"
                 ]}
             />

@@ -178,13 +178,13 @@ const SectionProduct3DExplorer = () => {
     };
 
     return (
-        <section className="py-10 bg-slate-50 relative overflow-hidden">
+        <section className="py-10 bg-slate-50 dark:bg-[#0a0f1c] relative overflow-hidden transition-colors duration-500">
             <div className="container px-4 mx-auto">
                 <AnimatedSection>
                     <div className="text-center max-w-2xl mx-auto mb-12">
-                        <span className="text-blue-600 font-bold uppercase text-sm">Interactive Product Showcase</span>
-                        <h2 className="text-3xl md:text-4xl font-bold mt-2 text-slate-900">Precision Engineered Fasteners</h2>
-                        <p className="text-slate-600 mt-4">Select a category to explore our premium components in 3D.</p>
+                        <span className="text-blue-600 dark:text-blue-400 font-bold uppercase text-sm">Interactive Product Showcase</span>
+                        <h2 className="text-3xl md:text-4xl font-bold mt-2 text-slate-900 dark:text-white transition-colors duration-500">Precision Engineered Shaft & Machine Components</h2>
+                        <p className="text-slate-600 dark:text-slate-400 mt-4 transition-colors duration-500">Select a category to explore our premium components in 3D.</p>
                     </div>
                 </AnimatedSection>
             </div>
@@ -198,46 +198,46 @@ const SectionProduct3DExplorer = () => {
                         <div className="w-full h-full relative">
 
                             {/* Controls Toolbar (Bottom Center) */}
-                            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-4 bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-white/50 shadow-xl">
-                                <button onClick={() => setAutoRotate(!autoRotate)} title={autoRotate ? "Pause Rotation" : "Auto Rotate"} className={`p-2 rounded-xl transition-colors ${autoRotate ? "text-blue-600 bg-blue-50" : "text-slate-500 hover:text-blue-600 hover:bg-blue-50"}`}>
+                            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-3 rounded-2xl border border-white/50 dark:border-slate-800 shadow-xl dark:shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-colors duration-500">
+                                <button onClick={() => setAutoRotate(!autoRotate)} title={autoRotate ? "Pause Rotation" : "Auto Rotate"} className={`p-2 rounded-xl transition-colors ${autoRotate ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20" : "text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30"}`}>
                                     {autoRotate ? <Pause size={24} /> : <Play size={24} />}
                                 </button>
-                                <div className="w-px bg-slate-200" />
-                                <button onClick={handleHome} title="Reset View" className="p-2 hover:bg-blue-50 rounded-xl text-slate-500 hover:text-blue-600 transition-colors">
+                                <div className="w-px bg-slate-200 dark:bg-slate-700 transition-colors" />
+                                <button onClick={handleHome} title="Reset View" className="p-2 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-xl text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                                     <RotateCcw size={24} />
                                 </button>
-                                <div className="w-px bg-slate-200" />
-                                <button onClick={() => handleZoom('in')} title="Zoom In" className="p-2 hover:bg-blue-50 rounded-xl text-slate-500 hover:text-blue-600 transition-colors">
+                                <div className="w-px bg-slate-200 dark:bg-slate-700 transition-colors" />
+                                <button onClick={() => handleZoom('in')} title="Zoom In" className="p-2 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-xl text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                                     <ZoomIn size={24} />
                                 </button>
-                                <button onClick={() => handleZoom('out')} title="Zoom Out" className="p-2 hover:bg-blue-50 rounded-xl text-slate-500 hover:text-blue-600 transition-colors">
+                                <button onClick={() => handleZoom('out')} title="Zoom Out" className="p-2 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-xl text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                                     <ZoomOut size={24} />
                                 </button>
                             </div>
 
                             {/* Material Selector (Top Right) */}
                             <div className="absolute top-6 right-6 z-20 flex flex-col items-end gap-3 pointer-events-auto">
-                                <div className="bg-white/80 backdrop-blur-md p-4 rounded-xl border border-white/50 shadow-lg">
-                                    <h4 className="text-[10px] font-bold text-slate-400 uppercase mb-3 text-right">Material Finish</h4>
+                                <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md p-4 rounded-xl border border-white/50 dark:border-slate-800 shadow-lg dark:shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-colors duration-500">
+                                    <h4 className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase mb-3 text-right">Material Finish</h4>
                                     <div className="flex gap-2">
                                         {(Object.keys(MATERIALS) as Array<keyof typeof MATERIALS>).map((key) => (
                                             <button
                                                 key={key}
                                                 onClick={() => setSelectedTexture(key)}
                                                 title={MATERIALS[key].name}
-                                                className={`w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 shadow-sm ${selectedTexture === key ? 'border-blue-500 ring-2 ring-blue-200' : 'border-white'}`}
+                                                className={`w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 shadow-sm ${selectedTexture === key ? 'border-blue-500 ring-2 ring-blue-200 dark:ring-blue-900/50' : 'border-white dark:border-slate-700'}`}
                                                 style={{ backgroundColor: MATERIALS[key].color }}
                                             />
                                         ))}
                                     </div>
-                                    <p className="text-xs text-slate-600 font-bold text-right mt-2">{MATERIALS[selectedTexture].name}</p>
+                                    <p className="text-xs text-slate-600 dark:text-slate-300 font-bold text-right mt-2 transition-colors">{MATERIALS[selectedTexture].name}</p>
                                 </div>
                             </div>
 
                             {/* R3F Canvas */}
                             <div className="w-full h-full cursor-move" style={{ touchAction: 'pan-y' }}>
                                 <Canvas shadows dpr={[1, 2]} camera={{ position: [10, 10, 10], fov: 45 }}>
-                                    <color attach="background" args={['#fafafa']} />
+                                    <color attach="background" args={['transparent']} />
                                     <Stage environment="studio" intensity={0.7} shadows="contact" adjustCamera={false}>
                                         <mesh scale={[zoom, zoom, zoom]}>
                                             <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
@@ -259,10 +259,10 @@ const SectionProduct3DExplorer = () => {
                             </div>
 
                             <div className="absolute top-6 left-6 z-10 pointer-events-none">
-                                <h3 className="text-xl font-bold text-slate-900 mb-1">
-                                    {VIEW_OPTIONS.find(v => v.id === selectedView)?.name || "Fastener Collection"}
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1 transition-colors">
+                                    {VIEW_OPTIONS.find(v => v.id === selectedView)?.name || "Shaft & Machine Component Collection"}
                                 </h3>
-                                <p className="text-slate-500 text-xs">Interactive 3D View</p>
+                                <p className="text-slate-500 dark:text-slate-400 text-xs transition-colors">Interactive 3D View</p>
                             </div>
 
                         </div>
@@ -271,13 +271,13 @@ const SectionProduct3DExplorer = () => {
                     {/* RIGHT: Selection Container */}
                     <div className="flex-1 w-full max-w-[600px] p-6 md:p-8 relative flex flex-col justify-center">
                         {/* Top Decoration */}
-                        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-slate-900/10 to-blue-600/50" />
+                        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-slate-900/10 dark:from-white/10 to-blue-600/50 dark:to-blue-500/30" />
 
                         <div className="mb-8 text-left">
-                            <h3 className="text-3xl font-bold font-heading mb-2 text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-blue-600">
+                            <h3 className="text-3xl font-bold font-heading mb-2 text-transparent bg-clip-text bg-gradient-to-r from-slate-900 dark:from-white to-blue-600 dark:to-blue-400 transition-all duration-500">
                                 Model Selection
                             </h3>
-                            <p className="text-slate-500 font-medium">
+                            <p className="text-slate-500 dark:text-slate-400 font-medium transition-colors">
                                 Choose a component to inspect in high-fidelity 3D.
                             </p>
                         </div>
@@ -287,31 +287,31 @@ const SectionProduct3DExplorer = () => {
                                 <button
                                     key={item.id}
                                     onClick={() => setSelectedView(item.id)}
-                                    className={`group relative flex flex-col items-start text-left bg-slate-50/50 rounded-xl overflow-hidden border transition-all duration-300 ${selectedView === item.id
-                                        ? 'border-blue-500 shadow-md ring-2 ring-blue-50 scale-[1.02] bg-white'
-                                        : 'border-slate-200 hover:border-blue-300 hover:bg-white hover:shadow-md'
+                                    className={`group relative flex flex-col items-start text-left bg-slate-50/50 dark:bg-slate-800/50 rounded-xl overflow-hidden transition-all duration-300 ${selectedView === item.id
+                                        ? 'border-2 border-blue-500 dark:border-blue-400 shadow-md ring-2 ring-blue-50 dark:ring-blue-900/30 scale-[1.02] bg-white dark:bg-slate-800'
+                                        : 'border-2 border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-500 hover:bg-white dark:hover:bg-slate-800 hover:shadow-md'
                                         }`}
                                 >
                                     {/* card image container */}
-                                    <div className="w-full h-24 sm:h-28 bg-white relative overflow-hidden border-b border-slate-100">
-                                        <div className="absolute inset-0 bg-slate-100/50" />
+                                    <div className="w-full h-24 sm:h-28 bg-white dark:bg-slate-900 relative overflow-hidden border-b border-slate-100 dark:border-slate-800">
+                                        <div className="absolute inset-0 bg-slate-100/50 dark:bg-slate-900/50" />
                                         <img
                                             src={item.image}
                                             alt={item.name}
-                                            className="w-full h-full object-cover mix-blend-multiply opacity-90 group-hover:scale-110 transition-transform duration-500 relative z-10"
+                                            className="w-full h-full object-cover mix-blend-multiply dark:mix-blend-screen opacity-90 group-hover:scale-110 transition-transform duration-500 relative z-10"
                                         />
                                         {/* Active Indicator Dot */}
                                         {selectedView === item.id && (
-                                            <div className="absolute top-2 right-2 w-2 h-2 bg-blue-600 rounded-full shadow-sm ring-2 ring-white z-20" />
+                                            <div className="absolute top-2 right-2 w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full shadow-sm ring-2 ring-white dark:ring-slate-900 z-20" />
                                         )}
                                     </div>
 
                                     {/* card content container */}
                                     <div className="p-3 w-full relative">
-                                        <h3 className={`font-bold text-sm sm:text-base leading-tight mb-1 transition-colors ${selectedView === item.id ? 'text-blue-600' : 'text-slate-700 group-hover:text-blue-600'}`}>
+                                        <h3 className={`font-bold text-sm sm:text-base leading-tight mb-1 transition-colors ${selectedView === item.id ? 'text-blue-600 dark:text-blue-400' : 'text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400'}`}>
                                             {item.name}
                                         </h3>
-                                        <p className="text-[10px] sm:text-xs font-medium text-slate-400 group-hover:text-blue-400 transition-colors line-clamp-1">
+                                        <p className="text-[10px] sm:text-xs font-medium text-slate-400 dark:text-slate-500 group-hover:text-blue-400 dark:group-hover:text-blue-300 transition-colors line-clamp-1">
                                             {item.description}
                                         </p>
                                     </div>

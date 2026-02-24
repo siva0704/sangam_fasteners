@@ -1,4 +1,4 @@
-import { Factory, History, MapPin, Settings2, Users2, Globe2, Zap, ShieldCheck, Award, Clock, Star, Ship, Plane, Box, Truck, Heart, Handshake, UserCheck } from "lucide-react";
+import { Factory, History, MapPin, Settings2, Users2, Globe2, Zap, ShieldCheck, Award, Clock, Star, Ship, Plane, Box, Truck, Heart, Handshake, UserCheck, Cog } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 
@@ -7,15 +7,15 @@ const SnapshotCard = ({ item, idx, getDecorationStyle, isActive, domRef, onMouse
         <div
             ref={domRef}
             onMouseEnter={onMouseEnter}
-            className={`group ${isActive ? "is-active" : ""} relative bg-white p-6 rounded-3xl border border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 overflow-hidden h-[180px] flex items-center justify-between text-left isolate`}
+            className={`group ${isActive ? "is-active" : ""} relative bg-white dark:bg-slate-900/40 p-6 rounded-3xl border border-slate-100 dark:border-white/5 hover:border-blue-300 dark:hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-900/10 dark:hover:shadow-blue-900/20 transition-all duration-500 overflow-hidden h-[180px] flex items-center justify-between text-left isolate backdrop-blur-sm`}
         >
             {/* Ripple Effect Background - Starts from left icon area */}
-            <div className="absolute top-1/2 left-[15%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-50/90 rounded-full scale-0 group-hover:scale-100 group-[.is-active]:scale-100 transition-transform duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)] origin-center -z-10 pointer-events-none" />
+            <div className="absolute top-1/2 left-[15%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-50/90 dark:bg-blue-900/10 rounded-full scale-0 group-hover:scale-100 group-[.is-active]:scale-100 transition-transform duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)] origin-center -z-10 pointer-events-none" />
 
             {/* Big Illustration Watermark */}
             <item.icon
                 strokeWidth={1}
-                className="absolute -right-6 -bottom-6 w-32 h-32 text-slate-50/50 group-hover:text-blue-100/50 group-[.is-active]:text-blue-100/50 transition-all duration-700 ease-out -rotate-12 group-hover:rotate-0 scale-100 group-hover:scale-110 -z-10"
+                className="absolute -right-6 -bottom-6 w-32 h-32 text-slate-50/50 dark:text-white/5 group-hover:text-blue-100/50 dark:group-hover:text-blue-500/10 group-[.is-active]:text-blue-100/50 dark:group-[.is-active]:text-blue-500/10 transition-all duration-700 ease-out -rotate-12 group-hover:rotate-0 scale-100 group-hover:scale-110 -z-10"
             />
 
             {/* Dynamically Blooming Decorations - Floating on Right Side of Card */}
@@ -26,7 +26,7 @@ const SnapshotCard = ({ item, idx, getDecorationStyle, isActive, domRef, onMouse
                         key={i}
                         className={`absolute top-1/2 right-[15%] -translate-y-1/2 opacity-0 scale-0 group-hover:opacity-60 group-hover:scale-100 group-[.is-active]:opacity-60 group-[.is-active]:scale-100 transition-all duration-700 ease-out ${style.translate} ${style.delay} z-0 pointer-events-none`}
                     >
-                        <DecoIcon className={`text-blue-300/50 ${style.size}`} />
+                        <DecoIcon className={`text-blue-300/50 dark:text-blue-400/30 ${style.size}`} />
                     </div>
                 );
             })}
@@ -34,24 +34,24 @@ const SnapshotCard = ({ item, idx, getDecorationStyle, isActive, domRef, onMouse
             {/* Left Content: Icon & Text */}
             <div className="flex items-center gap-6 relative z-20 w-full">
                 {/* Main Icon Container */}
-                <div className={`shrink-0 p-4 rounded-2xl bg-slate-50 text-slate-400 group-hover:bg-white group-hover:text-blue-600 group-[.is-active]:bg-white group-[.is-active]:text-blue-600 transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-blue-200/50 group-[.is-active]:shadow-lg group-[.is-active]:shadow-blue-200/50 ring-1 ring-slate-100 group-hover:ring-blue-100 group-[.is-active]:ring-blue-100 relative z-20`}>
+                <div className={`shrink-0 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 text-slate-400 dark:text-slate-500 group-hover:bg-white dark:group-hover:bg-slate-800 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-[.is-active]:bg-white dark:group-[.is-active]:bg-slate-800 group-[.is-active]:text-blue-600 dark:group-[.is-active]:text-blue-400 transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-blue-200/50 dark:group-hover:shadow-blue-900/50 group-[.is-active]:shadow-lg group-[.is-active]:shadow-blue-200/50 dark:group-[.is-active]:shadow-blue-900/50 ring-1 ring-slate-100 dark:ring-white/5 group-hover:ring-blue-100 dark:group-hover:ring-blue-500/20 group-[.is-active]:ring-blue-100 dark:group-[.is-active]:ring-blue-500/20 relative z-20`}>
                     <item.icon
                         size={32}
                         strokeWidth={1.5}
-                        className={`transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] fill-blue-50/0 group-hover:fill-blue-50 group-[.is-active]:fill-blue-50 ${item.animationClass}`}
+                        className={`transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] fill-transparent group-hover:fill-blue-50 dark:group-hover:fill-blue-950/30 group-[.is-active]:fill-blue-50 dark:group-[.is-active]:fill-blue-950/30 ${item.animationClass}`}
                     />
                 </div>
 
                 {/* Text Content */}
                 <div className="flex flex-col items-start gap-1">
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.25em] group-hover:text-blue-600 group-[.is-active]:text-blue-600 transition-colors duration-300">{item.label}</p>
-                    <h3 className="text-2xl font-bold text-slate-900 leading-none transition-colors duration-300 group-hover:text-blue-900 group-[.is-active]:text-blue-900 mb-2">
+                    <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.25em] group-hover:text-blue-600 dark:group-hover:text-blue-400 group-[.is-active]:text-blue-600 dark:group-[.is-active]:text-blue-400 transition-colors duration-300">{item.label}</p>
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white leading-none transition-colors duration-300 group-hover:text-blue-900 dark:group-hover:text-blue-100 group-[.is-active]:text-blue-900 dark:group-[.is-active]:text-blue-100 mb-2">
                         {item.value}
                     </h3>
 
                     {/* Pill inside text block */}
-                    <span className="inline-flex items-center gap-2 px-3 py-1 text-[10px] font-bold text-slate-500 uppercase transition-all duration-500 group-hover:text-blue-700 group-[.is-active]:text-blue-700 rounded-full bg-slate-50 border border-slate-100 shadow-sm group-hover:border-blue-100 group-[.is-active]:border-blue-100 group-hover:bg-white group-[.is-active]:bg-white group-hover:shadow-sm group-[.is-active]:shadow-sm">
-                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-blue-500 group-[.is-active]:bg-blue-500 transition-all duration-500 shrink-0" />
+                    <span className="inline-flex items-center gap-2 px-3 py-1 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase transition-all duration-500 group-hover:text-blue-700 dark:group-hover:text-blue-300 group-[.is-active]:text-blue-700 dark:group-[.is-active]:text-blue-300 rounded-full bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-white/5 shadow-sm group-hover:border-blue-100 dark:group-hover:border-blue-500/30 group-[.is-active]:border-blue-100 dark:group-[.is-active]:border-blue-500/30 group-hover:bg-white dark:group-hover:bg-slate-800 group-[.is-active]:bg-white dark:group-[.is-active]:bg-slate-800 group-hover:shadow-sm group-[.is-active]:shadow-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 group-hover:bg-blue-500 group-[.is-active]:bg-blue-500 transition-all duration-500 shrink-0" />
                         <span className="whitespace-nowrap">{item.subtext}</span>
                     </span>
                 </div>
@@ -63,26 +63,34 @@ const SnapshotCard = ({ item, idx, getDecorationStyle, isActive, domRef, onMouse
 const snapshotItems = [
     {
         icon: Factory,
-        label: "Production Capacity",
-        value: "200K+ Units",
-        subtext: "Per Month",
+        label: "Production Scale",
+        value: "20,000 m²",
+        subtext: "Manufacturing Area",
         decorations: [Factory, Settings2, Box, Truck, Factory],
         animationClass: "group-hover:animate-[pulse_1s_ease-in-out_1] group-[.is-active]:animate-[pulse_1s_ease-in-out_1]"
     },
     {
-        icon: ShieldCheck,
-        label: "Quality Rate",
-        value: "99.88%",
-        subtext: "Pass Rate",
-        decorations: [ShieldCheck, Award, Star, ShieldCheck, Award],
-        animationClass: "group-hover:animate-[pulse_1s_ease-in-out_1] group-[.is-active]:animate-[pulse_1s_ease-in-out_1]"
+        icon: Settings2,
+        label: "Infrastructure",
+        value: "51+ CNC",
+        subtext: "Advanced Machines",
+        decorations: [Settings2, Zap, Cog, Settings2, Zap],
+        animationClass: "group-hover:animate-[spin_2s_linear_1] group-[.is-active]:animate-[spin_2s_linear_1]"
     },
     {
-        icon: Clock,
-        label: "Lead Time",
-        value: "48 Hours",
-        subtext: "Available",
-        decorations: [Clock, Zap, Clock, Zap, Clock],
+        icon: Users2,
+        label: "Workforce",
+        value: "120+",
+        subtext: "Skilled Engineers",
+        decorations: [Users2, Handshake, Heart, UserCheck, Users2],
+        animationClass: "group-hover:animate-[bounce_1s_ease-in-out_1] group-[.is-active]:animate-[bounce_1s_ease-in-out_1]"
+    },
+    {
+        icon: ShieldCheck,
+        label: "Precision",
+        value: "0.0001 mm",
+        subtext: "VMM Testing",
+        decorations: [ShieldCheck, Award, Star, ShieldCheck, Award],
         animationClass: "group-hover:animate-[pulse_1s_ease-in-out_1] group-[.is-active]:animate-[pulse_1s_ease-in-out_1]"
     },
     {
@@ -92,14 +100,6 @@ const snapshotItems = [
         subtext: "Certified",
         decorations: [Award, ShieldCheck, Star, Award, ShieldCheck],
         animationClass: "group-hover:animate-[pulse_1s_ease-in-out_1] group-[.is-active]:animate-[pulse_1s_ease-in-out_1]"
-    },
-    {
-        icon: Globe2,
-        label: "Market Focus",
-        value: "Global Appliances",
-        subtext: "Worldwide Supply",
-        decorations: [Globe2, Plane, Ship, MapPin, Globe2],
-        animationClass: "group-hover:animate-[bounce_1s_ease-in-out_1] group-[.is-active]:animate-[bounce_1s_ease-in-out_1]"
     }
 ];
 
@@ -177,10 +177,10 @@ const SectionCompanySnapshot = () => {
     };
 
     return (
-        <section className="relative py-10 bg-gradient-to-b from-white to-gray-50/50 border-b border-slate-100">
+        <section className="relative py-10 bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-[#050814] transition-colors duration-500">
             {/* Ambient Background Pattern */}
-            <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#0f172a_1px,transparent_1px)] [background-size:20px_20px]" />
+            <div className="absolute inset-0 opacity-[0.02] dark:opacity-10 pointer-events-none">
+                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#0f172a_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
             </div>
 
             <div className="container px-4 mx-auto relative z-10">

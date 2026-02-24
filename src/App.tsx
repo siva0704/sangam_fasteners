@@ -9,6 +9,8 @@ import { Navbar } from "./components/layout/Navbar";
 import { SmoothScroll } from "./components/layout/SmoothScroll";
 import Home from "./pages/Home";
 
+import { ThemeProvider } from "./components/ThemeProvider";
+
 // Lazy load other pages
 const About = lazy(() => import("./pages/About"));
 const Products = lazy(() => import("./pages/Products"));
@@ -32,27 +34,29 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <SmoothScroll>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter basename="/sangam_fasteners" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-            <ScrollToTop />
-            <Navbar />
-            <BackToTop />
-            <Suspense fallback={<div className="min-h-screen bg-background" />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/products/:id" element={<ProductDetails />} />
-                <Route path="/engineering" element={<Engineering />} />
-                <Route path="/industries" element={<Industries />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </BrowserRouter>
-        </SmoothScroll>
+        <ThemeProvider defaultTheme="dark" storageKey="sfl-theme">
+          <SmoothScroll>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter basename="/sangam_fasteners" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+              <ScrollToTop />
+              <Navbar />
+              <BackToTop />
+              <Suspense fallback={<div className="min-h-screen bg-background" />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/products" element={<Products />} />
+                  <Route path="/products/:id" element={<ProductDetails />} />
+                  <Route path="/engineering" element={<Engineering />} />
+                  <Route path="/industries" element={<Industries />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
+            </BrowserRouter>
+          </SmoothScroll>
+        </ThemeProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );

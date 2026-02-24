@@ -64,15 +64,15 @@ const Seo = ({ title, description, keywords = [], schema, faqs, productSchema }:
             const productCatalogSchema = {
                 "@context": "https://schema.org",
                 "@type": "Product",
-                "name": "Industrial Fasteners Portfolio",
-                "description": "Comprehensive range of industrial fasteners including bolts, nuts, studs, U-bolts, and custom components.",
+                "name": "Industrial Shaft & Machine Components Portfolio",
+                "description": "Comprehensive range of industrial shaft & machine components including bolts, nuts, studs, U-bolts, and custom components.",
                 "brand": {
                     "@type": "Brand",
-                    "name": "Sangam Fasteners"
+                    "name": "Sangam Shaft & Machine Components"
                 },
                 "manufacturer": {
                     "@type": "Organization",
-                    "name": "Sangam Fasteners Pvt. Ltd."
+                    "name": "Sangam Shaft & Machine Components Pvt. Ltd."
                 },
                 "offers": {
                     "@type": "AggregateOffer",

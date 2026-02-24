@@ -16,48 +16,39 @@ import {
 const heroSlides = [
   {
     id: 1,
-    title: "Engineering Excellence Since Day One",
-    subtitle: "Global Appliance Industry",
+    title: "Precision Engineering",
+    subtitle: "at Global Scale",
     badge: "Specialised Manufacturer",
-    description: "We are a specialised manufacturer dedicated to producing high-quality washing machine shafts and Machined Components for the global appliance industry.",
+    description: "20,000m² manufacturing facility equipped with 51+ advanced CNC centers and robotic automation, delivering zero-defect components to tier-1 appliance brands.",
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop",
     accentColor: "from-blue-400 to-cyan-300",
   },
   {
     id: 2,
-    title: "Advanced Manufacturing",
-    subtitle: "Consistent Quality",
-    badge: "High-Volume Capacity",
-    description: "State-of-the-art CNC machining centers and automated production lines ensure consistent quality and high-volume capacity.",
+    title: "Uncompromising",
+    subtitle: "Quality Control",
+    badge: "0.0001mm Resolution",
+    description: "Our state-of-the-art metrology lab features non-contact Vision Measuring Machines and Japanese digital instruments for absolute precision verification.",
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop",
     accentColor: "from-blue-400 to-cyan-300",
   },
   {
     id: 3,
-    title: "Global Reach",
-    subtitle: "Reliable Logistics",
-    badge: "On-Time Delivery",
-    description: "Serving customers across North America, Europe, Asia, and beyond with reliable logistics and on-time delivery.",
+    title: "Trusted by",
+    subtitle: "Industry Leaders",
+    badge: "Global Supply Chain",
+    description: "A specialized OEM manufacturing partner recognized by major brands like Ashok Leyland, BHEL, and Indian Railways for reliable, high-volume delivery.",
     image: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=2070&auto=format&fit=crop",
-    accentColor: "from-blue-400 to-cyan-300",
-  },
-  {
-    id: 4,
-    title: "Industry Leadership",
-    subtitle: "Innovation & Quality",
-    badge: "Trusted Partner",
-    description: "Trusted partner to leading appliance brands, recognized for innovation, quality, and customer service excellence.",
-    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop",
     accentColor: "from-blue-400 to-cyan-300",
   },
 ];
 
 const FastenerPattern = () => (
-  <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+  <div className="absolute inset-0 z-0 opacity-5 dark:opacity-10 pointer-events-none text-slate-900 dark:text-white">
     <svg width="100%" height="100%">
       <defs>
         <pattern id="hex-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-          <path d="M50 0L93.3013 25V75L50 100L6.69873 75V25L50 0Z" fill="none" stroke="currentColor" strokeWidth="1" className="text-white/20" />
+          <path d="M50 0L93.3013 25V75L50 100L6.69873 75V25L50 0Z" fill="none" stroke="currentColor" strokeWidth="1" />
         </pattern>
       </defs>
       <rect width="100%" height="100%" fill="url(#hex-pattern)" />
@@ -82,7 +73,7 @@ const SectionHero = () => {
   }, [api]);
 
   return (
-    <section className="relative h-screen min-h-[100dvh] overflow-hidden bg-black text-white">
+    <section className="relative h-screen min-h-[100dvh] overflow-hidden bg-slate-100 dark:bg-black text-slate-900 dark:text-white transition-colors duration-500">
       <Carousel
         setApi={setApi}
         className="w-full h-full"
@@ -94,10 +85,15 @@ const SectionHero = () => {
           {heroSlides.map((slide, index) => (
             <CarouselItem key={slide.id} className="relative pl-0 h-full w-full">
               {/* Parallax Background Layer */}
-              <div className="absolute inset-0 z-0">
+              <div className="absolute inset-0 z-0 bg-slate-100 dark:bg-black">
                 <FastenerPattern />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60 z-10" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10" />
+                {/* Light Mode Gradients */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-100 via-slate-100/40 to-slate-100/80 z-10 block dark:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-100/95 via-slate-100/50 to-transparent z-10 block dark:hidden" />
+
+                {/* Dark Mode Gradients */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60 z-10 hidden dark:block" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10 hidden dark:block" />
                 <img
                   src={slide.image.replace("w=2070", "w=1280")}
                   srcSet={`
@@ -138,25 +134,25 @@ const SectionHero = () => {
 
                     {/* Description */}
                     <div className="mb-10 max-w-2xl">
-                      <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
+                      <p className="text-xl md:text-2xl text-slate-700 dark:text-gray-300 leading-relaxed">
                         {slide.description}
                       </p>
                     </div>
 
                     {/* Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4">
-                      <Link to="/products">
-                        <MagneticButton size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border-0 px-8 py-6 text-lg w-full sm:w-auto">
-                          Explore Our Products
+                      <a href="/sangam_fasteners/SFL Resorcs/Vendor Profile - SFL.pptx" download>
+                        <MagneticButton size="lg" className="bg-accent hover:bg-accent/90 text-white border-0 px-8 py-6 text-lg w-full sm:w-auto shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+                          Download Vendor Profile
                         </MagneticButton>
-                      </Link>
-                      <Link to="/contact">
+                      </a>
+                      <Link to="/about">
                         <MagneticButton
                           size="lg"
                           variant="outline"
-                          className="border-white/20 bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white px-8 py-6 text-lg w-full sm:w-auto"
+                          className="border-slate-300 dark:border-white/20 bg-white/50 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 text-slate-800 dark:text-white px-8 py-6 text-lg w-full sm:w-auto backdrop-blur-sm transition-colors"
                         >
-                          Discuss Your Requirement <ArrowRight className="ml-2 h-5 w-5" />
+                          View Manufacturing Scope <ArrowRight className="ml-2 h-5 w-5" />
                         </MagneticButton>
                       </Link>
                     </div>
@@ -169,8 +165,8 @@ const SectionHero = () => {
 
         {/* Custom Navigation */}
         <div className="absolute bottom-12 right-12 z-30 hidden md:flex gap-2">
-          <CarouselPrevious className="static translate-y-0 h-14 w-14 border-white/10 bg-black/40 hover:bg-white/10 text-white transition-all hover:scale-110" />
-          <CarouselNext className="static translate-y-0 h-14 w-14 border-white/10 bg-black/40 hover:bg-white/10 text-white transition-all hover:scale-110" />
+          <CarouselPrevious className="static translate-y-0 h-14 w-14 border-slate-300 dark:border-white/10 bg-white/40 dark:bg-black/40 hover:bg-white/80 dark:hover:bg-white/10 text-slate-900 dark:text-white transition-all hover:scale-110" />
+          <CarouselNext className="static translate-y-0 h-14 w-14 border-slate-300 dark:border-white/10 bg-white/40 dark:bg-black/40 hover:bg-white/80 dark:hover:bg-white/10 text-slate-900 dark:text-white transition-all hover:scale-110" />
         </div>
 
         {/* Slide Indicators - Moved up to make room for mouse */}
@@ -179,7 +175,7 @@ const SectionHero = () => {
             <button
               key={index}
               onClick={() => api?.scrollTo(index)}
-              className={`h-1 transition-all duration-500 rounded-full ${current === index ? "w-12 bg-blue-500" : "w-2 bg-white/20 hover:bg-white/40"}`}
+              className={`h-1 transition-all duration-500 rounded-full ${current === index ? "w-12 bg-blue-600 dark:bg-blue-500" : "w-2 bg-slate-300 dark:bg-white/20 hover:bg-slate-400 dark:hover:bg-white/40"}`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
@@ -187,10 +183,10 @@ const SectionHero = () => {
 
         {/* Scroll Mouse Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-2 animate-fade-in opacity-100 transition-opacity duration-300 pointer-events-none">
-          <div className="w-[26px] h-[42px] border-[1.5px] border-white/60 rounded-full flex justify-center pt-2 box-border shadow-[0_0_10px_rgba(0,0,0,0.2)] bg-black/20 backdrop-blur-md">
-            <div className="w-1 h-1.5 bg-white rounded-full animate-scroll-wheel"></div>
+          <div className="w-[26px] h-[42px] border-[1.5px] border-slate-400 dark:border-white/60 rounded-full flex justify-center pt-2 box-border shadow-[0_0_10px_rgba(0,0,0,0.1)] dark:shadow-[0_0_10px_rgba(0,0,0,0.2)] bg-white/20 dark:bg-black/20 backdrop-blur-md">
+            <div className="w-1 h-1.5 bg-slate-600 dark:bg-white rounded-full animate-scroll-wheel"></div>
           </div>
-          <span className="text-[10px] uppercase tracking-widest text-white/60 font-medium">Scroll</span>
+          <span className="text-[10px] uppercase tracking-widest text-slate-500 dark:text-white/60 font-medium">Scroll</span>
         </div>
 
         <style>{`

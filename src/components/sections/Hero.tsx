@@ -39,7 +39,7 @@ export const Hero = () => {
                     </div>
 
                     <h1 className="text-4xl sm:text-5xl md:text-7xl font-heading font-bold tracking-tight text-white leading-[1.1]">
-                        INDUSTRIAL FASTENER <br />
+                        INDUSTRIAL SHAFT & MACHINE COMPONENT <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-600">
                             MANUFACTURING
                         </span>
@@ -50,7 +50,7 @@ export const Hero = () => {
                     </h2>
 
                     <p className="text-lg md:text-xl text-gray-400 max-w-3xl leading-relaxed">
-                        Sangam Fasteners Private Limited is a manufacturing-focused industrial fastener company based in Hubballi, Karnataka. Since 2000, we have manufactured standard and custom fasteners for applications where dimensional accuracy, material reliability, and repeat supply consistency are mandatory.
+                        Sangam Shaft & Machine Components Private Limited is a manufacturing-focused industrial shaft & machine component company based in Hubballi, Karnataka. Since 2000, we have manufactured standard and custom shaft & machine components for applications where dimensional accuracy, material reliability, and repeat supply consistency are mandatory.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 pt-4">

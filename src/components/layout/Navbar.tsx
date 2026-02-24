@@ -4,6 +4,7 @@ import { Menu, X, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { ModeToggle } from "../ModeToggle";
 
 export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -45,13 +46,13 @@ export const Navbar = () => {
             <div className="container mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
                 <Link to="/" className="flex items-center gap-3 group">
-                    <img src="/sangam_fasteners/logo.svg" alt="Sangam Fasteners Private Limited Logo" className="h-[45px] w-[45px] object-contain group-hover:scale-105 transition-transform duration-300" />
+                    <img src="/sangam_fasteners/logo.svg" alt="Sangam Shaft & Machine Components Private Limited Logo" className="h-[45px] w-[45px] object-contain group-hover:scale-105 transition-transform duration-300" />
                     <div className="flex flex-col items-start leading-none gap-1">
                         <span className={cn(
                             "text-[12px] sm:text-[16px] font-heading font-bold tracking-widest uppercase transition-colors duration-300",
                             useScrolledStyle ? "text-foreground" : "text-white"
                         )}>
-                            Sangam Fasteners
+                            Sangam Shaft & Machine Components
                         </span>
                         <span className={cn(
                             "text-[10px] sm:text-[12px] font-medium tracking-wide transition-colors duration-300",
@@ -84,7 +85,8 @@ export const Navbar = () => {
                             )} />
                         </Link>
                     ))}
-                    <div className="ml-4">
+                    <div className="ml-4 flex items-center gap-4">
+                        <ModeToggle />
                         <Link
                             to="/contact"
                             className={cn(
@@ -100,7 +102,8 @@ export const Navbar = () => {
                 </div>
 
                 {/* Mobile/Tablet Menu Button (Hidden on LG+) */}
-                <div className="lg:hidden">
+                <div className="lg:hidden flex items-center gap-4">
+                    <ModeToggle />
                     <Sheet open={isOpen} onOpenChange={setIsOpen}>
                         <SheetTrigger asChild>
                             <Button

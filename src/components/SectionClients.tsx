@@ -1,40 +1,6 @@
-import { CheckCircle2, Trophy, Users, Globe2, Pickaxe, Zap, Anchor, TrainFront, Heart, ThumbsUp, Shield, Award, Star, MapPin, Plane, UserCheck } from "lucide-react";
+import { CheckCircle2, Trophy, Users, Globe2, Shield, Award, Star, MapPin, Plane, UserCheck, Heart, ThumbsUp } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
-
-type Client = {
-    name: string;
-    type: string;
-    logo?: string;
-    icon?: any;
-    className?: string;
-};
-
-const clients: Client[] = [
-    {
-        name: "Ashok Leyland",
-        type: "Automotive OEM",
-        logo: "https://www.ashokleyland.com/pwa/img/FE/Ashok-Leyland-Brand-Logo.svg",
-        className: "h-5 md:h-24 w-auto"
-    },
-    {
-        name: "Indian Railways",
-        type: "Transportation",
-        logo: "/sangam_fasteners/assets/clients/indian_railways_new.png",
-        className: "h-9 md:h-28 w-auto scale-110"
-    },
-    {
-        name: "BHEL",
-        type: "Energy & Infrastructure",
-        logo: "/sangam_fasteners/assets/clients/bhel_new.png",
-        className: "h-7 md:h-24 w-auto"
-    },
-    {
-        name: "BEML",
-        type: "Heavy Industry",
-        logo: "/sangam_fasteners/assets/clients/beml.png",
-        className: "h-5 md:h-20 w-auto"
-    }
-];
+import { useEffect, useRef, useState } from "react";
 
 const stats = [
     {
@@ -42,142 +8,225 @@ const stats = [
         value: "100%",
         icon: Users,
         description: "Delivering excellence that builds lasting partnerships.",
-        decorations: [Heart, ThumbsUp, UserCheck, Users, Heart, Star, ThumbsUp],
-        animationClass: "group-hover:animate-[pulse_2s_ease-in-out_1]"
+        color: "from-blue-500 to-cyan-400 dark:from-blue-400 dark:to-cyan-300",
+        bgLight: "bg-blue-500/10",
+        borderLight: "border-blue-500/20",
+        iconColor: "text-blue-500 dark:text-white/80"
     },
     {
         label: "Quality Certified",
         value: "ISO 9001",
         icon: CheckCircle2,
         description: "Adhering to strict international manufacturing standards.",
-        decorations: [Shield, Award, Star, CheckCircle2, Shield, Trophy, Award],
-        animationClass: "group-hover:scale-110 duration-500 ease-out"
+        color: "from-emerald-500 to-teal-400 dark:from-emerald-400 dark:to-teal-300",
+        bgLight: "bg-emerald-500/10",
+        borderLight: "border-emerald-500/20",
+        iconColor: "text-emerald-500 dark:text-white/80"
     },
     {
         label: "Market Presence",
         value: "Global",
         icon: Globe2,
         description: "Serving diverse industries across multiple continents.",
-        decorations: [MapPin, Plane, Globe2, MapPin, Plane, Globe2, MapPin],
-        animationClass: "group-hover:rotate-[360deg] duration-700"
+        color: "from-indigo-500 to-purple-400 dark:from-indigo-400 dark:to-purple-300",
+        bgLight: "bg-indigo-500/10",
+        borderLight: "border-indigo-500/20",
+        iconColor: "text-indigo-500 dark:text-white/80"
     },
 ];
 
+// High-Quality Client Logos
+const CLIENT_LOGOS = [
+    'BHEL.png',
+    'NLC_India.png',
+    'ashok_leyland.svg',
+    'haier.svg',
+    'lg.svg',
+    'ntpc.svg',
+    'samsung.svg',
+    'tata.svg',
+    'vestel.svg',
+    'whirlpool.svg'
+];
+
 const SectionClients = () => {
-    // Helper to get varied positions and sizes based on index
-    const getDecorationStyle = (i: number) => {
-        // Directed towards the open space (Right) - increased range to fill the card
-        const translations = [
-            "group-hover:translate-x-[140px] group-hover:-translate-y-[80px] group-hover:rotate-12", // Top Right
-            "group-hover:translate-x-[140px] group-hover:translate-y-[80px] group-hover:-rotate-12",  // Bottom Right
-            "group-hover:-translate-x-[140px] group-hover:translate-y-[80px]",      // Bottom Left
-            "group-hover:-translate-x-[140px] group-hover:-translate-y-[80px] group-hover:rotate-45",  // Top Left
-            "group-hover:translate-y-[100px]",    // Bottom Center (far down)
-            "group-hover:translate-x-[80px] group-hover:translate-y-[0px] group-hover:rotate-90", // Right Center
-            "group-hover:-translate-x-[80px] group-hover:-translate-y-[0px] group-hover:-rotate-45" // Left Center
-        ];
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
 
-        const delays = ["delay-75", "delay-150", "delay-100", "delay-200", "delay-300", "delay-75", "delay-150"];
-        const sizes = [
-            "text-blue-400/30 w-8 h-8",   // 0 (Large) - Reduced opacity
-            "text-sky-400/40 w-4 h-4",      // 1 (Medium) - Reduced opacity
-            "text-blue-300/40 w-3 h-3",   // 2 (Small) - Reduced opacity
-            "text-sky-300/30 w-6 h-6",      // 3 (Large) - Reduced opacity
-            "text-blue-200/40 w-3 h-3",    // 4 (Small) - Reduced opacity
-            "text-indigo-300/30 w-5 h-5",  // 5 (Medium) - New
-            "text-slate-300/40 w-2 h-2"     // 6 (Tiny) - New
-        ];
+    // Auto-scroll logic utilizing requestAnimationFrame
+    useEffect(() => {
+        let animationFrameId: number;
+        let lastTimestamp: number;
+        const scrollSpeed = 0.05; // pixels per ms (~30px per sec)
 
-        return {
-            translate: translations[i % translations.length],
-            delay: delays[i % delays.length],
-            size: sizes[i % sizes.length]
+        const scroll = (timestamp: number) => {
+            if (!lastTimestamp) lastTimestamp = timestamp;
+            const deltaTime = timestamp - lastTimestamp;
+            lastTimestamp = timestamp;
+
+            if (scrollRef.current && !isDragging && !isHovered) {
+                // Determine the total scrollable width
+                const container = scrollRef.current;
+
+                // If we've scrolled past the mid-point of our duplicate set, immediately snap back seamlessly
+                // To do this reliably, we check scrollLeft vs scrollWidth / 2
+                if (container.scrollLeft >= container.scrollWidth / 2) {
+                    container.scrollLeft = 0;
+                } else {
+                    container.scrollLeft += scrollSpeed * deltaTime;
+                }
+            }
+            animationFrameId = requestAnimationFrame(scroll);
         };
+
+        animationFrameId = requestAnimationFrame(scroll);
+        return () => cancelAnimationFrame(animationFrameId);
+    }, [isDragging, isHovered]);
+
+    // Manual Dragging Logic
+    const handleMouseDown = (e: React.MouseEvent) => {
+        setIsDragging(true);
+        if (scrollRef.current) {
+            setStartX(e.pageX - scrollRef.current.offsetLeft);
+            setScrollLeft(scrollRef.current.scrollLeft);
+        }
+    };
+
+    const handleMouseLeave = () => {
+        setIsDragging(false);
+        setIsHovered(false);
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging || !scrollRef.current) return;
+        e.preventDefault();
+        const x = e.pageX - scrollRef.current.offsetLeft;
+        const walk = (x - startX) * 2; // scroll-fast multiplier
+        scrollRef.current.scrollLeft = scrollLeft - walk;
     };
 
     return (
-        <section className="pt-10 pb-16 bg-white border-b border-border/40 overflow-hidden">
-            <div className="container px-4 mx-auto">
+        <section className="py-24 bg-gradient-to-b from-white to-slate-50 dark:from-[#050814] dark:to-[#0a0f1c] relative overflow-hidden font-sans transition-colors duration-500">
+            {/* Background Atmosphere */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent dark:from-blue-900/10 dark:via-transparent dark:to-transparent pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 dark:bg-cyan-900/10 rounded-full blur-[120px] pointer-events-none" />
+
+            <div className="container px-4 mx-auto relative z-10 w-full max-w-7xl">
+
                 <AnimatedSection animation="fade-up">
-                    {/* Horizontal Stats Layout - 3 items in a row always */}
-                    <div className="grid grid-cols-3 gap-3 md:gap-6 mb-16 border-b border-gray-100 pb-8">
+
+                    {/* Header */}
+                    <div className="text-center mb-16 relative">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.05] mb-6 shadow-sm dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+                            <Star className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400 fill-cyan-500/20 dark:fill-cyan-400/20" />
+                            <span className="text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-slate-300">
+                                Trusted by Industry Leaders
+                            </span>
+                        </div>
+                        <h2 className="text-4xl md:text-5xl lg:text-5xl font-black font-heading tracking-tight text-slate-900 dark:text-white mb-6 leading-tight">
+                            Forging Global <br className="md:hidden" />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500">
+                                Partnerships
+                            </span>
+                        </h2>
+                        <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed">
+                            We pride ourselves on 100% client retention in the precision shaft sector, delivering uncompromising quality to Tier-1 OEMs and global infrastructure projects.
+                        </p>
+                    </div>
+
+                    {/* Stats Bento Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
                         {stats.map((stat, idx) => (
-                            <div key={idx} className="relative flex flex-col items-center text-center p-2 md:p-5 rounded-xl transition-all duration-500 hover:shadow-2xl hover:shadow-blue-900/10 border border-transparent hover:border-blue-300 group cursor-default overflow-hidden isolate justify-center h-[160px] md:h-[220px]">
+                            <div key={idx} className="group relative flex flex-col items-center text-center p-8 md:p-10 rounded-[2rem] bg-white dark:bg-[#0c1222]/80 backdrop-blur-xl border border-slate-200 dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_20px_40px_-15px_rgba(34,211,238,0.1)] isolate">
+                                {/* Hover Glow Base */}
+                                <div className={`absolute inset-0 bg-gradient-to-b ${stat.bgLight} to-transparent opacity-0 group-hover:opacity-10 dark:group-hover:opacity-100 transition-opacity duration-700 pointer-events-none -z-10`} />
 
-                                {/* Spreading Background Animation */}
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-blue-50/50 rounded-full scale-0 group-hover:scale-[15] transition-transform duration-1000 ease-out -z-10" />
+                                {/* Top Edge Highlight */}
+                                <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-30 group-hover:opacity-100 transition-opacity" />
 
-                                {/* Bold Glowing Graphic */}
-                                <div className="absolute -right-2 -bottom-2 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out delay-100 z-0 pointer-events-none">
-                                    <div className="relative">
-                                        <stat.icon
-                                            size={60}
-                                            strokeWidth={0.5}
-                                            className="text-blue-500/10 -rotate-12 md:w-[90px] md:h-[90px]"
-                                        />
-                                    </div>
+                                <div className={`w-16 h-16 rounded-2xl ${stat.bgLight} border ${stat.borderLight} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
+                                    <stat.icon className={`w-8 h-8 ${stat.iconColor} fill-current/10`}
+                                        strokeWidth={1.5} />
                                 </div>
 
-                                {/* Dynamically Blooming Decorations */}
-                                {stat.decorations.map((DecoIcon, i) => {
-                                    const style = getDecorationStyle(i);
-                                    return (
-                                        <div
-                                            key={i}
-                                            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-1000 ease-out ${style.translate} ${style.delay} z-0 pointer-events-none`}
-                                        >
-                                            <DecoIcon className={`${style.size}`} />
-                                        </div>
-                                    );
-                                })}
-
-                                {/* Icon - Clean and Centered */}
-                                <div className="mb-2 md:mb-3 text-slate-400 group-hover:text-blue-600 transition-colors duration-300 relative z-10">
-                                    <stat.icon size={24} strokeWidth={1.5} className={`transition-transform duration-300 ${stat.animationClass} md:w-9 md:h-9`} />
-                                </div>
-
-                                <h4 className="text-xl md:text-4xl font-bold font-heading text-slate-900 mb-1 md:mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-sky-600 transition-all duration-300 relative z-10">
+                                <h4 className={`text-4xl md:text-5xl font-black font-heading mb-3 text-transparent bg-clip-text bg-gradient-to-r ${stat.color} drop-shadow-sm`}>
                                     {stat.value}
                                 </h4>
-                                <p className="text-[10px] md:text-sm text-slate-500 font-bold uppercase tracking-wide md:tracking-widest mb-0 group-hover:mb-1 transition-all duration-300 relative z-10 leading-tight">
+
+                                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-700 dark:text-white/80 mb-4">
                                     {stat.label}
                                 </p>
-                                <div className="hidden md:grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-out relative z-10 w-full">
-                                    <p className="overflow-hidden text-xs text-slate-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mx-auto max-w-[220px] leading-tight pt-1">
-                                        {stat.description}
-                                    </p>
-                                </div>
+
+                                <p className="text-sm text-slate-500 dark:text-slate-400/80 leading-relaxed font-light max-w-[240px]">
+                                    {stat.description}
+                                </p>
                             </div>
                         ))}
                     </div>
 
-                    {/* Section Header */}
-                    <div className="text-center mb-10">
-                        <span className="text-accent font-bold tracking-widest text-xs uppercase mb-2 block">
-                            Our Partnerships
-                        </span>
-                        <h2 className="text-3xl font-heading font-bold text-gray-900">
-                            Trusted by Industry Leaders
-                        </h2>
-                    </div>
-
-                    {/* Unified Static 4-Column Logo Grid for All Screens */}
-                    <div className="grid grid-cols-4 gap-2 md:gap-12 items-center justify-items-center max-w-6xl mx-auto px-1">
-                        {clients.map((client, idx) => (
-                            <div
-                                key={idx}
-                                className="w-full flex items-center justify-center p-1 md:p-4 grayscale hover:grayscale-0 opacity-80 md:opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-105"
-                            >
-                                <img
-                                    src={client.logo}
-                                    alt={client.name}
-                                    className={`${client.className || 'h-6 md:h-10 w-auto'} object-contain transition-all duration-500`}
-                                />
-                            </div>
-                        ))}
-                    </div>
                 </AnimatedSection>
             </div>
+
+            <AnimatedSection animation="fade-up" delay={0.2}>
+                {/* Interactive Draggable Auto-Carousel */}
+                <div className="relative w-full overflow-hidden py-10 mt-8">
+
+                    {/* Smooth Edge Fades */}
+                    <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-slate-50 dark:from-[#050814] to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-slate-50 dark:from-[#050814] to-transparent z-10 pointer-events-none" />
+
+                    <div
+                        ref={scrollRef}
+                        className={`flex items-center gap-16 md:gap-24 overflow-x-hidden whitespace-nowrap px-8 md:px-32 select-none ${isDragging ? "cursor-grabbing" : "cursor-grab"} active:cursor-grabbing`}
+                        onMouseDown={handleMouseDown}
+                        onMouseLeave={handleMouseLeave}
+                        onMouseUp={handleMouseUp}
+                        onMouseMove={handleMouseMove}
+                        onMouseEnter={() => setIsHovered(true)}
+                        onTouchStart={(e) => {
+                            setIsDragging(true);
+                            if (scrollRef.current) {
+                                setStartX(e.touches[0].pageX - scrollRef.current.offsetLeft);
+                                setScrollLeft(scrollRef.current.scrollLeft);
+                            }
+                        }}
+                        onTouchEnd={() => setIsDragging(false)}
+                        onTouchMove={(e) => {
+                            if (!isDragging || !scrollRef.current) return;
+                            const x = e.touches[0].pageX - scrollRef.current.offsetLeft;
+                            const walk = (x - startX) * 2;
+                            scrollRef.current.scrollLeft = scrollLeft - walk;
+                        }}
+                    >
+                        {/* Duplicate array for seamless infinite scroll */}
+                        {[...Array(2)].map((_, arrayIdx) => (
+                            <div key={arrayIdx} className="flex items-center gap-12 md:gap-20 flex-shrink-0 px-6 md:px-10">
+                                {CLIENT_LOGOS.map((filename, i) => (
+                                    <div
+                                        key={i}
+                                        className="inline-flex items-center justify-center flex-shrink-0"
+                                    >
+                                        <img
+                                            src={`/sangam_fasteners/SFL_Clients_Clean/${filename}`}
+                                            alt={`Partner ${i + 1}`}
+                                            className="h-10 md:h-14 lg:h-16 w-auto object-contain pointer-events-none"
+                                            draggable={false}
+                                            onError={(e) => { e.currentTarget.parentElement!.style.display = 'none'; }}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </AnimatedSection>
         </section>
     );
 };

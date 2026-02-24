@@ -1,0 +1,19 @@
+# Sangam Fasteners Corporate Portal
+> A high-performance B2B procurement and manufacturing display portal engineered for tier-1 OEMs.
+
+## Core Files
+- `src/pages/Home.tsx`: The primary entry point for the 5-Viewport procurement sequence.
+- `src/constants/data.ts`: Centralized static data store containing product specifications, capabilities, and industrial standards.
+- `src/components/`: Modular UI architecture utilizing Tailwind CSS, Lucide React, and Framer Motion for interactive glassmorphism.
+- `SFL Resorcs/`: Source truth directory containing raw capability data, images, and presentation assets from the Sangam Fasteners vendor profile.
+
+## Key Concepts
+- **Componentized Viewport Architecture**: The Home Page is built as a strict 5-Viewport sequence designed to convert technical buyers. This includes the Hero (Viewport 01), Trust Strip (Viewport 02), Disciplinary Matrix (Viewport 03), Infrastructure Split (Viewport 04), and Authority Conversion Footer (Viewport 05).
+- **Industrial Glassmorphism**: The UI aesthetic relies heavily on dark backgrounds (`slate-950`) contrasted with electric blue accents (`accent`), using CSS grid frameworks and subtle animations to portray precision engineering.
+- **Data-Driven UI**: Core product definitions, machinery capabilities, and statistics are stored in TS data files (like `src/constants/data.ts`) to separate logic from presentation, allowing rapid content iteration without editing component structure.
+
+## Quick Start for Agents
+1. The project uses React 18 with Vite.
+2. Styling is entirely handled by Tailwind CSS (`tailwind.config.ts`) and custom variables (`src/index.css`).
+3. Core routing is configured in `src/App.tsx`.
+4. Run `npm run dev` to boot the application.

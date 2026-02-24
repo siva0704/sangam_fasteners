@@ -1,73 +1,57 @@
-# Welcome to your Lovable project
+# Sangam Fasteners Corporate Portal
 
-## Project info
+A high-performance B2B procurement web application engineered to showcase the manufacturing scale and precision of Sangam Fasteners Private Limited.
 
-**URL**: https://lovable.dev/projects/bfb77d8f-21ee-42e6-bee4-2d566101616d
+## Quick Start
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/bfb77d8f-21ee-42e6-bee4-2d566101616d) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Follow these steps to run the project locally in under 2 minutes:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Step 1: Clone the repository
+git clone https://github.com/siva0704/sangam_fasteners.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Step 2: Navigate to the project directory
+cd sangam_fasteners
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Step 3: Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Features
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **5-Viewport Procurement Architecture**: A high-conversion homepage sequence explicitly designed for Tier-1 OEM technical buyers.
+- **Industrial Glassmorphism UI**: A dark-mode aesthetic utilizing deep slate backgrounds and high-contrast electric blue accents.
+- **Dynamic Infrastructure Exhibition**: An interactive 5/7 split-layout router showcasing actual factory floor imagery synchronized with capability data.
+- **Centralized Data Management**: Product lines (020, 030, 040 shafts) and operational metrics are decoupled from components for rapid content iteration.
+- **Instant Procurement Integration**: High-contrast, low-friction technical drawing submission interfaces via `mailto:` protocols.
 
-**Use GitHub Codespaces**
+## Configuration
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+| Variable/File | Description | Default Location |
+|----------|-------------|---------|
+| `tailwind.config.ts` | Theme definitions, color palettes (slate/accent), and animations | Root |
+| `src/index.css` | Global CSS variables and glassmorphism utilities | `src/` |
+| `src/constants/data.ts` | Product catalog, manufacturing features, and industry stats | `src/constants/` |
+| `vite.config.ts` | Vite build configurations and path resolutions | Root |
 
-## What technologies are used for this project?
+## Documentation
 
-This project is built with:
+- [AI Documentation](./llms.txt)
+- [System Architecture](./docs/architecture.md)
+- [Changelog](./CHANGELOG.md)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Deployment
 
-## How can I deploy this project?
+The application utilizes GitHub Actions (or manual deployment) to push the built bundle to GitHub Pages.
 
-Simply open [Lovable](https://lovable.dev/projects/bfb77d8f-21ee-42e6-bee4-2d566101616d) and click on Share -> Publish.
+```sh
+# Deploy to the gh-pages branch
+npm run deploy
+```
 
-## Can I connect a custom domain to my Lovable project?
+## License
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+MIT

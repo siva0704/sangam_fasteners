@@ -38,7 +38,7 @@ const pillars = [
     },
     {
         title: "Customization",
-        desc: "Bespoke fastener manufacturing based on client drawings and specifications."
+        desc: "Bespoke shaft & machine component manufacturing based on client drawings and specifications."
     },
     {
         title: "Global Delivery",

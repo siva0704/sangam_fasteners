@@ -86,7 +86,7 @@ const Header = () => {
                 <span className="text-white font-heading font-bold text-xl">SF</span>
               </div>
               <div className="hidden lg:block">
-                <h1 className={`text-xl font-heading font-bold transition-colors ${!isScrolled && isHomePage ? "text-white" : "text-gray-900"}`}>Sangam Fasteners</h1>
+                <h1 className={`text-xl font-heading font-bold transition-colors ${!isScrolled && isHomePage ? "text-white" : "text-gray-900"}`}>Sangam Shaft & Machine Components</h1>
                 <p className={`text-xs ${!isScrolled && isHomePage ? "text-white/80" : "text-gray-500"} transition-colors`}>Private Limited</p>
               </div>
             </Link>

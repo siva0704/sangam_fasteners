@@ -1,123 +1,136 @@
-import { Factory, Cog, Wrench, Settings, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { Factory, Cog, Settings, ShieldCheck, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import MagneticButton from "./MagneticButton";
 import AnimatedSection from "./AnimatedSection";
-import ParallaxSection from "./ParallaxSection";
-
-const stats = [
-    { label: "Production Capacity", value: "200K+", unit: "Units/Month" },
-    { label: "Quality Pass Rate", value: "99.88%", unit: "Accuracy" },
-    { label: "Lead Time Available", value: "48hr", unit: "Fast Delivery" }
-];
 
 const capabilities = [
     {
         icon: Cog,
-        title: "CNC Machining",
-        desc: "Multi-axis CNC turning and milling centers for precision tolerances down to 0.01mm."
+        title: "51+ CNC Machines",
+        desc: "Advanced multi-axis CNC turning and milling centers including Galaxy Midas & ACE J300 LM for extreme precision.",
+        image: "/images/infrastructure/cnc_machine.png"
     },
     {
         icon: Settings,
-        title: "Heat Treatment",
-        desc: "In-house heat treatment facilities for optimal hardness and durability characteristics."
+        title: "Robotic Automation",
+        desc: "Equipped with state-of-the-art Robotic Arms and Automatic Pick & Place systems for seamless, continuous operations.",
+        image: "/images/infrastructure/robotic_automation.png"
     },
     {
-        icon: Wrench,
-        title: "Surface Finishing",
-        desc: "Grinding, polishing, and coating capabilities for superior surface quality and corrosion resistance."
+        icon: ShieldCheck,
+        title: "VMM Metrology",
+        desc: "Non-contact Vision Measuring Machines and Mitutoyo digital precision testers ensuring 0.0001mm resolution.",
+        image: "/images/infrastructure/vmm_metrology.png"
     },
     {
         icon: Factory,
-        title: "Quality Control",
-        desc: "Advanced metrology equipment and 100% inspection protocols ensure zero-defect delivery."
+        title: "Massive Scale",
+        desc: "20,000 m² shop floor with 10,000 m² dedicated warehousing running on a 260 KVA redundant power supply.",
+        image: "/images/infrastructure/massive_scale.png"
     }
 ];
 
 const SectionInfrastructure = () => {
-    return (
-        <section className="py-16 bg-primary text-primary-foreground relative overflow-hidden">
-            {/* Industrial Background Texture */}
-            <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none" />
+    const [activeIdx, setActiveIdx] = useState(0);
 
-            <div className="container px-4 mx-auto relative z-10">
-                <div className="flex flex-col lg:flex-row gap-16">
-                    {/* Left Content */}
-                    <div className="lg:w-1/2">
+    return (
+        <section className="py-24 bg-gradient-to-b from-slate-50 to-white dark:from-[#0f172a] dark:to-slate-900 relative overflow-hidden transition-colors duration-500">
+            {/* Subtle Grid Background */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] [background-size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] dark:[mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#fff_70%,transparent_100%)] pointer-events-none" />
+
+            <div className="container px-4 mx-auto relative z-10 w-full max-w-7xl">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+
+                    {/* Left Narrative (5 cols) */}
+                    <div className="lg:col-span-5 h-full flex flex-col justify-center">
                         <AnimatedSection animation="fade-right">
-                            <span className="inline-block py-1 px-3 text-accent font-bold text-sm uppercase mb-4">
-                                Our Infrastructure
+                            <span className="text-accent font-bold tracking-widest text-xs uppercase mb-4 block">
+                                Infrastructure & Capacity
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">
-                                Advanced Production <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-white">
-                                    Technology
+                            <h2 className="text-4xl md:text-5xl font-bold font-heading text-slate-900 dark:text-white mb-6 leading-tight">
+                                Manufacturing <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-500 dark:from-blue-400 dark:to-cyan-400">
+                                    at Scale
                                 </span>
                             </h2>
-                            <p className="text-lg text-gray-300 mb-10 leading-relaxed">
-                                Our manufacturing facility combines cutting-edge technology with skilled craftsmanship to deliver superior quality components.
+                            <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed font-light pr-4">
+                                Bypassing constraints through heavy capital investment in automation, precise metrology, and 51+ state-of-the-art CNC centers.
                             </p>
 
-                            <Link to="/contact">
-                                <MagneticButton size="lg" className="bg-accent text-white hover:bg-accent/90 border-0 mb-10">
-                                    Start Supplier Evaluation <ArrowRight className="ml-2 h-4 w-4" />
+                            <div className="space-y-4 mb-10">
+                                {capabilities.map((item, idx) => {
+                                    const isActive = idx === activeIdx;
+                                    return (
+                                        <div
+                                            key={idx}
+                                            onClick={() => setActiveIdx(idx)}
+                                            className={`flex gap-5 items-start p-4 rounded-2xl cursor-pointer transition-all duration-300 border ${isActive
+                                                ? 'bg-blue-50/50 dark:bg-blue-900/20 border-blue-100 dark:border-blue-800 shadow-sm'
+                                                : 'border-transparent hover:bg-slate-50 dark:hover:bg-slate-800/50'
+                                                }`}
+                                        >
+                                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 ${isActive ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm' : 'bg-slate-100 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400'
+                                                }`}>
+                                                <item.icon className="w-6 h-6" />
+                                            </div>
+                                            <div>
+                                                <h4 className={`font-bold text-lg mb-1 transition-colors ${isActive ? 'text-blue-950 dark:text-blue-100' : 'text-slate-700 dark:text-slate-300'
+                                                    }`}>
+                                                    {item.title}
+                                                </h4>
+                                                <p className={`text-sm transition-all duration-300 overflow-hidden ${isActive ? 'text-slate-600 dark:text-slate-400 h-auto opacity-100' : 'h-0 opacity-0'
+                                                    }`}>
+                                                    {item.desc}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+
+                            <Link to="/about">
+                                <MagneticButton size="lg" className="bg-slate-900 text-white hover:bg-slate-800 border-0">
+                                    Explore Full Facilities <ArrowRight className="ml-2 h-4 w-4" />
                                 </MagneticButton>
                             </Link>
-
-                            <div className="grid grid-cols-2 gap-6 mb-12">
-                                {capabilities.map((item, idx) => (
-                                    <div key={idx} className="flex gap-4 items-start">
-                                        <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
-                                            <item.icon className="w-6 h-6 text-accent" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold text-lg mb-1">{item.title}</h4>
-                                            <p className="text-sm text-gray-400">{item.desc}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
                         </AnimatedSection>
                     </div>
 
-                    {/* Right Visuals */}
-                    <div className="lg:w-1/2 relative">
-                        <div className="grid grid-cols-2 gap-4 h-full">
-                            <AnimatedSection animation="fade-up" delay={0.2} className="mt-12">
-                                <div className="rounded-2xl overflow-hidden h-64 shadow-2xl border border-white/10">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=2070&auto=format&fit=crop"
-                                        alt="CNC Machine"
-                                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-                                    />
-                                </div>
-                            </AnimatedSection>
-                            <AnimatedSection animation="fade-up" delay={0.4}>
-                                <div className="rounded-2xl overflow-hidden h-64 shadow-2xl border border-white/10">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop"
-                                        alt="Forging Process"
-                                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-                                    />
-                                </div>
-                            </AnimatedSection>
-                        </div>
+                    {/* Right Image Router (7 cols) */}
+                    <div className="lg:col-span-7 relative h-[500px] lg:h-[700px] w-full rounded-3xl overflow-hidden shadow-2xl ring-1 ring-slate-900/5 dark:ring-white/10 bg-slate-100 dark:bg-slate-800 isolate">
+                        {capabilities.map((item, idx) => (
+                            <div
+                                key={idx}
+                                className={`absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.25,0.8,0.25,1)] ${activeIdx === idx
+                                    ? 'opacity-100 scale-100 z-10'
+                                    : 'opacity-0 scale-105 z-0 pointer-events-none'
+                                    }`}
+                            >
+                                <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover"
+                                />
+                                {/* Inner Shadow for depth */}
+                                <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.1)] pointer-events-none" />
 
-                        {/* Floating Stats */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm">
-                            <ParallaxSection speed={0.1}>
-                                <div className="bg-accent/90 backdrop-blur-md p-6 rounded-2xl shadow-2xl border border-white/20 text-center">
-                                    <div className="grid grid-cols-3 gap-4 divide-x divide-white/20">
-                                        {stats.map((stat, idx) => (
-                                            <div key={idx} className="px-2">
-                                                <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-                                                <div className="text-[10px] uppercase tracking-wider font-bold text-white/80">{stat.unit}</div>
-                                            </div>
-                                        ))}
+                                {/* Dynamic Overlay Tag */}
+                                <div className={`absolute bottom-8 left-8 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-4 pr-8 rounded-2xl shadow-xl border border-white/20 dark:border-slate-700 transition-transform duration-700 delay-300 ${activeIdx === idx ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+                                    <div className="flex items-center gap-4">
+                                        <div className="bg-blue-600/10 dark:bg-blue-400/10 text-blue-600 dark:text-blue-400 p-3 rounded-lg">
+                                            <item.icon size={24} />
+                                        </div>
+                                        <div>
+                                            <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-0.5">Verified Capacity</p>
+                                            <p className="font-bold text-slate-900 dark:text-white text-lg leading-none">{item.title}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </ParallaxSection>
-                        </div>
+                            </div>
+                        ))}
                     </div>
+
                 </div>
             </div>
         </section>

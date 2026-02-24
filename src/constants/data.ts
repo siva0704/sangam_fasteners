@@ -17,46 +17,62 @@ import {
 } from "lucide-react";
 
 export const products = [
-    // --- WASHING MACHINE SHAFTS ---
+    // --- WASHING MACHINE SHAFTS (CORE) ---
     {
-        id: "main-drive-shafts",
-        name: "Main Drive Shafts",
-        category: "Shafts",
-        material: "Stainless Steel, Carbon Steel, Specialty Alloys",
+        id: "020-6p-shaft",
+        name: "020 (6P) Shaft",
+        category: "Washing Machine Shafts",
+        material: "Hardened Stainless Steel",
         standards: "OEM Specifications",
-        description: "Heavy-duty shafts for top-load and front-load washing machines, engineered for high torque and long service life.",
-        longDescription: "Heavy-duty drive shafts engineered for top-load and front-load washing machines. Designed for high torque transmission and extended service life under continuous operation. Available in multiple material grades to match specific application requirements and environmental conditions.",
-        image: "/sangam_fasteners/images/products/washing-machine-shaft.png"
+        description: "High-precision core shaft engineered specifically for top-load and front-load washing machine assemblies.",
+        image: "/sangam_fasteners/SFL_Shafts/image2.jpeg"
     },
     {
-        id: "agitator-shafts",
-        name: "Agitator Shafts",
-        category: "Shafts",
-        material: "Stainless Steel 304/316, Carbon Steel",
-        standards: "ISO Quality Standards",
-        description: "Precision-machined shafts with optimized surface finish for smooth operation and minimal wear.",
-        longDescription: "Precision-machined agitator shafts featuring optimized surface finish for smooth, quiet operation and minimal wear. Manufactured to tight tolerances down to 0.01mm using advanced CNC turning centers. Surface treatments include grinding, polishing, and specialized coatings for superior corrosion resistance and durability.",
-        image: "/sangam_fasteners/images/products/washing-machine-shaft.png"
+        id: "030-7s-shaft",
+        name: "030 (7S) Shaft",
+        category: "Washing Machine Shafts",
+        material: "Hardened Stainless Steel",
+        standards: "OEM Specifications",
+        description: "Advanced heavy-duty shaft designed to handle increased torque transmission in high-capacity washers.",
+        image: "/sangam_fasteners/SFL_Shafts/image3.jpeg"
     },
     {
-        id: "custom-shaft-specs",
-        name: "Custom Specifications",
-        category: "Custom",
-        material: "Stainless Steel, Carbon Steel, Specialty Alloys",
-        standards: "Per Customer Drawing",
-        description: "Tailored solutions to meet your exact requirements, including material selection, dimensions, and surface treatments.",
-        longDescription: "Fully customized washing machine shaft solutions manufactured according to your precise specifications. We offer flexible material selection from stainless steel grades (304, 316) to carbon steel and specialty alloys. Custom dimensions, thread profiles, surface treatments, and heat treatment options available to match your exact application needs.",
-        image: "/sangam_fasteners/images/products/washing-machine-shaft.png"
+        id: "040-8s-shaft",
+        name: "040 (8S) Shaft",
+        category: "Washing Machine Shafts",
+        material: "Hardened Stainless Steel",
+        standards: "OEM Specifications",
+        description: "Premium continuous-duty shaft featuring optimized surface finishing for prolonged bearing life and reduced vibration.",
+        image: "/sangam_fasteners/SFL_Shafts/image4.jpeg"
+    },
+
+    // --- NEW DEVELOPMENTS / HIGH RPM ---
+    {
+        id: "lg-fl440-shaft",
+        name: "LG-FL440 Compatible Shaft",
+        category: "New Developments",
+        material: "High Tensile Alloy Steel",
+        standards: "Tier-1 Appliance Specs",
+        description: "Next-generation shaft developed for ultra-high RPM direct-drive inverter motors.",
+        image: "/sangam_fasteners/SFL_Shafts/image8.jpeg"
     },
     {
-        id: "material-options",
-        name: "Material Options",
-        category: "Materials",
-        material: "Stainless Steel (304/316), Carbon Steel, Specialty Alloys",
-        standards: "ASTM, ISO Material Standards",
-        description: "Stainless steel, carbon steel, and specialty alloys available to match your application needs.",
-        longDescription: "Comprehensive material options for washing machine shafts including Stainless Steel (304, 316 for corrosion resistance), Carbon Steel (for high strength applications), and Specialty Alloys (for extreme environments). All materials are certified with complete traceability and meet international ASTM and ISO standards.",
-        image: "/sangam_fasteners/images/products/washing-machine-shaft.png"
+        id: "lg-fl550-shaft",
+        name: "LG-FL550 Compatible Shaft",
+        category: "New Developments",
+        material: "High Tensile Alloy Steel",
+        standards: "Tier-1 Appliance Specs",
+        description: "Maximum load-bearing shaft engineered for premium, large-capacity smart washing machines.",
+        image: "/sangam_fasteners/SFL_Shafts/image9.jpeg"
+    },
+    {
+        id: "4000rpm-shaft",
+        name: "4000 RPM Precision Shaft",
+        category: "High Speed Shafts",
+        material: "Specialized Steel Alloy",
+        standards: "High Velocity Specs",
+        description: "Precision balanced shaft designed to operate flawlessly at extreme rotational speeds without deflection.",
+        image: "/sangam_fasteners/SFL_Shafts/image10.jpeg"
     }
 ];
 

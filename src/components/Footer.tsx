@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="font-heading font-bold text-lg mb-4 text-foreground">Sangam Fasteners Pvt Ltd</h3>
+            <h3 className="font-heading font-bold text-lg mb-4 text-foreground">Sangam Shaft & Machine Components Pvt Ltd</h3>
             <p className="text-sm text-muted-foreground mb-4">
               Leading manufacturer of high-precision washing machine shafts for the global appliance industry.
             </p>
@@ -87,7 +87,7 @@ const Footer = () => {
 
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Sangam Fasteners Pvt Ltd. All rights reserved.
+            © {new Date().getFullYear()} Sangam Shaft & Machine Components Pvt Ltd. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <Link to="#" className="text-sm text-muted-foreground hover:text-accent transition-colors">

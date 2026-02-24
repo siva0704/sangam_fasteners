@@ -16,15 +16,15 @@ const Industries = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans">
       <Seo
-        title="Industries Served | Sangam Fasteners Pvt. Ltd."
-        description="We supply industries where fasteners influence safety, uptime, and performance. General Engineering, Infrastructure, Automotive, Heavy Engineering, OEM."
+        title="Industries Served | Sangam Shaft & Machine Components Pvt. Ltd."
+        description="We supply industries where shaft & machine components influence safety, uptime, and performance. General Engineering, Infrastructure, Automotive, Heavy Engineering, OEM."
       />
 
       <main className="flex-1">
         {/* Hero Section */}
         <PageHero
           title="Industries We Serve"
-          subtitle="We supply industries where fasteners influence safety, uptime, and performance."
+          subtitle="We supply industries where shaft & machine components influence safety, uptime, and performance."
           badge="Market Focus"
         />
 
@@ -106,7 +106,7 @@ const Industries = () => {
             </AnimatedSection>
             <AnimatedSection animation="blur-fade" delay={1}>
               <p className="text-lg mb-8 max-w-2xl mx-auto text-primary-foreground/90">
-                We specialize in creating tailored fastener solutions for unique industrial requirements
+                We specialize in creating tailored shaft & machine component solutions for unique industrial requirements
               </p>
             </AnimatedSection>
             <AnimatedSection animation="elastic-bounce" delay={2}>

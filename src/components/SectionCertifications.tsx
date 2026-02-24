@@ -30,20 +30,20 @@ const certifications = [
 
 const SectionCertifications = () => {
     return (
-        <section className="py-16 bg-secondary/30 relative overflow-hidden">
+        <section className="py-16 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-[#050814] relative overflow-hidden transition-colors duration-500">
             {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:20px_20px]" />
+            <div className="absolute inset-0 opacity-[0.03] dark:opacity-10 pointer-events-none bg-[radial-gradient(#000000_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
 
             <div className="container px-4 mx-auto">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <AnimatedSection animation="fade-up">
-                        <span className="inline-block py-1 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-sm tracking-widest uppercase mb-4 backdrop-blur-sm">
+                        <span className="inline-block py-1 px-3 rounded-full bg-blue-100/50 dark:bg-white/5 border border-blue-200 dark:border-white/10 text-blue-600 dark:text-slate-300 font-bold text-sm tracking-widest uppercase mb-4 backdrop-blur-sm">
                             Quality Assurance
                         </span>
-                        <h2 className="text-3xl md:text-5xl font-bold font-heading text-primary mb-6">
-                            Uncompromising <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Quality Standards</span>
+                        <h2 className="text-3xl md:text-5xl font-bold font-heading text-slate-900 dark:text-white mb-6">
+                            Uncompromising <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300">Quality Standards</span>
                         </h2>
-                        <p className="text-lg text-muted-foreground">
+                        <p className="text-lg text-slate-600 dark:text-slate-400">
                             Every shaft undergoes rigorous testing and inspection to ensure it meets or exceeds international quality standards.
                         </p>
                     </AnimatedSection>
@@ -59,10 +59,10 @@ const SectionCertifications = () => {
                         };
                         return (
                             <AnimatedSection key={idx} animation="fade-up" delay={idx * 0.1}>
-                                <div className="relative isolate overflow-hidden bg-white p-6 rounded-2xl shadow-sm border border-border/50 hover:shadow-xl transition-all duration-500 hover:-translate-y-1 h-full flex flex-col items-center text-center group hover:border-blue-100">
+                                <div className="relative isolate overflow-hidden bg-white dark:bg-slate-800/50 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-white/5 hover:shadow-xl dark:hover:shadow-blue-900/20 transition-all duration-500 hover:-translate-y-1 h-full flex flex-col items-center text-center group hover:border-blue-100 dark:hover:border-blue-500/30">
 
                                     {/* Spreading Background Animation */}
-                                    <div className="absolute top-[88px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-blue-50/80 rounded-full scale-0 group-hover:scale-[25] transition-transform duration-1000 ease-out -z-10 originating-from-icon" />
+                                    <div className="absolute top-[88px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-blue-50/80 dark:bg-blue-500/10 rounded-full scale-0 group-hover:scale-[25] transition-transform duration-1000 ease-out -z-10 originating-from-icon" />
 
                                     {/* Decorations */}
                                     {[1, 2, 3, 4].map((_, i) => {
@@ -74,18 +74,18 @@ const SectionCertifications = () => {
                                         );
                                     })}
 
-                                    <div className={`relative z-10 w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-white group-hover:shadow-md transition-all duration-300 text-slate-500 group-hover:text-blue-600`}>
+                                    <div className={`relative z-10 w-16 h-16 rounded-full bg-slate-50 dark:bg-slate-900 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-white dark:group-hover:bg-slate-800 group-hover:shadow-md transition-all duration-300 text-slate-500 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400`}>
                                         <cert.icon className="w-8 h-8 group-hover:rotate-12 transition-transform duration-300" />
                                     </div>
-                                    <h3 className="relative z-10 text-xl font-bold font-heading text-slate-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">
+                                    <h3 className="relative z-10 text-xl font-bold font-heading text-slate-900 dark:text-white mb-3 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300">
                                         {cert.title}
                                     </h3>
-                                    <p className="relative z-10 text-sm text-slate-500 leading-relaxed mb-auto group-hover:text-slate-600 transition-colors duration-300">
+                                    <p className="relative z-10 text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-auto group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors duration-300">
                                         {cert.desc}
                                     </p>
-                                    <div className="relative z-10 mt-6 pt-6 border-t border-slate-100 w-full flex justify-center group-hover:border-blue-200/50 transition-colors">
-                                        <div className="flex items-center gap-2 text-xs font-medium text-slate-500 group-hover:text-blue-600 transition-colors">
-                                            <CheckCircle2 className="w-3 h-3 text-blue-500" />
+                                    <div className="relative z-10 mt-6 pt-6 border-t border-slate-100 dark:border-white/10 w-full flex justify-center group-hover:border-blue-200/50 dark:group-hover:border-blue-500/30 transition-colors">
+                                        <div className="flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                            <CheckCircle2 className="w-3 h-3 text-blue-500 dark:text-blue-400" />
                                             <span>Verified</span>
                                         </div>
                                     </div>
