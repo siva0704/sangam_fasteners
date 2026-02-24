@@ -115,7 +115,8 @@ export const industries = [
         description: "Direct shipping to USA, Canada, and Mexico with expedited delivery options available.",
         detail: "Strategic supply chain for rapid fulfillment",
         products: "Main Drive Shafts, Agitator Shafts, Custom Specifications",
-        caseStudy: "Reliable partner for major appliance manufacturers across North America."
+        caseStudy: "Reliable partner for major appliance manufacturers across North America.",
+        coordinates: { x: 22, y: 34 }
     },
     {
         id: "europe",
@@ -124,7 +125,8 @@ export const industries = [
         description: "Serving EU markets with full compliance to CE standards and regional logistics hubs.",
         detail: "CE certified components with European quality standards",
         products: "Precision Shafts, Material-certified components",
-        caseStudy: "Trusted supplier to European appliance industry with regional warehousing."
+        caseStudy: "Trusted supplier to European appliance industry with regional warehousing.",
+        coordinates: { x: 51, y: 30 }
     },
     {
         id: "asia-pacific",
@@ -133,7 +135,8 @@ export const industries = [
         description: "Regional manufacturing and distribution centers for rapid fulfillment across Asia.",
         detail: "Local presence for just-in-time delivery",
         products: "Full range of washing machine shafts and machined components",
-        caseStudy: "Strategic manufacturing partnerships across Asia-Pacific region."
+        caseStudy: "Strategic manufacturing partnerships across Asia-Pacific region.",
+        coordinates: { x: 80, y: 48 }
     },
     {
         id: "logistics-capabilities",
@@ -142,7 +145,8 @@ export const industries = [
         description: "Sea freight/air freight options, Consolidated shipping, Real-time shipment tracking, Customs documentation support.",
         detail: "Efficient Global Logistics",
         products: "Air/Sea Freight, Tracking, Customs Support",
-        caseStudy: "Streamlined shipping for global partners."
+        caseStudy: "Streamlined shipping for global partners.",
+        coordinates: { x: 65, y: 65 }
     },
     {
         id: "supply-chain-benefits",
@@ -151,7 +155,8 @@ export const industries = [
         description: "Flexible order quantities (MOQ negotiable), Just-in-time delivery programs, Vendor-managed inventory options, Dedicated account management.",
         detail: "Optimized Supply Chain",
         products: "JIT Delivery, VMI Options, Dedicated Account Mgr",
-        caseStudy: "Adding value through flexible supply solutions."
+        caseStudy: "Adding value through flexible supply solutions.",
+        coordinates: { x: 28, y: 68 }
     }
 ];
 
