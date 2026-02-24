@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button"; // Using Button if MagneticButton not found, or assuming MagneticButton exists
 import Footer from "@/components/Footer";
 import MagneticButton from "@/components/MagneticButton"; // Assuming it exists based on usage
+import { Leadership } from "@/components/sections/Leadership";
 
 // Inline Components to replace lost ones
 const SectionHeading = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
@@ -64,7 +65,7 @@ const About = () => {
                     Shaft & Machine Components, nuts, bolts, etc. have become a basic necessity in nearly every industrial activity. These hardware devices have alone commanded a huge demand, owing to their precision, durability and ability to efficiently affix two objects together. A technology driven entity, <span className="font-semibold text-slate-900 dark:text-white">Sangam Shaft & Machine Components Pvt. Ltd.</span> has evolved as a one stop point to avail the most superlative range of shaft & machine components, machined components, forged components and other allied products. We are a reputed <span className="font-semibold text-accent dark:text-blue-400">manufacturer, exporter and supplier</span> of <span className="italic text-slate-800 dark:text-slate-200">shaft & machine components, nuts, collar bolts, D-bolts, Threaded rods, forged components, special shaft & machine components, etc.</span>
                   </p>
                   <p className="mb-6 leading-relaxed">
-                    Our products are the outcome of precise engineering, dedicated efforts, and detailed research into the emerging requirements of our technology conscious clients. Being an <span className="font-semibold text-accent dark:text-blue-400">ISO 9001:2000 certified company</span>, quality takes precedence in everything we do - be it in manufacturing, packaging, or delivering the products on time, etc.
+                    Our products are the outcome of precise engineering, dedicated efforts, and detailed research into the emerging requirements of our technology conscious clients. Being an <span className="font-semibold text-accent dark:text-blue-400">ISO 9001:2015 certified company</span>, quality takes precedence in everything we do - be it in manufacturing, packaging, or delivering the products on time, etc.
                   </p>
                   <p className="leading-relaxed">
                     With our performance oriented products, we have created a benchmark in the global platform, and have always endeavored to meet or even exceed clients' expectations. Today, we are counted as one of the foremost manufacturers of shaft & machine components, machined components, forged components, etc. both in India and overseas. Our eminent clients include BHEL, BEML, Ashok Leyland, Mining Companies, Railways, Power plants, Valve industries and many more.
@@ -369,6 +370,9 @@ const About = () => {
             </div>
           </div>
         </section>
+
+        {/* Leadership Section */}
+        <Leadership />
 
         {/* Contact CTA */}
         <section className="py-24 bg-gradient-to-b from-slate-50 to-white dark:from-[#0a0f1c] dark:to-black text-center transition-colors duration-500 border-t border-slate-200 dark:border-white/5">

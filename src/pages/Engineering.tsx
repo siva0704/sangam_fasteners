@@ -3,6 +3,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
 import Seo from "@/components/Seo";
 import { ShieldCheck } from "lucide-react";
+import { InfrastructureGallery } from "@/components/sections/InfrastructureGallery";
 
 const Engineering = () => {
     return (
@@ -16,6 +17,7 @@ const Engineering = () => {
                     "dimensional accuracy",
                     "process control manufacturing",
                     "ISO certified shaft & machine components India",
+                    "ISO 9001:2015 shaft manufacturer",
                     "shaft & machine component inspection",
                     "repeatable supply"
                 ]}
@@ -28,37 +30,8 @@ const Engineering = () => {
                     badge="Quality Systems"
                 />
 
-                <section className="py-16">
-                    <div className="container mx-auto px-4">
-                        <AnimatedSection animation="fade-up" className="max-w-4xl mx-auto mb-16 text-center">
-                            <h2 className="text-3xl font-heading font-bold mb-6">Manufacturing & Quality Focus</h2>
-                            <p className="text-lg text-muted-foreground">
-                                We maintain strict control over every stage of production to ensure consistency.
-                            </p>
-                        </AnimatedSection>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                            {[
-                                "Process discipline",
-                                "Material control",
-                                "In-process inspection",
-                                "Thread and dimensional verification",
-                                "Final inspection prior to dispatch"
-                            ].map((item, idx) => (
-                                <AnimatedSection key={idx} animation="fade-up" delay={idx * 0.1}>
-                                    <div className="bg-card border p-8 rounded-xl hover:shadow-lg transition-all duration-300 h-full flex items-start gap-4">
-                                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                                            <ShieldCheck className="w-5 h-5 text-primary" />
-                                        </div>
-                                        <div>
-                                            <h3 className="font-bold text-lg mb-2">{item}</h3>
-                                        </div>
-                                    </div>
-                                </AnimatedSection>
-                            ))}
-                        </div>
-                    </div>
-                </section>
+                <InfrastructureGallery />
 
                 <section className="py-16 bg-muted/30">
                     <div className="container mx-auto px-4">

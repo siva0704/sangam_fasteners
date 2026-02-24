@@ -1,4 +1,4 @@
-import { Building2, User, Calendar, FileCheck, ShieldCheck, Banknote, Briefcase, Award } from "lucide-react";
+import { Building2, User, Users, Calendar, FileCheck, ShieldCheck, Banknote, Briefcase, Award } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { CardStackItem } from "@/components/ui/CardStackItem";
 import { useEffect, useRef, useState } from "react";
@@ -27,36 +27,29 @@ const facts = [
     },
     {
         label: "Annual Turnover",
-        value: "5 - 25 Cr",
-        subtext: "Consistent Growth",
+        value: "48 Crore",
+        subtext: "FY 2023-24 (4800 Lacs)",
         icon: Banknote,
         decoration: [Banknote, TrendingUp, Building2]
     },
     {
-        label: "Legal Status",
-        value: "Limited Company",
-        subtext: "Private Limited Entity",
-        icon: Scale,
-        decoration: [Scale, FileCheck, ShieldCheck]
+        label: "Workforce",
+        value: "120+ Professionals",
+        subtext: "Skilled Team",
+        icon: Users,
+        decoration: [Users, Briefcase, Award]
     },
     {
-        label: "GST Number",
-        value: "29AAGCS2351H1ZA",
-        subtext: "Registered Entity",
-        icon: FileCheck,
-        decoration: [FileCheck, CheckCircle2, Shield]
-    },
-    {
-        label: "CIN Number",
-        value: "U80302KA2000PTC027793",
-        subtext: "Corporate Identity",
-        icon: FileText,
-        decoration: [FileText, Building2, Globe2]
+        label: "Infrastructure",
+        value: "20,000 m²",
+        subtext: "Built-up Factory Area",
+        icon: Building2,
+        decoration: [Building2, FactoryIcon, Briefcase]
     },
     {
         label: "Quality Certification",
-        value: "ISO 9001:2000",
-        subtext: "Certified Company",
+        value: "ISO 9001:2015",
+        subtext: "Certified Excellence",
         icon: ShieldCheck,
         decoration: [ShieldCheck, Award, Star]
     }

@@ -9,7 +9,6 @@ import { useScrollProgress } from "@/hooks/use-scroll-progress";
 import Seo from "@/components/Seo";
 import { products } from "@/constants/data";
 
-import SectionProduct3DExplorer from "@/components/SectionProduct3DExplorer";
 import ProductEnquiryForm from "@/components/ProductEnquiryForm";
 import { Filter, Target } from "lucide-react";
 
@@ -53,8 +52,6 @@ const Products = () => {
           badge="Product Range"
         />
 
-        {/* 3D Explorer Section */}
-        <SectionProduct3DExplorer />
 
         {/* Filter Section - Brutalist Redesign */}
         <section className="py-8 bg-white dark:bg-[#0a0f1c] border-b-2 border-slate-200 dark:border-slate-800 sticky top-0 z-30 transition-colors duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
