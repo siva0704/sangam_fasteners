@@ -89,10 +89,10 @@ export const Navbar = () => {
                         <Link
                             to="/contact"
                             className={cn(
-                                "px-5 py-2.5 rounded-sm font-bold text-sm transition-all duration-300 uppercase tracking-wider inline-block",
+                                "px-5 py-2.5 rounded-sm font-bold text-sm transition-all duration-300 uppercase tracking-wider inline-block border-2",
                                 useScrolledStyle
-                                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                                    : "bg-white text-primary hover:bg-white/90"
+                                    ? "bg-accent text-white border-accent hover:bg-accent/90 hover:border-accent/90"
+                                    : "bg-white text-primary-foreground border-white hover:bg-white/90 hover:border-white/90"
                             )}
                         >
                             Get Quote
