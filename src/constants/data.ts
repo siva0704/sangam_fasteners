@@ -16,6 +16,8 @@ import {
     Users
 } from "lucide-react";
 
+const baseUrl = import.meta.env.BASE_URL;
+
 export const products = [
     // --- WASHING MACHINE SHAFTS (CORE) ---
     {
@@ -25,7 +27,7 @@ export const products = [
         material: "Hardened Stainless Steel",
         standards: "OEM Specifications",
         description: "High-precision core shaft engineered specifically for top-load and front-load washing machine assemblies.",
-        image: "/sangam_fasteners/SFL_Shafts/image2.jpeg"
+        image: `/assets/corporate-profile/products/shaft_12.jpeg`
     },
     {
         id: "030-7s-shaft",
@@ -34,7 +36,7 @@ export const products = [
         material: "Hardened Stainless Steel",
         standards: "OEM Specifications",
         description: "Advanced heavy-duty shaft designed to handle increased torque transmission in high-capacity washers.",
-        image: "/sangam_fasteners/SFL_Shafts/image3.jpeg"
+        image: `/assets/corporate-profile/products/shaft_13.jpeg`
     },
     {
         id: "040-8s-shaft",
@@ -43,36 +45,65 @@ export const products = [
         material: "Hardened Stainless Steel",
         standards: "OEM Specifications",
         description: "Premium continuous-duty shaft featuring optimized surface finishing for prolonged bearing life and reduced vibration.",
-        image: "/sangam_fasteners/SFL_Shafts/image4.jpeg"
+        image: `/assets/corporate-profile/products/shaft_14.jpeg`
+    },
+    {
+        id: "050-8p-shaft",
+        name: "050 (8P) Shaft",
+        category: "Washing Machine Shafts",
+        material: "Hardened Stainless Steel",
+        standards: "OEM Specifications",
+        description: "High-performance shaft designed for specialized industrial washing applications.",
+        image: `/assets/corporate-profile/products/shaft_15.jpeg`
     },
 
-    // --- NEW DEVELOPMENTS / HIGH RPM ---
+    // --- HIGH RPM SHAFTS ---
+    {
+        id: "1000rpm-shaft",
+        name: "1000 RPM Shaft",
+        category: "High Speed Shafts",
+        material: "Specialized Steel Alloy",
+        standards: "High Velocity Specs",
+        description: "Precision shaft optimized for 1000 RPM operational stability.",
+        image: `/assets/corporate-profile/products/shaft_16.jpeg`
+    },
+    {
+        id: "1200rpm-shaft",
+        name: "1200 RPM Shaft",
+        category: "High Speed Shafts",
+        material: "Specialized Steel Alloy",
+        standards: "High Velocity Specs",
+        description: "Advanced shaft designed for 1200 RPM high-speed washing machine motors.",
+        image: `/assets/corporate-profile/products/shaft_17.jpeg`
+    },
+
+    // --- NEW DEVELOPMENTS ---
     {
         id: "lg-fl440-shaft",
-        name: "LG-FL440 Compatible Shaft",
+        name: "LG-FL440 Shaft",
         category: "New Developments",
         material: "High Tensile Alloy Steel",
         standards: "Tier-1 Appliance Specs",
         description: "Next-generation shaft developed for ultra-high RPM direct-drive inverter motors.",
-        image: "/sangam_fasteners/SFL_Shafts/image8.jpeg"
+        image: `/assets/corporate-profile/products/shaft_18.jpeg`
     },
     {
         id: "lg-fl550-shaft",
-        name: "LG-FL550 Compatible Shaft",
+        name: "LG-FL550 Shaft",
         category: "New Developments",
         material: "High Tensile Alloy Steel",
         standards: "Tier-1 Appliance Specs",
         description: "Maximum load-bearing shaft engineered for premium, large-capacity smart washing machines.",
-        image: "/sangam_fasteners/SFL_Shafts/image9.jpeg"
+        image: `/assets/corporate-profile/products/shaft_19.jpeg`
     },
     {
         id: "4000rpm-shaft",
-        name: "4000 RPM Precision Shaft",
-        category: "High Speed Shafts",
+        name: "4000 RPM Shaft",
+        category: "New Developments",
         material: "Specialized Steel Alloy",
         standards: "High Velocity Specs",
         description: "Precision balanced shaft designed to operate flawlessly at extreme rotational speeds without deflection.",
-        image: "/sangam_fasteners/SFL_Shafts/image10.jpeg"
+        image: `/assets/corporate-profile/products/shaft_20.jpeg`
     }
 ];
 

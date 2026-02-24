@@ -6,6 +6,7 @@ import MagneticButton from "./MagneticButton";
 import ProductEnquiryForm from "./ProductEnquiryForm";
 import { products } from "@/constants/data";
 import { Link } from "react-router-dom";
+import SFLPlaceholder from "./SFLPlaceholder";
 
 // Extract categories dynamically
 const categories = ["All", ...Array.from(new Set(products.map((p) => p.category)))];
@@ -80,8 +81,8 @@ const SectionProducts = () => {
                                 key={category}
                                 onClick={() => setActiveCategory(category)}
                                 className={`px-6 py-2.5 text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 border-2 rounded-none ${activeCategory === category
-                                        ? "bg-cyan-500 text-white border-cyan-500 shadow-[4px_4px_0px_rgba(15,23,42,0.2)] dark:shadow-[4px_4px_0px_rgba(6,182,212,0.3)] translate-y-[-2px]"
-                                        : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 hover:text-cyan-600 dark:hover:text-cyan-400 hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_rgba(15,23,42,0.05)] dark:hover:shadow-[4px_4px_0px_rgba(0,0,0,0.5)]"
+                                    ? "bg-cyan-500 text-white border-cyan-500 shadow-[4px_4px_0px_rgba(15,23,42,0.2)] dark:shadow-[4px_4px_0px_rgba(6,182,212,0.3)] translate-y-[-2px]"
+                                    : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 hover:text-cyan-600 dark:hover:text-cyan-400 hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_rgba(15,23,42,0.05)] dark:hover:shadow-[4px_4px_0px_rgba(0,0,0,0.5)]"
                                     }`}
                             >
                                 {category}
@@ -120,7 +121,16 @@ const SectionProducts = () => {
                                         src={product.image}
                                         alt={product.name}
                                         className="w-full h-full object-contain relative z-20 filter drop-shadow-[0_10px_15px_rgba(0,0,0,0.3)] group-hover:scale-105 transition-transform duration-[500ms] ease-out mix-blend-multiply dark:mix-blend-screen"
+                                        onError={(e) => {
+                                            const target = e.currentTarget;
+                                            target.style.display = 'none';
+                                            const placeholder = target.nextElementSibling as HTMLElement;
+                                            if (placeholder) placeholder.style.display = 'flex';
+                                        }}
                                     />
+                                    <div className="absolute inset-0 z-20 hidden">
+                                        <SFLPlaceholder text={product.name} />
+                                    </div>
 
                                     {/* Industrial Overlay Lines */}
                                     <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">

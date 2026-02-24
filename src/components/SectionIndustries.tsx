@@ -29,7 +29,7 @@ const SectionIndustries = () => {
             {/* Background Map Image */}
             <div className="absolute inset-0 z-0 opacity-10 dark:opacity-40 pointer-events-none">
                 <img
-                    src="/sangam_fasteners/assets/world_map.png"
+                    src={`${import.meta.env.BASE_URL}assets/world_map.png`}
                     alt="World Map"
                     className="w-full h-full object-cover object-center filter dark:invert-0 invert opacity-50 dark:opacity-100"
                 />

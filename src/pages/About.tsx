@@ -41,9 +41,9 @@ const About = () => {
 
       <main className="flex-1">
         <PageHero
-          title="About Sangam Shaft & Machine Components"
-          subtitle="Manufacturing Experience Built on Process Discipline"
-          badge="Since 2000"
+          title="About Sangam Fasteners"
+          subtitle="Precision Machined Components & Shafts Manufacturer"
+          badge="ISO 9001:2015 Certified"
         />
 
         {/* Company Overview - Detailed Text */}
@@ -62,13 +62,13 @@ const About = () => {
               <AnimatedSection animation="blur-fade" delay={1}>
                 <div className="prose prose-lg prose-slate dark:prose-invert mx-auto text-slate-600 dark:text-slate-300 text-justify">
                   <p className="mb-6 leading-relaxed">
-                    Shaft & Machine Components, nuts, bolts, etc. have become a basic necessity in nearly every industrial activity. These hardware devices have alone commanded a huge demand, owing to their precision, durability and ability to efficiently affix two objects together. A technology driven entity, <span className="font-semibold text-slate-900 dark:text-white">Sangam Shaft & Machine Components Pvt. Ltd.</span> has evolved as a one stop point to avail the most superlative range of shaft & machine components, machined components, forged components and other allied products. We are a reputed <span className="font-semibold text-accent dark:text-blue-400">manufacturer, exporter and supplier</span> of <span className="italic text-slate-800 dark:text-slate-200">shaft & machine components, nuts, collar bolts, D-bolts, Threaded rods, forged components, special shaft & machine components, etc.</span>
+                    <span className="font-semibold text-slate-900 dark:text-white">Sangam Fasteners Private Limited (SFPL)</span> is an <span className="font-semibold text-accent dark:text-blue-400">ISO-9001-2015 certified</span> engineering company with an expertise in Machined Components built over the years. SFPL was formed with the vision of manufacturing highly technical and precision components, catering to the needs of Automotive and Non-Automotive sectors including <span className="font-semibold text-slate-900 dark:text-white">OEMs and TIER-1 Customers</span>.
                   </p>
                   <p className="mb-6 leading-relaxed">
-                    Our products are the outcome of precise engineering, dedicated efforts, and detailed research into the emerging requirements of our technology conscious clients. Being an <span className="font-semibold text-accent dark:text-blue-400">ISO 9001:2015 certified company</span>, quality takes precedence in everything we do - be it in manufacturing, packaging, or delivering the products on time, etc.
+                    SFPL’s strong capability in design, engineering and consistency in delivering quality Shafts has resulted in <span className="font-semibold text-accent dark:text-blue-400">100 percent retention of the clients</span>. These capabilities give the firm an edge over its competitors.
                   </p>
                   <p className="leading-relaxed">
-                    With our performance oriented products, we have created a benchmark in the global platform, and have always endeavored to meet or even exceed clients' expectations. Today, we are counted as one of the foremost manufacturers of shaft & machine components, machined components, forged components, etc. both in India and overseas. Our eminent clients include BHEL, BEML, Ashok Leyland, Mining Companies, Railways, Power plants, Valve industries and many more.
+                    We offer our customers cost effective products that conform to international standards. We believe in flawless execution and delivery, so that we can help our customers to thrive in today’s competitive environment.
                   </p>
                 </div>
               </AnimatedSection>
@@ -92,7 +92,7 @@ const About = () => {
                   </div>
                   <h3 className="text-2xl font-heading font-bold mb-6 tracking-wide">OUR MISSION</h3>
                   <p className="text-slate-300 leading-relaxed text-lg max-w-md mx-auto">
-                    To manufacture industrial shaft & machine components that customers can approve with confidence and source repeatedly, without disruption to their production, quality, or delivery commitments.
+                    To create an ethos required to excel in Machining and commit ourselves to the ethics of fair deals.
                   </p>
                 </div>
               </AnimatedSection>
@@ -108,7 +108,7 @@ const About = () => {
                   </div>
                   <h3 className="text-2xl font-heading font-bold mb-6 tracking-wide">OUR VISION</h3>
                   <p className="text-blue-100 dark:text-slate-300 leading-relaxed text-lg max-w-md mx-auto">
-                    To be a trusted long-term shaft & machine component manufacturing partner for OEMs and industrial customers by consistently delivering stable manufacturing output, specification-driven execution, and predictable supply behavior.
+                    To excel in Machining and Expand the business globally.
                   </p>
                 </div>
               </AnimatedSection>
@@ -137,27 +137,27 @@ const About = () => {
             <StaggerGrid className="grid md:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto">
               {[
                 {
-                  title: "Process Control",
-                  desc: "We maintain strict control at every production stage to ensure precision, consistency, and zero-defect quality in every shaft we manufacture.",
-                  icon: Cog,
+                  title: "Ethics",
+                  desc: "We own our behavior, keep our promises, value honesty, honor the community environment in which we operate and embrace diversity.",
+                  icon: ShieldCheck,
                   gradient: "from-blue-500 to-indigo-600"
                 },
                 {
-                  title: "Specification Execution",
-                  desc: "We strictly adhere to customer specifications and industry standards, ensuring every shaft is manufactured with precise dimensions, material integrity, and performance compliance.",
-                  icon: ShieldCheck,
+                  title: "Customer Focus",
+                  desc: "Customer Satisfaction is at the centre of what we do every day. We are trusted partners of our customers.",
+                  icon: Users,
                   gradient: "from-cyan-500 to-blue-500"
                 },
                 {
-                  title: "Quality Accountability",
-                  desc: "We take full responsibility for quality at every stage of production, ensuring each shaft meets defined standards, customer requirements, and performance expectations without compromise.",
-                  icon: Users,
+                  title: "Safety & Quality",
+                  desc: "Exceed industry standards for safety and performance by leveraging our core values.",
+                  icon: Activity,
                   gradient: "from-indigo-500 to-purple-600"
                 },
                 {
-                  title: "Repeat Supplier",
-                  desc: "We build long-term partnerships through consistent quality, reliable delivery, and dependable performance that customers trust and return to.",
-                  icon: Activity,
+                  title: "Empower & Deliberate",
+                  desc: "Employees are encouraged to take action and ensure timely delivery of expectations.",
+                  icon: Target,
                   gradient: "from-blue-400 to-cyan-500"
                 },
               ].map((item, idx) => (

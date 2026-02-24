@@ -2,12 +2,13 @@ import { ArrowRight, Linkedin, Instagram, Facebook } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import MagneticButton from "./MagneticButton";
 import { Link } from "react-router-dom";
+import SFLPlaceholder from "./SFLPlaceholder";
 
 const teamMembers = [
     {
         name: "Jeffrey Brown",
         role: "Creative Leader",
-        image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400", // Placeholder
+        image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400",
         socials: {
             facebook: "#",
             instagram: "#",
@@ -17,7 +18,7 @@ const teamMembers = [
     {
         name: "Ann Richmond",
         role: "Web Developer",
-        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400", // Placeholder
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400",
         socials: {
             facebook: "#",
             instagram: "#",
@@ -27,7 +28,7 @@ const teamMembers = [
     {
         name: "Sarah Jenning",
         role: "Product Manager",
-        image: "/sangam_fasteners/team/sarah.png",
+        image: `${import.meta.env.BASE_URL}team/sarah.png`,
         socials: {
             facebook: "#",
             instagram: "#",
@@ -86,7 +87,16 @@ const SectionTeam = () => {
                                                     src={member.image}
                                                     alt={member.name}
                                                     className="w-full h-full object-cover"
+                                                    onError={(e) => {
+                                                        const target = e.currentTarget;
+                                                        target.style.display = 'none';
+                                                        const placeholder = target.nextElementSibling as HTMLElement;
+                                                        if (placeholder) placeholder.style.display = 'flex';
+                                                    }}
                                                 />
+                                                <div className="absolute inset-0 z-20 hidden">
+                                                    <SFLPlaceholder text={member.name} />
+                                                </div>
                                             </div>
                                             {/* Decorative Ring */}
                                             <div className="absolute inset-0 border-2 border-blue-500/20 dark:border-blue-400/20 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 rounded-full" />

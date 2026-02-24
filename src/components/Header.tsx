@@ -13,9 +13,7 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   // Robust check for Home Page
-  const isHomePage = location.pathname === "/" ||
-    location.pathname.endsWith("/sangam_fasteners") ||
-    location.pathname.endsWith("/sangam_fasteners/");
+  const isHomePage = location.pathname === "/" || location.pathname === import.meta.env.BASE_URL;
 
   useEffect(() => {
     const handleScroll = () => {

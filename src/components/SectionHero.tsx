@@ -141,7 +141,7 @@ const SectionHero = () => {
 
                     {/* Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4">
-                      <a href="/sangam_fasteners/SFL Resorcs/Vendor Profile - SFL.pptx" download>
+                      <a href={`${import.meta.env.BASE_URL}SFL Resorcs/Vendor Profile - SFL.pptx`} download>
                         <MagneticButton size="lg" className="bg-accent hover:bg-accent/90 text-white border-0 px-8 py-6 text-lg w-full sm:w-auto shadow-[0_0_20px_rgba(59,130,246,0.3)]">
                           Download Vendor Profile
                         </MagneticButton>

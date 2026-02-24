@@ -214,7 +214,7 @@ const SectionClients = () => {
                                         className="inline-flex items-center justify-center flex-shrink-0"
                                     >
                                         <img
-                                            src={`/sangam_fasteners/SFL_Clients_Clean/${filename}`}
+                                            src={`${import.meta.env.BASE_URL}SFL_Clients_Clean/${filename}`}
                                             alt={`Partner ${i + 1}`}
                                             className="h-10 md:h-14 lg:h-16 w-auto object-contain pointer-events-none"
                                             draggable={false}

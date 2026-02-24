@@ -8,6 +8,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
+            <div className="mb-6 group">
+              <Link to="/">
+                <img
+                  src={`${import.meta.env.BASE_URL}logo.svg`}
+                  alt="Sangam Fasteners Logo"
+                  className="h-16 w-auto object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                />
+              </Link>
+            </div>
             <h3 className="font-heading font-bold text-lg mb-4 text-foreground">Sangam Shaft & Machine Components Pvt Ltd</h3>
             <p className="text-sm text-muted-foreground mb-4">
               Leading manufacturer of high-precision washing machine shafts for the global appliance industry.

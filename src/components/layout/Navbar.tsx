@@ -12,7 +12,8 @@ export const Navbar = () => {
     const location = useLocation();
 
     // Check if we are on the home page (allowing for potential base path)
-    const isHome = location.pathname === "/" || location.pathname === "/sangam_fasteners" || location.pathname === "/sangam_fasteners/";
+    // Check if we are on the home page
+    const isHome = location.pathname === "/" || location.pathname === import.meta.env.BASE_URL;
 
     // Determine if we should use the "scrolled" (solid white) style
     // We use it if the user has scrolled OR if we are NOT on the home page
@@ -46,7 +47,7 @@ export const Navbar = () => {
             <div className="container mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
                 <Link to="/" className="flex items-center gap-3 group">
-                    <img src="/sangam_fasteners/logo.svg" alt="Sangam Shaft & Machine Components Private Limited Logo" className="h-[45px] w-[45px] object-contain group-hover:scale-105 transition-transform duration-300" />
+                    <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="Sangam Shaft & Machine Components Private Limited Logo" className="h-[45px] w-[45px] object-contain group-hover:scale-105 transition-transform duration-300" />
                     <div className="flex flex-col items-start leading-none gap-1">
                         <span className={cn(
                             "text-[12px] sm:text-[16px] font-heading font-bold tracking-widest uppercase transition-colors duration-300",
