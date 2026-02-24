@@ -9,10 +9,11 @@ interface SeoProps {
         question: string;
         answer: string;
     }[];
+    image?: string;
     productSchema?: boolean;
 }
 
-const Seo = ({ title, description, keywords = [], schema, faqs, productSchema }: SeoProps) => {
+const Seo = ({ title, description, keywords = [], schema, faqs, image, productSchema }: SeoProps) => {
     useEffect(() => {
         // Update Title
         document.title = title;
@@ -98,7 +99,38 @@ const Seo = ({ title, description, keywords = [], schema, faqs, productSchema }:
             document.head.appendChild(script);
         });
 
-    }, [title, description, keywords, schema, faqs, productSchema]);
+        // Update Social Tags
+        const currentUrl = window.location.href;
+        const defaultImage = `${window.location.origin}${import.meta.env.BASE_URL}og-image.png`;
+        const seoImage = image || defaultImage;
+
+        const socialTags = [
+            { property: 'og:title', content: title },
+            { property: 'og:description', content: description },
+            { property: 'og:image', content: seoImage },
+            { property: 'og:url', content: currentUrl },
+            { property: 'og:type', content: 'website' },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: title },
+            { name: 'twitter:description', content: description },
+            { name: 'twitter:image', content: seoImage }
+        ];
+
+        socialTags.forEach(tag => {
+            const selector = tag.property
+                ? `meta[property="${tag.property}"]`
+                : `meta[name="${tag.name}"]`;
+            let element = document.querySelector(selector);
+            if (!element) {
+                element = document.createElement('meta');
+                if (tag.property) element.setAttribute('property', tag.property);
+                if (tag.name) element.setAttribute('name', tag.name);
+                document.head.appendChild(element);
+            }
+            element.setAttribute('content', tag.content);
+        });
+
+    }, [title, description, keywords, schema, faqs, image, productSchema]);
 
     return null;
 };
