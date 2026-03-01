@@ -62,7 +62,7 @@ const Header = () => {
   const headerClass = isScrolled
     ? "bg-white/95 backdrop-blur-md border-b border-border shadow-sm text-foreground"
     : isHomePage
-      ? "bg-transparent border-transparent text-white"
+      ? "bg-transparent border-transparent text-foreground"
       : "bg-white border-b border-border shadow-sm text-foreground";
 
   const navLinks = [
@@ -81,11 +81,11 @@ const Header = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 z-50 relative group">
               <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center shadow-md group-hover:bg-accent/90 transition-colors">
-                <span className="text-white font-heading font-bold text-xl">SF</span>
+                <span className="text-foreground font-heading font-bold text-xl">SF</span>
               </div>
               <div className="hidden lg:block">
-                <h1 className={`text-xl font-heading font-bold transition-colors ${!isScrolled && isHomePage ? "text-white" : "text-gray-900"}`}>Sangam Shaft & Machine Components</h1>
-                <p className={`text-xs ${!isScrolled && isHomePage ? "text-white/80" : "text-gray-500"} transition-colors`}>Private Limited</p>
+                <h1 className={`text-xl font-heading font-bold transition-colors ${!isScrolled && isHomePage ? "text-foreground" : "text-gray-900"}`}>Sangam Shaft & Machine Components</h1>
+                <p className={`text-xs ${!isScrolled && isHomePage ? "text-foreground/80" : "text-gray-500"} transition-colors`}>Private Limited</p>
               </div>
             </Link>
 
@@ -98,7 +98,7 @@ const Header = () => {
                   className={`text-sm font-medium tracking-wide transition-colors duration-300 relative group py-2 
                     ${isActive(link.path) ? "font-bold" : ""}
                     ${!isScrolled && isHomePage
-                      ? "text-white hover:text-white/90 drop-shadow-md"
+                      ? "text-foreground hover:text-foreground/90 drop-shadow-md"
                       : "text-gray-700 hover:text-accent"
                     }
                   `}
@@ -116,7 +116,7 @@ const Header = () => {
             {/* Mobile Toggle Button (Hidden on LG and up) */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`lg:hidden relative z-50 p-2 transition-colors ${!isScrolled && isHomePage ? "text-white hover:text-white/80" : "text-gray-900 hover:text-accent"}`}
+              className={`lg:hidden relative z-50 p-2 transition-colors ${!isScrolled && isHomePage ? "text-foreground hover:text-foreground/80" : "text-gray-900 hover:text-accent"}`}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMenuOpen ? (

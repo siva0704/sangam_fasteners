@@ -46,13 +46,13 @@ const Industries = () => {
                     {/* Icon Container - Diamond Shape */}
                     <div className="mb-6 relative">
                       <div className="w-16 h-16 rounded-2xl rotate-45 bg-slate-50 group-hover:bg-accent transition-colors duration-300 flex items-center justify-center shadow-inner">
-                        <div className="-rotate-45 text-accent group-hover:text-white transition-colors duration-300">
+                        <div className="-rotate-45 text-accent group-hover:text-foreground transition-colors duration-300">
                           <industry.icon size={28} strokeWidth={1.5} />
                         </div>
                       </div>
                     </div>
 
-                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">
+                    <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2">
                       INDUSTRY SECTOR
                     </h3>
 
@@ -63,7 +63,7 @@ const Industries = () => {
                     <div className="w-12 h-1 bg-gray-100 rounded-full my-4 group-hover:bg-blue-200 transition-colors duration-300" />
 
                     <div className="mb-4 w-full">
-                      <h4 className="font-medium text-xs uppercase tracking-wider text-gray-400 mb-2">Key Products</h4>
+                      <h4 className="font-medium text-xs uppercase tracking-wider text-muted-foreground mb-2">Key Products</h4>
                       <p className="text-sm text-gray-600 bg-gray-50 py-2 px-3 rounded-lg mx-auto inline-block w-full">{industry.products}</p>
                     </div>
 

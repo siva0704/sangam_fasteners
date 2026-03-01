@@ -5,14 +5,30 @@ import AnimatedSection from "./AnimatedSection";
 import { CardStackItem } from "@/components/ui/CardStackItem";
 import { useEffect, useRef, useState } from "react";
 
-const EngineeringCard = ({ feature, currentIcons, getDecorationStyle, isActive, domRef }: any) => {
+interface EngineeringCardProps {
+    feature: {
+        title: string;
+        desc: string;
+        icon: React.ElementType;
+    };
+    currentIcons: React.ElementType[];
+    getDecorationStyle: (i: number) => {
+        translate: string;
+        delay: string;
+        size: string;
+    };
+    isActive: boolean;
+    domRef: (el: HTMLDivElement | null) => void;
+}
+
+const EngineeringCard = ({ feature, currentIcons, getDecorationStyle, isActive, domRef }: EngineeringCardProps) => {
     return (
         <div
             ref={domRef}
             className={`group ${isActive ? "is-active" : ""} relative bg-white p-6 rounded-2xl border border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 overflow-hidden h-full flex flex-col justify-between items-center text-center isolate`}
         >
             {/* Enhanced Decorations */}
-            {currentIcons.map((Icon: any, i: number) => {
+            {currentIcons.map((Icon, i: number) => {
                 const style = getDecorationStyle(i);
                 return (
                     <div key={i} className={`absolute top-[80px] left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-0 group-hover:opacity-90 group-hover:scale-100 group-[.is-active]:opacity-90 group-[.is-active]:scale-100 transition-all duration-700 ease-out ${style.translate} ${style.delay} z-0 pointer-events-none`}>
@@ -25,13 +41,13 @@ const EngineeringCard = ({ feature, currentIcons, getDecorationStyle, isActive, 
             <div className="w-full flex flex-col items-center relative">
                 <div className="relative mb-6">
                     {/* Main Icon Container */}
-                    <div className={`p-5 rounded-2xl bg-slate-50 text-slate-400 group-hover:bg-white group-hover:text-blue-600 group-[.is-active]:bg-white group-[.is-active]:text-blue-600 transition-all duration-300 shadow-sm group-hover:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] group-[.is-active]:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] ring-1 ring-slate-100 group-hover:ring-blue-100 group-[.is-active]:ring-blue-100 relative z-20`}>
+                    <div className={`p-5 rounded-2xl bg-slate-50 text-muted-foreground group-hover:bg-white group-hover:text-blue-600 group-[.is-active]:bg-white group-[.is-active]:text-blue-600 transition-all duration-300 shadow-sm group-hover:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] group-[.is-active]:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] ring-1 ring-slate-100 group-hover:ring-blue-100 group-[.is-active]:ring-blue-100 relative z-20`}>
                         <feature.icon size={36} strokeWidth={1.5} className="group-hover:scale-110 group-[.is-active]:scale-110 group-hover:-translate-y-1 group-[.is-active]:-translate-y-1 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] fill-blue-50/0 group-hover:fill-blue-50 group-[.is-active]:fill-blue-50" />
                     </div>
                 </div>
 
                 <div className="space-y-3 relative z-20">
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.25em] group-hover:text-blue-600 group-[.is-active]:text-blue-600 transition-colors duration-300">
+                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.25em] group-hover:text-blue-600 group-[.is-active]:text-blue-600 transition-colors duration-300">
                         Methodology
                     </p>
                     <h3 className="text-xl font-bold text-slate-900 leading-tight transition-colors duration-300 min-h-[3rem] flex items-center justify-center">
@@ -52,7 +68,7 @@ const EngineeringCard = ({ feature, currentIcons, getDecorationStyle, isActive, 
 };
 
 const BlueprintGraphic = () => (
-    <div className="relative w-full h-[400px] bg-[#020617] rounded-xl overflow-hidden border border-slate-800 shadow-2xl group isolate">
+    <div className="relative w-full h-[400px] bg-[#020617] rounded-xl overflow-hidden border border-border shadow-2xl group isolate">
         {/* Abstract Dark Tech Background */}
         <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:40px_40px] opacity-10" />
@@ -177,7 +193,7 @@ const SectionEngineering = () => {
                                 Our manufacturing is defined by strict specification adherence, unwavering process discipline, and a focus on long-term repeatability for mission-critical applications.
                             </p>
                             <Link to="/contact">
-                                <MagneticButton size="lg" variant="outline" className="border-accent/20 text-accent hover:bg-accent hover:text-white mb-8 group transition-all duration-300">
+                                <MagneticButton size="lg" variant="outline" className="border-accent/20 text-accent hover:bg-accent hover:text-foreground mb-8 group transition-all duration-300">
                                     Request Technical Clarification <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                                 </MagneticButton>
                             </Link>
@@ -186,7 +202,7 @@ const SectionEngineering = () => {
                         <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4 pb-8 sm:pb-0">
                             {manufacturingFeatures.map((feature, idx) => {
                                 // Define related icons for each feature
-                                const relatedIconsMap: any = {
+                                const relatedIconsMap: Record<number, React.ElementType[]> = {
                                     0: [Ruler, ClipboardCheck, Scale, Ruler, FileSearch], // Specification
                                     1: [Shield, ClipboardCheck, Award, Shield, Zap], // Process
                                     2: [Timer, Scale, Ruler, Zap, Combine], // Repeatability

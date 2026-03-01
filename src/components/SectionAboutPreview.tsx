@@ -24,7 +24,7 @@ const disciplines = [
 
 const SectionAboutPreview = () => {
     return (
-        <section className="relative py-24 bg-gradient-to-b from-white to-slate-50 dark:from-[#050814] dark:to-[#0a0f1c] text-slate-900 dark:text-white overflow-hidden transition-colors duration-500">
+        <section className="relative py-24 bg-gradient-to-b from-muted to-background text-foreground overflow-hidden transition-colors duration-500">
             {/* Blueprint Background Pattern */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                 <div className="absolute inset-0 bg-[radial-gradient(#000000_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:30px_30px]" />
@@ -37,10 +37,10 @@ const SectionAboutPreview = () => {
                         <span className="inline-block py-1 px-3 text-blue-600 dark:text-cyan-400 font-bold tracking-widest text-xs uppercase mb-4 border border-blue-200 dark:border-cyan-400/20 rounded-full bg-blue-50 dark:bg-cyan-400/5">
                             Operational Discipline
                         </span>
-                        <h2 className="text-3xl md:text-5xl font-bold font-heading mb-6 tracking-tight text-slate-900 dark:text-white">
+                        <h2 className="text-3xl md:text-5xl font-bold font-heading mb-6 tracking-tight text-slate-900 dark:text-foreground">
                             The Architecture of <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300">Precision</span>
                         </h2>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 font-light">
+                        <p className="text-lg text-slate-600 dark:text-muted-foreground font-light">
                             To set the benchmark in advanced shaft solutions with cutting-edge technology and world-class standards.
                         </p>
                     </AnimatedSection>
@@ -50,7 +50,7 @@ const SectionAboutPreview = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
                     {disciplines.map((item, idx) => (
                         <AnimatedSection key={idx} animation="fade-up" delay={idx * 0.1}>
-                            <div className="group relative h-full bg-white dark:bg-white/5 backdrop-blur-xl border border-slate-200 dark:border-white/10 p-8 rounded-3xl hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-500 overflow-hidden isolate shadow-xl dark:shadow-2xl hover:shadow-2xl dark:hover:shadow-[0_20px_40px_-15px_rgba(34,211,238,0.15)]">
+                            <div className="group relative h-full bg-card backdrop-blur-xl border border-border p-8 rounded-3xl hover:bg-card/80 transition-all duration-500 overflow-hidden isolate shadow-xl hover:shadow-2xl hover:shadow-accent/10">
                                 {/* Hover Pulse Ring */}
                                 <div className="absolute top-8 right-8 w-32 h-32 bg-blue-500/10 dark:bg-blue-400/20 rounded-full blur-3xl scale-0 group-hover:scale-150 transition-transform duration-700 ease-out -z-10" />
 
@@ -58,10 +58,10 @@ const SectionAboutPreview = () => {
                                     <item.icon size={28} strokeWidth={1.5} />
                                 </div>
 
-                                <h3 className="text-2xl font-bold mb-3 text-slate-900 dark:text-slate-50 group-hover:text-blue-900 dark:group-hover:text-white transition-colors">
+                                <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-accent transition-colors">
                                     {item.title}
                                 </h3>
-                                <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-light group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors text-sm md:text-base">
+                                <p className="text-muted-foreground leading-relaxed font-light text-sm md:text-base">
                                     {item.desc}
                                 </p>
                             </div>

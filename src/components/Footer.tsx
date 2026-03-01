@@ -26,7 +26,7 @@ const Footer = () => {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-muted rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300"
+                className="w-10 h-10 bg-muted rounded-full flex items-center justify-center hover:bg-accent hover:text-foreground transition-all duration-300"
               >
                 <Linkedin size={18} />
               </a>

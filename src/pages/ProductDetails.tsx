@@ -32,16 +32,16 @@ const ProductDetails = () => {
             />
 
             <main className="flex-1">
-                <div className="bg-slate-900 dark:bg-[#080d1a] pt-32 pb-12 text-white border-b-2 border-slate-800 transition-colors duration-500">
+                <div className="bg-background dark:bg-[#080d1a] pt-32 pb-12 text-foreground border-b-2 border-border transition-colors duration-500">
                     <div className="container mx-auto px-4 max-w-7xl">
                         <Link to="/products" className="inline-flex items-center text-cyan-500 hover:text-cyan-400 font-bold uppercase tracking-widest text-xs transition-colors mb-8 group">
                             <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" /> BACK TO CATALOG
                         </Link>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tight mb-6 uppercase text-white drop-shadow-md">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-heading tracking-tight mb-6 uppercase text-foreground drop-shadow-md">
                             {product.name}
                         </h1>
                         <div className="flex flex-wrap gap-3">
-                            <span className="px-4 py-2 bg-white/5 border border-white/10 text-slate-300 font-bold uppercase tracking-widest text-xs rounded-none backdrop-blur-sm shadow-[4px_4px_0px_rgba(0,0,0,0.5)]">
+                            <span className="px-4 py-2 bg-foreground/5 border border-border text-muted-foreground font-bold uppercase tracking-widest text-xs rounded-none backdrop-blur-sm shadow-[4px_4px_0px_rgba(0,0,0,0.5)]">
                                 {product.category}
                             </span>
                             {product.standards && (
@@ -57,7 +57,7 @@ const ProductDetails = () => {
                     <div className="grid lg:grid-cols-2 gap-12 items-start">
                         {/* Image Gallery - Brutalist Style */}
                         <AnimatedSection animation="fade-right">
-                            <div className="bg-white dark:bg-[#0b1221] p-8 border-2 border-slate-200 dark:border-slate-800 overflow-hidden relative group shadow-[12px_12px_0px_rgba(15,23,42,0.1)] dark:shadow-[12px_12px_0px_rgba(6,182,212,0.2)] transition-colors duration-500">
+                            <div className="bg-white dark:bg-[#0b1221] p-8 border-2 border-slate-200 dark:border-border overflow-hidden relative group shadow-[12px_12px_0px_rgba(15,23,42,0.1)] dark:shadow-[12px_12px_0px_rgba(6,182,212,0.2)] transition-colors duration-500">
                                 {/* Tech Grid Background */}
                                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] [background-size:2rem_2rem] opacity-50 pointer-events-none" />
 
@@ -77,35 +77,35 @@ const ProductDetails = () => {
 
                         {/* Details - High Contrast Industrial */}
                         <AnimatedSection animation="fade-left" delay={0.2}>
-                            <div className="bg-white dark:bg-[#0b1221] p-8 md:p-12 border-2 border-slate-200 dark:border-slate-800 shadow-[12px_12px_0px_rgba(15,23,42,0.1)] dark:shadow-[12px_12px_0px_rgba(6,182,212,0.1)] h-full transition-colors duration-500 relative">
+                            <div className="bg-white dark:bg-[#0b1221] p-8 md:p-12 border-2 border-slate-200 dark:border-border shadow-[12px_12px_0px_rgba(15,23,42,0.1)] dark:shadow-[12px_12px_0px_rgba(6,182,212,0.1)] h-full transition-colors duration-500 relative">
                                 {/* Decorative line */}
                                 <div className="absolute top-0 left-0 w-2 h-full bg-cyan-500" />
 
-                                <h3 className="text-2xl font-black font-heading mb-6 text-slate-900 dark:text-white border-b-2 border-slate-200 dark:border-slate-800 pb-4 uppercase tracking-tight">
+                                <h3 className="text-2xl font-black font-heading mb-6 text-slate-900 dark:text-foreground border-b-2 border-slate-200 dark:border-border pb-4 uppercase tracking-tight">
                                     Product Specifications
                                 </h3>
 
                                 <div className="space-y-8 mb-10">
-                                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-medium">
+                                    <p className="text-slate-600 dark:text-muted-foreground leading-relaxed text-lg font-medium">
                                         {product.description}
                                     </p>
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-200 dark:border-slate-800 relative group overflow-hidden transition-colors">
+                                        <div className="p-6 bg-slate-50 dark:bg-background/50 border-2 border-slate-200 dark:border-border relative group overflow-hidden transition-colors">
                                             <div className="absolute inset-0 bg-cyan-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none" />
                                             <div className="flex items-center gap-2 mb-3 text-cyan-600 dark:text-cyan-400">
                                                 <ShieldCheck size={20} />
                                                 <span className="text-xs font-bold uppercase tracking-[0.2em]">Material</span>
                                             </div>
-                                            <p className="font-bold text-slate-900 dark:text-white uppercase">{product.material || "N/A"}</p>
+                                            <p className="font-bold text-slate-900 dark:text-foreground uppercase">{product.material || "N/A"}</p>
                                         </div>
-                                        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-200 dark:border-slate-800 relative group overflow-hidden transition-colors">
+                                        <div className="p-6 bg-slate-50 dark:bg-background/50 border-2 border-slate-200 dark:border-border relative group overflow-hidden transition-colors">
                                             <div className="absolute inset-0 bg-cyan-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none" />
                                             <div className="flex items-center gap-2 mb-3 text-cyan-600 dark:text-cyan-400">
                                                 <Ruler size={20} />
                                                 <span className="text-xs font-bold uppercase tracking-[0.2em]">Standards</span>
                                             </div>
-                                            <p className="font-bold text-slate-900 dark:text-white uppercase">{product.standards || "N/A"}</p>
+                                            <p className="font-bold text-slate-900 dark:text-foreground uppercase">{product.standards || "N/A"}</p>
                                         </div>
                                     </div>
 
@@ -114,15 +114,15 @@ const ProductDetails = () => {
                                             <FileCheck size={20} />
                                             <span className="text-xs font-bold uppercase tracking-[0.2em]">Application Scope</span>
                                         </div>
-                                        <p className="text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                                        <p className="text-slate-700 dark:text-muted-foreground font-medium leading-relaxed">
                                             Suitable for heavy engineering, infrastructure, automotive, and industrial applications requiring high precision and durability.
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="flex flex-col gap-6 pt-8 border-t-2 border-slate-200 dark:border-slate-800">
+                                <div className="flex flex-col gap-6 pt-8 border-t-2 border-slate-200 dark:border-border">
                                     <ProductEnquiryForm productName={product.name} />
-                                    <p className="text-center text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest bg-slate-50 dark:bg-slate-900 py-3 border border-slate-200 dark:border-slate-800">
+                                    <p className="text-center text-xs text-slate-500 dark:text-muted-foreground font-bold uppercase tracking-widest bg-slate-50 dark:bg-background py-3 border border-slate-200 dark:border-border">
                                         <span className="inline-block w-2 h-2 bg-green-500 mr-2 rounded-full animate-pulse" />
                                         Technical data sheets available on request.
                                     </p>

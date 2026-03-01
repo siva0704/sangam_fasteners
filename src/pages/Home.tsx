@@ -12,11 +12,9 @@ const OperationDiscipline = lazy(() => import("@/components/sections/OperationDi
 const SectionInfrastructure = lazy(() => import("@/components/SectionInfrastructure"));
 const MachinerySelector = lazy(() => import("@/components/sections/MachinerySelector").then(module => ({ default: module.MachinerySelector })));
 const SectionCertifications = lazy(() => import("@/components/SectionCertifications"));
-const SectionIndustries = lazy(() => import("@/components/SectionIndustries"));
 const SectionGlobalReach = lazy(() => import("@/components/SectionGlobalReach"));
 const SectionAboutPreview = lazy(() => import("@/components/SectionAboutPreview"));
 const SectionClients = lazy(() => import("@/components/SectionClients"));
-const SectionTeam = lazy(() => import("@/components/SectionTeam"));
 const SectionCTAFooter = lazy(() => import("@/components/SectionCTAFooter"));
 const SectionFAQ = lazy(() => import("@/components/SectionFAQ"));
 
@@ -106,8 +104,6 @@ const Home = () => {
           <MachinerySelector />
           <SectionCertifications />
           <SectionGlobalReach />
-          <SectionIndustries />
-          <SectionTeam />
           <SectionFAQ />
           <SectionCTAFooter />
         </Suspense>

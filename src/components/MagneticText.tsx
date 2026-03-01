@@ -8,8 +8,8 @@ interface MagneticTextProps {
   animation?: "fade" | "slide-up" | "shimmer";
 }
 
-const MagneticText = ({ 
-  children, 
+const MagneticText = ({
+  children,
   className = "",
   staggerDelay = 0.03,
   animation = "fade"
@@ -28,13 +28,14 @@ const MagneticText = ({
       { threshold: 0.1 }
     );
 
-    if (textRef.current) {
-      observer.observe(textRef.current);
+    const currentRef = textRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (textRef.current) {
-        observer.unobserve(textRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);

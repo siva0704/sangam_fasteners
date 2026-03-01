@@ -39,10 +39,10 @@ const SectionIndustries = () => {
             <div className="container px-4 mx-auto relative z-10">
                 <AnimatedSection animation="fade-up" className="text-center mb-16">
                     <div className="text-center max-w-3xl mx-auto mb-16 relative z-20">
-                        <h2 className="text-3xl md:text-5xl font-bold font-heading text-slate-900 dark:text-white mb-6">
+                        <h2 className="text-3xl md:text-5xl font-bold font-heading text-slate-900 dark:text-foreground mb-6">
                             Serving <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300">Global Industries</span>
                         </h2>
-                        <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-lg text-slate-600 dark:text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                             Strategic logistics partnerships and regional warehousing ensure timely delivery to appliance manufacturers across the globe.
                         </p>
                     </div>
@@ -120,14 +120,14 @@ const SectionIndustries = () => {
                                 </div>
 
                                 {/* Tooltip / Card */}
-                                <div className={`absolute left-1/2 -translate-x-1/2 bottom-full mb-4 w-64 p-4 bg-slate-800/90 backdrop-blur-md rounded-xl border border-white/10 shadow-xl transition-all duration-300 origin-bottom ${isActive ? 'opacity-100 scale-100 translate-y-0 z-20' : 'opacity-0 scale-95 translate-y-4 pointer-events-none z-0'}`}>
-                                    <div className="flex items-center gap-3 mb-2 pb-2 border-b border-white/10">
+                                <div className={`absolute left-1/2 -translate-x-1/2 bottom-full mb-4 w-64 p-4 bg-card/90 backdrop-blur-md rounded-xl border border-border shadow-xl transition-all duration-300 origin-bottom ${isActive ? 'opacity-100 scale-100 translate-y-0 z-20' : 'opacity-0 scale-95 translate-y-4 pointer-events-none z-0'}`}>
+                                    <div className="flex items-center gap-3 mb-2 pb-2 border-b border-border">
                                         <div className="p-1.5 rounded-lg bg-blue-500/20 text-blue-400">
                                             <region.icon size={16} />
                                         </div>
-                                        <h3 className="font-bold text-white text-sm">{region.name}</h3>
+                                        <h3 className="font-bold text-foreground text-sm">{region.name}</h3>
                                     </div>
-                                    <p className="text-xs text-slate-300 leading-relaxed mb-2">
+                                    <p className="text-xs text-muted-foreground leading-relaxed mb-2">
                                         {region.description}
                                     </p>
                                     <div className="flex items-center gap-2">
@@ -143,20 +143,20 @@ const SectionIndustries = () => {
                     })}
 
                     <AnimatedSection animation="fade-left" delay={0.2} className="relative z-20">
-                        <div className="bg-white/50 dark:bg-white/5 backdrop-blur-xl border border-slate-200 dark:border-white/10 p-8 rounded-3xl h-full shadow-lg dark:shadow-none">
-                            <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white mb-6">Key Markets</h3>
+                        <div className="bg-white/50 dark:bg-foreground/5 backdrop-blur-xl border border-slate-200 dark:border-border p-8 rounded-3xl h-full shadow-lg dark:shadow-none">
+                            <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-foreground mb-6">Key Markets</h3>
                             <div className="space-y-6">
                                 {industries.map((ind, idx) => (
                                     <div key={idx} className="group">
                                         <div className="flex items-center gap-4 mb-2">
-                                            <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-500/10 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 dark:group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                                            <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-500/10 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 dark:group-hover:bg-blue-500 group-hover:text-foreground transition-colors">
                                                 <ind.icon size={20} />
                                             </div>
                                             <div>
-                                                <h4 className="font-bold text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                                <h4 className="font-bold text-slate-800 dark:text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                                                     {ind.name}
                                                 </h4>
-                                                <p className="text-sm text-slate-500 dark:text-slate-400">{ind.description}</p>
+                                                <p className="text-sm text-slate-500 dark:text-muted-foreground">{ind.description}</p>
                                             </div>
                                         </div>
                                     </div>

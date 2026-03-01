@@ -17,9 +17,9 @@ export const PageHero = ({
     className
 }: PageHeroProps) => {
     return (
-        <section className={cn("relative h-[60vh] min-h-[500px] w-full overflow-hidden bg-slate-100 dark:bg-black text-slate-900 dark:text-white flex items-center justify-center transition-colors duration-500", className)}>
+        <section className={cn("relative h-[60vh] min-h-[500px] w-full overflow-hidden bg-slate-100 dark:bg-background text-slate-900 dark:text-foreground flex items-center justify-center transition-colors duration-500", className)}>
             {/* Background with Overlay */}
-            <div className="absolute inset-0 z-0 bg-slate-100 dark:bg-black">
+            <div className="absolute inset-0 z-0 bg-slate-100 dark:bg-background">
                 {/* Subtle grid pattern for industrial feel */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px]" />
                 {/* Light Mode Gradients */}
@@ -27,8 +27,8 @@ export const PageHero = ({
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-100/90 via-slate-100/40 to-transparent z-10 block dark:hidden" />
 
                 {/* Dark Mode Gradients */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60 z-10 hidden dark:block" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10 hidden dark:block" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-black/20 to-background/60 z-10 hidden dark:block" />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-black/40 to-transparent z-10 hidden dark:block" />
             </div>
 
             <div className="container relative z-20 px-6 pt-20">
@@ -47,7 +47,7 @@ export const PageHero = ({
 
                         <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-sky-500 dark:from-blue-500 dark:to-cyan-400 rounded-full mb-8" />
 
-                        <p className="text-xl text-slate-700 dark:text-slate-300 max-w-2xl leading-relaxed font-medium">
+                        <p className="text-xl text-slate-700 dark:text-muted-foreground max-w-2xl leading-relaxed font-medium">
                             {subtitle}
                         </p>
                     </div>

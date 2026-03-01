@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 
 export const Hero = () => {
     return (
-        <section className="relative h-screen min-h-[800px] w-full overflow-hidden bg-black flex items-center justify-center">
+        <section className="relative h-screen min-h-[800px] w-full overflow-hidden bg-background flex items-center justify-center">
             {/* Background with Overlay */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/50 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-background via-black/90 to-background/50 z-10" />
                 {/* Subtle grid pattern for industrial feel */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-40" />
                 {/* Background Image - Industrial Plant - Low opacity */}
@@ -23,7 +23,7 @@ export const Hero = () => {
                     alt="Industrial Plant Background"
                     className="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-multiply"
                     loading="eager"
-                    // @ts-ignore
+                    // @ts-expect-error: fetchpriority is a valid attribute but not in standard HTML types yet
                     fetchpriority="high"
                 />
             </div>
@@ -38,27 +38,27 @@ export const Hero = () => {
                         ISO 9001:2015 Certified Manufacturer
                     </div>
 
-                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-heading font-bold tracking-tight text-white leading-[1.1]">
+                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-heading font-bold tracking-tight text-foreground leading-[1.1]">
                         INDUSTRIAL SHAFT & MACHINE COMPONENT <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-600">
                             MANUFACTURING
                         </span>
                     </h1>
 
-                    <h2 className="text-xl md:text-3xl font-light text-gray-300">
+                    <h2 className="text-xl md:text-3xl font-light text-muted-foreground">
                         Reliable Supply. Controlled Execution.
                     </h2>
 
-                    <p className="text-lg md:text-xl text-gray-400 max-w-3xl leading-relaxed">
+                    <p className="text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
                         Sangam Shaft & Machine Components Private Limited is a manufacturing-focused industrial shaft & machine component company based in Hubballi, Karnataka. Since 2000, we have manufactured standard and custom shaft & machine components for applications where dimensional accuracy, material reliability, and repeat supply consistency are mandatory.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                        <Button size="lg" className="h-12 sm:h-14 px-8 text-base sm:text-lg rounded-full bg-orange-600 text-white hover:bg-orange-700 transition-all duration-300 hover:scale-105 group shadow-xl shadow-orange-500/20">
+                        <Button size="lg" className="h-12 sm:h-14 px-8 text-base sm:text-lg rounded-full bg-orange-600 text-foreground hover:bg-orange-700 transition-all duration-300 hover:scale-105 group shadow-xl shadow-orange-500/20">
                             Explore Products
                             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                         </Button>
-                        <Button size="lg" variant="outline" className="h-12 sm:h-14 px-8 text-base sm:text-lg rounded-full border-gray-700 text-gray-200 font-medium hover:bg-white/10 hover:text-white transition-all duration-300 shadow-sm backdrop-blur-sm">
+                        <Button size="lg" variant="outline" className="h-12 sm:h-14 px-8 text-base sm:text-lg rounded-full border-border text-foreground font-medium hover:bg-foreground/5 hover:text-foreground transition-all duration-300 shadow-sm backdrop-blur-sm">
                             Download Catalogue
                         </Button>
                     </div>
@@ -66,7 +66,7 @@ export const Hero = () => {
             </div>
 
             {/* Decorative Elements */}
-            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent z-20 pointer-events-none" />
         </section>
     );
 };

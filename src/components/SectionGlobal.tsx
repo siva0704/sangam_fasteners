@@ -36,7 +36,7 @@ const SectionGlobal = () => {
                                 </div>
                             </div>
 
-                            <MagneticButton className="bg-primary hover:bg-primary/90 text-white min-w-[200px]">
+                            <MagneticButton className="bg-primary hover:bg-primary/90 text-foreground min-w-[200px]">
                                 Schedule a Shipment
                             </MagneticButton>
                         </AnimatedSection>
@@ -51,9 +51,9 @@ const SectionGlobal = () => {
                                     alt="Global Logistics Container Ship"
                                     className="w-full h-full object-cover"
                                 />
-                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
-                                    <p className="text-white font-bold text-lg">Export-Ready Packaging</p>
-                                    <p className="text-white/80 text-sm">Seaworthy packing solutions ensuring zero damage.</p>
+                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/80 to-transparent p-8">
+                                    <p className="text-foreground font-bold text-lg">Export-Ready Packaging</p>
+                                    <p className="text-foreground/80 text-sm">Seaworthy packing solutions ensuring zero damage.</p>
                                 </div>
                             </div>
                         </AnimatedSection>

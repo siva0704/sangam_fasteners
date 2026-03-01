@@ -56,7 +56,7 @@ const SectionGlobalReach = () => {
                     <div className="lg:col-span-12 xl:col-span-8 relative group">
                         <AnimatedSection
                             animation="scale-in"
-                            className="relative aspect-[2048/1039] w-full bg-slate-50/50 dark:bg-slate-950 rounded-3xl border border-primary/10 dark:border-primary/20 overflow-hidden shadow-2xl transition-colors duration-500"
+                            className="relative aspect-[2048/1039] w-full bg-slate-50/50 dark:bg-background rounded-3xl border border-primary/10 dark:border-primary/20 overflow-hidden shadow-2xl transition-colors duration-500"
                         >
                             {/* SVG World Map Container */}
                             <div className="absolute inset-0 w-full h-full p-4 md:p-8">
@@ -95,13 +95,13 @@ const SectionGlobalReach = () => {
                                                 transition={{ duration: 3, repeat: Infinity }}
                                             />
                                             {/* Marker Icon */}
-                                            <div className="relative z-10 bg-white dark:bg-slate-900 border-2 border-accent p-2 rounded-full shadow-[0_0_15px_rgba(var(--accent-rgb),0.5)] group-hover/marker:scale-125 group-hover/marker:bg-accent group-hover/marker:border-white transition-all duration-300">
-                                                <loc.icon className="w-4 h-4 text-accent group-hover/marker:text-white" />
+                                            <div className="relative z-10 bg-white dark:bg-background border-2 border-accent p-2 rounded-full shadow-[0_0_15px_rgba(var(--accent-rgb),0.5)] group-hover/marker:scale-125 group-hover/marker:bg-accent group-hover/marker:border-white transition-all duration-300">
+                                                <loc.icon className="w-4 h-4 text-accent group-hover/marker:text-foreground" />
                                             </div>
 
                                             {/* Label */}
-                                            <div className="absolute top-full mt-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-accent/20 dark:border-primary/20 shadow-2xl opacity-0 group-hover/marker:opacity-100 transition-all transform translate-y-2 group-hover/marker:translate-y-0">
-                                                <span className="text-xs font-bold text-primary dark:text-white tracking-wide">{loc.name}</span>
+                                            <div className="absolute top-full mt-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white/90 dark:bg-background/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-accent/20 dark:border-primary/20 shadow-2xl opacity-0 group-hover/marker:opacity-100 transition-all transform translate-y-2 group-hover/marker:translate-y-0">
+                                                <span className="text-xs font-bold text-primary dark:text-foreground tracking-wide">{loc.name}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +115,7 @@ const SectionGlobalReach = () => {
                                         initial={{ opacity: 0, x: 20, scale: 0.95 }}
                                         animate={{ opacity: 1, x: 0, scale: 1 }}
                                         exit={{ opacity: 0, x: 20, scale: 0.95 }}
-                                        className="absolute top-6 right-6 z-30 w-80 bg-white/95 dark:bg-slate-900/90 backdrop-blur-2xl border border-primary/10 dark:border-accent/20 p-6 rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] hidden md:block"
+                                        className="absolute top-6 right-6 z-30 w-80 bg-white/95 dark:bg-background/90 backdrop-blur-2xl border border-primary/10 dark:border-accent/20 p-6 rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] hidden md:block"
                                     >
                                         {(() => {
                                             const loc = industries.find(l => l.id === hoveredLocation)!;
@@ -126,23 +126,23 @@ const SectionGlobalReach = () => {
                                                             <loc.icon className="w-6 h-6 text-primary dark:text-accent" />
                                                         </div>
                                                         <div>
-                                                            <h4 className="font-bold text-xl text-primary dark:text-white">{loc.name}</h4>
+                                                            <h4 className="font-bold text-xl text-primary dark:text-foreground">{loc.name}</h4>
                                                             <p className="text-[10px] uppercase tracking-widest text-accent font-bold">Global Hub</p>
                                                         </div>
                                                     </div>
-                                                    <p className="text-sm text-muted-foreground dark:text-slate-300 mb-5 leading-relaxed font-medium">
+                                                    <p className="text-sm text-muted-foreground dark:text-muted-foreground mb-5 leading-relaxed font-medium">
                                                         {loc.description}
                                                     </p>
-                                                    <div className="space-y-3 pt-5 border-t border-primary/10 dark:border-white/10">
+                                                    <div className="space-y-3 pt-5 border-t border-primary/10 dark:border-border">
                                                         <div className="flex flex-col gap-1">
                                                             <p className="text-[10px] font-bold text-accent uppercase tracking-tighter">Strategic Capabilities</p>
-                                                            <p className="text-xs text-primary dark:text-white font-semibold flex items-center gap-2">
+                                                            <p className="text-xs text-primary dark:text-foreground font-semibold flex items-center gap-2">
                                                                 <ArrowRight className="w-3 h-3 text-accent" /> {loc.detail}
                                                             </p>
                                                         </div>
                                                         <div className="flex flex-col gap-1">
                                                             <p className="text-[10px] font-bold text-accent uppercase tracking-tighter">Case Reference</p>
-                                                            <p className="text-[11px] text-muted-foreground dark:text-slate-400 italic">"{loc.caseStudy}"</p>
+                                                            <p className="text-[11px] text-muted-foreground dark:text-muted-foreground italic">"{loc.caseStudy}"</p>
                                                         </div>
                                                     </div>
                                                 </>
@@ -157,7 +157,7 @@ const SectionGlobalReach = () => {
                     {/* Content List Area */}
                     <div className="lg:col-span-12 xl:col-span-4 space-y-6">
                         <AnimatedSection animation="fade-left" className="h-full">
-                            <div className="bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur border border-primary/10 p-8 rounded-3xl h-full flex flex-col">
+                            <div className="bg-slate-50/80 dark:bg-background/80 backdrop-blur border border-primary/10 p-8 rounded-3xl h-full flex flex-col">
                                 <h3 className="text-2xl font-bold text-primary mb-8 flex items-center gap-2">
                                     <MapPin className="w-6 h-6 text-accent" /> Logistics & Reach
                                 </h3>
@@ -167,14 +167,14 @@ const SectionGlobalReach = () => {
                                         <div
                                             key={industry.id}
                                             className={`p-4 rounded-2xl border transition-all duration-300 cursor-pointer ${hoveredLocation === industry.id
-                                                ? 'bg-white dark:bg-slate-800 border-primary shadow-md translate-x-2'
-                                                : 'bg-transparent border-transparent hover:bg-white/50 dark:hover:bg-slate-800/50'
+                                                ? 'bg-white dark:bg-card border-primary shadow-md translate-x-2'
+                                                : 'bg-transparent border-transparent hover:bg-white/50 dark:hover:bg-card/50'
                                                 }`}
                                             onMouseEnter={() => setHoveredLocation(industry.id)}
                                             onMouseLeave={() => setHoveredLocation(null)}
                                         >
                                             <div className="flex items-start gap-4">
-                                                <div className={`p-2 rounded-lg transition-colors ${hoveredLocation === industry.id ? 'bg-primary text-white' : 'bg-primary/5 text-primary'}`}>
+                                                <div className={`p-2 rounded-lg transition-colors ${hoveredLocation === industry.id ? 'bg-primary text-foreground' : 'bg-primary/5 text-primary'}`}>
                                                     <industry.icon className="w-5 h-5" />
                                                 </div>
                                                 <div>
@@ -191,7 +191,7 @@ const SectionGlobalReach = () => {
                                 </div>
 
                                 <div className="mt-8 pt-8 border-t border-primary/10">
-                                    <MagneticButton className="w-full bg-primary hover:bg-primary/95 text-white flex items-center justify-center gap-2 h-14 rounded-2xl">
+                                    <MagneticButton className="w-full bg-primary hover:bg-primary/95 text-foreground flex items-center justify-center gap-2 h-14 rounded-2xl">
                                         Partner with Us <ArrowRight className="w-5 h-5" />
                                     </MagneticButton>
                                 </div>

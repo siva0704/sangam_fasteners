@@ -11,7 +11,7 @@ const stats = [
         color: "from-blue-500 to-cyan-400 dark:from-blue-400 dark:to-cyan-300",
         bgLight: "bg-blue-500/10",
         borderLight: "border-blue-500/20",
-        iconColor: "text-blue-500 dark:text-white/80"
+        iconColor: "text-blue-500 dark:text-foreground/80"
     },
     {
         label: "Quality Certified",
@@ -21,7 +21,7 @@ const stats = [
         color: "from-emerald-500 to-teal-400 dark:from-emerald-400 dark:to-teal-300",
         bgLight: "bg-emerald-500/10",
         borderLight: "border-emerald-500/20",
-        iconColor: "text-emerald-500 dark:text-white/80"
+        iconColor: "text-emerald-500 dark:text-foreground/80"
     },
     {
         label: "Market Presence",
@@ -31,7 +31,7 @@ const stats = [
         color: "from-indigo-500 to-purple-400 dark:from-indigo-400 dark:to-purple-300",
         bgLight: "bg-indigo-500/10",
         borderLight: "border-indigo-500/20",
-        iconColor: "text-indigo-500 dark:text-white/80"
+        iconColor: "text-indigo-500 dark:text-foreground/80"
     },
 ];
 
@@ -126,17 +126,17 @@ const SectionClients = () => {
                     <div className="text-center mb-16 relative">
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.05] mb-6 shadow-sm dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
                             <Star className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400 fill-cyan-500/20 dark:fill-cyan-400/20" />
-                            <span className="text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-slate-300">
+                            <span className="text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-muted-foreground">
                                 Trusted by Industry Leaders
                             </span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl lg:text-5xl font-black font-heading tracking-tight text-slate-900 dark:text-white mb-6 leading-tight">
+                        <h2 className="text-4xl md:text-5xl lg:text-5xl font-black font-heading tracking-tight text-slate-900 dark:text-foreground mb-6 leading-tight">
                             Forging Global <br className="md:hidden" />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500">
                                 Partnerships
                             </span>
                         </h2>
-                        <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed">
+                        <p className="text-slate-600 dark:text-muted-foreground max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed">
                             We pride ourselves on 100% client retention in the precision shaft sector, delivering uncompromising quality to Tier-1 OEMs and global infrastructure projects.
                         </p>
                     </div>
@@ -160,11 +160,11 @@ const SectionClients = () => {
                                     {stat.value}
                                 </h4>
 
-                                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-700 dark:text-white/80 mb-4">
+                                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-700 dark:text-foreground/80 mb-4">
                                     {stat.label}
                                 </p>
 
-                                <p className="text-sm text-slate-500 dark:text-slate-400/80 leading-relaxed font-light max-w-[240px]">
+                                <p className="text-sm text-slate-500 dark:text-muted-foreground/80 leading-relaxed font-light max-w-[240px]">
                                     {stat.description}
                                 </p>
                             </div>

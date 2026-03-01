@@ -9,7 +9,7 @@ interface SFLPlaceholderProps {
 const SFLPlaceholder = ({ className, text = "Sangam Fasteners" }: SFLPlaceholderProps) => {
     return (
         <div className={cn(
-            "w-full h-full flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-900 overflow-hidden relative group",
+            "w-full h-full flex flex-col items-center justify-center bg-slate-100 dark:bg-background overflow-hidden relative group",
             className
         )}>
             {/* Background pattern */}
@@ -27,17 +27,17 @@ const SFLPlaceholder = ({ className, text = "Sangam Fasteners" }: SFLPlaceholder
             {/* Text Overlay */}
             {text && (
                 <div className="mt-4 relative z-10">
-                    <span className="text-[10px] uppercase tracking-[0.4em] font-black text-slate-400 dark:text-slate-600">
+                    <span className="text-[10px] uppercase tracking-[0.4em] font-black text-muted-foreground dark:text-slate-600">
                         {text}
                     </span>
                 </div>
             )}
 
             {/* Industrial corner lines */}
-            <div className="absolute top-4 left-4 w-4 h-[2px] bg-slate-300 dark:bg-slate-700" />
-            <div className="absolute top-4 left-4 w-[2px] h-4 bg-slate-300 dark:bg-slate-700" />
-            <div className="absolute bottom-4 right-4 w-4 h-[2px] bg-slate-300 dark:bg-slate-700" />
-            <div className="absolute bottom-4 right-4 w-[2px] h-4 bg-slate-300 dark:bg-slate-700" />
+            <div className="absolute top-4 left-4 w-4 h-[2px] bg-slate-300 dark:bg-accent" />
+            <div className="absolute top-4 left-4 w-[2px] h-4 bg-slate-300 dark:bg-accent" />
+            <div className="absolute bottom-4 right-4 w-4 h-[2px] bg-slate-300 dark:bg-accent" />
+            <div className="absolute bottom-4 right-4 w-[2px] h-4 bg-slate-300 dark:bg-accent" />
         </div>
     );
 };

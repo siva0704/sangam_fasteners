@@ -58,9 +58,9 @@ const CircularMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: CircularM
                 key={link.path}
                 to={link.path}
                 onClick={onClose}
-                className={`text-primary-foreground font-heading font-bold hover:text-white hover:scale-105 transition-all duration-300 origin-right ${isOpen
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 translate-x-12"
+                className={`text-primary-foreground font-heading font-bold hover:text-foreground hover:scale-105 transition-all duration-300 origin-right ${isOpen
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 translate-x-12"
                   }`}
                 style={{
                   fontSize: `clamp(2rem, 5vw, 4rem)`,

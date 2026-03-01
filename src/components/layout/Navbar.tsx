@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, ChevronRight, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
@@ -39,7 +39,7 @@ export const Navbar = () => {
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
                 useScrolledStyle
-                    ? "bg-background/80 backdrop-blur-md border-white/10 py-4 shadow-lg"
+                    ? "bg-background/80 backdrop-blur-md border-border py-4 shadow-lg"
                     : "bg-transparent py-6"
             )}
         >
@@ -50,13 +50,13 @@ export const Navbar = () => {
                     <div className="flex flex-col items-start leading-none gap-1">
                         <span className={cn(
                             "text-[12px] sm:text-[16px] font-heading font-bold tracking-widest uppercase transition-colors duration-300",
-                            useScrolledStyle ? "text-foreground" : "text-white"
+                            useScrolledStyle ? "text-foreground" : "text-foreground"
                         )}>
                             Sangam Shaft & Machine Components
                         </span>
                         <span className={cn(
                             "text-[10px] sm:text-[12px] font-medium tracking-wide transition-colors duration-300",
-                            useScrolledStyle ? "text-primary" : "text-white/80"
+                            useScrolledStyle ? "text-primary" : "text-foreground/80"
                         )}>
                             Private Limited
                         </span>
@@ -73,7 +73,7 @@ export const Navbar = () => {
                                 "text-sm font-medium tracking-wide transition-colors duration-300 relative group py-2",
                                 useScrolledStyle
                                     ? "text-muted-foreground hover:text-primary"
-                                    : "text-white/90 hover:text-white",
+                                    : "text-foreground/90 hover:text-foreground",
                                 location.pathname === link.href && "font-bold"
                             )}
                         >
@@ -85,14 +85,14 @@ export const Navbar = () => {
                             )} />
                         </Link>
                     ))}
-                    <div className="ml-4">
+                    <div className="ml-4 flex items-center gap-3">
                         <Link
                             to="/contact"
                             className={cn(
                                 "px-5 py-2.5 rounded-sm font-bold text-sm transition-all duration-300 uppercase tracking-wider inline-block border-2",
                                 useScrolledStyle
-                                    ? "bg-accent text-white border-accent hover:bg-accent/90 hover:border-accent/90"
-                                    : "bg-white text-primary-foreground border-white hover:bg-white/90 hover:border-white/90"
+                                    ? "bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:border-accent/90"
+                                    : "bg-white/10 text-foreground border-white/40 hover:bg-white/20 hover:border-white/60 backdrop-blur-sm"
                             )}
                         >
                             Get Quote
@@ -108,15 +108,15 @@ export const Navbar = () => {
                                 variant="ghost"
                                 size="icon"
                                 className={cn(
-                                    "relative h-12 w-12 rounded-full border border-transparent hover:border-white/20 hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 hover:text-white transition-all duration-500 hover:shadow-lg hover:shadow-blue-400/10 group overflow-hidden",
-                                    useScrolledStyle ? "text-foreground hover:text-white" : "text-white"
+                                    "relative h-12 w-12 rounded-full border border-transparent hover:border-border hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 hover:text-foreground transition-all duration-500 hover:shadow-lg hover:shadow-blue-400/10 group overflow-hidden",
+                                    useScrolledStyle ? "text-foreground hover:text-foreground" : "text-foreground"
                                 )}
                             >
                                 <Menu className="h-8 w-8 transition-transform duration-500 group-hover:rotate-180 group-hover:scale-110" />
                                 <span className="sr-only">Toggle menu</span>
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="right" className="w-[250px] sm:w-[320px] bg-white/10 backdrop-blur-xl p-0 text-white shadow-2xl border-none">
+                        <SheetContent side="right" className="w-[250px] sm:w-[320px] bg-foreground/5 backdrop-blur-xl p-0 text-foreground shadow-2xl border-none">
                             <div className="sr-only">
                                 <SheetTitle>Navigation Menu</SheetTitle>
                                 <SheetDescription>Main site navigation links</SheetDescription>
@@ -132,7 +132,7 @@ export const Navbar = () => {
                                                 "group flex items-center justify-end text-right text-xl font-heading font-bold transition-colors duration-200",
                                                 location.pathname === link.href
                                                     ? "text-accent"
-                                                    : "text-white/80 hover:text-white"
+                                                    : "text-foreground/80 hover:text-foreground"
                                             )}
                                             style={{
                                                 animationDelay: `${index * 100}ms`
@@ -149,17 +149,17 @@ export const Navbar = () => {
                                                 "ml-4 h-6 w-6 transition-all duration-300",
                                                 location.pathname === link.href
                                                     ? "opacity-100 translate-x-0 text-accent"
-                                                    : "opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 text-white"
+                                                    : "opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 text-foreground"
                                             )} />
                                         </Link>
                                     ))}
                                 </nav>
 
-                                <div className="mt-auto text-right">
-                                    <p className="text-sm text-white/50">
+                                <div className="mt-auto text-right space-y-4">
+                                    <p className="text-sm text-foreground/50">
                                         Need a quote?
                                     </p>
-                                    <a href="mailto:info@sflfasteners.com" className="text-lg font-bold text-white hover:text-accent transition-colors">
+                                    <a href="mailto:info@sflfasteners.com" className="text-lg font-bold text-foreground hover:text-accent transition-colors">
                                         info@sflfasteners.com
                                     </a>
                                 </div>

@@ -19,7 +19,7 @@ const SheetOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(
-      "fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "fixed inset-0 z-50 bg-background/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className,
     )}
     {...props}
@@ -57,7 +57,7 @@ const SheetContent = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Con
       <SheetOverlay />
       <SheetPrimitive.Content ref={ref} className={cn(sheetVariants({ side }), className)} {...props}>
         {children}
-        <SheetPrimitive.Close className="absolute right-6 top-6 p-2 rounded-full border border-white/20 hover:border-transparent bg-black/20 hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 text-white/70 hover:text-white transition-all duration-500 hover:rotate-180 hover:shadow-lg hover:shadow-blue-400/10 focus:outline-none disabled:pointer-events-none group z-50">
+        <SheetPrimitive.Close className="absolute right-6 top-6 p-2 rounded-full border border-border hover:border-transparent bg-background/20 hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 text-foreground/70 hover:text-foreground transition-all duration-500 hover:rotate-180 hover:shadow-lg hover:shadow-blue-400/10 focus:outline-none disabled:pointer-events-none group z-50">
           <X className="h-6 w-6 transition-transform duration-500" />
           <span className="sr-only">Close</span>
         </SheetPrimitive.Close>

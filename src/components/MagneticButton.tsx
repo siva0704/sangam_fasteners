@@ -72,7 +72,7 @@ const MagneticButton = ({ children, variant = "default", size = "default", onCli
                 animationDelay: `${Math.random() * 0.5}s`,
                 background: "linear-gradient(135deg, #e0e0e0, #ffffff, #c0c0c0)",
                 boxShadow: "0 0 4px rgba(192, 192, 192, 0.8), 0 0 8px rgba(255, 255, 255, 0.4)",
-                // @ts-ignore
+                // @ts-expect-error: Custom CSS variables for particle positioning
                 "--x": `${particle.x}px`,
                 "--y": `${particle.y}px`,
               }}

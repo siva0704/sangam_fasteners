@@ -10,11 +10,11 @@ export const Leadership = () => {
 
             <div className="container mx-auto px-4 relative z-10">
                 <AnimatedSection animation="fade-up" className="mb-20 text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 mb-6">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-foreground/5 border border-slate-200 dark:border-border mb-6">
                         <Users className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                        <span className="text-xs font-bold uppercase tracking-widest text-slate-700 dark:text-slate-300">Our Leadership</span>
+                        <span className="text-xs font-bold uppercase tracking-widest text-slate-700 dark:text-muted-foreground">Our Leadership</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-slate-900 dark:text-white mb-6">Visionary Guidance</h2>
+                    <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-slate-900 dark:text-foreground mb-6">Visionary Guidance</h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full mx-auto" />
                 </AnimatedSection>
 
@@ -25,14 +25,14 @@ export const Leadership = () => {
                             <AnimatedSection animation="fade-left">
                                 <div className="relative group">
                                     <div className="absolute -inset-4 bg-gradient-to-tr from-blue-600/20 to-cyan-400/20 rounded-[32px] blur-2xl group-hover:opacity-70 transition-opacity duration-700" />
-                                    <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden border border-white/40 dark:border-white/10 shadow-2xl">
+                                    <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden border border-border dark:border-border shadow-2xl">
                                         <img
                                             src="/assets/corporate-profile/leadership/chairman.jpeg"
                                             alt="Ishwarappa S Handigol"
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                         />
                                         <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-slate-900/90 to-transparent backdrop-blur-sm">
-                                            <h3 className="text-2xl font-bold text-white mb-1">Ishwarappa S Handigol</h3>
+                                            <h3 className="text-2xl font-bold text-foreground mb-1">Ishwarappa S Handigol</h3>
                                             <p className="text-blue-300 font-medium tracking-wide uppercase text-sm">Chairman</p>
                                         </div>
                                     </div>
@@ -46,13 +46,13 @@ export const Leadership = () => {
                                     <div className="h-px w-8 bg-blue-600 dark:bg-blue-400" />
                                     <span className="text-blue-600 dark:text-blue-400 font-bold tracking-widest text-sm uppercase">Founder's Vision</span>
                                 </div>
-                                <h3 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-white mb-6">
+                                <h3 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-foreground mb-6">
                                     A Legacy of <span className="text-blue-600 dark:text-blue-400">50 Years</span> in Industry
                                 </h3>
-                                <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                                <p className="text-lg text-slate-600 dark:text-muted-foreground leading-relaxed">
                                     Mr. Ishwarappa S Handigol is a first-generation entrepreneur and a visionary leader with over 50 years of industry experience. His constant hard work and passion for automobiles and home appliances have brought great success to the organization.
                                 </p>
-                                <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                                <p className="text-lg text-slate-600 dark:text-muted-foreground leading-relaxed">
                                     Sangam Fasteners Private Limited is a reflection of his ambition to maximize customer satisfaction and deliver quality products. He continues to focus on his vision of taking the company to the pinnacle of success while chartering new ways to provide value to customers.
                                 </p>
                             </AnimatedSection>
@@ -65,14 +65,14 @@ export const Leadership = () => {
                             <AnimatedSection animation="fade-right">
                                 <div className="relative group">
                                     <div className="absolute -inset-4 bg-gradient-to-tr from-cyan-400/20 to-blue-600/20 rounded-[32px] blur-2xl group-hover:opacity-70 transition-opacity duration-700" />
-                                    <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden border border-white/40 dark:border-white/10 shadow-2xl">
+                                    <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden border border-border dark:border-border shadow-2xl">
                                         <img
                                             src="/assets/corporate-profile/leadership/ceo.jpeg"
                                             alt="Sangamesh I Handigol"
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                         />
                                         <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-slate-900/90 to-transparent backdrop-blur-sm">
-                                            <h3 className="text-2xl font-bold text-white mb-1">Sangamesh I Handigol</h3>
+                                            <h3 className="text-2xl font-bold text-foreground mb-1">Sangamesh I Handigol</h3>
                                             <p className="text-blue-300 font-medium tracking-wide uppercase text-sm">CEO</p>
                                         </div>
                                     </div>
@@ -86,13 +86,13 @@ export const Leadership = () => {
                                     <div className="h-px w-8 bg-blue-600 dark:bg-blue-400" />
                                     <span className="text-blue-600 dark:text-blue-400 font-bold tracking-widest text-sm uppercase">Operational Excellence</span>
                                 </div>
-                                <h3 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-white mb-6">
+                                <h3 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-foreground mb-6">
                                     Driving <span className="text-blue-600 dark:text-blue-400">Modernization</span> & Growth
                                 </h3>
-                                <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                                <p className="text-lg text-slate-600 dark:text-muted-foreground leading-relaxed">
                                     A graduate specialized in Marketing, Mr. Sangamesh I Handigol has over 20 years of working experience in the family business. His exposure to varying industries has helped him understand and serve clients better.
                                 </p>
-                                <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                                <p className="text-lg text-slate-600 dark:text-muted-foreground leading-relaxed">
                                     He is currently the driving force of the organization, implementing newer and modern ways to simplify business, serve clients better, and establish Sangam Fasteners Private Limited as a reputed organization in the market.
                                 </p>
                             </AnimatedSection>
