@@ -20,7 +20,7 @@ const heroSlides = [
     subtitle: "at Global Scale",
     badge: "Specialised Manufacturer",
     description: "20,000m² manufacturing facility equipped with 51+ advanced CNC centers and robotic automation, delivering zero-defect components to tier-1 appliance brands.",
-    image: "/hero-promo-v2.gif",
+    image: "/hero-promo.gif",
     isLocal: true,
     hideOverlayText: true,
     accentColor: "from-blue-400 to-cyan-300",
@@ -96,11 +96,11 @@ const SectionHero = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent z-10" />
                 )}
                 {slide.isLocal ? (
-                  <div className="absolute inset-0 w-full h-full flex items-center justify-center pt-16 md:pt-0 pb-20 md:pb-0 z-0 overflow-hidden">
+                  <div className="absolute inset-0 w-full h-full z-0 overflow-hidden flex items-center justify-center bg-slate-900">
                     <img
                       src={slide.image}
                       alt={slide.title}
-                      className={`w-full h-auto md:h-full object-contain md:object-cover relative z-10 transition-opacity duration-1000 ${current === index ? "opacity-100" : "opacity-0"} [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] md:[mask-image:none]`}
+                      className={`w-full h-full object-contain relative z-10 transition-opacity duration-1000 ${current === index ? "opacity-100" : "opacity-0"}`}
                       loading={index === 0 ? "eager" : "lazy"}
                       // @ts-expect-error: fetchpriority is a valid attribute but not in standard HTML types yet
                       fetchpriority={index === 0 ? "high" : "auto"}
