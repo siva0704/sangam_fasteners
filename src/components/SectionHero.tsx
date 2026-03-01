@@ -86,26 +86,22 @@ const SectionHero = () => {
         <CarouselContent className="h-full -ml-0">
           {heroSlides.map((slide, index) => (
             <CarouselItem key={slide.id} className="relative pl-0 h-full w-full">
-              {/* Background Layer */}
-              <div className="absolute inset-0 z-0 bg-slate-900">
+              {/* ─── DESKTOP BACKGROUND (unchanged) ─── */}
+              <div className="hidden md:block absolute inset-0 z-0 bg-slate-900">
                 <FastenerPattern />
-
-                {/* Unified Cinematic Overlays — works on both light & dark themes */}
                 <div className={`absolute inset-0 bg-gradient-to-t z-10 transition-opacity duration-500 ${slide.isLocal ? "from-slate-900/60 via-slate-900/10 to-transparent" : "from-slate-900/85 via-slate-800/30 to-slate-900/55"}`} />
                 {!slide.isLocal && (
                   <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent z-10" />
                 )}
                 {slide.isLocal ? (
-                  <div className="absolute inset-0 w-full h-full z-0 overflow-hidden flex items-center justify-center bg-slate-900">
-                    <img
-                      src={slide.image}
-                      alt={slide.title}
-                      className={`w-full h-full object-contain relative z-10 transition-opacity duration-1000 ${current === index ? "opacity-100" : "opacity-0"}`}
-                      loading={index === 0 ? "eager" : "lazy"}
-                      // @ts-expect-error: fetchpriority is a valid attribute but not in standard HTML types yet
-                      fetchpriority={index === 0 ? "high" : "auto"}
-                    />
-                  </div>
+                  <img
+                    src={slide.image}
+                    alt={slide.title}
+                    className={`w-full h-full object-cover transition-opacity duration-1000 ${current === index ? "opacity-100" : "opacity-0"}`}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    // @ts-expect-error: fetchpriority is a valid attribute but not in standard HTML types yet
+                    fetchpriority={index === 0 ? "high" : "auto"}
+                  />
                 ) : (
                   <img
                     src={slide.image.replace("w=2070", "w=1280")}
@@ -125,8 +121,63 @@ const SectionHero = () => {
                 )}
               </div>
 
-              {/* Content Container - Advanced Text Reveals */}
-              <div className={`relative z-20 container h-full flex px-4 mx-auto ${slide.hideOverlayText ? "items-end pb-32 md:pb-40 justify-center" : "items-start"}`}>
+              {/* ─── MOBILE LAYOUT ─── */}
+              {slide.isLocal ? (
+                /* Slide 1 mobile: GIF at top + content below */
+                <div className="md:hidden absolute inset-0 z-0 bg-slate-900 flex flex-col">
+                  <FastenerPattern />
+                  {/* GIF — full width, natural 16:9 height */}
+                  <div className="relative w-full flex-shrink-0 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/80 z-10" />
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      className={`w-full transition-opacity duration-1000 ${current === index ? "opacity-100" : "opacity-0"}`}
+                      loading="eager"
+                      // @ts-expect-error: fetchpriority is a valid attribute but not in standard HTML types yet
+                      fetchpriority="high"
+                    />
+                  </div>
+                  {/* Content fills remaining space */}
+                  <div className="flex-1 flex flex-col items-center justify-center px-6 py-4 text-center relative z-10">
+                    <span className="inline-block text-blue-300 font-medium text-xs tracking-widest uppercase mb-3">
+                      Specialised Manufacturer
+                    </span>
+                    <h1 className="text-3xl font-bold font-heading text-white leading-tight tracking-tight mb-3">
+                      Precision Engineering<br />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+                        at Global Scale
+                      </span>
+                    </h1>
+                    <p className="text-sm text-white/70 leading-relaxed mb-6 max-w-xs">
+                      20,000m² facility with 51+ CNC centers and robotic automation delivering zero-defect components to tier-1 brands.
+                    </p>
+                    <a href={`${import.meta.env.BASE_URL}SFL Resorcs/Vendor Profile - SFL.pptx`} download>
+                      <button className="bg-blue-500 hover:bg-blue-400 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-colors shadow-[0_0_20px_rgba(59,130,246,0.4)]">
+                        Download Vendor Profile
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                /* Other slides mobile: same as desktop */
+                <div className="md:hidden absolute inset-0 z-0 bg-slate-900">
+                  <FastenerPattern />
+                  <div className="absolute inset-0 bg-gradient-to-t z-10 from-slate-900/85 via-slate-800/30 to-slate-900/55" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent z-10" />
+                  <img
+                    src={slide.image.replace("w=2070", "w=800&q=70")}
+                    alt={slide.title}
+                    className={`w-full h-full object-cover object-center transition-transform duration-[10000ms] ease-linear ${current === index ? "scale-110" : "scale-100"}`}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    // @ts-expect-error: fetchpriority is a valid attribute but not in standard HTML types yet
+                    fetchpriority={index === 0 ? "high" : "auto"}
+                  />
+                </div>
+              )}
+
+              {/* Content Container — desktop only for slide 1 */}
+              <div className={`relative z-20 container h-full flex px-4 mx-auto ${slide.hideOverlayText ? "hidden md:flex items-end pb-32 md:pb-40 justify-center" : "flex items-start"}`}>
                 <div className={`max-w-4xl ${slide.hideOverlayText ? "w-full" : "pt-40 md:pt-56"}`}>
                   <div className={`transition-all duration-700 ease-out ${current === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
                     {(!slide.hideOverlayText) && (
