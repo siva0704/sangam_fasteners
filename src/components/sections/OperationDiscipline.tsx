@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ShieldCheck, Cpu, Target, Repeat, Layers } from "lucide-react";
+import { ShieldCheck, Cpu, Crosshair, Repeat, Layers } from "lucide-react";
 
 const disciplines = [
     {
@@ -8,7 +8,7 @@ const disciplines = [
         description: "We maintain strict control at every production stage to ensure precision, consistency, and zero-defect quality in every shaft we manufacture."
     },
     {
-        icon: <Target className="w-8 h-8 text-primary" />,
+        icon: <Crosshair className="w-8 h-8 text-primary" />,
         title: "Specification Execution",
         description: "We strictly adhere to customer specifications and industry standards, ensuring every shaft is manufactured with precise dimensions, material integrity, and performance compliance."
     },
