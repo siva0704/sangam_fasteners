@@ -11,9 +11,9 @@ const Footer = () => {
             <div className="mb-6 group">
               <Link to="/">
                 <img
-                  src={`${import.meta.env.BASE_URL}logo.svg`}
+                  src={`${import.meta.env.BASE_URL}logo.png`}
                   alt="Sangam Fasteners Logo"
-                  className="h-16 w-auto object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                  className="h-16 w-auto object-contain transition-opacity duration-300 hover:opacity-90"
                 />
               </Link>
             </div>
