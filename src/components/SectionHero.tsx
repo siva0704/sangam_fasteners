@@ -127,7 +127,7 @@ const SectionHero = () => {
                 <div className="md:hidden absolute inset-0 z-0 bg-slate-900 flex flex-col">
                   <FastenerPattern />
                   {/* GIF — full width, natural 16:9 height */}
-                  <div className="relative w-full flex-shrink-0 overflow-hidden">
+                  <div className="relative w-full flex-shrink-0 overflow-hidden pt-20">
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/80 z-10" />
                     <img
                       src={slide.image}
