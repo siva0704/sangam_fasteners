@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import BackToTop from "./components/BackToTop";
+import WhatsAppButton from "./components/WhatsAppButton";
 import { Navbar } from "./components/layout/Navbar";
 import { SmoothScroll } from "./components/layout/SmoothScroll";
 import Home from "./pages/Home";
@@ -41,6 +42,7 @@ const App = () => {
             <BrowserRouter basename={import.meta.env.BASE_URL} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
               <ScrollToTop />
               <Navbar />
+              <WhatsAppButton />
               <BackToTop />
               <Suspense fallback={<div className="min-h-screen bg-background" />}>
                 <Routes>
