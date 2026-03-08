@@ -91,7 +91,7 @@ const FactCard = ({ fact, idx, getDecorationStyle, isActive, domRef }: FactCardP
     return (
         <div
             ref={domRef}
-            className={`group ${isActive ? "is-active" : ""} relative bg-white dark:bg-background p-6 rounded-2xl border border-slate-100 dark:border-border hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-900/10 dark:hover:shadow-blue-900/20 transition-all duration-500 overflow-hidden h-full flex flex-col justify-between items-center text-center isolate`}
+            className={`group ${isActive ? "is-active" : ""} relative bg-card p-6 rounded-2xl border border-border hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-900/10 dark:hover:shadow-blue-900/20 transition-all duration-500 overflow-hidden h-full flex flex-col justify-between items-center text-center isolate`}
         >
 
             {/* Enhanced Decorations (Bloom from center) */}
@@ -111,7 +111,7 @@ const FactCard = ({ fact, idx, getDecorationStyle, isActive, domRef }: FactCardP
             <div className="w-full flex flex-col items-center relative">
                 <div className="relative mb-6">
                     {/* Main Icon Container - Glowing Effect */}
-                    <div className={`p-5 rounded-2xl bg-slate-50 dark:bg-card text-muted-foreground dark:text-slate-500 group-hover:bg-white dark:group-hover:bg-background group-hover:text-blue-600 dark:group-hover:text-blue-400 group-[.is-active]:bg-white dark:group-[.is-active]:bg-background group-[.is-active]:text-blue-600 dark:group-[.is-active]:text-blue-400 transition-all duration-300 shadow-sm group-hover:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] group-[.is-active]:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] ring-1 ring-slate-100 dark:ring-slate-800 group-hover:ring-blue-100 dark:group-hover:ring-blue-900 group-[.is-active]:ring-blue-100 dark:group-[.is-active]:ring-blue-900 relative z-20`}>
+                    <div className={`p-5 rounded-2xl bg-secondary dark:bg-card text-muted-foreground dark:text-slate-500 group-hover:bg-card dark:group-hover:bg-background group-hover:text-blue-600 dark:group-hover:text-blue-400 group-[.is-active]:bg-card dark:group-[.is-active]:bg-background group-[.is-active]:text-blue-600 dark:group-[.is-active]:text-blue-400 transition-all duration-300 shadow-sm group-hover:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] group-[.is-active]:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] ring-1 ring-border group-hover:ring-blue-100 dark:group-hover:ring-blue-900 group-[.is-active]:ring-blue-100 dark:group-[.is-active]:ring-blue-900 relative z-20`}>
                         <fact.icon size={36} strokeWidth={1.5} className="group-hover:scale-110 group-[.is-active]:scale-110 group-hover:-translate-y-1 group-[.is-active]:-translate-y-1 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] fill-blue-50/0 group-hover:fill-blue-50 dark:group-hover:fill-blue-500/10 group-[.is-active]:fill-blue-50 dark:group-[.is-active]:fill-blue-500/10" />
                     </div>
                 </div>
@@ -120,7 +120,7 @@ const FactCard = ({ fact, idx, getDecorationStyle, isActive, domRef }: FactCardP
                     <p className="text-[10px] font-bold text-muted-foreground dark:text-slate-500 uppercase tracking-[0.25em] group-hover:text-blue-600 dark:group-hover:text-blue-400 group-[.is-active]:text-blue-600 dark:group-[.is-active]:text-blue-400 transition-colors duration-300">
                         {fact.label}
                     </p>
-                    <h3 className="text-2xl font-bold text-slate-900 dark:text-foreground leading-none transition-colors duration-300 break-words w-full">
+                    <h3 className="text-2xl font-bold text-foreground leading-none transition-colors duration-300 break-words w-full">
                         {fact.value}
                     </h3>
                 </div>
@@ -128,8 +128,8 @@ const FactCard = ({ fact, idx, getDecorationStyle, isActive, domRef }: FactCardP
 
             {/* Bottom Pill - Animated */}
             <div className="relative z-20 mt-2 w-full flex justify-center">
-                <span className="inline-flex items-center gap-2 px-5 py-2.5 text-[10px] font-bold text-slate-500 dark:text-muted-foreground uppercase transition-all duration-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-[.is-active]:text-blue-600 dark:group-[.is-active]:text-blue-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 group-hover:bg-blue-500 dark:group-hover:bg-blue-400 group-[.is-active]:bg-blue-500 dark:group-[.is-active]:bg-blue-400 transition-all duration-500 shrink-0" />
+                <span className="inline-flex items-center gap-2 px-5 py-2.5 text-[10px] font-bold text-muted-foreground uppercase transition-all duration-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-[.is-active]:text-blue-600 dark:group-[.is-active]:text-blue-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-border group-hover:bg-blue-500 dark:group-hover:bg-blue-400 group-[.is-active]:bg-blue-500 dark:group-[.is-active]:bg-blue-400 transition-all duration-500 shrink-0" />
                     <span className="whitespace-nowrap">{fact.subtext}</span>
                 </span>
             </div>
@@ -170,7 +170,7 @@ const SectionFactsheet = () => {
     }, []);
 
     return (
-        <section className="py-10 bg-slate-50 dark:bg-[#0a0f1c] border-y border-slate-200 dark:border-border relative">
+        <section className="py-10 bg-secondary/30 dark:bg-background border-y border-border relative">
             <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:20px_20px] opacity-20 pointer-events-none" />
 
             <div className="container px-4 mx-auto relative z-10">
@@ -178,7 +178,7 @@ const SectionFactsheet = () => {
                     <span className="text-accent dark:text-blue-400 font-bold tracking-widest text-xs uppercase mb-2 block">
                         Corporate Profile
                     </span>
-                    <h2 className="text-3xl font-heading font-bold text-slate-900 dark:text-foreground">
+                    <h2 className="text-3xl font-heading font-bold text-foreground">
                         Key Facts & Figures
                     </h2>
                 </AnimatedSection>

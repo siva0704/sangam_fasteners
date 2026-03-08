@@ -4,7 +4,7 @@ import MagneticButton from "./MagneticButton";
 
 const SectionGlobal = () => {
     return (
-        <section className="py-16 bg-white relative overflow-hidden">
+        <section className="py-16 bg-background relative overflow-hidden">
             {/* Abstract Map Background Suggestion */}
             <div className="absolute inset-0 z-0 opacity-5 pointer-events-none">
                 <Globe2 className="w-[800px] h-[800px] absolute -right-40 -top-40 text-primary" />
@@ -45,7 +45,7 @@ const SectionGlobal = () => {
                     <div className="lg:w-1/2 relative">
                         <AnimatedSection animation="fade-left">
                             {/* Visual representation of global reach */}
-                            <div className="relative rounded-xl overflow-hidden shadow-2xl border-4 border-white">
+                            <div className="relative rounded-xl overflow-hidden shadow-2xl border-4 border-background">
                                 <img
                                     src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2070&auto=format&fit=crop"
                                     alt="Global Logistics Container Ship"

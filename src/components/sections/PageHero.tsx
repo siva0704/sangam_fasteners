@@ -17,7 +17,7 @@ export const PageHero = ({
     className
 }: PageHeroProps) => {
     return (
-        <section className={cn("relative h-[60vh] min-h-[500px] w-full overflow-hidden bg-slate-100 dark:bg-background text-slate-900 dark:text-foreground flex items-center justify-center transition-colors duration-500", className)}>
+        <section className={cn("relative h-[60vh] min-h-[500px] w-full overflow-hidden bg-slate-100 dark:bg-background text-foreground flex items-center justify-center transition-colors duration-500", className)}>
             {/* Background with Overlay */}
             <div className="absolute inset-0 z-0 bg-slate-100 dark:bg-background">
                 {/* Subtle grid pattern for industrial feel */}
@@ -47,7 +47,7 @@ export const PageHero = ({
 
                         <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-sky-500 dark:from-blue-500 dark:to-cyan-400 rounded-full mb-8" />
 
-                        <p className="text-xl text-slate-700 dark:text-muted-foreground max-w-2xl leading-relaxed font-medium">
+                        <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed font-medium">
                             {subtitle}
                         </p>
                     </div>

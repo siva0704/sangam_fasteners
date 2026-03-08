@@ -45,7 +45,7 @@ const Industries = () => {
 
                     {/* Icon Container - Diamond Shape */}
                     <div className="mb-6 relative">
-                      <div className="w-16 h-16 rounded-2xl rotate-45 bg-slate-50 group-hover:bg-accent transition-colors duration-300 flex items-center justify-center shadow-inner">
+                      <div className="w-16 h-16 rounded-2xl rotate-45 bg-secondary group-hover:bg-accent transition-colors duration-300 flex items-center justify-center shadow-inner">
                         <div className="-rotate-45 text-accent group-hover:text-foreground transition-colors duration-300">
                           <industry.icon size={28} strokeWidth={1.5} />
                         </div>
@@ -56,19 +56,19 @@ const Industries = () => {
                       INDUSTRY SECTOR
                     </h3>
 
-                    <h3 className="font-heading font-bold text-2xl mb-3 text-gray-900 group-hover:text-accent transition-colors leading-tight">{industry.name}</h3>
+                    <h3 className="font-heading font-bold text-2xl mb-3 text-foreground group-hover:text-accent transition-colors leading-tight">{industry.name}</h3>
                     <p className="text-muted-foreground mb-4 text-sm leading-relaxed max-w-sm">{industry.description}</p>
 
                     {/* Divider */}
-                    <div className="w-12 h-1 bg-gray-100 rounded-full my-4 group-hover:bg-blue-200 transition-colors duration-300" />
+                    <div className="w-12 h-1 bg-border rounded-full my-4 group-hover:bg-primary/20 transition-colors duration-300" />
 
                     <div className="mb-4 w-full">
                       <h4 className="font-medium text-xs uppercase tracking-wider text-muted-foreground mb-2">Key Products</h4>
-                      <p className="text-sm text-gray-600 bg-gray-50 py-2 px-3 rounded-lg mx-auto inline-block w-full">{industry.products}</p>
+                      <p className="text-sm text-muted-foreground bg-secondary py-2 px-3 rounded-lg mx-auto inline-block w-full">{industry.products}</p>
                     </div>
 
                     <div className="mt-auto pt-4 w-full">
-                      <MagneticButton variant="ghost" className="w-full text-accent hover:text-accent hover:bg-slate-50 uppercase tracking-wider text-xs font-bold">
+                      <MagneticButton variant="ghost" className="w-full text-accent hover:text-accent hover:bg-secondary uppercase tracking-wider text-xs font-bold">
                         View Products
                       </MagneticButton>
                     </div>

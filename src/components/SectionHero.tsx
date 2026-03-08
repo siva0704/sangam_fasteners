@@ -46,7 +46,7 @@ const heroSlides = [
 ];
 
 const FastenerPattern = () => (
-  <div className="absolute inset-0 z-0 opacity-5 dark:opacity-10 pointer-events-none text-slate-900 dark:text-foreground">
+  <div className="absolute inset-0 z-0 opacity-5 dark:opacity-10 pointer-events-none text-foreground">
     <svg width="100%" height="100%">
       <defs>
         <pattern id="hex-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
@@ -87,11 +87,11 @@ const SectionHero = () => {
           {heroSlides.map((slide, index) => (
             <CarouselItem key={slide.id} className="relative pl-0 h-full w-full">
               {/* ─── DESKTOP BACKGROUND (unchanged) ─── */}
-              <div className="hidden md:block absolute inset-0 z-0 bg-slate-900">
+              <div className="hidden md:block absolute inset-0 z-0 bg-background">
                 <FastenerPattern />
-                <div className={`absolute inset-0 bg-gradient-to-t z-10 transition-opacity duration-500 ${slide.isLocal ? "from-slate-900/60 via-slate-900/10 to-transparent" : "from-slate-900/85 via-slate-800/30 to-slate-900/55"}`} />
+                <div className={`absolute inset-0 bg-gradient-to-t z-10 transition-opacity duration-500 w-full ${slide.isLocal ? "from-background/80 via-background/20 to-transparent" : "from-background/90 via-background/50 to-background/70"}`} />
                 {!slide.isLocal && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-transparent z-10" />
                 )}
                 {slide.isLocal ? (
                   <img
@@ -124,11 +124,11 @@ const SectionHero = () => {
               {/* ─── MOBILE LAYOUT ─── */}
               {slide.isLocal ? (
                 /* Slide 1 mobile: GIF at top + content below */
-                <div className="md:hidden absolute inset-0 z-0 bg-slate-900 flex flex-col">
+                <div className="md:hidden absolute inset-0 z-0 bg-background flex flex-col">
                   <FastenerPattern />
                   {/* GIF — full width, natural 16:9 height */}
                   <div className="relative w-full flex-shrink-0 overflow-hidden pt-20">
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/80 z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/90 z-10" />
                     <img
                       src={slide.image}
                       alt={slide.title}
@@ -143,17 +143,28 @@ const SectionHero = () => {
                     <span className="inline-block text-blue-300 font-medium text-xs tracking-widest uppercase mb-3">
                       Specialised Manufacturer
                     </span>
-                    <h1 className="text-3xl font-bold font-heading text-white leading-tight tracking-tight mb-3">
-                      Precision Engineering<br />
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-                        at Global Scale
-                      </span>
-                    </h1>
-                    <p className="text-sm text-white/70 leading-relaxed mb-6 max-w-xs">
+                    <div className="flex flex-col items-center gap-3 mb-3">
+                      <img
+                        src={`${import.meta.env.BASE_URL}logo.png`}
+                        alt="SFL Shafts Logo"
+                        loading="eager"
+                        // @ts-expect-error: standard HTML attribute support
+                        fetchpriority="high"
+                        className={`w-16 h-16 object-contain transition-all duration-1000 ease-out drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] ${current === index ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-50 translate-y-4"}`}
+                        style={{ transitionDelay: '200ms' }}
+                      />
+                      <h1 className="text-3xl font-bold font-heading text-foreground leading-tight tracking-tight text-center">
+                        Precision Engineering<br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400 dark:from-blue-400 dark:to-cyan-300">
+                          at Global Scale
+                        </span>
+                      </h1>
+                    </div>
+                    <p className="text-sm text-foreground/70 leading-relaxed mb-6 max-w-xs">
                       20,000m² facility with 51+ CNC centers and robotic automation delivering zero-defect components to tier-1 brands.
                     </p>
                     <a href={`${import.meta.env.BASE_URL}SFL Resorcs/Vendor Profile - SFL.pptx`} download>
-                      <button className="bg-blue-500 hover:bg-blue-400 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-colors shadow-[0_0_20px_rgba(59,130,246,0.4)]">
+                      <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-xl text-sm font-semibold transition-colors shadow-[0_0_20px_rgba(59,130,246,0.3)]">
                         Download Vendor Profile
                       </button>
                     </a>
@@ -161,10 +172,10 @@ const SectionHero = () => {
                 </div>
               ) : (
                 /* Other slides mobile: same as desktop */
-                <div className="md:hidden absolute inset-0 z-0 bg-slate-900">
+                <div className="md:hidden absolute inset-0 z-0 bg-background">
                   <FastenerPattern />
-                  <div className="absolute inset-0 bg-gradient-to-t z-10 from-slate-900/85 via-slate-800/30 to-slate-900/55" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t z-10 from-background/90 via-background/40 to-background/60" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-transparent z-10" />
                   <img
                     src={slide.image.replace("w=2070", "w=800&q=70")}
                     alt={slide.title}
@@ -189,9 +200,18 @@ const SectionHero = () => {
                           </span>
                         </div>
 
-                        {/* Title */}
-                        <div className="mb-6">
-                          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight tracking-tight text-white">
+                        {/* Logo Reveal & Title */}
+                        <div className="mb-6 flex flex-col items-start gap-4">
+                          <img
+                            src={`${import.meta.env.BASE_URL}logo.png`}
+                            alt="SFL Shafts Logo"
+                            loading="eager"
+                            // @ts-expect-error: standard HTML attribute support
+                            fetchpriority="high"
+                            className={`w-20 h-20 md:w-28 md:h-28 object-contain transition-all duration-1000 ease-out drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] ${current === index ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-50 translate-y-8"}`}
+                            style={{ transitionDelay: '300ms' }}
+                          />
+                          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight tracking-tight text-foreground mt-2">
                             {slide.title} <br />
                             <span className={`text-transparent bg-clip-text bg-gradient-to-r ${slide.accentColor}`}>
                               {slide.subtitle}
@@ -201,7 +221,7 @@ const SectionHero = () => {
 
                         {/* Description */}
                         <div className="mb-10 max-w-2xl">
-                          <p className="text-xl md:text-2xl text-white/75 leading-relaxed">
+                          <p className="text-xl md:text-2xl text-foreground/75 leading-relaxed">
                             {slide.description}
                           </p>
                         </div>
@@ -219,7 +239,7 @@ const SectionHero = () => {
                           <MagneticButton
                             size="lg"
                             variant="outline"
-                            className="border-white/30 bg-white/10 hover:bg-white/20 text-white px-8 py-6 text-lg w-full sm:w-auto backdrop-blur-sm transition-colors"
+                            className="border-foreground/20 bg-foreground/5 hover:bg-foreground/10 text-foreground px-8 py-6 text-lg w-full sm:w-auto backdrop-blur-sm transition-colors"
                           >
                             View Manufacturing Scope <ArrowRight className="ml-2 h-5 w-5" />
                           </MagneticButton>
@@ -235,8 +255,8 @@ const SectionHero = () => {
 
         {/* Custom Navigation */}
         <div className="absolute bottom-6 right-4 md:bottom-12 md:right-12 z-30 flex gap-2">
-          <CarouselPrevious className="static translate-y-0 h-10 w-10 md:h-14 md:w-14 border-white/30 bg-white/10 hover:bg-white/20 text-white transition-all hover:scale-110" />
-          <CarouselNext className="static translate-y-0 h-10 w-10 md:h-14 md:w-14 border-white/30 bg-white/10 hover:bg-white/20 text-white transition-all hover:scale-110" />
+          <CarouselPrevious className="static translate-y-0 h-10 w-10 md:h-14 md:w-14 border-foreground/20 bg-foreground/5 hover:bg-foreground/10 text-foreground transition-all hover:scale-110" />
+          <CarouselNext className="static translate-y-0 h-10 w-10 md:h-14 md:w-14 border-foreground/20 bg-foreground/5 hover:bg-foreground/10 text-foreground transition-all hover:scale-110" />
         </div>
 
         {/* Slide Indicators */}
@@ -245,7 +265,7 @@ const SectionHero = () => {
             <button
               key={index}
               onClick={() => api?.scrollTo(index)}
-              className={`h-1 transition-all duration-500 rounded-full ${current === index ? "w-12 bg-blue-400" : "w-2 bg-white/30 hover:bg-white/60"}`}
+              className={`h-1 transition-all duration-500 rounded-full ${current === index ? "w-12 bg-primary" : "w-2 bg-foreground/30 hover:bg-foreground/60"}`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

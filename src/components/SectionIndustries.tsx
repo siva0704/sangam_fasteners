@@ -25,7 +25,7 @@ const SectionIndustries = () => {
     };
 
     return (
-        <section className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-[#050814] dark:to-[#0a0f1c] relative overflow-hidden transition-colors duration-500">
+        <section className="py-20 bg-gradient-to-b from-secondary/50 to-background dark:from-secondary/20 dark:to-background relative overflow-hidden transition-colors duration-500">
             {/* Background Map Image */}
             <div className="absolute inset-0 z-0 opacity-10 dark:opacity-40 pointer-events-none">
                 <img
@@ -33,16 +33,16 @@ const SectionIndustries = () => {
                     alt="World Map"
                     className="w-full h-full object-cover object-center filter dark:invert-0 invert opacity-50 dark:opacity-100"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#0a0f1c] via-transparent to-slate-50 dark:to-[#050814]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-secondary/50 dark:to-secondary/20" />
             </div>
 
             <div className="container px-4 mx-auto relative z-10">
                 <AnimatedSection animation="fade-up" className="text-center mb-16">
                     <div className="text-center max-w-3xl mx-auto mb-16 relative z-20">
-                        <h2 className="text-3xl md:text-5xl font-bold font-heading text-slate-900 dark:text-foreground mb-6">
+                        <h2 className="text-3xl md:text-5xl font-bold font-heading text-foreground mb-6">
                             Serving <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300">Global Industries</span>
                         </h2>
-                        <p className="text-lg text-slate-600 dark:text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                             Strategic logistics partnerships and regional warehousing ensure timely delivery to appliance manufacturers across the globe.
                         </p>
                     </div>
@@ -116,7 +116,7 @@ const SectionIndustries = () => {
                                 {/* Minimal Dot */}
                                 <div className="relative -translate-x-1/2 -translate-y-1/2 cursor-pointer p-4">
                                     <span className={`absolute inline-flex h-full w-full rounded-full ${isHQ ? 'bg-blue-500' : 'bg-blue-400'} opacity-10 animate-ping group-hover:bg-blue-300`} />
-                                    <div className={`relative inline-flex rounded-full transition-all duration-300 ${isHQ ? 'h-2 w-2 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)]' : isActive ? 'h-2 w-2 bg-blue-400 scale-125' : 'h-1.5 w-1.5 bg-slate-400 group-hover:bg-blue-400'}`} />
+                                    <div className={`relative inline-flex rounded-full transition-all duration-300 ${isHQ ? 'h-2 w-2 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)]' : isActive ? 'h-2 w-2 bg-blue-400 scale-125' : 'h-1.5 w-1.5 bg-muted-foreground group-hover:bg-blue-400'}`} />
                                 </div>
 
                                 {/* Tooltip / Card */}
@@ -136,27 +136,27 @@ const SectionIndustries = () => {
                                     </div>
 
                                     {/* Arrow */}
-                                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-slate-800/90" />
+                                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-card/90" />
                                 </div>
                             </div>
                         );
                     })}
 
                     <AnimatedSection animation="fade-left" delay={0.2} className="relative z-20">
-                        <div className="bg-white/50 dark:bg-foreground/5 backdrop-blur-xl border border-slate-200 dark:border-border p-8 rounded-3xl h-full shadow-lg dark:shadow-none">
-                            <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-foreground mb-6">Key Markets</h3>
+                        <div className="bg-background/50 dark:bg-foreground/5 backdrop-blur-xl border border-border p-8 rounded-3xl h-full shadow-lg dark:shadow-none">
+                            <h3 className="text-2xl font-bold font-heading text-foreground mb-6">Key Markets</h3>
                             <div className="space-y-6">
                                 {industries.map((ind, idx) => (
                                     <div key={idx} className="group">
                                         <div className="flex items-center gap-4 mb-2">
-                                            <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-500/10 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 dark:group-hover:bg-blue-500 group-hover:text-foreground transition-colors">
+                                            <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-500/10 flex items-center justify-center text-primary group-hover:bg-blue-600 dark:group-hover:bg-blue-500 group-hover:text-foreground transition-colors">
                                                 <ind.icon size={20} />
                                             </div>
                                             <div>
-                                                <h4 className="font-bold text-slate-800 dark:text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                                <h4 className="font-bold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                                                     {ind.name}
                                                 </h4>
-                                                <p className="text-sm text-slate-500 dark:text-muted-foreground">{ind.description}</p>
+                                                <p className="text-sm text-muted-foreground">{ind.description}</p>
                                             </div>
                                         </div>
                                     </div>

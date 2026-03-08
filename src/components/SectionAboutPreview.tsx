@@ -37,7 +37,7 @@ const SectionAboutPreview = () => {
                         <span className="inline-block py-1 px-3 text-blue-600 dark:text-cyan-400 font-bold tracking-widest text-xs uppercase mb-4 border border-blue-200 dark:border-cyan-400/20 rounded-full bg-blue-50 dark:bg-cyan-400/5">
                             Operational Discipline
                         </span>
-                        <h2 className="text-3xl md:text-5xl font-bold font-heading mb-6 tracking-tight text-slate-900 dark:text-foreground">
+                        <h2 className="text-3xl md:text-5xl font-bold font-heading mb-6 tracking-tight text-foreground">
                             The Architecture of <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300">Precision</span>
                         </h2>
                         <p className="text-lg text-slate-600 dark:text-muted-foreground font-light">

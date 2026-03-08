@@ -35,7 +35,7 @@ const SectionInfrastructure = () => {
     const [activeIdx, setActiveIdx] = useState(0);
 
     return (
-        <section className="py-24 bg-gradient-to-b from-slate-50 to-white dark:from-[#0f172a] dark:to-slate-900 relative overflow-hidden transition-colors duration-500">
+        <section className="py-24 bg-gradient-to-b from-secondary to-background dark:from-background dark:to-secondary/20 relative overflow-hidden transition-colors duration-500">
             {/* Subtle Grid Background */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] [background-size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] dark:[mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#fff_70%,transparent_100%)] pointer-events-none" />
 
@@ -48,7 +48,7 @@ const SectionInfrastructure = () => {
                             <span className="text-accent font-bold tracking-widest text-xs uppercase mb-4 block">
                                 Infrastructure & Capacity
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-bold font-heading text-slate-900 dark:text-foreground mb-6 leading-tight">
+                            <h2 className="text-4xl md:text-5xl font-bold font-heading text-foreground mb-6 leading-tight">
                                 Manufacturing <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-500 dark:from-blue-400 dark:to-cyan-400">
                                     at Scale
@@ -70,16 +70,16 @@ const SectionInfrastructure = () => {
                                                 : 'border-transparent hover:bg-slate-50 dark:hover:bg-card/50'
                                                 }`}
                                         >
-                                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 ${isActive ? 'bg-white dark:bg-card text-blue-600 dark:text-blue-400 shadow-sm' : 'bg-slate-100 dark:bg-card/50 text-slate-500 dark:text-muted-foreground'
+                                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 ${isActive ? 'bg-background dark:bg-card text-primary shadow-sm' : 'bg-secondary dark:bg-card/50 text-muted-foreground'
                                                 }`}>
                                                 <item.icon className="w-6 h-6" />
                                             </div>
                                             <div>
-                                                <h4 className={`font-bold text-lg mb-1 transition-colors ${isActive ? 'text-blue-950 dark:text-blue-100' : 'text-slate-700 dark:text-muted-foreground'
+                                                <h4 className={`font-bold text-lg mb-1 transition-colors ${isActive ? 'text-blue-950 dark:text-blue-100' : 'text-muted-foreground'
                                                     }`}>
                                                     {item.title}
                                                 </h4>
-                                                <p className={`text-sm transition-all duration-300 overflow-hidden ${isActive ? 'text-slate-600 dark:text-muted-foreground h-auto opacity-100' : 'h-0 opacity-0'
+                                                <p className={`text-sm transition-all duration-300 overflow-hidden ${isActive ? 'text-muted-foreground h-auto opacity-100' : 'h-0 opacity-0'
                                                     }`}>
                                                     {item.desc}
                                                 </p>
@@ -98,7 +98,7 @@ const SectionInfrastructure = () => {
                     </div>
 
                     {/* Right Image Router (7 cols) */}
-                    <div className="lg:col-span-7 relative h-[500px] lg:h-[700px] w-full rounded-3xl overflow-hidden shadow-2xl ring-1 ring-slate-900/5 dark:ring-white/10 bg-slate-100 dark:bg-card isolate">
+                    <div className="lg:col-span-7 relative h-[500px] lg:h-[700px] w-full rounded-3xl overflow-hidden shadow-2xl ring-1 ring-slate-900/5 dark:ring-white/10 bg-secondary dark:bg-card isolate">
                         {capabilities.map((item, idx) => (
                             <div
                                 key={idx}
@@ -116,14 +116,14 @@ const SectionInfrastructure = () => {
                                 <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.1)] pointer-events-none" />
 
                                 {/* Dynamic Overlay Tag */}
-                                <div className={`absolute bottom-8 left-8 bg-white/90 dark:bg-background/90 backdrop-blur-md p-4 pr-8 rounded-2xl shadow-xl border border-border dark:border-border transition-transform duration-700 delay-300 ${activeIdx === idx ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+                                <div className={`absolute bottom-8 left-8 bg-background/90 backdrop-blur-md p-4 pr-8 rounded-2xl shadow-xl border border-border dark:border-border transition-transform duration-700 delay-300 ${activeIdx === idx ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                                     <div className="flex items-center gap-4">
-                                        <div className="bg-blue-600/10 dark:bg-blue-400/10 text-blue-600 dark:text-blue-400 p-3 rounded-lg">
+                                        <div className="bg-blue-600/10 dark:bg-blue-400/10 text-primary p-3 rounded-lg">
                                             <item.icon size={24} />
                                         </div>
                                         <div>
-                                            <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-0.5">Verified Capacity</p>
-                                            <p className="font-bold text-slate-900 dark:text-foreground text-lg leading-none">{item.title}</p>
+                                            <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold mb-0.5">Verified Capacity</p>
+                                            <p className="font-bold text-foreground text-lg leading-none">{item.title}</p>
                                         </div>
                                     </div>
                                 </div>

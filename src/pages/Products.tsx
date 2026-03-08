@@ -58,29 +58,29 @@ const Products = () => {
           <div className="container mx-auto px-4 max-w-7xl">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
               <div>
-                <h2 className="text-3xl font-black font-heading text-slate-900 dark:text-foreground uppercase tracking-tight">
+                <h2 className="text-3xl font-black font-heading text-foreground uppercase tracking-tight">
                   Product Catalog
                 </h2>
-                <p className="text-sm text-slate-500 dark:text-muted-foreground mt-2 font-mono uppercase tracking-widest">Filter by category, material type, or industry standard.</p>
+                <p className="text-sm text-muted-foreground mt-2 font-mono uppercase tracking-widest">Filter by category, material type, or industry standard.</p>
               </div>
 
               <div className="flex items-center gap-3 bg-muted px-5 py-3 border-2 border-border">
                 <Filter size={18} className="text-cyan-500" />
-                <span className="text-xs font-bold text-slate-700 dark:text-muted-foreground uppercase tracking-[0.2em]">Found <strong className="text-cyan-600 dark:text-cyan-400 text-sm">{filteredProducts.length}</strong> items</span>
+                <span className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">Found <strong className="text-cyan-600 dark:text-cyan-400 text-sm">{filteredProducts.length}</strong> items</span>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:flex md:flex-wrap items-end gap-4 pt-4 border-t-2 border-slate-100 dark:border-border/50">
+            <div className="grid grid-cols-2 md:flex md:flex-wrap items-end gap-4 pt-4 border-t-2 border-border dark:border-border/50">
               {/* Category Filter */}
               <div className="flex flex-col gap-2 flex-1 md:flex-none">
-                <span className="text-[10px] font-bold text-slate-500 dark:text-muted-foreground uppercase tracking-[0.2em]">Category</span>
+                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em]">Category</span>
                 <Select value={categoryFilter} onValueChange={setCategoryFilter}>
                   <SelectTrigger className="w-full md:w-[220px] h-12 bg-background border-2 border-border rounded-none focus:ring-0 focus:border-accent hover:border-accent focus:shadow-none transition-all text-foreground font-bold uppercase text-xs tracking-wider">
                     <SelectValue placeholder="All Categories" />
                   </SelectTrigger>
                   <SelectContent className="rounded-none border-2 border-border bg-background text-foreground">
                     {categories.map(cat => (
-                      <SelectItem key={cat} value={cat} className="uppercase text-xs font-bold tracking-wider hover:bg-slate-50 dark:hover:bg-card/50 cursor-pointer">{cat === 'all' ? 'All' : cat}</SelectItem>
+                      <SelectItem key={cat} value={cat} className="uppercase text-xs font-bold tracking-wider hover:bg-secondary/50 dark:hover:bg-card/50 cursor-pointer">{cat === 'all' ? 'All' : cat}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
@@ -88,14 +88,14 @@ const Products = () => {
 
               {/* Material Filter */}
               <div className="flex flex-col gap-2 flex-1 md:flex-none">
-                <span className="text-[10px] font-bold text-slate-500 dark:text-muted-foreground uppercase tracking-[0.2em]">Material</span>
+                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em]">Material</span>
                 <Select value={materialFilter} onValueChange={setMaterialFilter}>
                   <SelectTrigger className="w-full md:w-[220px] h-12 bg-background border-2 border-border rounded-none focus:ring-0 focus:border-accent hover:border-accent focus:shadow-none transition-all text-foreground font-bold uppercase text-xs tracking-wider">
                     <SelectValue placeholder="All Materials" />
                   </SelectTrigger>
                   <SelectContent className="rounded-none border-2 border-border bg-background text-foreground">
                     {materials.map(mat => (
-                      <SelectItem key={mat} value={mat} className="uppercase text-xs font-bold tracking-wider hover:bg-slate-50 dark:hover:bg-card/50 cursor-pointer">{mat === 'all' ? 'All' : mat}</SelectItem>
+                      <SelectItem key={mat} value={mat} className="uppercase text-xs font-bold tracking-wider hover:bg-secondary/50 dark:hover:bg-card/50 cursor-pointer">{mat === 'all' ? 'All' : mat}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
@@ -103,14 +103,14 @@ const Products = () => {
 
               {/* Standard Filter */}
               <div className="flex flex-col gap-2 flex-1 md:flex-none">
-                <span className="text-[10px] font-bold text-slate-500 dark:text-muted-foreground uppercase tracking-[0.2em]">Standard</span>
+                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em]">Standard</span>
                 <Select value={standardFilter} onValueChange={setStandardFilter}>
                   <SelectTrigger className="w-full md:w-[220px] h-12 bg-background border-2 border-border rounded-none focus:ring-0 focus:border-accent hover:border-accent focus:shadow-none transition-all text-foreground font-bold uppercase text-xs tracking-wider">
                     <SelectValue placeholder="All Standards" />
                   </SelectTrigger>
                   <SelectContent className="rounded-none border-2 border-border bg-background text-foreground">
                     {standards.map(std => (
-                      <SelectItem key={std} value={std} className="uppercase text-xs font-bold tracking-wider hover:bg-slate-50 dark:hover:bg-card/50 cursor-pointer">{std === 'all' ? 'All' : std}</SelectItem>
+                      <SelectItem key={std} value={std} className="uppercase text-xs font-bold tracking-wider hover:bg-secondary/50 dark:hover:bg-card/50 cursor-pointer">{std === 'all' ? 'All' : std}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
@@ -135,10 +135,10 @@ const Products = () => {
 
           <div className="container mx-auto px-4 max-w-7xl relative z-10">
             {filteredProducts.length === 0 ? (
-              <div className="text-center py-32 border-2 border-dashed border-slate-300 dark:border-border">
-                <Target className="w-12 h-12 text-muted-foreground dark:text-slate-600 mx-auto mb-4" />
-                <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-foreground uppercase">No Products Found</h3>
-                <p className="text-slate-500 dark:text-muted-foreground">Try adjusting your filters to find what you're looking for.</p>
+              <div className="text-center py-32 border-2 border-dashed border-border">
+                <Target className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                <h3 className="text-xl font-bold font-heading text-foreground uppercase">No Products Found</h3>
+                <p className="text-muted-foreground">Try adjusting your filters to find what you're looking for.</p>
               </div>
             ) : (
               <StaggerGrid
@@ -166,7 +166,7 @@ const Products = () => {
 
                       {/* ID Badge */}
                       <div className="absolute top-4 right-4 z-20">
-                        <span className="text-[10px] font-bold text-slate-800 dark:text-muted-foreground bg-slate-200/50 dark:bg-card/50 px-2 py-1 rounded-sm shadow-inner uppercase tracking-wider backdrop-blur-sm">
+                        <span className="text-[10px] font-bold text-muted-foreground bg-secondary/80 dark:bg-card/80 px-2 py-1 rounded-sm shadow-inner uppercase tracking-wider backdrop-blur-sm">
                           ID: {(idx + 1).toString().padStart(3, '0')}
                         </span>
                       </div>
@@ -192,22 +192,22 @@ const Products = () => {
                     <div className="p-8 pt-6 flex-1 flex flex-col relative z-20">
                       <div className="mb-5">
                         <div className="flex justify-between items-center mb-4">
-                          <div className="text-[10px] uppercase tracking-[0.2em] text-slate-500 dark:text-muted-foreground font-bold font-mono">
+                          <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-bold font-mono">
                             {product.standards || "STD-SPEC"}
                           </div>
-                          <div className="w-12 h-[2px] bg-slate-200 dark:bg-accent group-hover:bg-cyan-500 transition-colors" />
+                          <div className="w-12 h-[2px] bg-border dark:bg-accent group-hover:bg-cyan-500 transition-colors" />
                         </div>
-                        <h3 className="text-xl md:text-2xl font-black font-heading text-slate-900 dark:text-foreground uppercase transition-colors duration-300 leading-tight">
+                        <h3 className="text-xl md:text-2xl font-black font-heading text-foreground uppercase transition-colors duration-300 leading-tight">
                           {product.name}
                         </h3>
                       </div>
 
-                      <p className="text-sm text-slate-600 dark:text-muted-foreground leading-relaxed mb-8 flex-1 font-medium block">
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-8 flex-1 font-medium block">
                         {product.description}
                       </p>
 
-                      <div className="mt-auto pt-6 border-t-2 border-slate-100 dark:border-border flex items-center justify-between">
-                        <Link to={`/products/${product.id}`} className="group/link flex items-center gap-2 text-slate-500 dark:text-muted-foreground hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors uppercase text-xs font-bold tracking-widest">
+                      <div className="mt-auto pt-6 border-t-2 border-border flex items-center justify-between">
+                        <Link to={`/products/${product.id}`} className="group/link flex items-center gap-2 text-muted-foreground hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors uppercase text-xs font-bold tracking-widest">
                           <span>View Specs</span>
                           <span className="text-sm transform group-hover/link:translate-x-1 transition-transform">→</span>
                         </Link>

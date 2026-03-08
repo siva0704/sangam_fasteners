@@ -10,11 +10,11 @@ export const Leadership = () => {
 
             <div className="container mx-auto px-4 relative z-10">
                 <AnimatedSection animation="fade-up" className="mb-20 text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-foreground/5 border border-slate-200 dark:border-border mb-6">
-                        <Users className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                        <span className="text-xs font-bold uppercase tracking-widest text-slate-700 dark:text-muted-foreground">Our Leadership</span>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-foreground/5 border border-border mb-6">
+                        <Users className="w-4 h-4 text-primary" />
+                        <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Our Leadership</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-slate-900 dark:text-foreground mb-6">Visionary Guidance</h2>
+                    <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-foreground mb-6">Visionary Guidance</h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full mx-auto" />
                 </AnimatedSection>
 
@@ -44,10 +44,10 @@ export const Leadership = () => {
                             <AnimatedSection animation="fade-right">
                                 <div className="flex items-center gap-3 mb-4">
                                     <div className="h-px w-8 bg-blue-600 dark:bg-blue-400" />
-                                    <span className="text-blue-600 dark:text-blue-400 font-bold tracking-widest text-sm uppercase">Founder's Vision</span>
+                                    <span className="text-primary font-bold tracking-widest text-sm uppercase">Founder's Vision</span>
                                 </div>
-                                <h3 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-foreground mb-6">
-                                    A Legacy of <span className="text-blue-600 dark:text-blue-400">50 Years</span> in Industry
+                                <h3 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+                                    A Legacy of <span className="text-primary">50 Years</span> in Industry
                                 </h3>
                                 <p className="text-lg text-slate-600 dark:text-muted-foreground leading-relaxed">
                                     Mr. Ishwarappa S Handigol is a first-generation entrepreneur and a visionary leader with over 50 years of industry experience. His constant hard work and passion for automobiles and home appliances have brought great success to the organization.
@@ -84,10 +84,10 @@ export const Leadership = () => {
                             <AnimatedSection animation="fade-left">
                                 <div className="flex items-center gap-3 mb-4">
                                     <div className="h-px w-8 bg-blue-600 dark:bg-blue-400" />
-                                    <span className="text-blue-600 dark:text-blue-400 font-bold tracking-widest text-sm uppercase">Operational Excellence</span>
+                                    <span className="text-primary font-bold tracking-widest text-sm uppercase">Operational Excellence</span>
                                 </div>
-                                <h3 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-foreground mb-6">
-                                    Driving <span className="text-blue-600 dark:text-blue-400">Modernization</span> & Growth
+                                <h3 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+                                    Driving <span className="text-primary">Modernization</span> & Growth
                                 </h3>
                                 <p className="text-lg text-slate-600 dark:text-muted-foreground leading-relaxed">
                                     A graduate specialized in Marketing, Mr. Sangamesh I Handigol has over 20 years of working experience in the family business. His exposure to varying industries has helped him understand and serve clients better.

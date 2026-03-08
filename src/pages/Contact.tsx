@@ -15,8 +15,8 @@ import Seo from "@/components/Seo";
 // Premium Icon Container Component (reused style from CompanySnapshot)
 const PremiumIcon = ({ icon: Icon, className }: { icon: React.ElementType, className?: string }) => (
   <div className={`relative mb-5 ${className}`}>
-    <div className="w-16 h-16 rounded-2xl rotate-45 bg-slate-50 dark:bg-foreground/5 group-hover:bg-blue-600 dark:group-hover:bg-blue-500 transition-colors duration-300 flex items-center justify-center shadow-inner mx-auto border border-slate-100 dark:border-border">
-      <div className="-rotate-45 text-blue-600 dark:text-blue-400 group-hover:text-foreground transition-colors duration-300">
+    <div className="w-16 h-16 rounded-2xl rotate-45 bg-secondary dark:bg-foreground/5 group-hover:bg-blue-600 dark:group-hover:bg-blue-500 transition-colors duration-300 flex items-center justify-center shadow-inner mx-auto border border-border dark:border-border">
+      <div className="-rotate-45 text-primary group-hover:text-foreground transition-colors duration-300">
         <Icon size={28} strokeWidth={1.5} />
       </div>
     </div>
@@ -114,7 +114,7 @@ const Contact = () => {
 
           <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection animation="fade-up" className="mb-12 text-center">
-              <h2 className="text-3xl font-heading font-bold mb-4 text-slate-900 dark:text-foreground">Why Customers Retain Us</h2>
+              <h2 className="text-3xl font-heading font-bold mb-4 text-foreground dark:text-foreground">Why Customers Retain Us</h2>
               <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-slate-800 dark:from-blue-500 dark:to-cyan-400 mx-auto rounded-full" />
             </AnimatedSection>
 
@@ -129,10 +129,10 @@ const Contact = () => {
 
                   <PremiumIcon icon={item.icon} />
 
-                  <h3 className="font-heading font-bold text-gray-900 dark:text-foreground text-lg leading-tight mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                  <h3 className="font-heading font-bold text-foreground dark:text-foreground text-lg leading-tight mb-2 group-hover:text-primary transition-colors duration-300">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-gray-500 dark:text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground dark:text-muted-foreground leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -149,10 +149,10 @@ const Contact = () => {
               <div>
                 <AnimatedSection animation="slide-rotate-left">
                   <div className="flex items-center space-x-3 mb-6">
-                    <div className="p-2 bg-slate-100 dark:bg-[#0f172a] rounded-lg text-blue-600 dark:text-blue-400">
+                    <div className="p-2 bg-secondary dark:bg-secondary/50 rounded-lg text-primary">
                       <MessageCircle size={24} />
                     </div>
-                    <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-foreground">Submit Your Enquiry</h2>
+                    <h2 className="text-3xl font-heading font-bold text-foreground dark:text-foreground">Submit Your Enquiry</h2>
                   </div>
                 </AnimatedSection>
 
@@ -191,7 +191,7 @@ const Contact = () => {
                               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                               required
                               placeholder="you@example.com"
-                              className="bg-white dark:bg-background/50 border-slate-200 dark:border-border dark:text-foreground dark:placeholder-slate-500 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
+                              className="bg-white dark:bg-background/50 border-border dark:text-foreground dark:placeholder-slate-500 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
                             />
                           </div>
                           <div>
@@ -202,7 +202,7 @@ const Contact = () => {
                               onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
                               required
                               placeholder="+91-XXXXXXXXXX"
-                              className="bg-white dark:bg-background/50 border-slate-200 dark:border-border dark:text-foreground dark:placeholder-slate-500 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
+                              className="bg-white dark:bg-background/50 border-border dark:text-foreground dark:placeholder-slate-500 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
                             />
                           </div>
                         </div>
@@ -214,7 +214,7 @@ const Contact = () => {
                               value={formData.application}
                               onChange={(e) => setFormData({ ...formData, application: e.target.value })}
                               placeholder="e.g. Automotive"
-                              className="bg-white dark:bg-background/50 border-slate-200 dark:border-border dark:text-foreground dark:placeholder-slate-500 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
+                              className="bg-white dark:bg-background/50 border-border dark:text-foreground dark:placeholder-slate-500 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
                             />
                           </div>
                           <div>
@@ -223,7 +223,7 @@ const Contact = () => {
                               value={formData.quantity}
                               onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
                               placeholder="e.g. 5000 pcs"
-                              className="bg-white dark:bg-background/50 border-slate-200 dark:border-border dark:text-foreground dark:placeholder-slate-500 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
+                              className="bg-white dark:bg-background/50 border-border dark:text-foreground dark:placeholder-slate-500 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
                             />
                           </div>
                         </div>
@@ -236,19 +236,19 @@ const Contact = () => {
                             rows={5}
                             required
                             placeholder="Describe your requirement detailed specifications..."
-                            className="bg-white dark:bg-background/50 border-slate-200 dark:border-border dark:text-foreground dark:placeholder-slate-500 resize-none focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
+                            className="bg-white dark:bg-background/50 border-border dark:text-foreground dark:placeholder-slate-500 resize-none focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
                           />
-                          <p className="text-xs text-slate-500 dark:text-muted-foreground mt-1.5">
+                          <p className="text-xs text-muted-foreground mt-1.5">
                             Mention specific application details to avoid clarification delays.
                           </p>
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium mb-1.5 text-gray-700 dark:text-muted-foreground">Upload Drawing (if any)</label>
+                          <label className="block text-sm font-medium mb-1.5 text-muted-foreground dark:text-muted-foreground">Upload Drawing (if any)</label>
                           <Input
                             type="file"
                             onChange={handleFileChange}
-                            className="bg-white dark:bg-[#0f172a]/50 border-slate-200 dark:border-border cursor-pointer file:text-blue-600 dark:file:text-blue-400 file:font-semibold file:bg-slate-50 dark:file:bg-foreground/5 file:border-0 file:mr-4 file:py-1 file:px-3 file:rounded-full hover:file:bg-slate-100 dark:hover:file:bg-foreground/5 transition-all text-sm text-gray-500 dark:text-muted-foreground"
+                            className="bg-background dark:bg-background/50 border-border dark:border-border cursor-pointer file:text-blue-600 dark:file:text-blue-400 file:font-semibold file:bg-secondary dark:file:bg-foreground/5 file:border-0 file:mr-4 file:py-1 file:px-3 file:rounded-full hover:file:bg-secondary/80 dark:hover:file:bg-foreground/5 transition-all text-sm text-muted-foreground dark:text-muted-foreground"
                           />
                         </div>
 
@@ -256,7 +256,7 @@ const Contact = () => {
                           <MagneticButton type="submit" className="flex-1 bg-gradient-to-r from-blue-600 to-slate-800 hover:from-blue-700 hover:to-slate-900 text-foreground shadow-lg shadow-blue-500/20 border-0">
                             Submit Enquiry <ArrowRight className="ml-2 w-4 h-4" />
                           </MagneticButton>
-                          <MagneticButton type="button" variant="outline" onClick={handleReset} className="px-6 border-gray-200 hover:bg-gray-50">
+                          <MagneticButton type="button" variant="outline" onClick={handleReset} className="px-6 border-border hover:bg-secondary">
                             Reset
                           </MagneticButton>
                         </div>
@@ -271,7 +271,7 @@ const Contact = () => {
                     <p className="text-sm text-muted-foreground mb-3">Prefer a quick chat?</p>
                     <MagneticButton
                       variant="secondary"
-                      className="w-full bg-green-50 text-green-700 hover:bg-green-100 border-green-200"
+                      className="w-full bg-green-500/10 text-green-600 hover:bg-green-500/20 border-green-500/20 dark:text-green-400"
                       onClick={handleWhatsApp}
                     >
                       <MessageCircle className="mr-2" size={18} />
@@ -285,10 +285,10 @@ const Contact = () => {
               <div className="flex flex-col h-full">
                 <AnimatedSection animation="slide-rotate-right">
                   <div className="flex items-center space-x-3 mb-6">
-                    <div className="p-2 bg-slate-100 dark:bg-[#0f172a] rounded-lg text-blue-600 dark:text-blue-400">
+                    <div className="p-2 bg-secondary dark:bg-secondary/50 rounded-lg text-primary">
                       <MapPin size={24} />
                     </div>
-                    <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-foreground">Get in Touch</h2>
+                    <h2 className="text-3xl font-heading font-bold text-foreground dark:text-foreground">Get in Touch</h2>
                   </div>
                 </AnimatedSection>
 
@@ -300,21 +300,21 @@ const Contact = () => {
                 >
                   <Card className="group bg-card rounded-xl shadow-sm hover:shadow-md transition-all border border-border overflow-hidden backdrop-blur-sm">
                     <CardContent className="p-5 flex flex-col items-center text-center">
-                      <div className="w-12 h-12 bg-slate-50 dark:bg-foreground/5 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-110 transition-transform">
+                      <div className="w-12 h-12 bg-secondary dark:bg-foreground/5 rounded-full flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
                         <Phone size={20} />
                       </div>
-                      <h3 className="font-heading font-bold text-gray-900 dark:text-foreground text-sm mb-1">Phone</h3>
+                      <h3 className="font-heading font-bold text-foreground dark:text-foreground text-sm mb-1">Phone</h3>
                       <p className="text-sm text-muted-foreground dark:text-muted-foreground font-medium">+91-836-XXXXXXX</p>
                     </CardContent>
                   </Card>
 
                   <Card className="group bg-card rounded-xl shadow-sm hover:shadow-md transition-all border border-border overflow-hidden backdrop-blur-sm">
                     <CardContent className="p-5 flex flex-col items-center text-center">
-                      <div className="w-12 h-12 bg-slate-50 dark:bg-foreground/5 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-110 transition-transform">
+                      <div className="w-12 h-12 bg-secondary dark:bg-foreground/5 rounded-full flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
                         <Mail size={20} />
                       </div>
-                      <h3 className="font-heading font-bold text-gray-900 dark:text-foreground text-sm mb-1">Email</h3>
-                      <a href="mailto:sf_pl@yahoo.co.in" className="text-sm text-blue-600 dark:text-blue-400 hover:underline font-medium">
+                      <h3 className="font-heading font-bold text-foreground dark:text-foreground text-sm mb-1">Email</h3>
+                      <a href="mailto:sf_pl@yahoo.co.in" className="text-sm text-primary hover:underline font-medium">
                         sf_pl@yahoo.co.in
                       </a>
                     </CardContent>
@@ -322,10 +322,10 @@ const Contact = () => {
 
                   <Card className="group bg-card rounded-xl shadow-sm hover:shadow-md transition-all border border-border overflow-hidden backdrop-blur-sm">
                     <CardContent className="p-5 flex flex-col items-center text-center">
-                      <div className="w-12 h-12 bg-slate-50 dark:bg-foreground/5 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-110 transition-transform">
+                      <div className="w-12 h-12 bg-secondary dark:bg-foreground/5 rounded-full flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
                         <Clock size={20} />
                       </div>
-                      <h3 className="font-heading font-bold text-gray-900 dark:text-foreground text-sm mb-1">Hours</h3>
+                      <h3 className="font-heading font-bold text-foreground dark:text-foreground text-sm mb-1">Hours</h3>
                       <p className="text-sm text-muted-foreground dark:text-muted-foreground font-medium">Mon-Fri, 9AM-6PM</p>
                     </CardContent>
                   </Card>
@@ -335,7 +335,7 @@ const Contact = () => {
                 <AnimatedSection animation="blur-fade" delay={3} className="flex-1 flex flex-col">
                   <div className="bg-card rounded-2xl shadow-lg border border-border p-2 overflow-hidden flex flex-col h-full min-h-[400px] backdrop-blur-sm">
                     {/* The Map */}
-                    <div className="relative w-full h-64 md:h-72 rounded-xl border border-border overflow-hidden shadow-inner bg-gray-100 dark:bg-[#050814]">
+                    <div className="relative w-full h-64 md:h-72 rounded-xl border border-border overflow-hidden shadow-inner bg-secondary dark:bg-[#050814]">
                       <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3846.4!2d75.1!3d15.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDIxJzAwLjAiTiA3NcKwMDYnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
                         width="100%"
@@ -347,21 +347,21 @@ const Contact = () => {
                         title="Sangam Shaft & Machine Components Location"
                         className="grayscale hover:grayscale-0 transition-all duration-500"
                       />
-                      <div className="absolute top-4 right-4 bg-white/90 dark:bg-background/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm dark:shadow-none text-slate-900 dark:text-foreground pointer-events-none border border-border">
+                      <div className="absolute top-4 right-4 bg-background/90 dark:bg-background/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm dark:shadow-none text-foreground dark:text-foreground pointer-events-none border border-border">
                         Hubballi, Karnataka
                       </div>
                     </div>
 
                     {/* Address Below Map */}
-                    <div className="p-6 bg-gradient-to-b from-white to-slate-50/50 dark:from-transparent dark:to-transparent flex-1 flex flex-col justify-center">
+                    <div className="p-6 bg-gradient-to-b from-background to-secondary/50 dark:from-transparent dark:to-transparent flex-1 flex flex-col justify-center">
                       <div className="flex items-start justify-between gap-4">
                         <div>
-                          <h3 className="text-lg font-heading font-bold text-gray-900 dark:text-foreground mb-2 flex items-center">
-                            <MapPin className="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" />
+                          <h3 className="text-lg font-heading font-bold text-foreground dark:text-foreground mb-2 flex items-center">
+                            <MapPin className="w-5 h-5 mr-2 text-primary" />
                             Factory & Office
                           </h3>
-                          <address className="not-italic text-gray-600 dark:text-muted-foreground leading-relaxed text-sm">
-                            <span className="font-semibold text-gray-800 dark:text-foreground">Sangam Shaft & Machine Components Private Limited</span><br />
+                          <address className="not-italic text-muted-foreground dark:text-muted-foreground leading-relaxed text-sm">
+                            <span className="font-semibold text-foreground dark:text-foreground">Sangam Shaft & Machine Components Private Limited</span><br />
                             B-344/1, KSSIDC Industrial Estate<br />
                             Gokul Road, Hubli - 580030<br />
                             Karnataka, India
@@ -371,7 +371,7 @@ const Contact = () => {
                           <MagneticButton
                             size="sm"
                             variant="outline"
-                            className="text-blue-600 dark:text-blue-400 border-slate-200 dark:border-border hover:bg-slate-50 dark:hover:bg-foreground/5 text-xs"
+                            className="text-primary border-border dark:border-border hover:bg-secondary dark:hover:bg-foreground/5 text-xs"
                             onClick={handleGetDirections}
                           >
                             Get Directions <ExternalLink size={14} className="ml-2" />

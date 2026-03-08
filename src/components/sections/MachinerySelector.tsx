@@ -33,7 +33,7 @@ export const MachinerySelector = () => {
     const selectedItem = allItems.find((item) => item.name === value) || uniqueMachinery[0];
 
     return (
-        <section className="py-24 bg-white dark:bg-[#020617] relative overflow-hidden transition-colors duration-500">
+        <section className="py-24 bg-background relative overflow-hidden transition-colors duration-500">
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
                 <div className="absolute top-10 left-10 w-64 h-64 border border-blue-600 rounded-full blur-3xl" />
@@ -42,13 +42,13 @@ export const MachinerySelector = () => {
 
             <div className="container mx-auto px-4 relative z-10">
                 <AnimatedSection animation="fade-up" className="text-center mb-16">
-                    <Badge variant="outline" className="mb-4 border-blue-500/30 text-blue-600 dark:text-blue-400 px-4 py-1 rounded-full uppercase tracking-widest text-[10px] font-bold">
+                    <Badge variant="outline" className="mb-4 border-blue-500/30 text-primary px-4 py-1 rounded-full uppercase tracking-widest text-[10px] font-bold">
                         Precision & Infrastructure
                     </Badge>
-                    <h2 className="text-4xl md:text-6xl font-heading font-extrabold text-slate-900 dark:text-foreground mb-6">
+                    <h2 className="text-4xl md:text-6xl font-heading font-extrabold text-foreground mb-6">
                         Explore Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Capabilities</span>
                     </h2>
-                    <p className="max-w-2xl mx-auto text-slate-600 dark:text-muted-foreground text-lg">
+                    <p className="max-w-2xl mx-auto text-muted-foreground text-lg">
                         Browse our extensive inventory of 80+ industrial machines and high-precision metrology instruments.
                     </p>
                 </AnimatedSection>
@@ -57,14 +57,14 @@ export const MachinerySelector = () => {
                     {/* Selector Side */}
                     <div className="lg:col-span-5 space-y-8">
                         <div className="space-y-4">
-                            <label className="text-sm font-bold text-slate-500 dark:text-muted-foreground uppercase tracking-widest">Select Equipment</label>
+                            <label className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Select Equipment</label>
                             <Popover open={open} onOpenChange={setOpen}>
                                 <PopoverTrigger asChild>
                                     <Button
                                         variant="outline"
                                         role="combobox"
                                         aria-expanded={open}
-                                        className="w-full justify-between h-14 text-left font-bold text-slate-800 dark:text-foreground border-slate-200 dark:border-border dark:bg-foreground/5 backdrop-blur-sm hover:border-blue-500 hover:bg-slate-50 dark:hover:bg-foreground/5 transition-all rounded-xl px-4"
+                                        className="w-full justify-between h-14 text-left font-bold text-foreground border-border dark:bg-foreground/5 backdrop-blur-sm hover:border-blue-500 hover:bg-secondary dark:hover:bg-foreground/5 transition-all rounded-xl px-4"
                                     >
                                         <div className="flex items-center gap-3 truncate">
                                             {selectedItem.category === 'machinery' ? <Hammer className="w-4 h-4 text-blue-600" /> : <Ruler className="w-4 h-4 text-cyan-500" />}
@@ -129,27 +129,27 @@ export const MachinerySelector = () => {
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
-                            <div className="bg-slate-50 dark:bg-foreground/5 p-4 rounded-xl border border-slate-100 dark:border-border">
+                            <div className="bg-secondary dark:bg-foreground/5 p-4 rounded-xl border border-border">
                                 <span className="text-[10px] font-extrabold text-muted-foreground dark:text-slate-500 uppercase tracking-widest block mb-2">Category</span>
                                 <div className="flex items-center gap-2">
                                     {selectedItem.category === 'machinery' ? (
                                         <>
                                             <Hammer className="w-5 h-5 text-blue-600" />
-                                            <span className="font-bold text-slate-800 dark:text-foreground uppercase text-sm">Industrial</span>
+                                            <span className="font-bold text-foreground uppercase text-sm">Industrial</span>
                                         </>
                                     ) : (
                                         <>
                                             <Ruler className="w-5 h-5 text-cyan-500" />
-                                            <span className="font-bold text-slate-800 dark:text-foreground uppercase text-sm">Metrology</span>
+                                            <span className="font-bold text-foreground uppercase text-sm">Metrology</span>
                                         </>
                                     )}
                                 </div>
                             </div>
-                            <div className="bg-slate-50 dark:bg-foreground/5 p-4 rounded-xl border border-slate-100 dark:border-border">
+                            <div className="bg-secondary dark:bg-foreground/5 p-4 rounded-xl border border-border">
                                 <span className="text-[10px] font-extrabold text-muted-foreground dark:text-slate-500 uppercase tracking-widest block mb-2">Build Quality</span>
                                 <div className="flex items-center gap-2">
                                     <Settings2 className="w-5 h-5 text-blue-600" />
-                                    <span className="font-bold text-slate-800 dark:text-foreground uppercase text-sm">Industrial</span>
+                                    <span className="font-bold text-foreground uppercase text-sm">Industrial</span>
                                 </div>
                             </div>
                         </div>
@@ -157,9 +157,9 @@ export const MachinerySelector = () => {
 
                     {/* Detail Side */}
                     <div className="lg:col-span-7">
-                        <Card className="border-none shadow-2xl bg-white dark:bg-[#0f172a] overflow-hidden rounded-3xl group">
+                        <Card className="border-none shadow-2xl bg-background dark:bg-card overflow-hidden rounded-3xl group">
                             <CardContent className="p-0">
-                                <div className="relative aspect-[16/10] bg-slate-100 dark:bg-foreground/5">
+                                <div className="relative aspect-[16/10] bg-secondary dark:bg-foreground/5">
                                     {selectedItem.imagePath ? (
                                         <img
                                             src={selectedItem.imagePath}
@@ -199,20 +199,20 @@ export const MachinerySelector = () => {
                                             <Info className="w-6 h-6" />
                                         </div>
                                         <div>
-                                            <h4 className="font-bold text-slate-900 dark:text-foreground mb-2 uppercase tracking-wide">Technical Overview</h4>
-                                            <p className="text-slate-600 dark:text-muted-foreground leading-relaxed">
+                                            <h4 className="font-bold text-foreground mb-2 uppercase tracking-wide">Technical Overview</h4>
+                                            <p className="text-muted-foreground leading-relaxed">
                                                 {selectedItem.description || "This component of our production line represents our commitment to precision engineering. Maintained to global standards, it ensures the consistent quality our Tier-1 clients expect."}
                                             </p>
                                         </div>
                                     </div>
-                                    <div className="flex flex-wrap gap-6 pt-6 border-t border-slate-100 dark:border-border">
+                                    <div className="flex flex-wrap gap-6 pt-6 border-t border-border">
                                         <div className="flex items-center gap-2">
                                             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                            <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Active Status</span>
+                                            <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Active Status</span>
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <Calendar className="w-4 h-4 text-muted-foreground" />
-                                            <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Service Verified</span>
+                                            <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Service Verified</span>
                                         </div>
                                     </div>
                                 </div>

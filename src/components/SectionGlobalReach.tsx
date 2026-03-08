@@ -56,7 +56,7 @@ const SectionGlobalReach = () => {
                     <div className="lg:col-span-12 xl:col-span-8 relative group">
                         <AnimatedSection
                             animation="scale-in"
-                            className="relative aspect-[2048/1039] w-full bg-slate-50/50 dark:bg-background rounded-3xl border border-primary/10 dark:border-primary/20 overflow-hidden shadow-2xl transition-colors duration-500"
+                            className="relative aspect-[2048/1039] w-full bg-secondary/50 dark:bg-background rounded-3xl border border-primary/10 dark:border-primary/20 overflow-hidden shadow-2xl transition-colors duration-500"
                         >
                             {/* SVG World Map Container */}
                             <div className="absolute inset-0 w-full h-full p-4 md:p-8">
@@ -95,12 +95,12 @@ const SectionGlobalReach = () => {
                                                 transition={{ duration: 3, repeat: Infinity }}
                                             />
                                             {/* Marker Icon */}
-                                            <div className="relative z-10 bg-white dark:bg-background border-2 border-accent p-2 rounded-full shadow-[0_0_15px_rgba(var(--accent-rgb),0.5)] group-hover/marker:scale-125 group-hover/marker:bg-accent group-hover/marker:border-white transition-all duration-300">
+                                            <div className="relative z-10 bg-background border-2 border-accent p-2 rounded-full shadow-[0_0_15px_rgba(var(--accent-rgb),0.5)] group-hover/marker:scale-125 group-hover/marker:bg-accent group-hover/marker:border-background transition-all duration-300">
                                                 <loc.icon className="w-4 h-4 text-accent group-hover/marker:text-foreground" />
                                             </div>
 
                                             {/* Label */}
-                                            <div className="absolute top-full mt-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white/90 dark:bg-background/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-accent/20 dark:border-primary/20 shadow-2xl opacity-0 group-hover/marker:opacity-100 transition-all transform translate-y-2 group-hover/marker:translate-y-0">
+                                            <div className="absolute top-full mt-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-background/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-accent/20 dark:border-primary/20 shadow-2xl opacity-0 group-hover/marker:opacity-100 transition-all transform translate-y-2 group-hover/marker:translate-y-0">
                                                 <span className="text-xs font-bold text-primary dark:text-foreground tracking-wide">{loc.name}</span>
                                             </div>
                                         </div>
@@ -115,7 +115,7 @@ const SectionGlobalReach = () => {
                                         initial={{ opacity: 0, x: 20, scale: 0.95 }}
                                         animate={{ opacity: 1, x: 0, scale: 1 }}
                                         exit={{ opacity: 0, x: 20, scale: 0.95 }}
-                                        className="absolute top-6 right-6 z-30 w-80 bg-white/95 dark:bg-background/90 backdrop-blur-2xl border border-primary/10 dark:border-accent/20 p-6 rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] hidden md:block"
+                                        className="absolute top-6 right-6 z-30 w-80 bg-background/95 backdrop-blur-2xl border border-primary/10 dark:border-accent/20 p-6 rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] hidden md:block"
                                     >
                                         {(() => {
                                             const loc = industries.find(l => l.id === hoveredLocation)!;
@@ -157,7 +157,7 @@ const SectionGlobalReach = () => {
                     {/* Content List Area */}
                     <div className="lg:col-span-12 xl:col-span-4 space-y-6">
                         <AnimatedSection animation="fade-left" className="h-full">
-                            <div className="bg-slate-50/80 dark:bg-background/80 backdrop-blur border border-primary/10 p-8 rounded-3xl h-full flex flex-col">
+                            <div className="bg-secondary/80 dark:bg-background/80 backdrop-blur border border-primary/10 p-8 rounded-3xl h-full flex flex-col">
                                 <h3 className="text-2xl font-bold text-primary mb-8 flex items-center gap-2">
                                     <MapPin className="w-6 h-6 text-accent" /> Logistics & Reach
                                 </h3>
@@ -167,8 +167,8 @@ const SectionGlobalReach = () => {
                                         <div
                                             key={industry.id}
                                             className={`p-4 rounded-2xl border transition-all duration-300 cursor-pointer ${hoveredLocation === industry.id
-                                                ? 'bg-white dark:bg-card border-primary shadow-md translate-x-2'
-                                                : 'bg-transparent border-transparent hover:bg-white/50 dark:hover:bg-card/50'
+                                                ? 'bg-card border-primary shadow-md translate-x-2'
+                                                : 'bg-transparent border-transparent hover:bg-card/50'
                                                 }`}
                                             onMouseEnter={() => setHoveredLocation(industry.id)}
                                             onMouseLeave={() => setHoveredLocation(null)}

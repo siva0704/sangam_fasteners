@@ -44,17 +44,17 @@ const ProductEnquiryForm = ({ productName }: { productName?: string }) => {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button variant="default" className="w-full bg-background border-2 border-slate-900 text-foreground hover:bg-cyan-500 hover:border-cyan-500 dark:bg-cyan-500 dark:border-cyan-500 dark:text-slate-900 dark:hover:bg-cyan-400 dark:hover:border-cyan-400 font-bold uppercase tracking-widest rounded-none transition-all duration-300 shadow-[4px_4px_0px_rgba(15,23,42,0.1)] dark:shadow-[4px_4px_0px_rgba(6,182,212,0.2)] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] py-6">
+                <Button variant="default" className="w-full bg-background border-2 border-border text-foreground hover:bg-cyan-500 hover:border-cyan-500 dark:bg-cyan-500 dark:border-cyan-500 dark:text-slate-900 dark:hover:bg-cyan-400 dark:hover:border-cyan-400 font-bold uppercase tracking-widest rounded-none transition-all duration-300 shadow-[4px_4px_0px_rgba(15,23,42,0.1)] dark:shadow-[4px_4px_0px_rgba(6,182,212,0.2)] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] py-6">
                     <span className="hidden md:inline">Request Quote</span>
                     <span className="md:hidden">Quote</span>
                 </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[500px] bg-white dark:bg-[#0b1221] text-slate-900 dark:text-foreground border-2 border-slate-200 dark:border-border rounded-none shadow-[12px_12px_0px_rgba(15,23,42,0.1)] dark:shadow-[12px_12px_0px_rgba(6,182,212,0.1)] p-8">
+            <DialogContent className="sm:max-w-[500px] bg-background text-foreground border-2 border-border rounded-none shadow-[12px_12px_0px_rgba(15,23,42,0.1)] dark:shadow-[12px_12px_0px_rgba(6,182,212,0.1)] p-8">
                 <DialogHeader>
-                    <DialogTitle className="text-2xl font-black font-heading text-slate-900 dark:text-foreground uppercase tracking-tight">
+                    <DialogTitle className="text-2xl font-black font-heading text-foreground uppercase tracking-tight">
                         {isSuccess ? "Request Sent!" : `Enquire about ${productName || "Product"}`}
                     </DialogTitle>
-                    <DialogDescription className="text-slate-500 dark:text-muted-foreground font-medium">
+                    <DialogDescription className="text-muted-foreground font-medium">
                         {isSuccess
                             ? "Thank you for your interest. Our sales team will get back to you within 24 hours."
                             : "Please provide your requirements. You can attach drawings or specifications."}
@@ -70,39 +70,39 @@ const ProductEnquiryForm = ({ productName }: { productName?: string }) => {
                     <form onSubmit={handleSubmit} className="space-y-4 py-2">
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <Label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-muted-foreground">Name</Label>
-                                <Input id="name" required placeholder="John Doe" className="bg-slate-50 dark:bg-background/50 border-2 border-slate-200 dark:border-border focus-visible:ring-0 focus-visible:border-cyan-500 dark:focus-visible:border-cyan-500 rounded-none h-12 dark:text-foreground" />
+                                <Label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Name</Label>
+                                <Input id="name" required placeholder="John Doe" className="bg-secondary dark:bg-background/50 border-2 border-border focus-visible:ring-0 focus-visible:border-cyan-500 dark:focus-visible:border-cyan-500 rounded-none h-12 text-foreground" />
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="company" className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-muted-foreground">Company</Label>
-                                <Input id="company" required placeholder="Acme Inc" className="bg-slate-50 dark:bg-background/50 border-2 border-slate-200 dark:border-border focus-visible:ring-0 focus-visible:border-cyan-500 dark:focus-visible:border-cyan-500 rounded-none h-12 dark:text-foreground" />
+                                <Label htmlFor="company" className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Company</Label>
+                                <Input id="company" required placeholder="Acme Inc" className="bg-secondary dark:bg-background/50 border-2 border-border focus-visible:ring-0 focus-visible:border-cyan-500 dark:focus-visible:border-cyan-500 rounded-none h-12 text-foreground" />
                             </div>
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-muted-foreground">Official Email</Label>
-                            <Input id="email" type="email" required placeholder="john@company.com" className="bg-slate-50 dark:bg-background/50 border-2 border-slate-200 dark:border-border focus-visible:ring-0 focus-visible:border-cyan-500 dark:focus-visible:border-cyan-500 rounded-none h-12 dark:text-foreground" />
+                            <Label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Official Email</Label>
+                            <Input id="email" type="email" required placeholder="john@company.com" className="bg-secondary dark:bg-background/50 border-2 border-border focus-visible:ring-0 focus-visible:border-cyan-500 dark:focus-visible:border-cyan-500 rounded-none h-12 text-foreground" />
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="phone" className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-muted-foreground">Phone</Label>
-                            <Input id="phone" type="tel" required placeholder="+91 98765 43210" className="bg-slate-50 dark:bg-background/50 border-2 border-slate-200 dark:border-border focus-visible:ring-0 focus-visible:border-cyan-500 dark:focus-visible:border-cyan-500 rounded-none h-12 dark:text-foreground" />
+                            <Label htmlFor="phone" className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Phone</Label>
+                            <Input id="phone" type="tel" required placeholder="+91 98765 43210" className="bg-secondary dark:bg-background/50 border-2 border-border focus-visible:ring-0 focus-visible:border-cyan-500 dark:focus-visible:border-cyan-500 rounded-none h-12 text-foreground" />
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="requirements" className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-muted-foreground">Specific Requirements</Label>
+                            <Label htmlFor="requirements" className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Specific Requirements</Label>
                             <Textarea
                                 id="requirements"
                                 placeholder="Please specify Size, Grade, Quantity and any special coating requirements..."
-                                className="min-h-[100px] bg-slate-50 dark:bg-background/50 border-2 border-slate-200 dark:border-border focus-visible:ring-0 focus-visible:border-cyan-500 dark:focus-visible:border-cyan-500 rounded-none dark:text-foreground"
+                                className="min-h-[100px] bg-secondary dark:bg-background/50 border-2 border-border focus-visible:ring-0 focus-visible:border-cyan-500 dark:focus-visible:border-cyan-500 rounded-none text-foreground"
                             />
                         </div>
 
                         <div className="space-y-2">
-                            <Label className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-muted-foreground">Upload Drawings / Reference (Optional)</Label>
-                            <div className="border-2 border-dashed border-slate-300 dark:border-border rounded-none p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-slate-50 dark:hover:bg-card/50 transition-colors bg-white dark:bg-[#0b1221]">
+                            <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Upload Drawings / Reference (Optional)</Label>
+                            <div className="border-2 border-dashed border-border rounded-none p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-secondary dark:hover:bg-card/50 transition-colors bg-background">
                                 <Upload className="h-8 w-8 text-cyan-500 mb-2" />
-                                <span className="text-xs text-slate-500 dark:text-muted-foreground font-medium">Click to upload files (PDF, JPG, PNG)</span>
+                                <span className="text-xs text-muted-foreground font-medium">Click to upload files (PDF, JPG, PNG)</span>
                                 <input type="file" className="hidden" />
                             </div>
                         </div>

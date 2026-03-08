@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react"
 
-type Theme = "dark"
+type Theme = "dark" | "light"
 
 type ThemeProviderProps = {
     children: React.ReactNode
@@ -20,9 +20,13 @@ const ThemeProviderContext = createContext<ThemeProviderState>({
 
 export function ThemeProvider({
     children,
+    defaultTheme = "dark",
+    storageKey = "sfl-theme",
     ...props
 }: ThemeProviderProps) {
-    const theme: Theme = "dark"
+    const [theme, setTheme] = useState<Theme>(
+        () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
+    )
 
     useEffect(() => {
         const root = window.document.documentElement
@@ -31,8 +35,9 @@ export function ThemeProvider({
     }, [theme])
 
     const toggleTheme = () => {
-        // No-op as light theme is removed
-        console.log("Theme switching is disabled.")
+        const newTheme = theme === "dark" ? "light" : "dark"
+        localStorage.setItem(storageKey, newTheme)
+        setTheme(newTheme)
     }
 
     return (

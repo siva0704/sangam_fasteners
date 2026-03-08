@@ -1,4 +1,4 @@
-import { useEffect, lazy, Suspense } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +9,7 @@ import WhatsAppButton from "./components/WhatsAppButton";
 import { Navbar } from "./components/layout/Navbar";
 import { SmoothScroll } from "./components/layout/SmoothScroll";
 import Home from "./pages/Home";
+import Preloader from "./components/Preloader";
 
 import { ThemeProvider } from "./components/ThemeProvider";
 
@@ -32,6 +33,8 @@ const ScrollToTop = () => {
 const queryClient = new QueryClient();
 
 const App = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -39,6 +42,7 @@ const App = () => {
           <SmoothScroll>
             <Toaster />
             <Sonner />
+            {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
             <BrowserRouter basename={import.meta.env.BASE_URL} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
               <ScrollToTop />
               <Navbar />

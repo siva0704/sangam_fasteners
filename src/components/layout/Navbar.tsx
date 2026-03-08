@@ -4,11 +4,13 @@ import { Menu, ChevronRight, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/components/ThemeProvider";
 
 export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
+    const { theme, toggleTheme } = useTheme();
 
     // Check if we are on the home page (allowing for potential base path)
     // Check if we are on the home page
@@ -37,65 +39,90 @@ export const Navbar = () => {
     return (
         <nav
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b",
                 useScrolledStyle
-                    ? "bg-background/80 backdrop-blur-md border-border py-4 shadow-lg"
-                    : "bg-transparent py-6"
+                    ? "bg-background/60 backdrop-blur-2xl border-white/10 py-7 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
+                    : "bg-transparent border-transparent py-10"
             )}
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
-                <Link to="/" className="flex items-center gap-3 group">
-                    <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="Sangam Shaft & Machine Components Private Limited Logo" className="h-[45px] w-[45px] object-contain group-hover:scale-105 transition-transform duration-300" />
-                    <div className="flex flex-col items-start leading-none gap-1">
+                <Link to="/" className="flex items-center gap-5 group py-1">
+                    <div className="relative flex items-center justify-center">
+                        <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-700 ease-out" />
+                        <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="SFL Shafts Logo" className="relative h-[60px] w-[60px] md:h-[72px] md:w-[72px] object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" />
+                    </div>
+                    <div className="flex flex-col items-start leading-tight gap-0.5 mt-1">
                         <span className={cn(
-                            "text-[12px] sm:text-[16px] font-heading font-bold tracking-widest uppercase transition-colors duration-300",
-                            useScrolledStyle ? "text-foreground" : "text-foreground"
+                            "text-[24px] sm:text-[28px] lg:text-[34px] font-heading font-extrabold tracking-tight transition-all duration-300 group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-foreground group-hover:to-primary/80",
+                            useScrolledStyle ? "text-foreground drop-shadow-sm" : "text-foreground drop-shadow-md"
                         )}>
-                            Sangam Shaft & Machine Components
+                            SANGAM FASTENERS
                         </span>
                         <span className={cn(
-                            "text-[10px] sm:text-[12px] font-medium tracking-wide transition-colors duration-300",
-                            useScrolledStyle ? "text-primary" : "text-foreground/80"
+                            "text-[11px] sm:text-[13px] lg:text-[15px] font-bold tracking-[0.25em] uppercase transition-colors duration-300",
+                            useScrolledStyle ? "text-primary/90" : "text-foreground/70"
                         )}>
-                            Private Limited
+                            PRIVATE LIMITED
                         </span>
                     </div>
                 </Link>
 
                 {/* Desktop Navigation (Visible on LG+) */}
-                <div className="hidden lg:flex items-center gap-8">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            to={link.href}
+                <div className="hidden lg:flex items-center gap-6">
+                    {/* Floating Island Nav Pill */}
+                    <div className={cn(
+                        "flex items-center gap-1.5 px-2 py-1.5 rounded-full transition-all duration-500",
+                        useScrolledStyle
+                            ? "bg-foreground/5 dark:bg-white/5 border border-white/5 backdrop-blur-md"
+                            : "bg-black/20 dark:bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_20px_rgba(0,0,0,0.2)]"
+                    )}>
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.name}
+                                to={link.href}
+                                className={cn(
+                                    "px-4 py-2 rounded-full text-[13px] font-bold tracking-wider transition-all duration-300 relative overflow-hidden group uppercase",
+                                    location.pathname === link.href
+                                        ? "text-primary shadow-[0_0_15px_rgba(255,255,255,0.05)] bg-white/10"
+                                        : "text-foreground/70 hover:text-foreground hover:bg-white/5 hover:shadow-[0_0_15px_rgba(255,255,255,0.02)]"
+                                )}
+                            >
+                                <span className="relative z-10">{link.name}</span>
+                                {location.pathname === link.href && (
+                                    <span className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 animate-[shimmer_2s_infinite]" />
+                                )}
+                            </Link>
+                        ))}
+                    </div>
+
+                    <div className="ml-2 flex items-center gap-4">
+                        {/* Theme Toggle Button */}
+                        <button
+                            onClick={toggleTheme}
                             className={cn(
-                                "text-sm font-medium tracking-wide transition-colors duration-300 relative group py-2",
+                                "relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 overflow-hidden group",
                                 useScrolledStyle
-                                    ? "text-muted-foreground hover:text-primary"
-                                    : "text-foreground/90 hover:text-foreground",
-                                location.pathname === link.href && "font-bold"
+                                    ? "bg-foreground/5 dark:bg-white/5 border border-white/5 hover:bg-foreground/10 text-foreground"
+                                    : "bg-black/20 dark:bg-white/5 border border-white/10 hover:bg-white/10 text-foreground"
                             )}
+                            aria-label="Toggle theme"
                         >
-                            {link.name}
-                            <span className={cn(
-                                "absolute bottom-0 left-0 h-0.5 transition-all duration-300",
-                                useScrolledStyle ? "bg-primary" : "bg-white",
-                                location.pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
-                            )} />
-                        </Link>
-                    ))}
-                    <div className="ml-4 flex items-center gap-3">
+                            <span className="absolute inset-0 bg-primary/20 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full blur-md" />
+                            <Sun className="absolute w-5 h-5 transition-all duration-500 rotate-0 scale-100 dark:-rotate-90 dark:scale-0" />
+                            <Moon className="absolute w-5 h-5 transition-all duration-500 rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
+                        </button>
+
+                        {/* Get Quote Button */}
                         <Link
                             to="/contact"
-                            className={cn(
-                                "px-5 py-2.5 rounded-sm font-bold text-sm transition-all duration-300 uppercase tracking-wider inline-block border-2",
-                                useScrolledStyle
-                                    ? "bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:border-accent/90"
-                                    : "bg-white/10 text-foreground border-white/40 hover:bg-white/20 hover:border-white/60 backdrop-blur-sm"
-                            )}
+                            className="group relative px-6 py-2.5 rounded-full font-extrabold text-[13px] uppercase tracking-widest transition-all duration-300 overflow-hidden bg-foreground text-background hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] border border-white/20"
                         >
-                            Get Quote
+                            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-background/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+                            <span className="relative flex items-center gap-2">
+                                Get Quote
+                                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 group-hover:scale-110 transition-transform duration-300" />
+                            </span>
                         </Link>
                     </div>
                 </div>
@@ -155,13 +182,25 @@ export const Navbar = () => {
                                     ))}
                                 </nav>
 
-                                <div className="mt-auto text-right space-y-4">
-                                    <p className="text-sm text-foreground/50">
-                                        Need a quote?
-                                    </p>
-                                    <a href="mailto:info@sflfasteners.com" className="text-lg font-bold text-foreground hover:text-accent transition-colors">
-                                        info@sflfasteners.com
-                                    </a>
+                                <div className="mt-auto flex flex-col items-end space-y-4 pt-6 border-t border-foreground/10">
+                                    <div className="flex items-center gap-4 w-full justify-between">
+                                        <span className="text-sm font-bold opacity-70">Theme</span>
+                                        <button
+                                            onClick={toggleTheme}
+                                            className="relative flex items-center justify-center w-12 h-12 rounded-full border border-foreground/10 bg-foreground/5 text-foreground hover:bg-foreground/10 transition-colors"
+                                        >
+                                            <Sun className="absolute w-5 h-5 transition-all duration-500 rotate-0 scale-100 dark:-rotate-90 dark:scale-0" />
+                                            <Moon className="absolute w-5 h-5 transition-all duration-500 rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
+                                        </button>
+                                    </div>
+                                    <div className="w-full text-right mt-4">
+                                        <p className="text-sm text-foreground/50">
+                                            Need a quote?
+                                        </p>
+                                        <a href="mailto:info@sflfasteners.com" className="text-lg font-bold text-foreground hover:text-accent transition-colors">
+                                            info@sflfasteners.com
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </SheetContent>

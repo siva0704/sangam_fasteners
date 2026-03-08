@@ -25,7 +25,7 @@ const EngineeringCard = ({ feature, currentIcons, getDecorationStyle, isActive, 
     return (
         <div
             ref={domRef}
-            className={`group ${isActive ? "is-active" : ""} relative bg-white p-6 rounded-2xl border border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 overflow-hidden h-full flex flex-col justify-between items-center text-center isolate`}
+            className={`group ${isActive ? "is-active" : ""} relative bg-background p-6 rounded-2xl border border-border hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 overflow-hidden h-full flex flex-col justify-between items-center text-center isolate`}
         >
             {/* Enhanced Decorations */}
             {currentIcons.map((Icon, i: number) => {
@@ -41,7 +41,7 @@ const EngineeringCard = ({ feature, currentIcons, getDecorationStyle, isActive, 
             <div className="w-full flex flex-col items-center relative">
                 <div className="relative mb-6">
                     {/* Main Icon Container */}
-                    <div className={`p-5 rounded-2xl bg-slate-50 text-muted-foreground group-hover:bg-white group-hover:text-blue-600 group-[.is-active]:bg-white group-[.is-active]:text-blue-600 transition-all duration-300 shadow-sm group-hover:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] group-[.is-active]:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] ring-1 ring-slate-100 group-hover:ring-blue-100 group-[.is-active]:ring-blue-100 relative z-20`}>
+                    <div className={`p-5 rounded-2xl bg-secondary text-muted-foreground group-hover:bg-background group-hover:text-blue-600 group-[.is-active]:bg-background group-[.is-active]:text-blue-600 transition-all duration-300 shadow-sm group-hover:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] group-[.is-active]:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] ring-1 ring-border group-hover:ring-blue-100 group-[.is-active]:ring-blue-100 relative z-20`}>
                         <feature.icon size={36} strokeWidth={1.5} className="group-hover:scale-110 group-[.is-active]:scale-110 group-hover:-translate-y-1 group-[.is-active]:-translate-y-1 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] fill-blue-50/0 group-hover:fill-blue-50 group-[.is-active]:fill-blue-50" />
                     </div>
                 </div>
@@ -50,7 +50,7 @@ const EngineeringCard = ({ feature, currentIcons, getDecorationStyle, isActive, 
                     <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.25em] group-hover:text-blue-600 group-[.is-active]:text-blue-600 transition-colors duration-300">
                         Methodology
                     </p>
-                    <h3 className="text-xl font-bold text-slate-900 leading-tight transition-colors duration-300 min-h-[3rem] flex items-center justify-center">
+                    <h3 className="text-xl font-bold text-foreground leading-tight transition-colors duration-300 min-h-[3rem] flex items-center justify-center">
                         {feature.title}
                     </h3>
                 </div>
@@ -58,8 +58,8 @@ const EngineeringCard = ({ feature, currentIcons, getDecorationStyle, isActive, 
 
             {/* Bottom Pill - Description with Dot */}
             <div className="relative z-20 mt-4 w-full flex justify-center">
-                <span className="inline-flex items-center justify-center gap-2 px-4 py-2 text-[9px] font-bold text-slate-500 uppercase transition-all duration-500 group-hover:text-blue-600 group-[.is-active]:text-blue-600 max-w-full">
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-blue-500 group-[.is-active]:bg-blue-500 transition-all duration-500 shrink-0" />
+                <span className="inline-flex items-center justify-center gap-2 px-4 py-2 text-[9px] font-bold text-muted-foreground uppercase transition-all duration-500 group-hover:text-blue-600 group-[.is-active]:text-blue-600 max-w-full">
+                    <span className="w-1.5 h-1.5 rounded-full bg-border group-hover:bg-blue-500 group-[.is-active]:bg-blue-500 transition-all duration-500 shrink-0" />
                     <span className="whitespace-normal text-center leading-tight line-clamp-3">{feature.desc}</span>
                 </span>
             </div>
@@ -165,9 +165,9 @@ const SectionEngineering = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
     return (
-        <section className="py-10 bg-white relative">
+        <section className="py-10 bg-background relative">
             {/* Background Decoration */}
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-50/50 -skew-x-12 z-0 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-secondary/50 -skew-x-12 z-0 pointer-events-none" />
 
             <div className="container px-4 mx-auto relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -176,7 +176,7 @@ const SectionEngineering = () => {
                         <AnimatedSection animation="fade-right">
                             <BlueprintGraphic />
                             {/* Decorative Blob */}
-                            <div className="absolute -z-10 -bottom-10 -left-10 w-32 h-32 bg-blue-100 rounded-full blur-3xl opacity-50" />
+                            <div className="absolute -z-10 -bottom-10 -left-10 w-32 h-32 bg-blue-100 dark:bg-blue-900/30 rounded-full blur-3xl opacity-50" />
                         </AnimatedSection>
                     </div>
 
@@ -186,10 +186,10 @@ const SectionEngineering = () => {
                             <span className="inline-block py-1 px-3 text-accent font-bold text-sm uppercase mb-4">
                                 Manufacturing Orientation
                             </span>
-                            <h2 className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold font-heading text-gray-900 mb-6 leading-tight whitespace-nowrap">
-                                Manufacturing <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-slate-800">Excellence</span>
+                            <h2 className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold font-heading text-foreground mb-6 leading-tight whitespace-nowrap">
+                                Manufacturing <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-slate-800 dark:from-blue-400 dark:to-slate-200">Excellence</span>
                             </h2>
-                            <p className="text-lg md:text-xl text-gray-500 mb-8 leading-relaxed">
+                            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
                                 Our manufacturing is defined by strict specification adherence, unwavering process discipline, and a focus on long-term repeatability for mission-critical applications.
                             </p>
                             <Link to="/contact">

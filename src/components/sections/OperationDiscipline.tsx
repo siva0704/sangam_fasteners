@@ -75,7 +75,7 @@ const OperationDiscipline = () => {
                         <motion.div
                             key={index}
                             variants={itemVariants}
-                            className="group relative rounded-2xl border border-zinc-200 bg-white/50 p-8 transition-colors duration-300 hover:bg-white/80 dark:border-border dark:bg-background/50 dark:hover:bg-card/80 backdrop-blur-md overflow-hidden"
+                            className="group relative rounded-2xl border border-zinc-200 bg-secondary/50 p-8 transition-colors duration-300 hover:bg-secondary/80 dark:border-border dark:bg-background/50 dark:hover:bg-card/80 backdrop-blur-md overflow-hidden"
                         >
                             {/* Hover effect gradient */}
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

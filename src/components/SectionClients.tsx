@@ -113,9 +113,9 @@ const SectionClients = () => {
     };
 
     return (
-        <section className="py-24 bg-gradient-to-b from-white to-slate-50 dark:from-[#050814] dark:to-[#0a0f1c] relative overflow-hidden font-sans transition-colors duration-500">
+        <section className="py-24 bg-gradient-to-b from-background to-secondary dark:from-background dark:to-secondary/20 relative overflow-hidden font-sans transition-colors duration-500">
             {/* Background Atmosphere */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent dark:from-blue-900/10 dark:via-transparent dark:to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent pointer-events-none" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 dark:bg-cyan-900/10 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="container px-4 mx-auto relative z-10 w-full max-w-7xl">
@@ -124,19 +124,19 @@ const SectionClients = () => {
 
                     {/* Header */}
                     <div className="text-center mb-16 relative">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.05] mb-6 shadow-sm dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-background dark:bg-foreground/5 border border-border mb-6 shadow-sm">
                             <Star className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400 fill-cyan-500/20 dark:fill-cyan-400/20" />
-                            <span className="text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-muted-foreground">
+                            <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
                                 Trusted by Industry Leaders
                             </span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl lg:text-5xl font-black font-heading tracking-tight text-slate-900 dark:text-foreground mb-6 leading-tight">
+                        <h2 className="text-4xl md:text-5xl lg:text-5xl font-black font-heading tracking-tight text-foreground mb-6 leading-tight">
                             Forging Global <br className="md:hidden" />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500">
                                 Partnerships
                             </span>
                         </h2>
-                        <p className="text-slate-600 dark:text-muted-foreground max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed">
+                        <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed">
                             We pride ourselves on 100% client retention in the precision shaft sector, delivering uncompromising quality to Tier-1 OEMs and global infrastructure projects.
                         </p>
                     </div>
@@ -144,7 +144,7 @@ const SectionClients = () => {
                     {/* Stats Bento Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
                         {stats.map((stat, idx) => (
-                            <div key={idx} className="group relative flex flex-col items-center text-center p-8 md:p-10 rounded-[2rem] bg-white dark:bg-[#0c1222]/80 backdrop-blur-xl border border-slate-200 dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_20px_40px_-15px_rgba(34,211,238,0.1)] isolate">
+                            <div key={idx} className="group relative flex flex-col items-center text-center p-8 md:p-10 rounded-[2rem] bg-background dark:bg-card/80 backdrop-blur-xl border border-border shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_20px_40px_-15px_rgba(34,211,238,0.1)] isolate">
                                 {/* Hover Glow Base */}
                                 <div className={`absolute inset-0 bg-gradient-to-b ${stat.bgLight} to-transparent opacity-0 group-hover:opacity-10 dark:group-hover:opacity-100 transition-opacity duration-700 pointer-events-none -z-10`} />
 
@@ -160,11 +160,11 @@ const SectionClients = () => {
                                     {stat.value}
                                 </h4>
 
-                                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-700 dark:text-foreground/80 mb-4">
+                                <p className="text-xs font-bold uppercase tracking-[0.2em] text-foreground mb-4">
                                     {stat.label}
                                 </p>
 
-                                <p className="text-sm text-slate-500 dark:text-muted-foreground/80 leading-relaxed font-light max-w-[240px]">
+                                <p className="text-sm text-muted-foreground leading-relaxed font-light max-w-[240px]">
                                     {stat.description}
                                 </p>
                             </div>
@@ -179,8 +179,8 @@ const SectionClients = () => {
                 <div className="relative w-full overflow-hidden py-10 mt-8">
 
                     {/* Smooth Edge Fades */}
-                    <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-slate-50 dark:from-[#050814] to-transparent z-10 pointer-events-none" />
-                    <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-slate-50 dark:from-[#050814] to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-secondary dark:from-background to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-secondary dark:from-background to-transparent z-10 pointer-events-none" />
 
                     <div
                         ref={scrollRef}
